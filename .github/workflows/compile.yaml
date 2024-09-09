@@ -15,8 +15,8 @@ jobs:
     - name: Compile Typst Files
       uses: ammar-ahmed22/compile-typst-action@v1
       with:
-        source_paths: 'Segundo/Cuatrimestre%1/meca.typ Segundo/Cuatrimestre%1/mmat2.typ Segundo/Cuatrimestre%1/probsa.typ Segundo/Cuatrimestre%1/ssc.typ Segundo/Cuatrimestre%1/termo.typ'
-        output_paths: 'Segundo/Cuatrimestre%1/meca.pdf Segundo/Cuatrimestre%1/mmat2.pdf Segundo/Cuatrimestre%1/probsa.pdf Segundo/Cuatrimestre%1/ssc.pdf Segundo/Cuatrimestre%1/termo.pdf'
+        source_paths: 'Segundo/Cuatri1/meca.typ Segundo/Cuatri1/mmat2.typ Segundo/Cuatri1/probsa.typ Segundo/Cuatri1/ssc.typ Segundo/Cuatri1/termo.typ'
+        output_paths: 'Segundo/Cuatri1/meca.pdf Segundo/Cuatri1/mmat2.pdf Segundo/Cuatri1/probsa.pdf Segundo/Cuatri1/ssc.pdf Segundo/Cuatri1/termo.pdf'
         fonts_path: 'path/to/fonts'
     - name: Upload Artifacts
       uses: actions/upload-artifact@v3
@@ -29,8 +29,8 @@ jobs:
       with:
         name: "${{ github.ref_name }}"
         files: |
-          Segundo/Cuatrimestre%1/meca.pdf
-          Segundo/Cuatrimestre%1/mmat2.pdf
-          Segundo/Cuatrimestre%1/probsa.pdf
-          Segundo/Cuatrimestre%1/ssc.pdf
-          Segundo/Cuatrimestre%1/termo.pdf
+          Segundo/Cuatri1/meca.pdf
+          Segundo/Cuatri1/mmat2.pdf
+          Segundo/Cuatri1/probsa.pdf
+          Segundo/Cuatri1/ssc.pdf
+          Segundo/Cuatri1/termo.pdf
