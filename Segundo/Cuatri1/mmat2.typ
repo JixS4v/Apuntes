@@ -7,3 +7,5 @@
 De todos los periodos $p$, el más pequeño es denominado periodo _primitivo_
 
 == 1.2 Series de Fourier para funciones de periodo $2pi$
+=== #underline($sin(n x)$)
+$f(x)=a_0 + sum_(n=1)^(+infinity)a_n cos(n x)+b_n sin(n x) =>$ *Serie de Fourier* 
