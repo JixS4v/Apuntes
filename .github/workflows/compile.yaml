@@ -2,6 +2,7 @@ name: Compile, Upload and Release Typst Documents
 on:
   workflow_dispatch:
   push:
+  push:
     tags:
     - '**'
 permissions:
