@@ -52,3 +52,48 @@ La termodinámica posee las siguientes características:
 - En sistemas no aislados el equilibrio se establece cuando el sistema no interacciona con el entorno, es decir cuando hay fuerzas sin equilibrar debidas a diferencias de parámetros intensivos entre sistema y entorno.
 - No debe de confundirse estado de equilibrio con _estado estacionario_
 
+== 1.5. Concepto de proceso termodinámico
+- Un proceso termodinámico es el paso de un estado de equilibrio a otro como consecuencia de la interacción del sistema con el entorno.
+- El proceso puede seguirse a través de la variación de las magnitudes termodinámicas #[
+- Funciones de estado, que solo dependen de los estados inicial y final Funciones de proceso
+- Funciones de proceso, que dependen de los estados inicial y final, pero también del camino seguido]
+#underline[*Representación gráfica*]: El proceso se puede representar mediante diagramas que muestran la evolucion de unas magnitudes termodinámicas frente a otras. El espacio euclídeo correspondiente se llama espacio termodinámico de estados.
+#figure(image("diagramatermo.png"), caption: [Ejemplo de un diagrama representando un corte del espacio termodinámico de estados])
+
+== 1.6. Tipos de procesos termodinámicos
+#underline[*Procesos cíclicos*]: Procesos en que el estado inicial coincide con el final.
+#underline[*Procesos abiertos*]: Procesos en los que al menos una variable cambia entre los dos estados
+#underline[*Proceso infinitesimal*]: Proceso cuya realización implica un cambio infinitesimal en alguna variable del sistema. Los estados intermedios son estados de equilibrio.
+#underline[*Proceso finito*]: Proceso en que los cambios en las variables no son
+infinitesimales. Los estados intermedios no han de ser de equilibrio
+#underline[*Proceso de relajación*]: Proceso por el que vuelve a alcanzar el equilibrio un sistema inicialmente en equilibrio que es perturbado y dejado evolucionar libremente. El tiempo que tarda en alcanzarse el nuevo estado de equilibrio se llama tiempo de _relajación_.
+#underline[*Procesos cuasiestáticos*]: Procesos constituidos por una sucesión de procesos infinitesimales que admiten representación en el espacio de estados. Los procesos suficientemente lentos por comparación con el proceso de relajación entre los mismos estados pueden considerarse aproximadamente cuasiestáticos. Son útiles para calcular las variaciones en las funciones de estado.
+$ ((d psi)/(d t))_"exp" << ((d psi)/(d t))_"exp" $ 
+#underline[*Procesos no estáticos*]: Procesos en que ambos tiemos son comparables: 
+$ Delta t_"exp" approx Delta t_"rel" $
+
+== 1.7. Postulados de la Termodinámica
+#underline[*Primer postulado de la Termodinámica*]: #[
+  - Todo sistema aislado alcanza, con el tiempo, un estado de equilibrio termodinámico que no puede abandonar espontáneamente #[
+- Es de carácter estadístico: concepto de "estado más probable"
+- Por consecuencia, no se estudian los fenómenos en que un sistema abandona espontáneamente su estado más probable (fluctuaciones)]]
+#underline[*Segundo postulado de la Termodinámica*]: #[- Dos sistemas en equilibrio térmico con un tercero están en equilibrio térmico entre sí #[
+- Hay que definir una nueva variable: la temperatura (interna e intensiva)
+- Principio cero: los parámetros internos son función de los parámetros externos y de la temperatura.]]
+
+== 1.8 Escalas termométricas
+
+#underline[*Definición operacional de temperatura*]:
+- Elección de un sistema de referencia (termómetro)
+- Asignación de valores a las isotermas del sistema (escala)
+#underline[*Magnitud termométrica*]: La (única) propiedad del sistema que depende de la temperatura
+
+#underline[*Función termométrica*]: Relación entre la temperatura y la magnitud termométrica
+
+#underline[*Puntos fijos*]: Estados patrón fácilmente reproducibles a los que se asignan valores arbitrarios para determinar la función termométrica. #[
+  - Hielo puro en equilibrio con agua pura saturada de aire a 1 atm
+  - Agua pura en equilibrio con su vapor a 1 atm
+  - Punto triple del agua (273.16 K)
+]
+
+== 1.9. Una definición empírica de temperatura
