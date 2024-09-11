@@ -10,4 +10,3 @@ Tipos de ligadura:
 - Ligaduras no holónomas: No son holónomas.
 - Ligaduras esclerónomas: Sin dependencia temporal
 - Ligaduras reonómicas: Con dependencia temporal
-
