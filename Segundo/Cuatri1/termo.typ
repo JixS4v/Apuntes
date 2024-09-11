@@ -10,7 +10,7 @@ La termodinámica posee las siguientes características:
 - Es una teoría macroscopica y fenomenológica
 - No hay una hipótesis sobre la estructura de la materia (descripción de solidos y fluidos como medios continuos)
 
-== 1.2 Concepto de un sistema termodinámico: clasificación
+== 1.2. Concepto de un sistema termodinámico: clasificación
 #underline[*Sistema termodinámico*]: Región _macroscópica_ del espacio delimitada por una superficie cerrada (paredes)
 - Las paredes pueden ser reales o imaginarias.
 - La elección del sistema (paredes) depende del problema que se quiera resolver y de la información de que se dispone (las variables termodinámicas y/o las energías).
@@ -31,7 +31,7 @@ La termodinámica posee las siguientes características:
   [Abiertos], [Intercambian Materia y Energía con el entorno], [Cerrados], [Intercambian Energía con el entorno, pero no Materia], [Aislados], [Ni intercambian materia, ni intercambian energía con el entorno]
 )
 
-== 1.3 Variables de estado: magnitudes extensivas e intensivas
+== 1.3. Variables de estado: magnitudes extensivas e intensivas
 #underline[*Variables termodinámicas*]: Atributos de un sistema termodinámico que lo caracterizan en el momento actual y son independientes de su historia pasada.
 
 #underline[*Variables o parámetros de estado*]: Conjunto reducido de parámetros que permite describir al sistema.
@@ -44,7 +44,10 @@ La termodinámica posee las siguientes características:
 
 #underline[*Parámetros extensivos*]: Parámetros que dependen de la masa del sistema y son proporcionales a ella, tienen un carácter global. (Volumen, longitud)
 
-#underline[*Parámetros intensivos*]: Parámetros que no dependen de la masa, tienen un carácter local. (Presión, tensión superficial). Podemos incluir en estos las mgnitudes _específicas_
+#underline[*Parámetros intensivos*]: Parámetros que no dependen de la masa, tienen un carácter local. (Presión, tensión superficial). Podemos incluir en estos las magnitudes _específicas_ (por unidad de masa)
 
-
-
+== 1.4. Estado de equilibrio termodinámico
+- Se dice que un sistema está en equilibrio termodinámico cuando sus magnitudes termodinámicas son constantes en el tiempo y uniformes en el espacio.
+- Solamente un sistema aislado puede estar estrictamente en equilibrio
+- En sistemas no aislados el equilibrio se establece cuando el sistema no interacciona con el entorno, es decir cuando hay fuerzas sin equilibrar debidas a diferencias de parámetros intensivos entre sistema y entorno.
+- No debe de confundirse estado de equilibrio con _estado estacionario_
