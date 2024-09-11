@@ -51,3 +51,4 @@ La termodinámica posee las siguientes características:
 - Solamente un sistema aislado puede estar estrictamente en equilibrio
 - En sistemas no aislados el equilibrio se establece cuando el sistema no interacciona con el entorno, es decir cuando hay fuerzas sin equilibrar debidas a diferencias de parámetros intensivos entre sistema y entorno.
 - No debe de confundirse estado de equilibrio con _estado estacionario_
+
