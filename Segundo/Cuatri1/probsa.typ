@@ -43,5 +43,5 @@ Sea S el suceso seguro. Si #[
   - $"pr"(A_1) = ... = "pr"(A_n)$
 ]
 Entonces #[
-  - $"pr"(A_1 union ... union A_k)= n/k$
+  - $"pr"(A_1 union ... union A_k)= k/n$
 ]
