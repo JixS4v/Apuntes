@@ -2,6 +2,8 @@
 
 = 1. Probabilidad
 
+== 1.1. Probabilidad
+
 #underline[*Ejemplos*]
 + Se lanza una moneda. El conjunto de posibles resultados es {cara, cruz}
 + Se lanza un dado. El conjunto de posibles resultados es {1,2,...,6}
@@ -37,11 +39,39 @@ $"pr"(A) = "la probabilidad de que ocurra" A$
   ]
 ]
 #underline[*Regla de Laplace*]
-Sea S el suceso seguro. Si #[
+- Sea S el suceso seguro. Si #[
   - $A_1 union A_2 union ... union A_n = S$
   - $A_i sect A_j = 0$ (si $i!=j$)
   - $"pr"(A_1) = ... = "pr"(A_n)$
 ]
-Entonces #[
+- Entonces #[
   - $"pr"(A_1 union ... union A_k)= k/n$
 ]
+- *Demostración*: #[
+  - $1 = "pr"(S) = "pr"(A, union .... union A_n) = "pr"(A_1) + ... + "pr"(A_n) = n p; p = "pr"(A_i)$
+  - $p = 1/n$
+  - $"pr"(A_1 union ... union A_k) = "pr"(A_1) + ... + "pr"(A_k) = k p = k/n$
+]
+
+== 1.2. Combinatoria 
+#underline[*Regla del producto*]: 
+- Si un suceso tiene $n$ posibilidades y otro $m$ posibilidades, en total hay $n dot m$ posibilidades.
+- #underline[Ejemplos] #[
+  + Se lanzan un dado y una moneda. ¿Cuántas posibilidades hay? #[
+    - $6 dot 2$
+  ]
+  + Se elige un númeror de 2 cifras las cuales son 1,2,3,4 #[
+    #set enum(numbering: "a.")
+    + De cuántas maneras? #[
+      - $4 dot 4$
+    ]
+    + Si no se repiten las cifras, ¿cuántas maneras? #[
+      - $4 dot 3$
+    ]
+  ]
+  + Se distribuyen 2 bolas en $n$ cajas (pueden haber 2 bolas en la misma caja). #[
+    - Hay $n dot n$ posibilidades
+  ]
+]
+#underline[*Regla del producto (generalizada)*]
+- Si un suceso tiene $n_1$ posibilidades, otro $n_2$, y así hasta el $k$-ésimo que tiene $n_k$ posibilidades; en total hay $n_1 dot n_2 dot ... dot n_k$ posibilidades.
