@@ -97,3 +97,53 @@ $ Delta t_"exp" approx Delta t_"rel" $
 ]
 
 == 1.9. Una definición empírica de temperatura
+
+- Buscamos medir la temperatura con distintas masas de gas a volumen constante: #[
+  - Tomamos una cierta masa $m_1$ de un gas dado
+  - Ponemos el baño a la temperatura del punto triple del agua $theta_(3w)$
+  - Movemos el flexible hasta alcanzar el volumen $V_"ref"$ deseado
+  - Medimos la presión correspondiente $p_"ref"$
+  - Ponemos el baño a la temperatura objetivo $theta_t$
+  - Reajustamos el flexible para mantener el mismo volumen $V_"ref"$
+  - Medimos la presión correspondiente $p$
+#figure(image("montajemedidatermo.png"), caption: "Montaje utilizado para la medida")
+]
+Así, se tiene la presión $p$ del gas a la temperatura objetivo $theta_t$, para la masa y el volumen escogidos, $m_n$, $V_"ref"$
+Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar las rectas que cruzan los puntos. El punto donde las rectas correspondientes a los distintos gases se cruzan obtenemos la presión
+
+== 2. Primer principio de la Termodinámica
+
+== 2.1 Energía interna, calor y Trabajo
+#underline["*Energía*"]: Toda causa capaz de producir _trabajo_
+- Se manifiesta de muchas manenras y puede _transmitirse_ entre sistemas o _transformarse_ de unas formas a otras.
+
+#table(columns:2, [*Energías acumuladas o _Fuentes_*],[*Energías en tránsito o _Vectores_*], [Energía fósil (quimica)], [Transmisión de calor: CALOR], [Energía potencial gravitatoria (hidráulica)], [Transmisión de E. mecánica: TRABAJO], [Energía potencial eléctrica], [Corriente eléctrica],[Energía cinética (eólica, mareas, ...)], [Ondas electromagnéticas], [Energía nuclear (fusión o fisión)], [Ondas de presión], [Energía térmica almacenada])
+
+#underline["*Energías Almacenadas*"]
+- Energía interna ($U$) #[
+  - Es la energía térmica acumulada en un sistema. Es la manifestación macroscópica de la energía de los componentes microscópicos del sistema
+  - Contribuciones: #[
+    - Energía cinética de traslación, rotación y vibración de los componentes microscópicos (relacionada con la temperatura)
+    - Energía potencial de interacción entre componentes microscópicos (relacionada con el volumen)
+    - Energía asociada a fenómenos y procesos subatómicos (no afectada por las transformaciones habitualmente tratadas en termodinámica)
+  ]
+  - Es una función de estado (función de los parámetros externos y de la temperatura)
+]
+
+#underline["*Energías en Tránsito*"]
+- Trabajo mecánico ($W$) #[
+  - Transmisión de energía asociada con el movimiento macroscópico de los componentes del sistema
+  - El trabajo está asociado a las variaciones de volumen del sistema
+  - Es función de proceso
+]
+- Calor ($Q$) #[
+  - Transmisión de energía asociada con el movimiento microscópico de los componentes del sistema.
+  - Es función de proceso
+  - Existen _tres_ mecanismos de transmisión de calor: #[
+    - Conducción a través de un sólido o un fluidos
+    - Convección en el seno de un fluido o en la interfase fluido-sólido
+    - Radiación electromagnéticas
+  ]
+]
+
+== 2.2. Conservación de la energía
