@@ -201,6 +201,12 @@ Relación entre los 3 coeficientes (propiedad cíclica): $ ((diff p)/(diff V))_t
 
 Solo hacen falta dos coeficientes para integrar la ecuación de estado:
 $ dif V = ((diff V)/(diff theta))_p dif theta + ((diff V)/(diff p))_theta dif p = alpha V dif theta - chi_theta V dif p $
-$ dif p = ((diff p)/(diff theta))_V dif theta + ((diff p)/(diff V))_theta dif V = beta p dif theta - 1/(chi_theta V) dif V$
-$ dif theta = ((diff theta)/(diff p))_V dif p + ((diff theta)/(diff V))_p dif V = 1/(beta p) dif p + 1/(alpha V) dif V$
+$ dif p = ((diff p)/(diff theta))_V dif theta + ((diff p)/(diff V))_theta dif V = beta p dif theta - 1/(chi_theta V) dif V $
+$ dif theta = ((diff theta)/(diff p))_V dif p + ((diff theta)/(diff V))_p dif V = 1/(beta p) dif p + 1/(alpha V) dif V $
 
+Además, hay que especificar completamente un estado $(p, V, theta)$
+
+- Aplicación al gas ideal #[
+  - #underline[Ley de Boyle]: a temperatura constante, el producto de la presión por el volumen es constante para una masa dada. Derivando con respecto a $p$:$ (p V)_theta = "constante" => p ((diff V)/(dif p))_theta + V = 0 => chi_theta = - 1/V ((diff V)/(diff p))_theta = 1/p $ (coeficiente de compresibilidad isotérmica)
+  - #underline[Ley de Gay-Lussac]: a presión constante, el volumen de una masa dada de gas es proporcional a la temperatura. Derivando con respecto a $theta$: $ (V/theta)_p = "constante" => theta ((diff V)/(diff theta))_p - V = 0 => alpha = 1/V ((diff V)/(diff theta))_p = 1/theta $ (coeficiente de dilatación isobárica)
+]
