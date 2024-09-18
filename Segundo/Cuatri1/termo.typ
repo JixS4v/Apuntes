@@ -111,7 +111,7 @@ $ Delta t_"exp" approx Delta t_"rel" $
 Así, se tiene la presión $p$ del gas a la temperatura objetivo $theta_t$, para la masa y el volumen escogidos, $m_n$, $V_"ref"$
 Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar las rectas que cruzan los puntos. El punto donde las rectas correspondientes a los distintos gases se cruzan obtenemos la presión
 
-== 2. Primer principio de la Termodinámica
+= 2. Primer principio de la Termodinámica
 
 == 2.1 Energía interna, calor y Trabajo
 #underline["*Energía*"]: Toda causa capaz de producir _trabajo_
@@ -147,3 +147,60 @@ Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar la
 ]
 
 == 2.2. Conservación de la energía
+- La energía ni se crea ni se destruye, solo se transforma.
+- A escalas subatómicas #[
+  - La energía no está sujeta al principio de incertidumbre
+  - La masa no es más que otra forma de energía (el famoso $E = m c^2$)
+]
+- La equivalencia entre las distintas formas de energía no es ni evidente ni trivial, y de hecho no se confirmó hasta el siglo XVII (Thompson). 
+
+#underline[*Cuantificación. Análisis energético*]:
+- El aumento de las energías acumuladas en el sistema es igual al balance de las energías en tránsito entrantes y salientes a través de las paredes del sistema.
+- Formulación general: #[
+  - $Delta (E_"interna" + E_"mecánica") = (Q_"entrante" - Q_"saliente") - (W_"sobre sistema" - W_"por sistema") + (E_"materia entrante" - E_"materia saliente")$
+]
+
+== 2.3. Formulación para sistemas cerrados
+
+- Sin variación de energía cinética y potencial: $  dif U = delta Q - delta W <=> Delta U = Q - W $ #[
+  - En procesos cuasietáticos: $ delta Q =  dif  U + delta W =  dif U + p  dif V $ $ Q = Delta U + integral_1^2 p  dif V $
+  - En procesos adiabáticos ($delta Q = 0$: $ dif U = - delta W <=> Delta U = -W $
+  - En procesos cíclicos ($Delta U = 0$): $ 0 = Q-W <=> Q=W $
+]
+
+== 2.4. Entalpía
+
+#underline[*Entalpía*]: $H = U + p V => Q|_p = Delta H$
+
+#set math.cases(reverse:true)
+#underline[*Formulación del Primer Principio de la Termodinámica*]: $ cases( U = H - p V -> dif U =  dif  H - p  dif V - V dif p ,  delta Q =  dif U + p | dif V) -> dif H = delta Q + V dif p $
+
+= 3. Ecuaciones de estado
+== 3.1. Ecuaciones de estado
+- #underline[*Ecuación de estado*]: Cualquier función, obtenida teórica o experimentalmente, que relaciona las variables termodinámicas de un sistema. #[
+  - Dependerá de las variables escogidas (de acuerdo con el Principio Cero: las variables externas pueden expresarse en función de las variables externas y de la temperatura)
+  - Para los sistemas habituales #[
+    - Si el parámetro interno es la enegría interna:#linebreak() Ecuación energética de estado $ U = U(V,0) $
+    - Si el parámetro interno es la presión: #linebreak() Ecuación térmica de estado $ p = p(V,0) $
+  ]
+]
+
+== 3.2. Coeficientes térmicos de un sistema
+- En general, obtener la ecuación térmica de estado no es sencillo
+- Los coeficientes térmicos proporcionan un método general: #linebreak() integración de diferenciales de variables
+$ V = V(theta, p) -> dif V = ((diff V) / (diff theta))_p dif theta + ((diff V) / (diff p))_theta dif p $
+$ p = p(theta, V) -> dif p = ((diff p)/(diff theta))_V dif theta + ((diff p)/(diff V))_theta dif V $
+$ theta = theta (p, V)-> dif theta = ((diff theta)/(diff p))_V dif p + ((diff theta)/(diff V))_p dif V $
+
+Hay 3 coeficientes térmicos:
+- Coeficiente de dilatación isobárica: $alpha = 1/V ((diff V)/(diff theta))_p$
+- Coeficiente de compresibilidad isotérmica: $chi_theta = - 1/V ((diff V)/(diff p))_theta$
+- Coeficiente piezotérmico: $beta = 1/p((diff p)/(diff theta))_V$
+
+Relación entre los 3 coeficientes (propiedad cíclica): $ ((diff p)/(diff V))_theta ((diff V)/(diff theta))_p ((diff theta)/(diff p))_V = -1 => (- 1/(chi_theta V))(alpha V)(1/(beta p))=-1 => alpha = beta chi_theta p $
+
+Solo hacen falta dos coeficientes para integrar la ecuación de estado:
+$ dif V = ((diff V)/(diff theta))_p dif theta + ((diff V)/(diff p))_theta dif p = alpha V dif theta - chi_theta V dif p $
+$ dif p = ((diff p)/(diff theta))_V dif theta + ((diff p)/(diff V))_theta dif V = beta p dif theta - 1/(chi_theta V) dif V$
+$ dif theta = ((diff theta)/(diff p))_V dif p + ((diff theta)/(diff V))_p dif V = 1/(beta p) dif p + 1/(alpha V) dif V$
+
