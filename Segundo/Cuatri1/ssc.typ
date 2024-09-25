@@ -34,4 +34,59 @@ $ I = E/(R_L + R_S) $
 $ P_(R_L)= R_L dot I^2 = R_L (E^2)/((R_L+R_S)^2) = E^2(R_L)/(R_L+R_S)^2 =(E^2)/(4 R_S) (4 R_L R_S)/(R_L+R_S)^2 $ 
 
 == Método de las mallas
-  
+
+
+
+
+
+
+
+
+
+= 2. Transitorios\
+== 2.1. Carga de una bobina
+$ v(t) = L (dif i(t))/(dif t) $
+
+Durante la carga de la bobina: $ i(t) dot R + L (dif i)/(dif t) = V_0 $
+Condición inicial: $i(t = 0) = 0$
+
+Resolvemos la ecuación diferencial:
+$ i(t) = V_0/R (1-e^(-R/L t)) $
+
+Durante la descarga de la bobina: $ i(t) R + L (dif i(t))/(dif t) = 0 $
+Condición inicial: $i(t=0) = V_0$
+
+Resolvemos la ecuación diferencial: 
+$ i(t) = V_0/R e^(-R/L t) $
+
+Cuando $t->oo$: Podemos sustituir una bobina con un cortocircuito.
+== 2.2. Carga de un condensador
+$ C (dif v)/(dif t) = i(t) <=> C V = Q $
+
+Lo planteamos como una ecuación difenrencial: 
+$ i(t) R + 1/C integral i(t) dif t $
+Hacemos un cambio de variable
+$ i(t) = (dif q(t))/(dif t) $
+La ecuación diferencial resultante es:
+$ R (dif q(t))/(dif t) + q(t)/C = V_0 $
+Asumimos que estamos estudiando el proceso de carga del condensador, por lo que la condición inicial es: $q(t=0) = 0$
+
+Solución particular: $ q_p (t) = V_0 dot C$
+
+$q_h (t)$ ecuación homogenea $q' R + q 1/C = 0$
+$
+q_h (t) = e^(lambda t)
+=> lambda R e^(lambda t) + 1/C e^(lambda t) = 0
+=> (lambda R + 1/C) e^(lambda t) = 0
+=> lambda R + 1/C = 0
+=> lambda = -1/(R C)
+=> q_h (t) = e^(-t/(R C))
+$
+Obtenemos la solución general:
+$ q(t) = V_0 C + A e^(-t/(R C)) $ 
+Aplicamos la condición inicial:
+$ q(t=0) = 0 = V_0 C + A => A = -V_0 C $
+$ q(t) = V_0 C (1 - e^(-t/(R C))) $
+Derivamos para obtener $i(t)$:
+$ i(t) = (dif q(t))/(dif t) = V_0 /R e^(-t/(R C)) $
+Cuando $t->oo$: Podemos sustituir un condensador con un circuito abierto.
