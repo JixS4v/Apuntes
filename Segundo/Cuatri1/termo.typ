@@ -62,13 +62,19 @@ La termodinámica posee las siguientes características:
 
 == 1.6. Tipos de procesos termodinámicos
 #underline[*Procesos cíclicos*]: Procesos en que el estado inicial coincide con el final.
+
 #underline[*Procesos abiertos*]: Procesos en los que al menos una variable cambia entre los dos estados
+
 #underline[*Proceso infinitesimal*]: Proceso cuya realización implica un cambio infinitesimal en alguna variable del sistema. Los estados intermedios son estados de equilibrio.
+
 #underline[*Proceso finito*]: Proceso en que los cambios en las variables no son
 infinitesimales. Los estados intermedios no han de ser de equilibrio
+
 #underline[*Proceso de relajación*]: Proceso por el que vuelve a alcanzar el equilibrio un sistema inicialmente en equilibrio que es perturbado y dejado evolucionar libremente. El tiempo que tarda en alcanzarse el nuevo estado de equilibrio se llama tiempo de _relajación_.
+
 #underline[*Procesos cuasiestáticos*]: Procesos constituidos por una sucesión de procesos infinitesimales que admiten representación en el espacio de estados. Los procesos suficientemente lentos por comparación con el proceso de relajación entre los mismos estados pueden considerarse aproximadamente cuasiestáticos. Son útiles para calcular las variaciones en las funciones de estado.
 $ ((d psi)/(d t))_"exp" << ((d psi)/(d t))_"exp" $ 
+
 #underline[*Procesos no estáticos*]: Procesos en que ambos tiemos son comparables: 
 $ Delta t_"exp" approx Delta t_"rel" $
 
