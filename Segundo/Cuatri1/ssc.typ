@@ -90,3 +90,33 @@ $ q(t) = V_0 C (1 - e^(-t/(R C))) $
 Derivamos para obtener $i(t)$:
 $ i(t) = (dif q(t))/(dif t) = V_0 /R e^(-t/(R C)) $
 Cuando $t->oo$: Podemos sustituir un condensador con un circuito abierto.
+
+== Carga de un circuito RLC
+$
+q(t) &= A^* e^(lambda_+ t) + B^* e^(lambda_- t) \
+lambda_(+-) &= (-R +-sqrt(R^2 - (4L)/C))/(2L) \
+mat(1,1;lambda_+, lambda-)vec(A*,B*)
+&=
+vec(-C V_"max", 0)
+$
+
+Obtenemos $i(t) = (dif q)/(dif t) = A^* lambda_+ e^(lambda_+ t) + B^* lambda_- e^(lambda_- t)$
+
+= 3. Señales
+#underline[*Señal*]:  Magnitud física que depende de otra (típicamente del tiempo)
+- Por ejemplo: #[
+  - $v(t)$, $i(t)$ (unidimensional)
+  - $T(x,y)$ (bidimensional)
+]
+
+== 3.1 Señales periódicas
+$ exists T: x(t+T) = x(t) forall x in RR,  t in RR $
+El periodo fundamental es el valor mínimo de $T>0$ que hace que se cumpla la ecuación anterior.
+
+$x(t)$, $y(t)$ periódicas de periodos $T_x,T_y$ $<=>$ $x(t) + y(t)$ periódica y de periodo $T_x + T_y in QQ$
+
+== 3.2 Energía y potencia de Señales
+$
+x(t) &-> E = integral_(-oo)^oo |x(t)|^2 dif t \
+x(t) &-> P = lim_(T->+oo) 1/(2 T) integral_(-T)^T |x(t)|^2 dif t 
+$
