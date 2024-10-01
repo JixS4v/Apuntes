@@ -62,13 +62,19 @@ La termodinámica posee las siguientes características:
 
 == 1.6. Tipos de procesos termodinámicos
 #underline[*Procesos cíclicos*]: Procesos en que el estado inicial coincide con el final.
+
 #underline[*Procesos abiertos*]: Procesos en los que al menos una variable cambia entre los dos estados
+
 #underline[*Proceso infinitesimal*]: Proceso cuya realización implica un cambio infinitesimal en alguna variable del sistema. Los estados intermedios son estados de equilibrio.
+
 #underline[*Proceso finito*]: Proceso en que los cambios en las variables no son
 infinitesimales. Los estados intermedios no han de ser de equilibrio
+
 #underline[*Proceso de relajación*]: Proceso por el que vuelve a alcanzar el equilibrio un sistema inicialmente en equilibrio que es perturbado y dejado evolucionar libremente. El tiempo que tarda en alcanzarse el nuevo estado de equilibrio se llama tiempo de _relajación_.
+
 #underline[*Procesos cuasiestáticos*]: Procesos constituidos por una sucesión de procesos infinitesimales que admiten representación en el espacio de estados. Los procesos suficientemente lentos por comparación con el proceso de relajación entre los mismos estados pueden considerarse aproximadamente cuasiestáticos. Son útiles para calcular las variaciones en las funciones de estado.
 $ ((d psi)/(d t))_"exp" << ((d psi)/(d t))_"exp" $ 
+
 #underline[*Procesos no estáticos*]: Procesos en que ambos tiemos son comparables: 
 $ Delta t_"exp" approx Delta t_"rel" $
 
@@ -209,4 +215,60 @@ Además, hay que especificar completamente un estado $(p, V, theta)$
 - Aplicación al gas ideal #[
   - #underline[Ley de Boyle]: a temperatura constante, el producto de la presión por el volumen es constante para una masa dada. Derivando con respecto a $p$:$ (p V)_theta = "constante" => p ((diff V)/(dif p))_theta + V = 0 => chi_theta = - 1/V ((diff V)/(diff p))_theta = 1/p $ (coeficiente de compresibilidad isotérmica)
   - #underline[Ley de Gay-Lussac]: a presión constante, el volumen de una masa dada de gas es proporcional a la temperatura. Derivando con respecto a $theta$: $ (V/theta)_p = "constante" => theta ((diff V)/(diff theta))_p - V = 0 => alpha = 1/V ((diff V)/(diff theta))_p = 1/theta $ (coeficiente de dilatación isobárica)
+]
+Entonces: $ dif V = alpha V dif theta - chi_0 V dif p => (dif V)/V = alpha dif theta - chi_0 dif p = (dif theta)/theta - (dif p)/p => p V = "cnst"times theta$
+- Aplicación al gas ideal: #[
+  Ley de Avogadro: en condiciones normales (0ºC y 1 atm), un mol de cualquier gas ocupa un volumen de 22.4 L. Esto proporciona el estado totalmente definido que permite la determinación de la constante: $ (V_(N C))/n = "cnst"(theta_(N C))/(n p_(N C)) => "cnst" = n [(p_(N C))/(theta_(N C))(V/n)_(N C)]=n tilde(R) $ con $ tilde(R) = 101300/273.15 22.4 = 8310 "J" dot "kmol"^(-1) dot "K"^(-1) $
+]
+#set math.cases(reverse:false)
+- Finalmente: $ p V = n tilde(R) theta <=> cases(p tilde(v) = tilde(R) theta, p V = m/M tilde(R) theta = m R theta <=> p v = R theta) $
+
+== 3.3 Propiedades energéticas de un sistema
+- #underline[*Definición*]: propiedades energéticas son aquellas que expresan el cambio de la energía interna de un sistema, o de calor intercambiado or un sistema a lo largo de un proceso, como consecuencia de la variación de alguna variable termodinámica.
+- #underline[*Características*]: #[
+  - Se obtienen generalmente de forma experimental
+  - Permiten determinar la ecuación energética de estado
+]
+- #underline[*Clasificación*]: #[
+  - Capacidades térmicas
+  - Coeficientes calorimétricos #[
+    - Calores latentes
+    - Calores sensibles
+  ]
+]
+
+- #underline[*Capacidad térmica*]: #[
+- Cantidad de energía en forma de calor que es necesario comunicar a un sistema para elevar su temperatura $1 K$: $ delta Q = C dif theta $ Si está referida a la unidad de masa, se habla de calor específico: $ delta q equiv 1/m delta Q = c dif theta $ #[
+  - Para un proceso finito: $ Q = integral_(theta_1)^(theta_2) C dif theta = integral_(theta_1)^(theta_2) m c dif theta $
+  - Hay tantas como posibles procesos
+  - Un sistema con capacidad térmica infinita se llama foco térmico.
+]
+- Las mas empleadas son a presión y a volumen constante $ delta Q |_p = C_p dif theta ; delta Q |_V = C_V dif theta $ 
+- Del primer principio, y desarrollando $dif U$ en términos de $dif theta$ y $dif V$: $ delta Q = dif U + p dif V = ((diff U)/(diff theta))_V dif theta + [((diff U)/(diff V))_0 + p] dif V $ A volumen constante ($dif V = 0$): $ delta Q |_V = C_V dif theta = ((diff U)/(diff theta))_V dif theta => C_V = ((diff U)/(diff theta))_V $
+- A presión constante, en un proceso análogo se desarrolla $dif V$ en términos de $dif theta$ y $dif p$: $ delta Q = dif U + p dif V = ((diff U)/(diff theta))_V d theta + [((diff U)/(diff V))_theta + p] overbrace(dif V, [((diff V)/(diff theta))_p dif theta + ((diff V)/(diff p))_0 dif p]) $ Considerando presión constante y recordando $C_V$: $ delta Q |_p = C_p dif theta = {C_V + [((diff U)/(diff V))_theta + p] ((diff V)/(diff theta)_p)}dif theta $ $ C_p = C_V + [((diff U)/(diff V))_theta + p] ((diff V)/(diff theta))_p $
+- Del Primer Principio en términos de entalpía: $ delta Q = dif H - V dif p = ((diff H)/(diff theta))_p dif theta + [((diff H)/(diff p))_theta - V] dif p $ A presión constante: $ delta Q |_p = C_p dif theta = ((diff H)/(diff theta))_p dif theta => C_p = ((diff H)/(diff theta))_p $ A volumen constante: $ delta Q |_V = C_V dif theta => ... => C_V = C_p + [((diff H)/(diff p))_theta - V]((diff p)/(diff theta))_V $
+- -> Todas las derivadas parciales necesarias para determinar U o H son calculables, si se conoce $C_V, C_p$ y la ecuación térmica de estado: $
+((diff U)/diff theta))_V &= C_V \
+C_p = C_v + [((diff U)/(diff V))_theta + p]((diff V)/(diff theta))_p -> ((diff theta)/(diff V))_theta &= [C_p - C_V]((diff theta)/(diff V))_p - p \
+((diff H)/(diff theta))_p &= C_p \
+C_V = C_p + [((diff H)/(diff p))_theta - V]((diff p)/(diff theta))_V -> ((diff H)/(diff p))_theta &= [C_V - C_p]((diff theta)/(diff p))_V + V $
+- #underline[*Ecuación energética de estado*]: #[
+  - Integrando las diferenciales de U o H $ 
+  dif U &= ((diff U)/(diff theta))_V = dif theta + ((diff U)/(diff V))_theta dif V \
+  dif U &= C_v dif theta + [(C_p - C_V)((diff theta)/(diff V))_p - p]dif V 
+  $
+  - Para la entalpía: $
+  dif H &= ((diff H)/(diff theta))_p dif theta + ((diff H)/(diff p))_theta dif p \
+  dif H &= C_p dif theta + [(C_V - C_p)((diff theta)/(diff p))_V + V] dif p$
+]
+- Aplicación al Gas Ideal #[
+- En un gas ideal, la energía interna ($U$) solo depende de la temperatura (comprobado por el experimento de Joule). $ delta Q = 0 "y" delta W = 0 -> dif U = 0 => ((diff theta)/(diff V))_U = 0 $ Por la propiedad cíclica: $ ((diff theta)/(diff V))_U ((diff V)/(diff U))_0 ((diff U)/(diff theta))_V = -1 -> ((diff U)/(diff V))_theta = -C_V ((diff theta)/(diff V))_U $ Del experimento de joule $((diff theta)/(diff V))_U = 0$, y como $C_V != 0 $ -> $ ((diff U)/(diff V))_theta = 0 $ Entonces, la energía interna es función solo de la temperatura: $ dif U = ((diff U)/(diff theta))_V dif theta + ((diff U)/(diff V))_theta dif V = C_V (theta) dif theta -> Delta U = integral_(theta_1)^(theta_2) C_V(theta)dif theta $ Si $C_V$ no depende de la temperatura -> Gas perfecto: $ dif U = C_V dif theta -> Delta U = C_V Delta theta $ Recordando la expresión para $C_p - C_V$ que $((diff U)/(diff V))_theta $ y usando la ecuación térmica de estado, se obtiene la relación de Mayer: $ C_p - C_V = [((diff U)/(diff V))_theta + p] ((diff V)/(diff theta))_p = p ((diff V)/(diff theta))_p = p ((m R)/p) = m R -> c_p - c_V = R $ De la ecuación de la entalpía se obtiene que también $((diff H)/(diff p))_theta = 0$: $ dif H = C_p dif theta + [(C_V-C_p)((diff theta)/(diff p))_V + V] dif p = C_p dif theta + [(- m R)(V/(m R))+V] dif p $ $ -> dif H = C_p(theta) dif theta -> Delta H = integral_(theta_1)^(theta_2) C_p (theta) dif theta $ Si $C_p$ no depende de la temperatura, se trata de un gas perfecto: $ dif H = C_p dif theta -> Delta H = C_p Delta theta $
+]
+]
+- #underline[*Calores latentes*]: #[
+- Cantidad de energía en forma de calor que se necesitan para conseguir una variación unidad de la presión o el volumen a temperatura constante: $ delta Q|_theta = l_v dif V ; delta Q |_theta = h_p dif p $ Del primer principio y desarrollando $dif U$ en términos de $dif theta$ y $dif V$: $ delta Q = dif U + p dif V = ((diff U)/(diff theta))_V dif theta + [((diff U)/(diff V))_theta + p] dif V $ $"Si" dif theta = 0 -> delta Q|_theta = [((diff U)/(diff V))_theta + p] dif V = l_v dif V -> l_v = ((diff U)/(diff V))_theta + p $ Haciendo lo mismo con la entalpía, del primer principio y desarrollando $dif H$ en términos de $dif theta$ y $dif p$: $ delta Q = dif H - V dif p = ((diff H)/(diff theta))_p dif theta + [((diff H)/(diff p))_theta - V] dif p $ $ "Si" d theta = 0 -> delta Q|_theta = [((diff H)/(diff p))_theta - V] dif p = h_p dif p -> h_p = ((diff H)/(diff p))_theta - V $ Entonces: $ h_p = ((diff H)/(diff p))_theta - V = (C_V - C_p)((diff theta)/(diff p))_V $ Para gases ideales, como $((diff U)/(diff V))_theta = 0$ y $((diff H)/(diff p))_theta = 0$ se obtiene: $ l_v = ((diff U)/(diff V))_theta + p -> l_v = p ; h_p = ((diff H)/(diff p))_theta - V -> h_p = -V $
+]
+#underline[*Calores sensibles*]: #[
+  - Cantidad de energía en forma de calor que se necesita para conseguir una variación unidd de la presion o el volumen a volumen o presión constante, respectivamente: $ delta Q|_V = mu dif p ;delta Q|_p = lambda dif V $ Del primer principio y desarrollando $dif U$ en términos de $dif p$ y $dif V$: $ delta Q = dif U + p dif V = [((diff U)/(diff V))_p + p]dif V + ((diff U)/(diff p))_V dif p $ $ "Si" dif V = 0 -> delta Q|_v = ((diff U)/(diff p))_V dif p -> $ $ mu = ((diff U)/(diff p))_V = ((diff U)/(diff theta))_V((diff theta)/(diff p))_V = C_v ((diff theta)/(diff p))_V $ Haciendo lo mismo con la entalpía, del primer principioo y desarrollando $dif H$ en términos de $dif p$ y $dif V$: $ delta Q = dif H - V dif p = [((diff H)/(diff p))_V - V] dif p + ((diff H)/(diff V))_p dif V $ $ "Si" dif p = 0 -> delta Q |_p = ((diff H)/(diff V))_p dif V ->$ $lambda = ((diff H)/(diff V))_p = ((diff H)/(diff theta))_p((diff theta)/(diff V))_p = C_p ((diff theta)/(diff V))_p $
+  - Para gases ideales, la ecuación de estado lleva directamente a: $ mu = C_V theta/p ; lambda = C_p theta/V $
 ]
