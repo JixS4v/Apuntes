@@ -17,9 +17,9 @@ Donde $a_0$, $a_n$, y $b_n$ son denominados _Coeficientes de Fourier_
 Las formulas de Euler nos permiten calcular los coeficientes de Fourier: 
 #rect(
 $
-a_0 &=1/(2pi) integral^pi_(-pi) f(x) d x \ 
-a_n &= 1/pi integral_(-pi)^pi f(x) cos (n x) d x \ 
-b_n &= 1/pi integral_(-pi)^pi f(x) sin (n x) d x \ 
+a_0 &=1/(2pi) integral^pi_(-pi) f(x) dif x \ 
+a_n &= 1/pi integral_(-pi)^pi f(x) cos (n x) dif x \ 
+b_n &= 1/pi integral_(-pi)^pi f(x) sin (n x) dif x \ 
 $)
 
 #underline[*Teorema: Convergencia de series de Fourier*]
@@ -32,9 +32,9 @@ Si una función periódica $f(x)$ con periodo $2 pi$ es continua por secciones e
 #underline[*Coeficientes de Fourier para función de periodo 2L*]: 
 #rect(
 $
-a_0 &= 1/L integral_(-L)^L f(x) d x \
-a_n &= 1/L integral_(-L)^L f(x) cos (n pi)/L x d x \
-b_n &= 1/L integral_(-L)^L f(x) sin (n pi)/L x d x
+a_0 &= 1/L integral_(-L)^L f(x) dif x \
+a_n &= 1/L integral_(-L)^L f(x) cos (n pi)/L x dif x \
+b_n &= 1/L integral_(-L)^L f(x) sin (n pi)/L x dif x
 $
 )
 
@@ -53,4 +53,54 @@ La serie de Fourier de una función impar de periodo $2L$ es una "Serie de Fouri
 #rect($ f(x) = sum_(n+1)^oo b_n sin (n pi)/L x $)
 
 == 1.5 Desarollos de medio rango
-Es necesario a veces usar series de Fourier con funciones $f(x)$ que solo están dadas en un intervalo (por ejemplo $0<=x<=L$)
+Es necesario a veces usar series de Fourier con funciones $f(x)$ que solo están dadas en un intervalo (por ejemplo $0<=x<=L$). Podemos extender $f(x)$ a una función periodica de periodo $2L$ de dos formas:
+- Par: #rect($ cases(L>=x>=0: f(x), 0>x>=-L: f(x)) $)
+- Impar: #rect($ cases(L>=x>=0: f(x), 0>x>=-L: -f(x)) $)
+
+Extendiendo las funciones de esta forma, podemos usar las series de Fourier para estas funciones.
+
+== 1.6 Series complejas de Fourier
+
+#underline[*Serie compleja de Fourier*]: 
+#rect($ f(x) = sum^oo_(n=-oo) c_n e^(i n x) \
+ c_n = 1/(2pi) integral_(-pi)^pi f(x) e^(-i n x) dif x $)
+
+ Esta fórmula la obtenemos utilizando la fórmula de Euler: $ e^(i t) = cos t + i sin t $. 
+
+$ e^(- i t) = cos (- t) + i sin (-t) $
+ Recordamos que:
+ $ cos (-t) = cos (t) $
+ $ sin (-t) = - sin (t)$
+ $ => e^(- i t) = cos (t) - i sin (t) $
+ Con $t=n x$: 
+ $ e^(i n x) = cos n x + i sin n x $
+ $ e^(- i n x) = cos n x + i sin n x $
+ De estas obtenemos:
+ Al sumarlas y dividirlas entre 2i:
+$ cos n x = 1/2(e^(i n x) + e ^(-i n x)) $
+Al restarlas y dividirlas entre 2i:
+$ sin n x = 1/(2 i) (e ^(i n x) - e(- i n x)) $
+Sabiendo que $1/i=-i$ podemos obtener:
+$ a_n cos n x + b_n sin n x &= 1/2 a_n (e^(i n x) + e^(-i n x)) + 1/(2 i) b_n (e^(i n x) - e^(-i n x))) \
+&= 1/2 (a_n - i b_n) e^(i n x) + 1/2 (a_n + i b_n)e^(i n x) $
+
+Sustituyendo en la serie de Fourier:
+$ f(x) = c_0 + sum_(n=1)^oo (c_n e^(i n x)+k_n e^(- i n x)) $
+Donde $c_0 = a_0 $ y:
+$ c_n = 1/2 (a_n - i b_n) = 1/(2 pi) integral_(-pi)^pi f(x) e^(-i n x) dif x $
+$ k_n = 1/2 (a_n + i b_n )= 1/(2 pi) integral_(-pi)^pi f(x) e^(i n x) dif x $
+$k_n = c_(-n)$, obtenemos las fórmulas presentadas anteriormente.
+
+== 1.7. Aproximación por polinomios trigonométricos
+
+Nos preguntamos si las series de fourier son la mejor aproximación a f por un polinomio trigonométrico de grado N, es decir, una función de la forma $ F(x) = a_0 + sum_(n=1)^N (alpha_n cos n x + beta_n sin n x) $
+Donde mejor significa que el erro de la aproximación es mínimo.
+
+Definimos el error como el error cuadrático total de F con relación de f en el intervalo $-pi<=x<=pi$:
+#rect($ E = integral_(-pi)^pi (f - F)^2 dif x $)
+Queremos determinar los coeficientes $alpha_n y beta_n$ tales que el error se minimice.
+$ E = integral_(-pi)^pi f^2 dif x - 2 integral_(-pi)^pi f F dif x + integral_(-pi)^pi F^2 dif x $
+
+// TODO: Terminar esto.
+
+== 1.8 Integrales de Fourier
