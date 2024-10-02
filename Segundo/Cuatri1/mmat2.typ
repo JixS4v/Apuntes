@@ -102,5 +102,5 @@ Queremos determinar los coeficientes $alpha_n y beta_n$ tales que el error se mi
 $ E = integral_(-pi)^pi f^2 dif x - 2 integral_(-pi)^pi f F dif x + integral_(-pi)^pi F^2 dif x $
 
 // TODO: Terminar esto.
-
 == 1.8 Integrales de Fourier
+A la hora de abordar problemas con funciones aperiocas, no podemos utilizar las series de Fourier. Observamos lo que ocurre cuando hacemos que $L->oo$
