@@ -113,3 +113,4 @@ $ beta_n = 1/pi integral_(-pi)^pi f sin n x dif x $
 Observamos que estos coeficientes son exactamente los coeficientes de Fourier que obtuvimos anteriormente. Esto demuestra que la serie de Fourier proporciona la mejor aproximación en el sentido del error cuadrático mínimo.
 
 == 1.8 Integrales de Fourier
+A la hora de abordar problemas con funciones aperiocas, no podemos utilizar las series de Fourier. Observamos lo que ocurre cuando hacemos que $L->oo$
