@@ -92,15 +92,24 @@ $ k_n = 1/2 (a_n + i b_n )= 1/(2 pi) integral_(-pi)^pi f(x) e^(i n x) dif x $
 $k_n = c_(-n)$, obtenemos las fórmulas presentadas anteriormente.
 
 == 1.7. Aproximación por polinomios trigonométricos
-
 Nos preguntamos si las series de fourier son la mejor aproximación a f por un polinomio trigonométrico de grado N, es decir, una función de la forma $ F(x) = a_0 + sum_(n=1)^N (alpha_n cos n x + beta_n sin n x) $
 Donde mejor significa que el erro de la aproximación es mínimo.
-
-Definimos el error como el error cuadrático total de F con relación de f en el intervalo $-pi<=x<=pi$:
+Definimos el error como el error cuadrático total de F con relación de f en el intervalo $-pi <= x <= pi$:
 #rect($ E = integral_(-pi)^pi (f - F)^2 dif x $)
-Queremos determinar los coeficientes $alpha_n y beta_n$ tales que el error se minimice.
+Queremos determinar los coeficientes $alpha_n$ y $beta_n$ tales que el error se minimice.
 $ E = integral_(-pi)^pi f^2 dif x - 2 integral_(-pi)^pi f F dif x + integral_(-pi)^pi F^2 dif x $
+Para minimizar E, debemos hacer que sus derivadas parciales con respecto a $a_0$, $alpha_n$, y $beta_n$ sean cero:
 
-// TODO: Terminar esto.
+$diff E / diff a_0 = 0$:
+$ -2 integral_(-pi)^pi f dif x + 2 integral_(-pi)^pi a_0 dif x = 0 $
+$ a_0 = 1/(2pi) integral_(-pi)^pi f dif x $
+$diff E / diff alpha_n = 0$:
+$ -2 integral_(-pi)^pi f cos n x dif x + 2 integral_(-pi)^pi F cos n x dif x = 0 $
+$ alpha_n = 1/pi integral_(-pi)^pi f cos n x dif x $
+$diff E / diff beta_n = 0$:
+$ -2 integral_(-pi)^pi f sin n x dif x + 2 integral_(-pi)^pi F sin n x dif x = 0 $
+$ beta_n = 1/pi integral_(-pi)^pi f sin n x dif x $
+
+Observamos que estos coeficientes son exactamente los coeficientes de Fourier que obtuvimos anteriormente. Esto demuestra que la serie de Fourier proporciona la mejor aproximación en el sentido del error cuadrático mínimo.
 
 == 1.8 Integrales de Fourier
