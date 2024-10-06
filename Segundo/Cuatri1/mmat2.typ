@@ -169,3 +169,14 @@ Que nos lleva a escribir:
 $f(x) = 1/(2 pi) integral_(-oo)^oo integral_(-oo)^oo f(v) e^(i w(x-v)) dif v dif w $
 
 Llamamos a esta formula la *Integral de Fourier compleja*.
+
+=== Transformada de Fourier compleja y su inversa
+Escribimos la funcion exponencial en la integral de fourier compleja como un producto de funciones, tal que: $ e^(i w(x-v)) = e^(i w x)e^(i w v) $ 
+Entonces:
+$ f(x) = 1/sqrt(2 pi) integral_(-oo)^oo [1/sqrt(2pi)integral_(-oo)^oo f(v) e^(-i w v) dif v ]e^(i w x) dif w $
+La expresión entre paréntesis es una funcion de $w$, denotada por $hat(f)(w)$ y se llama la *Transformada de Fourier compleja* de $f(x)$, con $v=x$, tenemos:
+$ hat(f)(w) = 1/sqrt(2 pi) integral_(-oo)^oo f(x) e^(-i w x) dif x $
+Asimismo, definimos la transformada inversa de Fourier compleja:
+$ f(x) = 1/sqrt(2 pi) integral_(-oo)^oo hat(f)(w) e^(i w x) dif w $
+
+// TODO: Rellenar teoremas de la existencia de la serie de Fourier, la integral de Fourier, y la transformada de Fourier.
