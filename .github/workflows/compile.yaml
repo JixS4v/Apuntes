@@ -29,4 +29,39 @@ jobs:
           Segundo/Cuatri1/mmat2.pdf
           Segundo/Cuatri1/probsa.pdf
           Segundo/Cuatri1/ssc.pdf
-          Segundo/Cuatri1/termo.pdf
+          Segundo/Cuatri1/termo.
+          
+
+name: Build Typst document
+on: [push, workflow_dispatch]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        
+      - name: Typst
+        uses: lvignoli/typst-action@main
+        with:
+          source_file: 'Segundo/Cuatri1/meca.typ Segundo/Cuatri1/mmat2.typ Segundo/Cuatri1/probsa.typ Segundo/Cuatri1/ssc.typ Segundo/Cuatri1/termo.typ'
+      - name: Get current date
+        id: date
+        run: echo "DATE=$(date +%Y-%m-%d-%H:%M)" >> $GITHUB_ENV
+
+      - name: Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: "${{ github.ref_name }} — ${{ env.DATE }}"
+          files: |
+            Segundo/Cuatri1/meca.pdf
+            Segundo/Cuatri1/mmat2.pdf
+            Segundo/Cuatri1/probsa.pdf
+            Segundo/Cuatri1/ssc.pdf
+            Segundo/Cuatri1/termo.
+        
+            
