@@ -179,4 +179,8 @@ $ hat(f)(w) = 1/sqrt(2 pi) integral_(-oo)^oo f(x) e^(-i w x) dif x $
 Asimismo, definimos la transformada inversa de Fourier compleja:
 $ f(x) = 1/sqrt(2 pi) integral_(-oo)^oo hat(f)(w) e^(i w x) dif w $
 
-// TODO: Rellenar teoremas de la existencia de la serie de Fourier, la integral de Fourier, y la transformada de Fourier.
+=== Propiedades de la Transformada de Fourier
++ Linealidad: $cal(F){a f + b g} = a cal(F) (f)+ b cal(F) (g)$
++ Derivada: $cal(F){f'(x)} = i w cal(F){f(x)}$
++ Convolución: $cal(F){f*g} = cal(F){f} cal(F){g}$
++ Desplazamiento: $cal(F){f(x-a)} = e^(-i w a) cal(F){f(x)}$
