@@ -1,5 +1,5 @@
 #align(center, text(25pt)[*Metodos Matemáticos II*])
-= 1. Series de Fourier
+= 1. Análisis de Fourier
 == 1.1 Propiedades de las funciones periodicas
 1. $f(x+p)=f(x) => sin(x+2pi)=sin(x)$
 2. $f(a x)$ también es una función periodica: $cos(a x), p? => p = (2pi)/a$
