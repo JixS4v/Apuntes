@@ -174,10 +174,10 @@ Llamamos a esta formula la *Integral de Fourier compleja*.
 Escribimos la funcion exponencial en la integral de fourier compleja como un producto de funciones, tal que: $ e^(i w(x-v)) = e^(i w x)e^(i w v) $ 
 Entonces:
 $ f(x) = 1/sqrt(2 pi) integral_(-oo)^oo [1/sqrt(2pi)integral_(-oo)^oo f(v) e^(-i w v) dif v ]e^(i w x) dif w $
-La expresión entre paréntesis es una funcion de $w$, denotada por $cal(F)(w)$ y se llama la *Transformada de Fourier compleja* de $f(x)$, con $v=x$, tenemos:
-$ cal(F)(w) = 1/sqrt(2 pi) integral_(-oo)^oo f(x) e^(-i w x) dif x $
+La expresión entre paréntesis es una funcion de $w$, denotada por $cal(F){f}(w)$ y se llama la *Transformada de Fourier compleja* de $f(x)$, con $v=x$, tenemos:
+$ cal(F){f}(w) = 1/sqrt(2 pi) integral_(-oo)^oo f(x) e^(-i w x) dif x $
 Asimismo, definimos la transformada inversa de Fourier compleja:
-$ f(x) = 1/sqrt(2 pi) integral_(-oo)^oo cal(F)(w) e^(i w x) dif w $
+$ f(x) = 1/sqrt(2 pi) integral_(-oo)^oo cal(F){f}(w) e^(i w x) dif w $
 
 === Propiedades de la Transformada de Fourier
 + Linealidad: $cal(F){a f + b g} = a cal(F) (f)+ b cal(F) (g)$
