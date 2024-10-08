@@ -100,13 +100,13 @@ Queremos determinar los coeficientes $alpha_n$ y $beta_n$ tales que el error se 
 $ E = integral_(-pi)^pi f^2 dif x - 2 integral_(-pi)^pi f F dif x + integral_(-pi)^pi F^2 dif x $
 Para minimizar E, debemos hacer que sus derivadas parciales con respecto a $a_0$, $alpha_n$, y $beta_n$ sean cero:
 
-$diff E / diff a_0 = 0$:
+$(diff E) / (diff a_0) = 0$:
 $ -2 integral_(-pi)^pi f dif x + 2 integral_(-pi)^pi a_0 dif x = 0 $
 $ a_0 = 1/(2pi) integral_(-pi)^pi f dif x $
-$diff E / diff alpha_n = 0$:
+$(diff E) / (diff alpha_n) = 0$:
 $ -2 integral_(-pi)^pi f cos n x dif x + 2 integral_(-pi)^pi F cos n x dif x = 0 $
 $ alpha_n = 1/pi integral_(-pi)^pi f cos n x dif x $
-$diff E / diff beta_n = 0$:
+$(diff E) / (diff beta_n) = 0$:
 $ -2 integral_(-pi)^pi f sin n x dif x + 2 integral_(-pi)^pi F sin n x dif x = 0 $
 $ beta_n = 1/pi integral_(-pi)^pi f sin n x dif x $
 
