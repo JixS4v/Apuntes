@@ -127,17 +127,17 @@ Esta es la representación de $f(x)$ por medio de una *Integral de Fourier*
 == 1.9 Transformada de Fourier en funciones pares e impares
 === Transformada de Fourier de cosenos:
 La transformada de Fourier de cosenos es utilizada para funciones pares. La obtenemos de la integral de fourier: $ f(x) = integral_0^oo A(w)cos w x dif w + integral_0^oo B(w) sin w x dif w $. Como $f(x)$ es par, $B(w) = 0$. Es decir,  $ f(x) = integral_0^oo A(w) cos w x dif w "donde" A(w) = 2/pi integral_0^oo f(v) cos w v dif v $
-Ahora, decimos que $A_w = sqrt(2/pi) hat(f)_c (w)$. Entonces, con $v=x$ en la formula de $A(w)$, obtenemos: $ hat(f)_c (w) = sqrt(2/pi) integral_0^oo f(x) cos w x dif x $
+Ahora, decimos que $A_w = sqrt(2/pi) cal(F)_c (w)$. Entonces, con $v=x$ en la formula de $A(w)$, obtenemos: $ cal(F)_c (w) = sqrt(2/pi) integral_0^oo f(x) cos w x dif x $
 Esto es la transformada de Fourier de cosenos de $f(x)$. 
 También obtenemos:
-$ f(x) = sqrt(2/pi) integral_0^oo hat(f)_c (w) cos w x dif w $
+$ f(x) = sqrt(2/pi) integral_0^oo cal(F)_c (w) cos w x dif w $
 Denominada la transformada inversa de Fourier de cosenos.
 
 === Transformada de Fourier de senos:
 Esta vez con $f(x)$ una función impar. Sabemos que $A(w)$ es nula porque $f(x)$ es impar. Entonces, $ f(x) = integral_0^oo B(w) sin w x dif w $, donde $B(w) = 2/pi integral_0^oo f(v) sin w v dif v $.
-Como con la transformada de Fourier de cosenos, decimos que $B(w) = sqrt(2/pi) hat(f)_s (w)$. Entonces, con $v=x$, obtenemos: $ hat(f)_s (w) = sqrt(2/pi) integral_0^oo f(x) sin w x dif x $
+Como con la transformada de Fourier de cosenos, decimos que $B(w) = sqrt(2/pi) cal(F)_s (w)$. Entonces, con $v=x$, obtenemos: $ cal(F)_s (w) = sqrt(2/pi) integral_0^oo f(x) sin w x dif x $
 Igualmente, obtenemos la transformada inversa:
-$ f(x) = sqrt(2/pi) integral_0^oo hat(f)_s (w) sin w x dif w $
+$ f(x) = sqrt(2/pi) integral_0^oo cal(F)_s (w) sin w x dif w $
 
 == 1.10 Transformada de Fourier
 === Integral de Fourier compleja
@@ -174,10 +174,10 @@ Llamamos a esta formula la *Integral de Fourier compleja*.
 Escribimos la funcion exponencial en la integral de fourier compleja como un producto de funciones, tal que: $ e^(i w(x-v)) = e^(i w x)e^(i w v) $ 
 Entonces:
 $ f(x) = 1/sqrt(2 pi) integral_(-oo)^oo [1/sqrt(2pi)integral_(-oo)^oo f(v) e^(-i w v) dif v ]e^(i w x) dif w $
-La expresión entre paréntesis es una funcion de $w$, denotada por $hat(f)(w)$ y se llama la *Transformada de Fourier compleja* de $f(x)$, con $v=x$, tenemos:
-$ hat(f)(w) = 1/sqrt(2 pi) integral_(-oo)^oo f(x) e^(-i w x) dif x $
+La expresión entre paréntesis es una funcion de $w$, denotada por $cal(F)(w)$ y se llama la *Transformada de Fourier compleja* de $f(x)$, con $v=x$, tenemos:
+$ cal(F)(w) = 1/sqrt(2 pi) integral_(-oo)^oo f(x) e^(-i w x) dif x $
 Asimismo, definimos la transformada inversa de Fourier compleja:
-$ f(x) = 1/sqrt(2 pi) integral_(-oo)^oo hat(f)(w) e^(i w x) dif w $
+$ f(x) = 1/sqrt(2 pi) integral_(-oo)^oo cal(F)(w) e^(i w x) dif w $
 
 === Propiedades de la Transformada de Fourier
 + Linealidad: $cal(F){a f + b g} = a cal(F) (f)+ b cal(F) (g)$
