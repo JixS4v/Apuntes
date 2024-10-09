@@ -64,8 +64,6 @@ Aplicado a las fuerzas:
 #underline[*Centro de masas*]:
 El centro de masas de un sistema de partículas es el punto que se comporta como si toda la masa del sistema estuviera concentrada en él. Se puede calcular como: $arrow(R) = (1/M) sum_(i=1)^N m_i arrow(r_i)$
 
-
-
 == Ligaduras
 #underline[*Ligadura*]: Restricción del movimiento de una partícula.
 Tipos de ligadura:
