@@ -9,7 +9,7 @@ De todos los periodos $p$, el más pequeño es denominado periodo _primitivo_
 == 1.2 Series de Fourier para funciones de periodo $2pi$
 
 Podemos representar funciones periodicas de periodo $2pi$ con una *Serie de Fourier*, de forma que:
-#rect($ f(x) = a_0 sum_(n=1)^oo a_n cos n x + b_n sin n x $)
+#rect($ f(x) = a_0 + sum_(n=1)^oo a_n cos n x + b_n sin n x $)
 Donde $a_0$, $a_n$, y $b_n$ son denominados _Coeficientes de Fourier_
 
 #underline[*Formulas de Euler*]
@@ -54,8 +54,8 @@ La serie de Fourier de una función impar de periodo $2L$ es una "Serie de Fouri
 
 == 1.5 Desarollos de medio rango
 Es necesario a veces usar series de Fourier con funciones $f(x)$ que solo están dadas en un intervalo (por ejemplo $0<=x<=L$). Podemos extender $f(x)$ a una función periodica de periodo $2L$ de dos formas:
-- Par: #rect($ cases(L>=x>=0: f(x), 0>x>=-L: f(x)) $)
-- Impar: #rect($ cases(L>=x>=0: f(x), 0>x>=-L: -f(x)) $)
+- Par: #rect($ cases(L>=x>=0: f(x), 0>x>=-L: f(-x)) $)
+- Impar: #rect($ cases(L>=x>=0: f(x), 0>x>=-L: -f(-x)) $)
 
 Extendiendo las funciones de esta forma, podemos usar las series de Fourier para estas funciones.
 
