@@ -185,5 +185,5 @@ $ f(x) = 1/sqrt(2 pi) integral_(-oo)^oo cal(F){f}(w) e^(i w x) dif w $
 === Propiedades de la Transformada de Fourier
 + Linealidad: $cal(F){a f + b g} = a cal(F) (f)+ b cal(F) (g)$
 + Derivada: $cal(F){f'(x)} = i w cal(F){f(x)}$
-+ Convolución: $cal(F){f*g} = cal(F){f} cal(F){g}$
++ Convolución: $cal(F){f*g} = sqrt(2pi)cal(F){f} cal(F){g}$
 + Desplazamiento: $cal(F){f(x-a)} = e^(-i w a) cal(F){f(x)}$
