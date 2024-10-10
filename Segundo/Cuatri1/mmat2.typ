@@ -129,7 +129,7 @@ Esta es la representación de $f(x)$ por medio de una *Integral de Fourier*
 
 == 1.9 Transformada de Fourier en funciones pares e impares
 === Transformada de Fourier de cosenos:
-La transformada de Fourier de cosenos es utilizada para funciones pares. La obtenemos de la integral de fourier: $ f(x) = integral_0^oo A(w)cos w x dif w + integral_0^oo B(w) sin w x dif w $. Como $f(x)$ es par, $B(w) = 0$. Es decir,  $ f(x) = integral_0^oo A(w) cos w x dif w "donde" A(w) = 2/pi integral_0^oo f(v) cos w v dif v $
+La transformada de Fourier de cosenos es utilizada para funciones pares. La obtenemos de la integral de fourier: $ f(x) = integral_0^oo A(w)cos w x dif w + integral_0^oo B(w) sin w x dif w $. Como $f(x)$ es par, $B(w) = 0$. Es decir,  $ f(x) = integral_0^oo A(w) cos w x dif w $ ,donde $A(w) = 1/pi integral_(-oo)^oo f(v) cos w v dif v$. Al ser el integrando par (par por par), la integral de $-oo$ a $oo$ es equivalente al doble de la integral de $0$ a $oo$. Es decir: $A(w) =2/pi integral_(-oo)^oo f(v) cos w v dif v$.
 Ahora, decimos que $A_w = sqrt(2/pi) cal(F)_c (w)$. Entonces, con $v=x$ en la formula de $A(w)$, obtenemos: $ cal(F)_c (w) = sqrt(2/pi) integral_0^oo f(x) cos w x dif x $
 Esto es la transformada de Fourier de cosenos de $f(x)$. 
 También obtenemos:
@@ -137,7 +137,7 @@ $ f(x) = sqrt(2/pi) integral_0^oo cal(F)_c (w) cos w x dif w $
 Denominada la transformada inversa de Fourier de cosenos.
 
 === Transformada de Fourier de senos:
-Esta vez con $f(x)$ una función impar. Sabemos que $A(w)$ es nula porque $f(x)$ es impar. Entonces, $ f(x) = integral_0^oo B(w) sin w x dif w $, donde $B(w) = 2/pi integral_0^oo f(v) sin w v dif v $.
+Esta vez con $f(x)$ una función impar. Sabemos que $A(w)$ es nula porque $f(x)$ es impar. Entonces, $ f(x) = integral_0^oo B(w) sin w x dif w $, donde $B(w) = 1/pi integral_(-oo)^oo f(v) sin w v dif v$. Como el integrando en este caso es par (impar por impar), podemos decir que $B(w) = 2/pi integral_0^oo f(v) sin w v dif v$. 
 Como con la transformada de Fourier de cosenos, decimos que $B(w) = sqrt(2/pi) cal(F)_s (w)$. Entonces, con $v=x$, obtenemos: $ cal(F)_s (w) = sqrt(2/pi) integral_0^oo f(x) sin w x dif x $
 Igualmente, obtenemos la transformada inversa:
 $ f(x) = sqrt(2/pi) integral_0^oo cal(F)_s (w) sin w x dif w $
