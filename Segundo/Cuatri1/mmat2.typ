@@ -112,6 +112,9 @@ $ beta_n = 1/pi integral_(-pi)^pi f sin n x dif x $
 
 Observamos que estos coeficientes son exactamente los coeficientes de Fourier que obtuvimos anteriormente. Esto demuestra que la serie de Fourier proporciona la mejor aproximación en el sentido del error cuadrático mínimo.
 
+#underline[*Identidad de Parseval*]:
+$ 2a_0 ^2 + sum_(n=1)^oo (a_n^2 + b_n^2) - 1/pi integral_(-pi)^pi $
+
 == 1.8 Integrales de Fourier
 A la hora de abordar problemas con funciones aperiocas, no podemos utilizar las series de Fourier. Observamos lo que ocurre cuando hacemos que $L->oo$. Hacemos lo mismo con una función cualquiera $f_L$ de periodo $2L$ que puede ser representada con una serie de Fourier. $ f_L = a_0 + sum_(n=1)^oo (a_n cos w_n x + b_n sin w_n x), "con" w_n = (n pi)/L $
 Insertamos ahora $a_n$ y $b_n$ de las fórmulas de Euler y denotamos la variable de integración con $v$: $ f_L (x) = 1/(2L) integral_(-L)^L f_L(v) dif v + 1/L sum_(n=1)^oo [cos w_n x integral_(-L)^L f_L(v)cos w_n v dif v + sin w_n x integral_(-L)^L f_L (v) sin w_n v dif v] $.
