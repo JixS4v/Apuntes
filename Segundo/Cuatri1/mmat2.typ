@@ -32,9 +32,9 @@ Si una función periódica $f(x)$ con periodo $2 pi$ es continua por secciones e
 #underline[*Coeficientes de Fourier para función de periodo 2L*]: 
 #rect(
 $
-a_0 &= 1/L integral_(-L)^L f(x) dif x \
-a_n &= 2/L integral_(-L)^L f(x) cos (n pi)/L x dif x \
-b_n &= 2/L integral_(-L)^L f(x) sin (n pi)/L x dif x
+a_0 &= 1/2L integral_(-L)^L f(x) dif x \
+a_n &= 1/L integral_(-L)^L f(x) cos (n pi)/L x dif x \
+b_n &= 1/L integral_(-L)^L f(x) sin (n pi)/L x dif x
 $
 )
 
