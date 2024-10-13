@@ -1,6 +1,5 @@
 #align(center, text(25pt)[*Mecánica Analítica*])
 = 1. Mecánica Newtoniana
-== Dinámica Newtoniana
 #underline[*Leyes de Newton*]
 + Si no actúa una fuerza neta sobre un cuerpo, este permanece en su estado inicial de reposo o de movimiento rectilíneo uniforme.
 + La relación que existe entre la fuerza neta que se aplica a un cuerpo y la
@@ -63,8 +62,9 @@ Aplicado a las fuerzas:
 
 #underline[*Centro de masas*]:
 El centro de masas de un sistema de partículas es el punto que se comporta como si toda la masa del sistema estuviera concentrada en él. Se puede calcular como: $arrow(R) = (1/M) sum_(i=1)^N m_i arrow(r_i)$
-
-== Ligaduras
+#pagebreak(weak:true)
+= 2. Mecánica Lagrangiana
+== 2.1. Prerequisitos
 #underline[*Ligadura*]: Restricción del movimiento de una partícula.
 Tipos de ligadura:
 - Ligaduras holónomas: Reducen el grado de libertad
@@ -84,8 +84,8 @@ Definimos el espacio de configuraciones como todas las posiciones instantáneas 
 #underline[*Desplazamientos virtuales*]:
 Un desplazamiento virtual es un desplazamiento infinitesimal que no viola las ligaduras del sistema, realizado en un instante dado. Se puede escribir como $delta q_i$. El tiempo en este caso permanece fijado.
 
-#underline[*Principio de D'Alembert*]:
-Podemos positar, que en un sistema en equilibrio donde $F_i=0$, $F_i dot delta r_i$, el trabajo virtual, también será 0. Entonces, la suma de todos estos productos también se anulará: $ sum_i F_i dot delta r_i = 0 $
+== 2.2. Principio de D'Alembert
+Podemos positar que en un sistema en equilibrio donde $F_i=0$, $F_i dot delta r_i$, el trabajo virtual, también será 0. Entonces, la suma de todos estos productos también se anulará: $ sum_i F_i dot delta r_i = 0 $
 Descomponemos $F_i$ en dos partes, la fuerza aplicada $F_i^((a))$ y la fuerza de ligadura $f_i$: $ F_i = F_i^((a)) + f_i $
 Entonces, $ sum_i F_i^((a)) dot delta r_i + sum_i f_i dot delta r_i = 0 $
 Ahora vamos a restringirnos a sistemas para los que el trabajo virtual neto de las fuerzas de ligadura es nulo. Obtenemos entonces que la condición de equilibrio de un sistema es que el trabajo virtual de las fuerzas aplicadas sea nulo: $ sum_i F_i^((a)) dot delta r_i = 0 $
@@ -102,7 +102,8 @@ $ sum_i (F_i^((a))-p_i) dot delta r_i = 0 $
 
 Esto es el Principio de D'Alembert.
 
-#underline[*Derivación de las Ecuaciones de Lagrange*]
+== 2.3. Derivación de las ecuaciones de Lagrange
+
 Hemos conseguido nuestro objetivo en que las fuerzas de ligadura ya no aparecen, y se puede omitir el superíndice $(a)$. Aún no está en una forma que nos permita desarollar ecuaciones de movimiento para el sistema. Debemos transfomar el principio en una expresión de desplazamientos virtuales de las coordenadas generalizadas, que son independientes entre sí (para ligaduras holónomas), para que los coeficientes de las $delta q_i$ puedan ser nulos.
 Empezamos por las ecuaciones de transformación: 
 $ r_i = r_i (q_1, q_2, ..., q_n, t) $ (asumiendo $n$ coordenadas independientes). 
@@ -116,16 +117,25 @@ Es importante notar que como las coordenadas generalizadas no tineen que tener n
 
 Ahora vamos al otro término del principio de D'Alembert, que se puede escribir como $ sum_i dot(p)_i delta r_i = sum_i m_i dot.double(r)_i dot delta r_i $
 Expresando $delta r_i$ en terminos de coordenadas generalizadas, esto se convierte en $ sum_(i,j) m_i dot.double(r)_i dot (diff r_i)/(diff q_j) delta q_j $
-Ahora consideramos la relación
-$ sum_i m_i dot.double(r)_i (diff r_i)/(diff q_j) = sum_i [dif/(dif t) (m_i dot(r)_i dot (diff r_i)/(diff q_j))-m_i dot(r_i)dot dif/(dif t) (diff r_i)/(diff q_j)] $
+Partiendo de esta relación (regla del producto):
+$ sum_(i,j) dif/(dif t) (m_i dot(r)_i dot (diff r_i)/(diff q_j))  = sum_(i,j) [m_i dot.double(r)_i (diff r_i)/(diff q_j)+m_i dot(r_i)dot dif/(dif t) (diff r_i)/(diff q_j)] $
+Podemos escribir que:
+$ sum_(i,j) m_i dot.double(r)_i (diff r_i)/(diff q_j) = sum_(i,j) [dif/(dif t) (m_i dot(r)_i dot (diff r_i)/(diff q_j))  -m_i dot(r_i)dot dif/(dif t) (diff r_i)/(diff q_j)] $
 Desarrollando partes de la ecuación anterior:
-$dif/(dif t) ((diff r_i)/(diff q_j)) = (diff dot(r)_i)/(diff q_j) = sum_k (diff^2 r_i)/(diff q_j diff q_k) dot(q_k) + (diff^2 r_i)/(diff q_j diff t) = (diff v_i)/(diff q_j) $
+$ dif/(dif t) ((diff r_i)/(diff q_j)) = (diff dot(r)_i)/(diff q_j) = sum_k (diff^2 r_i)/(diff q_j diff q_k) dot(q_k) + (diff^2 r_i)/(diff q_j diff t) = (diff v_i)/(diff q_j) $
 
 También sabemos que $ (diff v_i)/(diff dot(q)_j) = (diff r_i)/(diff q_j) $
 
 Sustituyendo estos cambios: 
-$ sum_i m_i dot.double_i dot (diff r_i)/(diff q_j) = sum_i [ dif/(dif t) (m_i v_i dot (dif v_i)/(diff dot(q)_j)-m_i v_i dot (diff v_i)/(diff q_j)] $
+$ sum_i m_i dot.double(r)_i dot (diff r_i)/(diff q_j) = sum_i [ dif/(dif t) (m_i v_i dot (dif v_i)/(diff dot(q)_j)-m_i v_i dot (diff v_i)/(diff q_j)] $
 El segundo término de la izquierda de la ecuación puede ser expandido 
 $ sum_j {dif/(dif t) [diff/(diff dot(q)_j)(sum_i 1/2 m_i v_i^2)]-diff/(diff q_j)(sum_i 1/2 m_i v_i^2)- Q_j}delta q_j $
 Vemos que aparece la energía cinética del sistema $T$. El principio de D'Alembert se convierte en
-$ sum_j{[dif/(diff t) ((diff T)/(diff dot(q)_j)-(diff t)/(diff q_j))]-Q_j}delta q_j = 0 $
+$ sum_j {[dif/(diff t) ((diff T)/(diff dot(q)_j)-(diff t)/(diff q_j))]-Q_j}delta q_j = 0 $
+
+Por ahora, no hemos realizado ninguna restricción sobre la naturaleza de las ligaduras excepto que deben no realizar trabajo en un desplazamiento virtual. Las variables $q_j$ pueden ser cualquier conjunto de coordenadas utilizadas para describir el movimiento del sistema. Si, además, las ligaduras son holónomas, podemos encontrar conjuntos de coordenadas independientes $q_j$ que contienen las condiciones de ligadura implicitamente en las ecuaciones de transformación. Cualquier desplazamiento virtual $delta q_j$ es independiente de $delta q_k$, ppor lo que la única forma para que la ecuación sea válida es que los coeficientes de $delta q_j$ desapaarezcan: $ dif/(dif t) ((diff T)/(diff dot(q)_j))-(diff T)/(diff q_j) = Q_j$. Hay $n$ ecuaciones. 
+
+Cuando las fuerzas deriven de un potencial escalar $V$: $ F_i = -nabla_i V $
+Entonces, las fuerzas generalizadas se pueden escribir como $ Q_j = sum_i F_i dot (diff r_i)/(diff q_j) = - sum_i nabla_i V dot (diff r_i)/(diff q_j) $
+Esto es realmente la expresión de la derivada parcial de una función escalar $-V(r_1,r_2,...,r_N, t)$ con respecto a $q_j$:
+$ Q_j = - (diff V)/(diff q_j) $
