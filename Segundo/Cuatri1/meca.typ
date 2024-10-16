@@ -113,7 +113,7 @@ $ delta r_i = sum_j (diff r_i)/(diff q_j) delta q_j $
 
 En terminos de coordenadas generalizadas, el trabajo virtual de la $F_i$ se convierte en $ sum_i F_i dot delta r_i = sum_(i,j) F_i (diff r_i)/(diff q_j) delta q_j = sum_j Q_j delta q_j $
 Donde $Q_j$ son los componentes de la fuerza generalizada, definida como $ Q_j = sum_i F_i dot (diff r_i)/(diff q_j) $
-Es importante notar que como las coordenadas generalizadas no tineen que tener necesariamente las ddimensiones de longitud, las fuerzas generalizadas no tendrán necesariamente las dimensiones de fuerza, pero $Q_j delta q_j$ sí tendrá las dimensiones de trabajo. Por ejemplo, $Q_j$ será un torque $N_j$ y $dif q_j$ un ángulo diferencial $dif theta_j$, que hace a $N_J dif theta_j$ un diferencial de trabajo.
+Es importante notar que como las coordenadas generalizadas no tienen que tener necesariamente las dimensiones de longitud, las fuerzas generalizadas no tendrán necesariamente las dimensiones de fuerza, pero $Q_j delta q_j$ sí tendrá las dimensiones de trabajo. Por ejemplo, $Q_j$ será un torque $N_j$ y $dif q_j$ un ángulo diferencial $dif theta_j$, que hace a $N_J dif theta_j$ un diferencial de trabajo.
 
 Ahora vamos al otro término del principio de D'Alembert, que se puede escribir como $ sum_i dot(p)_i delta r_i = sum_i m_i dot.double(r)_i dot delta r_i $
 Expresando $delta r_i$ en terminos de coordenadas generalizadas, esto se convierte en $ sum_(i,j) m_i dot.double(r)_i dot (diff r_i)/(diff q_j) delta q_j $
@@ -194,3 +194,7 @@ Por lo tanto, $2 cal(F)$ es la tasa de disipación de energía por la fricción.
 Por lo que las ecuaciones de Lagrange se escriben como $ dif/(dif t) ((diff L)/(diff dot(q)_j))- (diff L)/(diff q_j) + (diff cal(F))/(diff dot(q)_j) = 0$
 
 == 2.6 Principio de Hamilton
+Hemos conseguido obtener las ecuaciones de Lagrange a partir de un estado instantaneo del sistema y desplazamientos virtuales pequeños sobre este estado. Es decir, a partir de un principio diferencial, como el de D'Alembert. Ahora vamos a obtener las ecuaciones de Lagrange a partir de un principio que considera el movimiento completo del sistema entre dos tiempos $t_1$ y $t_2$. Un principio de esta clase se conoce como un principio integral.
+
+=== 2.6.1. Acción
+Antes de presentar este principio, el significado de un movimiento del sistema entre $t_1$ y $t_2$ debe de ser enunciado en un lenguaje más preciso. Lo que estamos describiendo en este caso es el 

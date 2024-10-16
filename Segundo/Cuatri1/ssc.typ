@@ -43,7 +43,7 @@ $ P_(R_L)= R_L dot I^2 = R_L (E^2)/((R_L+R_S)^2) = E^2(R_L)/(R_L+R_S)^2 =(E^2)/(
 
 
 
-= 2. Transitorios\
+= 2. Transitorios
 == 2.1. Carga de una bobina
 $ v(t) = L (dif i(t))/(dif t) $
 
