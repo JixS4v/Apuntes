@@ -117,6 +117,7 @@ $ Delta t_"exp" approx Delta t_"rel" $
 Así, se tiene la presión $p$ del gas a la temperatura objetivo $theta_t$, para la masa y el volumen escogidos, $m_n$, $V_"ref"$
 Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar las rectas que cruzan los puntos. El punto donde las rectas correspondientes a los distintos gases se cruzan obtenemos la presión
 
+#pagebreak(weak:true)
 = 2. Primer principio de la Termodinámica
 
 == 2.1 Energía interna, calor y Trabajo
@@ -180,7 +181,7 @@ Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar la
 
 #set math.cases(reverse:true)
 #underline[*Formulación del Primer Principio de la Termodinámica*]: $ cases( U = H - p V -> dif U =  dif  H - p  dif V - V dif p ,  delta Q =  dif U + p | dif V) -> dif H = delta Q + V dif p $
-
+#pagebreak(weak:true)
 = 3. Ecuaciones de estado
 == 3.1. Ecuaciones de estado
 - #underline[*Ecuación de estado*]: Cualquier función, obtenida teórica o experimentalmente, que relaciona las variables termodinámicas de un sistema. #[
@@ -272,3 +273,45 @@ C_V = C_p + [((diff H)/(diff p))_theta - V]((diff p)/(diff theta))_V -> ((diff H
   - Cantidad de energía en forma de calor que se necesita para conseguir una variación unidd de la presion o el volumen a volumen o presión constante, respectivamente: $ delta Q|_V = mu dif p ;delta Q|_p = lambda dif V $ Del primer principio y desarrollando $dif U$ en términos de $dif p$ y $dif V$: $ delta Q = dif U + p dif V = [((diff U)/(diff V))_p + p]dif V + ((diff U)/(diff p))_V dif p $ $ "Si" dif V = 0 -> delta Q|_v = ((diff U)/(diff p))_V dif p -> $ $ mu = ((diff U)/(diff p))_V = ((diff U)/(diff theta))_V((diff theta)/(diff p))_V = C_v ((diff theta)/(diff p))_V $ Haciendo lo mismo con la entalpía, del primer principioo y desarrollando $dif H$ en términos de $dif p$ y $dif V$: $ delta Q = dif H - V dif p = [((diff H)/(diff p))_V - V] dif p + ((diff H)/(diff V))_p dif V $ $ "Si" dif p = 0 -> delta Q |_p = ((diff H)/(diff V))_p dif V ->$ $lambda = ((diff H)/(diff V))_p = ((diff H)/(diff theta))_p((diff theta)/(diff V))_p = C_p ((diff theta)/(diff V))_p $
   - Para gases ideales, la ecuación de estado lleva directamente a: $ mu = C_V theta/p ; lambda = C_p theta/V $
 ]
+#pagebreak(weak:true)
+== 4. Procesos Termodinámicos Fundamentales
+== 4.1. Formas de Pfaff del Primer Principio
+Hemos obtenido que $ C_v = ((diff U)/(diff theta))_V l_v = ((diff U)/(diff V))_theta + p $
+Entonces
+$ delta Q = dif U + p dif V = ((diff U)/(diff theta))_v dif theta + [((diff U)/(diff V))_theta + p] dif V  => delta Q = C_v dif theta + l_v dif V "(Primera forma de Pfaff)" $
+Igualmente
+$ C_p=((diff H)/(diff theta))_p h_p = ((diff H)/(diff p))_theta - V $
+$ delta Q = dif H - V dif p = ((diff H)/(diff theta))_p dif theta + [((diff H)/(diff p))_theta - V] dif p => delta Q = C_p dif theta + h_p dif p "(Segunda forma de Pfaff)" $
+Finalmente
+$ mu = ((diff U)/(diff p))_V lambda = ((diff U)/(diff V))_p + p $
+$ delta Q = dif U + p dif V = [((diff U)/(diff V))_p + p ] dif V + ((diff U)/(diff p))_v dif p = mu dif p + lambda dif V $
+o, equivalentemente
+$ lambda = ((diff H)/(diff V))_p mu = ((diff H)/(diff p))_v - V $
+$ delta Q = dif H - V dif p = [((diff H)/(diff p))_V - V ] dif p + ((diff H)/(diff V))_p dif V = mu dif p + lambda dif V $
+$ => delta Q = mu dif p + lambda dif V "(Tercera forma de Pfaff)" $
+
+== 4.2 Procesos politrópicos
+- #underline[*Proceso politrópico*]: 
+Proceso en que la capacidad térmica del sistema permanece constante #[
+  - Ecuación: A partir de la Tercera forma de Pfaff: $delta Q = mu dif p + lambda dif V$ #[
+    - Por definición $ delta Q = C dif theta "y" lambda = C_p = ((diff theta)/(diff V))_p mu = C_v ((diff theta)/(diff p))_V $ $ => C dif theta = C_v ((diff theta)/(diff p))_V dif p = C_p ((diff theta)/(diff V))_p dif V $
+    - Desarrollando $dif theta$ en términos de $dif p$ y $dif V$ y reordenando: $ C[((diff theta)/(diff p))_V dif p + ((diff theta)/(diff V))_p dif V] = C_V ((diff theta)/(diff p))_V dif p + C_p ((diff theta)/(diff V))_p dif V (C_v - C)((diff theta)/(diff p))_V dif p _ (C_p - C)((diff theta)/(diff V))_p dif V = 0 $
+    - Dividiendo por $C_v - C$ se obtiene $ ((diff theta)/(diff p))_V + (C_p - C)/(C_v - C) ((diff theta)/(diff V))_p dif V = 0 $
+    - El índice politrópico se define como $ k = (C_p - C)/(C_v - C) $
+    - Entonces, la ecuación funcional del proceso en términos de $p$ y $V$ es $ ((diff theta)/(diff p))_V dif p + k ((diff theta)/(diff V))_p dif V = 0 $
+    - Se pueden obtener fácilmente ecuaciones en términos de $p $ y $theta$ y de $theta $ y $V$ 
+  ]
+  - Ecuaciones funcionales: #[
+    - Formulación presión-volumen: $((diff theta)/(diff p))_V dif p + k ((diff theta)/(diff V))_p dif V = 0 $
+    - Formulación temperatura-volumen: $ dif theta + (k-1)((diff theta)/(diff V))_p dif V = 0 $
+    - Formulación presión-temperatura: $ dif theta = (1-k)/k ((diff theta)/(diff p))_V dif p = 0 $
+  ]
+  - Procesos más frecuentes: #[
+    - Adiabático: $ dif Q = 0 => C=0 => k = C_p / C_v equiv gamma $
+    - Isotermo: $ dif theta = 0 => C->oo => k=1 $
+    - Isóbaro: $ C=C_p => k=0 $
+    - Isócoro: $ C= C_V => k->oo $ 
+    ]
+]
+== 4.3. Compresibilidad adiabática
+#underline[*Compresibilidad adiabática*]: $ X_(Q=0) = -1/V ((dif V)/(dif p))_(Q=0) $
