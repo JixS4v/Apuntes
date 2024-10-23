@@ -22,8 +22,6 @@ jobs:
           source_file: |
             Segundo/Cuatri1/meca.typ
             Segundo/Cuatri1/mmat2.typ
-            Segundo/Cuatri1/probsa.typ
-            Segundo/Cuatri1/ssc.typ
             Segundo/Cuatri1/termo.typ
       - name: Release
         uses: softprops/action-gh-release@v2
@@ -32,6 +30,4 @@ jobs:
           files: |
             Segundo/Cuatri1/meca.pdf
             Segundo/Cuatri1/mmat2.pdf
-            Segundo/Cuatri1/probsa.pdf
-            Segundo/Cuatri1/ssc.pdf
             Segundo/Cuatri1/termo.pdf
