@@ -198,3 +198,28 @@ Hemos conseguido obtener las ecuaciones de Lagrange a partir de un estado instan
 
 === 2.6.1. Acción
 Antes de presentar este principio, el significado de un movimiento del sistema entre $t_1$ y $t_2$ debe de ser enunciado en un lenguaje más preciso. Lo que estamos describiendo en este caso es el camino que toma el sistema en el _espacio de configuraciones_. El tiempo se puede considerar como un parámetro de la curva, a cada punto del camino hay uno o mas valores temporales asociados. Es importante notar que el camino del sistema dentro de este espacio no está necesariamente ligado a un camino en el espacio físico, sino que describe una configuración en un instante dado. Definimos entonces la acción $S$ como la integral de la función Lagrangiana entre los tiempos $t_1$ y $t_2$. $ S = integral_(t_1)^(t_2) L dif t $ 
+
+=== 2.6.2. Principio de Hamilton
+El principio de Hamilton enuncia que la acción (definida anteriormente) toma un valor _estacionario_. Es decir, que el Lagrangiano es la función que minimiza la acción. Podemos decir entonces que la variación de la acción es nula $delta S = 0$.
+
+=== 2.6.3. Derivación de las ecuaciones de Lagrange a partir del principio de Hamilton
+Partamos de la integral de acción:
+$ S = integral_(t_1)^(t_2) L(q_1(t),q_2(t),...,dot(q_1)(t), dot(q_2)(t), ..., t) dif t $ 
+Vamos a obtener su variación considerando $S$ una función de un parámetro $alpha$ que distingue un posible conjunto de caminos entre $t_1$ y $t_2$ $q_n(t, alpha)$. Entonces, podemos introducir $alpha$ como
+$ 
+q_n(t,alpha) = q_n(t, 0) + alpha eta_n(t) 
+$
+Donde $q_n(t,0)$ son las soluciones del problema de los extremos que estamos intentando resolver, y $eta_n$ funciones independientes cualquiera de $t$ que se anulan en $t_1, t_2$ y son continuas hasta su segunda derivada. Entonces, la variación de $S$ puede ser expresada como
+$ (dif S)/(dif alpha) = integral_(t_1)^(t_2) sum_i (diff L)/(diff q_i) (diff q_i)/(diff alpha) + (diff L)/(diff dot(q)_i) (diff dot(q)_i)/(diff alpha) dif t $
+Consideramos la segunda parte de la suma en la integral:
+$ integral_(t_1)^(t_2) (diff L)/(diff dot(q)_i) (diff dot(q_i))/(diff alpha) dif t $
+Integrando por partes:
+$  integral_(t_1)^(t_2) (diff L)/(diff dot(q)_i) (diff^2 q_i)/(diff alpha diff t) dif t = (diff L)/(diff dot(q)_i) (diff q_i)/(diff alpha) |_(t_1)^(t_2) - integral_(t_1)^(t_2) (diff q_i)/(diff alpha) dif/(dif x) ((diff L)/(diff dot(q)_i)) dif t $
+Vemos que el primer término desaparece porque la función $eta_n$ se anula en $t_1$ y $t_2$. Entonces, la variación de la acción se puede escribir como
+$ delta S = integral_(t_1)^(t_2) sum_i ((diff L)/(diff q_i) - dif/dif(t) ((diff L)/(diff dot(q)_i))) (diff q_i)/(diff alpha) dif t $
+Sustituyendo la variación de $q_i$ $delta q_i = (diff q_i)/(diff alpha) |_(alpha = 0)$
+$ delta S = integral_(t_1)^(t_2) sum_i ((diff L)/(diff q_i) - dif/dif(t) ((diff L)/(diff dot(q)_i))) delta q_i dif t $
+Sabiendo que según el principio de Hamilton, $delta S$ es nulo, y que la variación de $q_i$ es arbitraria, nos queda que la primera porción de la integral anterior debe ser nulo. Por lo que obtenemos las ecuaciones de Lagrange:
+$ (diff L)/(diff q_i) - dif/dif(t) ((diff L)/(diff dot(q)_i)) = 0  "para " i "coordenadas generalizadas" $
+
+=== 2.6.4 Extendiendo el principio de Hamilton a sistemas con ligaduras
