@@ -223,3 +223,6 @@ Sabiendo que según el principio de Hamilton, $delta S$ es nulo, y que la variac
 $ (diff L)/(diff q_i) - dif/dif(t) ((diff L)/(diff dot(q)_i)) = 0  "para " i "coordenadas generalizadas" $
 
 === 2.6.4 Extendiendo el principio de Hamilton a sistemas con ligaduras
+Sabemos resolver problemas con ligaduras holónomas eligiendo coordenadas para que las ecuaciones de ligadura se conviertan en ecuaciones triviales $0=0$. Vamos a utilizar el Principio de Hamilton para poder resolver problemas que involucran ligaduras utilizando los multiplicadores de Lagrange.
+
+Primero consideremos las ligaduras holónomas. 
