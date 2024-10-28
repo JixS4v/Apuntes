@@ -379,7 +379,7 @@ $ q = Delta u + w = 0 $
 - Da información sobre la viabilidad energética de los procesos, pero hay procesos naturales no espontáneos, mientras que sus inversos sí lo son
 -> El Segundo Principio determina el sentido de evolución espontánea de los procesos, y cuál es el estado final de equilibrio que se alcanza
 
-== 5.2. COonceptos de motor térmico y de máquina frigorífica
+== 5.2. Conceptos de motor térmico y de máquina frigorífica
 #underline[*Motor térmico*]:
 Sistema en el que un fluido evoluciona de forma ciclica intercambiando calor con dos focos, produciendo así trabajo
 
@@ -447,11 +447,12 @@ La vuelta al estado inicial del sistema y entorno implica una transformación no
 
 $ eta = W/(Q_a) = 1 - (|Q_c|)/(Q_alpha) = Phi (theta_a, theta_c)$
 $=> (Q_a)/(|Q_c|) = 1/(1- Phi(theta_a, theta_c)) = f(theta_a, theta_c) $
+
 Para encontrar la forma de $f(theta_a,theta_c)$, consideremos un foco intermedio
 $(Q_a)/(|Q_c|) = (Q_a)/(|Q_"int"|) (Q_"int")/(|Q_c|)$
 Pero: $ (Q_a)/(|Q_"int"|) = f(theta_a, theta_"int") ; (Q_"int")/(|Q_c|) = f(theta_"int", theta_c); (Q_a)/(|Q_c|) = f(theta_a, theta_c)) $
 $ -> f(theta_a, theta_c) $
 Esto implica que
-$ f(theta_i, theta_j = (psi(theta_i))/(psi(theta_j))) $
+$ f(theta_i, theta_j) = (psi(theta_i))/(psi(theta_j)))$
 Por lo tanto:
 $ (Q_a)/(|Q_c|) = (psi(theta_a))/(psi(theta_c)) equiv (T_a)/(T_c) <-> (Q_a)/(-Q_c) = (T_a)/(T_c) $
