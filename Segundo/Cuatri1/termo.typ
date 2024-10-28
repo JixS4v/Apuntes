@@ -315,3 +315,64 @@ Proceso en que la capacidad térmica del sistema permanece constante #[
 ]
 == 4.3. Compresibilidad adiabática
 #underline[*Compresibilidad adiabática*]: $ X_(Q=0) = -1/V ((dif V)/(dif p))_(Q=0) $
+La ecuación funcional de este proceso se obtiene considerando $k=gamma$ en la politrópica $ ((diff theta)/(diff p))_V dif p + gamma ((diff theta)/(diff V))_p dif V = 0 $
+Derivando con respecto a $p$ obtenemos
+$ ((diff theta)/(diff p))_gamma + gamma((diff theta)/(diff V))_p ((diff V)/(diff p))_(Q=0) = 0 $
+Para despejar la derivada en la definición de $chi_(Q=0)$ multiplicamos todo por $((diff V)/(diff theta))_p$ 
+$ ((diff theta)/(diff p))_V ((diff V)/(diff theta))_p + gamma ((dif V)/(dif p))_(Q=0) = 0 $
+Por la propiedad ciclica
+$ - ((diff V)/(diff p))_theta + gamma ((dif V)/(dif p))_(Q=0) = 0 $
+Dividiendo por V y despejando:
+$ gamma 1/V ((dif V)/(dif p))_theta = 1/V ((diff V)/(diff p))_theta => chi_(Q=0) = 1/gamma chi_theta $
+
+== 4.4 Procesos de los gases perfectos
+#underline[*Proceso isóbaro de un gas perfecto*]:
+Aplicando la ecuación de estado se obtiene la ecuación del proceso: 
+$ p v_1 = R theta_1; p v_1  = R theta_2 => (v_1)/(theta_1) = (v_2)/(theta_2) $
+El trabajo es 
+$ w = integral_1^2 p dif v = p integral_1^2 dif v = p Delta v = R Delta theta $
+Por la definición de entalpía
+$ q = Delta h = c_p Delta theta = gamma/(gamma-1) p Delta v $
+Aplicando el primer principio
+$Delta u = q - w = c_p Delta theta - R Delta theta = c_v Delta theta = 1/(gamma-1) p Delta v $
+#underline[*Proceso isocóro de un gas perfecto*]:
+Ecuacion de proceso
+$ p_1 v = R theta_1 ; p_2 v = R theta_2 => (p_1)/(theta_1) = (p_2)/(theta_2)$
+El trabajo es nulo ya que el volumen es constante: 
+$ w = integral_1^2 p dif v = 0 $
+La energía interna es
+$ Delta u = c_v Delta theta = c_v v (Delta p)/R = 1/(gamma - 1 ) v Delta p $
+Aplicando el primer principio
+$ q = Delta u + w = Delta u = c_v Delta theta = c_v v (Delta p)/R = 1/(gamma - 1) v Delta p = Delta u $
+
+#underline[*Proceso isotermo de un gas perfecto*]:
+Ecuación de proceso
+$p_1 v_1 = R theta ; p_2 v_2 = R theta => p_1 v_1 = p_2 v_2 $
+El trabajo es
+$ w = integral_1^2 p dif v = p_1 v_1 integral_1^2 (dif v)/v = p_1 v_1 ln (v_2)/(v_1) = R theta_1 ln (p_1)/(p_2)$
+La energía interna es
+$ Delta u = c_v Delta theta = 0 $
+Aplicando el primer principio
+$ q = Delta u + w = w = p_1 v_1 ln (v_2)/(v_1) = R theta_1 ln (p_1)/(p_2) $
+
+#underline[*Proceso politrópico de un gas perfecto*]: 
+La ecuación de proceso se obtiene integrando la politrópica con la ecuación de estado: 
+$ ((diff theta)/(diff p))_V dif p + k ((diff theta)/(dif v)) dif v = 0 -> v/R dif p + k p/R dif V = 0 -> 1/p dif p + k 1/v dif V = 0 \ -> ln (p_2)/(p_1) = -k ln (v_2)/(v_1) -> (p_2)/(p_1) = ((v_1)/(v_2))^k -> p_1 v_1^k = p_2 v_2 ^k $
+El trabajo es
+$ w = integral_1^2 p dif v = p_1 v_1^k integral_1^2 (dif v)/(v^k) = - (p_1 v_1)/(k-1) [((v_2)/(v_1))^(1-k)-1] $
+La energía interna es
+$ Delta u = c_v Delta theta = (R theta_1)/(gamma - 1)[((p_2)/(p_1))^((k-1)/k) - 1 ] $
+Aplicando el primer principio
+$ q = Delta u + w = (k-gamma)/((gamma-1)(k-1)) p_1 v_1 [((v_2)/(v_1))^(1-k) - 1] $
+
+#underline[*Proceso adiabático de un gas perfecto*]:
+Considerando el caso particular $k=gamma$ en las ecuaciones politrópicas se obtiene
+$p_1 v_1^gamma = p_2 v_2^gamma ; p_1^(1-gamma) theta^gamma = p_2^(1-gamma)theta_2^gamma ; v_1^(gamma-1) theta_1 = v_2^(gamma - 1 ) theta_2 $
+
+$ w = integral_1^2 p dif v = -(p_1 v_1)/(gamma -1 ) [ ((v_2)/(v_1))^(1-gamma) - 1 ] = - Delta u $
+$ Delta u  = c_v Delta theta = (R theta_1)/(gamma - 1 )[((p_2)/(p_1))^((gamma -1)/gamma) - 1]$
+$ q = Delta u + w = 0 $
+
+#pagebreak(weak:true)
+= 5. Segundo Principio de la Termodinámica
+== 5.1 Limitaciones del primer principio
