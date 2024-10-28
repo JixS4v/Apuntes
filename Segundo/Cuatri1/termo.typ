@@ -445,8 +445,8 @@ La vuelta al estado inicial del sistema y entorno implica una transformación no
 - Es una escala independiente de las características del sistema
 - Está basada en el rendimiento del motor de Carnot (que depende únicamente de las temperaturas de las fuentes)
 
-$ eta = W/(Q_a) = 1 - (|Q_c|)/(Q_alpha) = Phi (theta_a, theta_c)$
-$=> (Q_a)/(|Q_c|) = 1/(1- Phi(theta_a, theta_c)) = f(theta_a, theta_c) $
+$ eta = W/(Q_a) = 1 - (|Q_c|)/(Q_alpha) = Phi (theta_a, theta_c) $
+$ => (Q_a)/(|Q_c|) = 1/(1- Phi(theta_a, theta_c)) = f(theta_a, theta_c) $
 
 Para encontrar la forma de $f(theta_a,theta_c)$, consideremos un foco intermedio
 $(Q_a)/(|Q_c|) = (Q_a)/(|Q_"int"|) (Q_"int")/(|Q_c|)$
@@ -456,3 +456,10 @@ Esto implica que
 $ f(theta_i, theta_j) = (psi(theta_i))/(psi(theta_j)))$
 Por lo tanto:
 $ (Q_a)/(|Q_c|) = (psi(theta_a))/(psi(theta_c)) equiv (T_a)/(T_c) <-> (Q_a)/(-Q_c) = (T_a)/(T_c) $
+= 6. Entropía e irreversibilidad
+== 6.1. Entropía
+Del griego 'en-tropie': dirección intrínseca
+- La entropía puede introducirse de dos formas complementarias: #[
+  - Macroscópica (relacionada con pérdidas de calor irreversibles), como fue definida inicialmente por Rudolf Clausius en los 1860 y se hara en todo lo que siguen
+  - Microscópica (relacionada con la probabilidad estadística de un estado) como hizo Ludwig Boltzmann en 1877
+]
