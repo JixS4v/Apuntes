@@ -376,3 +376,82 @@ $ q = Delta u + w = 0 $
 #pagebreak(weak:true)
 = 5. Segundo Principio de la Termodinámica
 == 5.1 Limitaciones del primer principio
+- Da información sobre la viabilidad energética de los procesos, pero hay procesos naturales no espontáneos, mientras que sus inversos sí lo son
+-> El Segundo Principio determina el sentido de evolución espontánea de los procesos, y cuál es el estado final de equilibrio que se alcanza
+
+== 5.2. COonceptos de motor térmico y de máquina frigorífica
+#underline[*Motor térmico*]:
+Sistema en el que un fluido evoluciona de forma ciclica intercambiando calor con dos focos, produciendo así trabajo
+
+Por el 1er principio solo se requeriria un foco del que absorber calor.
+
+Concepto de Rendimiento
+$ eta = W/(Q_alpha) = (Q_alpha - |Q_c|)/(Q_alpha) = 1-(|Q_c|)/(Q_alpha) $
+
+#underline[*Máquina frigorífica*]:
+Maquina en la que el ciclo se recorre de forma inversa, consumiendo trabajo y convirtiendolo en un flujo de calor desde temperaturas bajas a temperaturas altas
+
+El 1er principio solo implica la existencia de un foco al que ceder calor
+
+Coeficientes de prestaciones
+Efecto frigorífico: $epsilon = (Q_alpha)/(|W|) = (Q_alpha)/(|Q_c|-Q_alpha)$
+Calefacción: $epsilon_c = (|Q_c|)/(|W|) = (|Q_c|)/(|Q_c|-Q_alpha)$
+
+
+== 5.3. Enunciados del Segundo Principio: equivalencia
+
+=== En términos de motor térmico:
+#underline[Enunciado de Kelvin-Planck]: Es imposible la existencia de una maquina que funcionando ciclicamente solamente absorba calor y produzca trabajo
+#underline[Enunciado de Ostwald]:
+El movil o motor de segunda especie es imposible. El movil de segunda especie se define como una maquina con una sola fuente o monoterma
+=== En terminos de máquina frigorífica
+#underline[Enunciado de Clausius]:
+Es imposible la existencia de un dispositivo, que, funcionando ciclicamente, tenga como unico efecto el paso de calor de un cuerpo frío a otro más caliente
+
+== 5.4. Procesos reversibles e irreversibles
+#underline[*Proceso reversible*]:
+Dado un proceso por el que un sistema pasa de un estado inicial a un estado final, se dice que es reversible si tanto el sistema como el entorno pueden ser devueltos a sus estados iniciales sin una transformación no compensada de calor en trabajo (sin violar el segundo principio)
+-> Todos estos procesos son cuasiestaticos
+#underline[*Proceso irreversible*]:
+La vuelta al estado inicial del sistema y entorno implica una transformación no compensada de calor en trabajo (violación del segundo principio)
+-> Casi todos los procesos no estáticos son irreversibles (Fricción, transferencia de calor por diferencia de temperatura, expansión al vacío, difusión...)
+
+=== Tipos de irreversibilidades
+- Externas: desequilibrios entre el sistema y su entorno (pared)
+- Internas: desequilibrios dentro del sistema
+
+=== Procesos internamente reversibles
+- Los gradientes de variables intensivas en el sistema son tan pequeños que la evolución dentro del sistema puede considerarse reversible #[
+  - Cualquier estado intermedio puede considerarse un estado de equilibrio, por lo que cumple la ecuación de estado
+  - Cualquier irreversibilidad ocurre en la pared del sistema.
+]
+
+== 5.5. Ciclo y teoremas de Carnot
+#underline[*Ciclo de Carnot*]:
+- Se trata de un ciclo externa e internamente reversible
+- Los cuatro procesos reversibles que lo forman son #[
+  + Compresión adiabática ($delta Q = 0$)
+  + Aporte de calor isotermo ($T_"fuente" - T_"sistema" = 0$)
+  + Expansión adiabática ($delta Q = 0$)
+  + Cesión de calor isoterm($T_"sumidero"- T_"sistema" = 0 $)
+]
+#underline[*Primer teorema de Carnot*]:
+- No puede existir un motor termico que, funcionando entre dos focos termicos dados tenga mayor rendimiento que uno de Carnot funcionando entre los mismo focos
+
+#underline[*Segundo teorema de Carnot*]:
+- Todos los motores reversibles que operan entre los mismos focos termicos tienen el mismo rendimiento
+
+== 5.6. Escala termodinámica de temperaturas
+- Es una escala independiente de las características del sistema
+- Está basada en el rendimiento del motor de Carnot (que depende únicamente de las temperaturas de las fuentes)
+
+$ eta = W/(Q_a) = 1 - (|Q_c|)/(Q_alpha) = Phi (theta_a, theta_c)$
+$=> (Q_a)/(|Q_c|) = 1/(1- Phi(theta_a, theta_c)) = f(theta_a, theta_c) $
+Para encontrar la forma de $f(theta_a,theta_c)$, consideremos un foco intermedio
+$(Q_a)/(|Q_c|) = (Q_a)/(|Q_"int"|) (Q_"int")/(|Q_c|)$
+Pero: $ (Q_a)/(|Q_"int"|) = f(theta_a, theta_"int") ; (Q_"int")/(|Q_c|) = f(theta_"int", theta_c); (Q_a)/(|Q_c|) = f(theta_a, theta_c)) $
+$ -> f(theta_a, theta_c) $
+Esto implica que
+$ f(theta_i, theta_j = (psi(theta_i))/(psi(theta_j))) $
+Por lo tanto:
+$ (Q_a)/(|Q_c|) = (psi(theta_a))/(psi(theta_c)) equiv (T_a)/(T_c) <-> (Q_a)/(-Q_c) = (T_a)/(T_c) $
