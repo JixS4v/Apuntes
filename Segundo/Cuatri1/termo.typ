@@ -197,27 +197,27 @@ Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar la
 == 3.2. Coeficientes térmicos de un sistema
 - En general, obtener la ecuación térmica de estado no es sencillo
 - Los coeficientes térmicos proporcionan un método general: #linebreak() integración de diferenciales de variables
-$ V = V(theta, p) -> dif V = ((diff V) / (diff theta))_p dif theta + ((diff V) / (diff p))_theta dif p $
-$ p = p(theta, V) -> dif p = ((diff p)/(diff theta))_V dif theta + ((diff p)/(diff V))_theta dif V $
-$ theta = theta (p, V)-> dif theta = ((diff theta)/(diff p))_V dif p + ((diff theta)/(diff V))_p dif V $
+$ V = V(theta, p) -> dif V = dvp(V, theta, eval: p, evalsym:"(") dif theta + dvp(V, p, eval: theta, evalsym:"(") dif p $
+$ p = p(theta, V) -> dif p = dvp(p, theta, eval: V, evalsym:"(") dif theta + dvp(p, V, eval: theta, evalsym:"(") dif V $
+$ theta = theta (p, V)-> dif theta = dvp(theta, p, eval: V, evalsym:"(") dif p + dvp(theta, V, eval: p, evalsym:"(") dif V $
 
 Hay 3 coeficientes térmicos:
-- Coeficiente de dilatación isobárica: $alpha = 1/V ((diff V)/(diff theta))_p$
-- Coeficiente de compresibilidad isotérmica: $chi_theta = - 1/V ((diff V)/(diff p))_theta$
-- Coeficiente piezotérmico: $beta = 1/p((diff p)/(diff theta))_V$
+- Coeficiente de dilatación isobárica: $alpha = 1/V dvp(V, theta, eval: p, evalsym:"(")$
+- Coeficiente de compresibilidad isotérmica: $chi_theta = - 1/V dvp(V, p, eval: theta, evalsym:"(")$
+- Coeficiente piezotérmico: $beta = 1/p dvp(p, theta, eval: V, evalsym:"(")$
 
-Relación entre los 3 coeficientes (propiedad cíclica): $ ((diff p)/(diff V))_theta ((diff V)/(diff theta))_p ((diff theta)/(diff p))_V = -1 => (- 1/(chi_theta V))(alpha V)(1/(beta p))=-1 => alpha = beta chi_theta p $
+Relación entre los 3 coeficientes (propiedad cíclica): $ dvp(p, V, eval: theta, evalsym:"(") dvp(V, theta, eval: p, evalsym:"(") dvp(theta, p, eval: V, evalsym:"(") = -1 => (- 1/(chi_theta V))(alpha V)(1/(beta p))=-1 => alpha = beta chi_theta p $
 
 Solo hacen falta dos coeficientes para integrar la ecuación de estado:
-$ dif V = ((diff V)/(diff theta))_p dif theta + ((diff V)/(diff p))_theta dif p = alpha V dif theta - chi_theta V dif p $
-$ dif p = ((diff p)/(diff theta))_V dif theta + ((diff p)/(diff V))_theta dif V = beta p dif theta - 1/(chi_theta V) dif V $
-$ dif theta = ((diff theta)/(diff p))_V dif p + ((diff theta)/(diff V))_p dif V = 1/(beta p) dif p + 1/(alpha V) dif V $
+$ dif V = dvp(V, theta, eval: p, evalsym:"(") dif theta + dvp(V, p, eval: theta, evalsym:"(") dif p = alpha V dif theta - chi_theta V dif p $
+$ dif p = dvp(p, theta, eval: V, evalsym:"(") dif theta + dvp(p, V, eval: theta, evalsym:"(") dif V = beta p dif theta - 1/(chi_theta V) dif V $
+$ dif theta = dvp(theta, p, eval: V, evalsym:"(") dif p + dvp(theta, V, eval: p, evalsym:"(") dif V = 1/(beta p) dif p + 1/(alpha V) dif V $
 
 Además, hay que especificar completamente un estado $(p, V, theta)$
 
 - Aplicación al gas ideal #[
-  - #underline[Ley de Boyle]: a temperatura constante, el producto de la presión por el volumen es constante para una masa dada. Derivando con respecto a $p$:$ (p V)_theta = "constante" => p ((diff V)/(dif p))_theta + V = 0 => chi_theta = - 1/V ((diff V)/(diff p))_theta = 1/p $ (coeficiente de compresibilidad isotérmica)
-  - #underline[Ley de Gay-Lussac]: a presión constante, el volumen de una masa dada de gas es proporcional a la temperatura. Derivando con respecto a $theta$: $ (V/theta)_p = "constante" => theta ((diff V)/(diff theta))_p - V = 0 => alpha = 1/V ((diff V)/(diff theta))_p = 1/theta $ (coeficiente de dilatación isobárica)
+  - #underline[Ley de Boyle]: a temperatura constante, el producto de la presión por el volumen es constante para una masa dada. Derivando con respecto a $p$:$ (p V)_theta = "constante" => p dvp(V, p, eval: theta, evalsym:"(") + V = 0 => chi_theta = - 1/V dvp(V, p, eval: theta, evalsym:"(") = 1/p $ (coeficiente de compresibilidad isotérmica)
+  - #underline[Ley de Gay-Lussac]: a presión constante, el volumen de una masa dada de gas es proporcional a la temperatura. Derivando con respecto a $theta$: $ (V/theta)_p = "constante" => theta dvp(V, theta, eval: p, evalsym:"(") - V = 0 => alpha = 1/V dvp(V, theta, eval: p, evalsym:"(") = 1/theta $ (coeficiente de dilatación isobárica)
 ]
 Entonces: $ dif V = alpha V dif theta - chi_0 V dif p => (dif V)/V = alpha dif theta - chi_0 dif p = (dif theta)/theta - (dif p)/p => p V = "cnst"times theta$
 - Aplicación al gas ideal: #[
@@ -247,66 +247,66 @@ Entonces: $ dif V = alpha V dif theta - chi_0 V dif p => (dif V)/V = alpha dif t
   - Un sistema con capacidad térmica infinita se llama foco térmico.
 ]
 - Las mas empleadas son a presión y a volumen constante $ delta Q |_p = C_p dif theta ; delta Q |_V = C_V dif theta $ 
-- Del primer principio, y desarrollando $dif U$ en términos de $dif theta$ y $dif V$: $ delta Q = dif U + p dif V = ((diff U)/(diff theta))_V dif theta + [((diff U)/(diff V))_0 + p] dif V $ A volumen constante ($dif V = 0$): $ delta Q |_V = C_V dif theta = ((diff U)/(diff theta))_V dif theta => C_V = ((diff U)/(diff theta))_V $
-- A presión constante, en un proceso análogo se desarrolla $dif V$ en términos de $dif theta$ y $dif p$: $ delta Q = dif U + p dif V = ((diff U)/(diff theta))_V d theta + [((diff U)/(diff V))_theta + p] overbrace(dif V, [((diff V)/(diff theta))_p dif theta + ((diff V)/(diff p))_0 dif p]) $ Considerando presión constante y recordando $C_V$: $ delta Q |_p = C_p dif theta = {C_V + [((diff U)/(diff V))_theta + p] ((diff V)/(diff theta)_p)}dif theta $ $ C_p = C_V + [((diff U)/(diff V))_theta + p] ((diff V)/(diff theta))_p $
-- Del Primer Principio en términos de entalpía: $ delta Q = dif H - V dif p = ((diff H)/(diff theta))_p dif theta + [((diff H)/(diff p))_theta - V] dif p $ A presión constante: $ delta Q |_p = C_p dif theta = ((diff H)/(diff theta))_p dif theta => C_p = ((diff H)/(diff theta))_p $ A volumen constante: $ delta Q |_V = C_V dif theta => ... => C_V = C_p + [((diff H)/(diff p))_theta - V]((diff p)/(diff theta))_V $
+- Del primer principio, y desarrollando $dif U$ en términos de $dif theta$ y $dif V$: $ delta Q = dif U + p dif V = dvp(U, theta, eval: V, evalsym:"(") dif theta + [dvp(U, V, eval: 0, evalsym:"(") + p] dif V $ A volumen constante ($dif V = 0$): $ delta Q |_V = C_V dif theta = dvp(U, theta, eval: V, evalsym:"(") dif theta => C_V = dvp(U, theta, eval: V, evalsym:"(") $
+- A presión constante, en un proceso análogo se desarrolla $dif V$ en términos de $dif theta$ y $dif p$: $ delta Q = dif U + p dif V = dvp(U, theta, eval: V, evalsym:"(") d theta + [dvp(U, V, eval: theta, evalsym:"(") + p] overbrace(dif V, [dvp(V, theta, eval: p, evalsym:"(") dif theta + dvp(V, p, eval: 0, evalsym:"(") dif p]) $ Considerando presión constante y recordando $C_V$: $ delta Q |_p = C_p dif theta = {C_V + [dvp(U, V, eval: theta, evalsym:"(") + p] dvp(V, theta, eval: p, evalsym:"(") }dif theta $ $ C_p = C_V + [dvp(U, V, eval: theta, evalsym:"(") + p] dvp(V, theta, eval: p, evalsym:"(") $
+- Del Primer Principio en términos de entalpía: $ delta Q = dif H - V dif p = dvp(H, theta, eval: p, evalsym:"(") dif theta + [dvp(H, p, eval: theta, evalsym:"(") - V] dif p $ A presión constante: $ delta Q |_p = C_p dif theta = dvp(H, theta, eval: p, evalsym:"(") dif theta => C_p = dvp(H, theta, eval: p, evalsym:"(") $ A volumen constante: $ delta Q |_V = C_V dif theta => ... => C_V = C_p + [dvp(H, p, eval: theta, evalsym:"(") - V]dvp(p, theta, eval: V, evalsym:"(") $
 - -> Todas las derivadas parciales necesarias para determinar U o H son calculables, si se conoce $C_V, C_p$ y la ecuación térmica de estado: $
-((diff U)/diff theta))_V &= C_V \
-C_p = C_v + [((diff U)/(diff V))_theta + p]((diff V)/(diff theta))_p -> ((diff theta)/(diff V))_theta &= [C_p - C_V]((diff theta)/(diff V))_p - p \
-((diff H)/(diff theta))_p &= C_p \
-C_V = C_p + [((diff H)/(diff p))_theta - V]((diff p)/(diff theta))_V -> ((diff H)/(diff p))_theta &= [C_V - C_p]((diff theta)/(diff p))_V + V $
+dvp(U, theta, eval: V, evalsym:"(") &= C_V \
+C_p = C_v + [dvp(U, V, eval: theta, evalsym:"(") + p]dvp(V, theta, eval: p, evalsym:"(") -> dvp(theta, V, eval: theta, evalsym:"(") &= [C_p - C_V]dvp(theta, V, eval: p, evalsym:"(") - p \
+dvp(H, theta, eval: p, evalsym:"(") &= C_p \
+C_V = C_p + [dvp(H, p, eval: theta, evalsym:"(") - V]dvp(p, theta, eval: V, evalsym:"(") -> dvp(H, p, eval: theta, evalsym:"(") &= [C_V - C_p]dvp(theta, p, eval: V, evalsym:"(") + V $
 - #underline[*Ecuación energética de estado*]: #[
   - Integrando las diferenciales de U o H $ 
-  dif U &= ((diff U)/(diff theta))_V = dif theta + ((diff U)/(diff V))_theta dif V \
-  dif U &= C_v dif theta + [(C_p - C_V)((diff theta)/(diff V))_p - p]dif V 
+  dif U &= dvp(U, theta, eval: V, evalsym:"(") = dif theta + dvp(U, V, eval: theta, evalsym:"(") dif V \
+  dif U &= C_v dif theta + [(C_p - C_V)dvp(theta, V, eval: p, evalsym:"(") - p]dif V 
   $
   - Para la entalpía: $
-  dif H &= ((diff H)/(diff theta))_p dif theta + ((diff H)/(diff p))_theta dif p \
-  dif H &= C_p dif theta + [(C_V - C_p)((diff theta)/(diff p))_V + V] dif p$
+  dif H &= dvp(H, theta, eval: p, evalsym:"(") dif theta + dvp(H, p, eval: theta, evalsym:"(") dif p \
+  dif H &= C_p dif theta + [(C_V - C_p)dvp(theta, p, eval: V, evalsym:"(") + V] dif p$
 ]
 - Aplicación al Gas Ideal #[
-- En un gas ideal, la energía interna ($U$) solo depende de la temperatura (comprobado por el experimento de Joule). $ delta Q = 0 "y" delta W = 0 -> dif U = 0 => ((diff theta)/(diff V))_U = 0 $ Por la propiedad cíclica: $ ((diff theta)/(diff V))_U ((diff V)/(diff U))_0 ((diff U)/(diff theta))_V = -1 -> ((diff U)/(diff V))_theta = -C_V ((diff theta)/(diff V))_U $ Del experimento de joule $((diff theta)/(diff V))_U = 0$, y como $C_V != 0 $ -> $ ((diff U)/(diff V))_theta = 0 $ Entonces, la energía interna es función solo de la temperatura: $ dif U = ((diff U)/(diff theta))_V dif theta + ((diff U)/(diff V))_theta dif V = C_V (theta) dif theta -> Delta U = integral_(theta_1)^(theta_2) C_V(theta)dif theta $ Si $C_V$ no depende de la temperatura -> Gas perfecto: $ dif U = C_V dif theta -> Delta U = C_V Delta theta $ Recordando la expresión para $C_p - C_V$ que $((diff U)/(diff V))_theta $ y usando la ecuación térmica de estado, se obtiene la relación de Mayer: $ C_p - C_V = [((diff U)/(diff V))_theta + p] ((diff V)/(diff theta))_p = p ((diff V)/(diff theta))_p = p ((m R)/p) = m R -> c_p - c_V = R $ De la ecuación de la entalpía se obtiene que también $((diff H)/(diff p))_theta = 0$: $ dif H = C_p dif theta + [(C_V-C_p)((diff theta)/(diff p))_V + V] dif p = C_p dif theta + [(- m R)(V/(m R))+V] dif p $ $ -> dif H = C_p(theta) dif theta -> Delta H = integral_(theta_1)^(theta_2) C_p (theta) dif theta $ Si $C_p$ no depende de la temperatura, se trata de un gas perfecto: $ dif H = C_p dif theta -> Delta H = C_p Delta theta $
+- En un gas ideal, la energía interna ($U$) solo depende de la temperatura (comprobado por el experimento de Joule). $ delta Q = 0 "y" delta W = 0 -> dif U = 0 => dvp(theta, V, eval: U, evalsym:"(") = 0 $ Por la propiedad cíclica: $ dvp(theta, V, eval: U, evalsym:"(") dvp(V, U, eval: 0, evalsym:"(") dvp(U, theta, eval: V, evalsym:"(") = -1 -> dvp(U, V, eval: theta, evalsym:"(") = -C_V dvp(theta, V, eval: U, evalsym:"(") $ Del experimento de joule $dvp(theta, V, eval: U, evalsym:"(") = 0$, y como $C_V != 0 $ -> $ dvp(U, V, eval: theta, evalsym:"(") = 0 $ Entonces, la energía interna es función solo de la temperatura: $ dif U = dvp(U, theta, eval: V, evalsym:"(") dif theta + dvp(U, V, eval: theta, evalsym:"(") dif V = C_V (theta) dif theta -> Delta U = integral_(theta_1)^(theta_2) C_V(theta)dif theta $ Si $C_V$ no depende de la temperatura -> Gas perfecto: $ dif U = C_V dif theta -> Delta U = C_V Delta theta $ Recordando la expresión para $C_p - C_V$ que $dvp(U, V, eval: theta, evalsym:"(") $ y usando la ecuación térmica de estado, se obtiene la relación de Mayer: $ C_p - C_V = [dvp(U, V, eval: theta, evalsym:"(") + p] dvp(V, theta, eval: p, evalsym:"(") = p dvp(V, theta, eval: p, evalsym:"(") = p ((m R)/p) = m R -> c_p - c_V = R $ De la ecuación de la entalpía se obtiene que también $dvp(H, p, eval: theta, evalsym:"(") = 0$: $ dif H = C_p dif theta + [(C_V-C_p)dvp(theta, p, eval: V, evalsym:"(") + V] dif p = C_p dif theta + [(- m R)(V/(m R))+V] dif p $ $ -> dif H = C_p(theta) dif theta -> Delta H = integral_(theta_1)^(theta_2) C_p (theta) dif theta $ Si $C_p$ no depende de la temperatura, se trata de un gas perfecto: $ dif H = C_p dif theta -> Delta H = C_p Delta theta $
 ]
 ]
 - #underline[*Calores latentes*]: #[
-- Cantidad de energía en forma de calor que se necesitan para conseguir una variación unidad de la presión o el volumen a temperatura constante: $ delta Q|_theta = l_v dif V ; delta Q |_theta = h_p dif p $ Del primer principio y desarrollando $dif U$ en términos de $dif theta$ y $dif V$: $ delta Q = dif U + p dif V = ((diff U)/(diff theta))_V dif theta + [((diff U)/(diff V))_theta + p] dif V $ $"Si" dif theta = 0 -> delta Q|_theta = [((diff U)/(diff V))_theta + p] dif V = l_v dif V -> l_v = ((diff U)/(diff V))_theta + p $ Haciendo lo mismo con la entalpía, del primer principio y desarrollando $dif H$ en términos de $dif theta$ y $dif p$: $ delta Q = dif H - V dif p = ((diff H)/(diff theta))_p dif theta + [((diff H)/(diff p))_theta - V] dif p $ $ "Si" d theta = 0 -> delta Q|_theta = [((diff H)/(diff p))_theta - V] dif p = h_p dif p -> h_p = ((diff H)/(diff p))_theta - V $ Entonces: $ h_p = ((diff H)/(diff p))_theta - V = (C_V - C_p)((diff theta)/(diff p))_V $ Para gases ideales, como $((diff U)/(diff V))_theta = 0$ y $((diff H)/(diff p))_theta = 0$ se obtiene: $ l_v = ((diff U)/(diff V))_theta + p -> l_v = p ; h_p = ((diff H)/(diff p))_theta - V -> h_p = -V $
+- Cantidad de energía en forma de calor que se necesitan para conseguir una variación unidad de la presión o el volumen a temperatura constante: $ delta Q|_theta = l_v dif V ; delta Q |_theta = h_p dif p $ Del primer principio y desarrollando $dif U$ en términos de $dif theta$ y $dif V$: $ delta Q = dif U + p dif V = dvp(U, theta, eval: V, evalsym:"(") dif theta + [dvp(U, V, eval: theta, evalsym:"(") + p] dif V $ $"Si" dif theta = 0 -> delta Q|_theta = [dvp(U, V, eval: theta, evalsym:"(") + p] dif V = l_v dif V -> l_v = dvp(U, V, eval: theta, evalsym:"(") + p $ Haciendo lo mismo con la entalpía, del primer principio y desarrollando $dif H$ en términos de $dif theta$ y $dif p$: $ delta Q = dif H - V dif p = dvp(H, theta, eval: p, evalsym:"(") dif theta + [dvp(H, p, eval: theta, evalsym:"(") - V] dif p $ $ "Si" d theta = 0 -> delta Q|_theta = [dvp(H, p, eval: theta, evalsym:"(") - V] dif p = h_p dif p -> h_p = dvp(H, p, eval: theta, evalsym:"(") - V $ Entonces: $ h_p = dvp(H, p, eval: theta, evalsym:"(") - V = (C_V - C_p)dvp(theta, p, eval: V, evalsym:"(") $ Para gases ideales, como $dvp(U, V, eval: theta, evalsym:"(") = 0$ y $dvp(H, p, eval: theta, evalsym:"(") = 0$ se obtiene: $ l_v = dvp(U, V, eval: theta, evalsym:"(") + p -> l_v = p ; h_p = dvp(H, p, eval: theta, evalsym:"(") - V -> h_p = -V $
 ]
 #underline[*Calores sensibles*]: #[
-  - Cantidad de energía en forma de calor que se necesita para conseguir una variación unidd de la presion o el volumen a volumen o presión constante, respectivamente: $ delta Q|_V = mu dif p ;delta Q|_p = lambda dif V $ Del primer principio y desarrollando $dif U$ en términos de $dif p$ y $dif V$: $ delta Q = dif U + p dif V = [((diff U)/(diff V))_p + p]dif V + ((diff U)/(diff p))_V dif p $ $ "Si" dif V = 0 -> delta Q|_v = ((diff U)/(diff p))_V dif p -> $ $ mu = ((diff U)/(diff p))_V = ((diff U)/(diff theta))_V((diff theta)/(diff p))_V = C_v ((diff theta)/(diff p))_V $ Haciendo lo mismo con la entalpía, del primer principioo y desarrollando $dif H$ en términos de $dif p$ y $dif V$: $ delta Q = dif H - V dif p = [((diff H)/(diff p))_V - V] dif p + ((diff H)/(diff V))_p dif V $ $ "Si" dif p = 0 -> delta Q |_p = ((diff H)/(diff V))_p dif V ->$ $lambda = ((diff H)/(diff V))_p = ((diff H)/(diff theta))_p((diff theta)/(diff V))_p = C_p ((diff theta)/(diff V))_p $
+  - Cantidad de energía en forma de calor que se necesita para conseguir una variación unidd de la presion o el volumen a volumen o presión constante, respectivamente: $ delta Q|_V = mu dif p ;delta Q|_p = lambda dif V $ Del primer principio y desarrollando $dif U$ en términos de $dif p$ y $dif V$: $ delta Q = dif U + p dif V = [dvp(U, V, eval: p, evalsym:"(") + p]dif V + dvp(U, p, eval: V, evalsym:"(") dif p $ $ "Si" dif V = 0 -> delta Q|_v = dvp(U, p, eval: V, evalsym:"(") dif p -> $ $ mu = dvp(U, p, eval: V, evalsym:"(") = dvp(U, theta, eval: V, evalsym:"(")dvp(theta, p, eval: V, evalsym:"(") = C_v dvp(theta, p, eval: V, evalsym:"(") $ Haciendo lo mismo con la entalpía, del primer principioo y desarrollando $dif H$ en términos de $dif p$ y $dif V$: $ delta Q = dif H - V dif p = [dvp(H, p, eval: V, evalsym:"(") - V] dif p + dvp(H, V, eval: p, evalsym:"(") dif V $ $ "Si" dif p = 0 -> delta Q |_p = dvp(H, V, eval: p, evalsym:"(") dif V ->$ $lambda = dvp(H, V, eval: p, evalsym:"(") = dvp(H, theta, eval: p, evalsym:"(")dvp(theta, V, eval: p, evalsym:"(") = C_p dvp(theta, V, eval: p, evalsym:"(") $
   - Para gases ideales, la ecuación de estado lleva directamente a: $ mu = C_V theta/p ; lambda = C_p theta/V $
 ]
 #pagebreak(weak:true)
 == 4. Procesos Termodinámicos Fundamentales
 == 4.1. Formas de Pfaff del Primer Principio
-Hemos obtenido que $ C_v = ((diff U)/(diff theta))_V l_v = ((diff U)/(diff V))_theta + p $
+Hemos obtenido que $ C_v = dvp(U, theta, eval: V, evalsym:"(") l_v = dvp(U, V, eval: theta, evalsym:"(") + p $
 Entonces
-$ delta Q = dif U + p dif V = ((diff U)/(diff theta))_v dif theta + [((diff U)/(diff V))_theta + p] dif V  => delta Q = C_v dif theta + l_v dif V "(Primera forma de Pfaff)" $
+$ delta Q = dif U + p dif V = dvp(U, theta, eval: v, evalsym:"(") dif theta + [dvp(U, V, eval: theta, evalsym:"(") + p] dif V  => delta Q = C_v dif theta + l_v dif V "(Primera forma de Pfaff)" $
 Igualmente
-$ C_p=((diff H)/(diff theta))_p h_p = ((diff H)/(diff p))_theta - V $
-$ delta Q = dif H - V dif p = ((diff H)/(diff theta))_p dif theta + [((diff H)/(diff p))_theta - V] dif p => delta Q = C_p dif theta + h_p dif p "(Segunda forma de Pfaff)" $
+$ C_p=dvp(H, theta, eval: p, evalsym:"(") h_p = dvp(H, p, eval: theta, evalsym:"(") - V $
+$ delta Q = dif H - V dif p = dvp(H, theta, eval: p, evalsym:"(") dif theta + [dvp(H, p, eval: theta, evalsym:"(") - V] dif p => delta Q = C_p dif theta + h_p dif p "(Segunda forma de Pfaff)" $
 Finalmente
-$ mu = ((diff U)/(diff p))_V lambda = ((diff U)/(diff V))_p + p $
-$ delta Q = dif U + p dif V = [((diff U)/(diff V))_p + p ] dif V + ((diff U)/(diff p))_v dif p = mu dif p + lambda dif V $
+$ mu = dvp(U, p, eval: V, evalsym:"(") lambda = dvp(U, V, eval: p, evalsym:"(") + p $
+$ delta Q = dif U + p dif V = [dvp(U, V, eval: p, evalsym:"(") + p ] dif V + dvp(U, p, eval: v, evalsym:"(") dif p = mu dif p + lambda dif V $
 o, equivalentemente
-$ lambda = ((diff H)/(diff V))_p mu = ((diff H)/(diff p))_v - V $
-$ delta Q = dif H - V dif p = [((diff H)/(diff p))_V - V ] dif p + ((diff H)/(diff V))_p dif V = mu dif p + lambda dif V $
+$ lambda = dvp(H, V, eval: p, evalsym:"(") mu = dvp(H, p, eval: v, evalsym:"(") - V $
+$ delta Q = dif H - V dif p = [dvp(H, p, eval: V, evalsym:"(") - V ] dif p + dvp(H, V, eval: p, evalsym:"(") dif V = mu dif p + lambda dif V $
 $ => delta Q = mu dif p + lambda dif V "(Tercera forma de Pfaff)" $
 
 == 4.2 Procesos politrópicos
 - #underline[*Proceso politrópico*]: 
 Proceso en que la capacidad térmica del sistema permanece constante #[
   - Ecuación: A partir de la Tercera forma de Pfaff: $delta Q = mu dif p + lambda dif V$ #[
-    - Por definición $ delta Q = C dif theta "y" lambda = C_p = ((diff theta)/(diff V))_p mu = C_v ((diff theta)/(diff p))_V $ $ => C dif theta = C_v ((diff theta)/(diff p))_V dif p = C_p ((diff theta)/(diff V))_p dif V $
-    - Desarrollando $dif theta$ en términos de $dif p$ y $dif V$ y reordenando: $ C[((diff theta)/(diff p))_V dif p + ((diff theta)/(diff V))_p dif V] = C_V ((diff theta)/(diff p))_V dif p + C_p ((diff theta)/(diff V))_p dif V (C_v - C)((diff theta)/(diff p))_V dif p _ (C_p - C)((diff theta)/(diff V))_p dif V = 0 $
-    - Dividiendo por $C_v - C$ se obtiene $ ((diff theta)/(diff p))_V + (C_p - C)/(C_v - C) ((diff theta)/(diff V))_p dif V = 0 $
+    - Por definición $ delta Q = C dif theta "y" lambda = C_p = dvp(theta, V, eval: p, evalsym:"(") mu = C_v dvp(theta, p, eval: V, evalsym:"(") $ $ => C dif theta = C_v dvp(theta, p, eval: V, evalsym:"(") dif p = C_p dvp(theta, V, eval: p, evalsym:"(") dif V $
+    - Desarrollando $dif theta$ en términos de $dif p$ y $dif V$ y reordenando: $ C[dvp(theta, p, eval: V, evalsym:"(") dif p + dvp(theta, V, eval: p, evalsym:"(") dif V] = C_V dvp(theta, p, eval: V, evalsym:"(") dif p + C_p dvp(theta, V, eval: p, evalsym:"(") dif V (C_v - C)dvp(theta, p, eval: V, evalsym:"(") dif p _ (C_p - C)dvp(theta, V, eval: p, evalsym:"(") dif V = 0 $
+    - Dividiendo por $C_v - C$ se obtiene $ dvp(theta, p, eval: V, evalsym:"(") + (C_p - C)/(C_v - C) dvp(theta, V, eval: p, evalsym:"(") dif V = 0 $
     - El índice politrópico se define como $ k = (C_p - C)/(C_v - C) $
-    - Entonces, la ecuación funcional del proceso en términos de $p$ y $V$ es $ ((diff theta)/(diff p))_V dif p + k ((diff theta)/(diff V))_p dif V = 0 $
+    - Entonces, la ecuación funcional del proceso en términos de $p$ y $V$ es $ dvp(theta, p, eval: V, evalsym:"(") dif p + k dvp(theta, V, eval: p, evalsym:"(") dif V = 0 $
     - Se pueden obtener fácilmente ecuaciones en términos de $p $ y $theta$ y de $theta $ y $V$ 
   ]
   - Ecuaciones funcionales: #[
-    - Formulación presión-volumen: $((diff theta)/(diff p))_V dif p + k ((diff theta)/(diff V))_p dif V = 0 $
-    - Formulación temperatura-volumen: $ dif theta + (k-1)((diff theta)/(diff V))_p dif V = 0 $
-    - Formulación presión-temperatura: $ dif theta = (1-k)/k ((diff theta)/(diff p))_V dif p = 0 $
+    - Formulación presión-volumen: $dvp(theta, p, eval: V, evalsym:"(") dif p + k dvp(theta, V, eval: p, evalsym:"(") dif V = 0 $
+    - Formulación temperatura-volumen: $ dif theta + (k-1)dvp(theta, V, eval: p, evalsym:"(") dif V = 0 $
+    - Formulación presión-temperatura: $ dif theta = (1-k)/k dvp(theta, p, eval: V, evalsym:"(") dif p = 0 $
   ]
   - Procesos más frecuentes: #[
     - Adiabático: $ dif Q = 0 => C=0 => k = C_p / C_v equiv gamma $
@@ -317,15 +317,15 @@ Proceso en que la capacidad térmica del sistema permanece constante #[
 ]
 == 4.3. Compresibilidad adiabática
 #underline[*Compresibilidad adiabática*]: $ X_(Q=0) = -1/V ((dif V)/(dif p))_(Q=0) $
-La ecuación funcional de este proceso se obtiene considerando $k=gamma$ en la politrópica $ ((diff theta)/(diff p))_V dif p + gamma ((diff theta)/(diff V))_p dif V = 0 $
+La ecuación funcional de este proceso se obtiene considerando $k=gamma$ en la politrópica $ dvp(theta, p, eval: V, evalsym:"(") dif p + gamma dvp(theta, V, eval: p, evalsym:"(") dif V = 0 $
 Derivando con respecto a $p$ obtenemos
-$ ((diff theta)/(diff p))_gamma + gamma((diff theta)/(diff V))_p ((diff V)/(diff p))_(Q=0) = 0 $
-Para despejar la derivada en la definición de $chi_(Q=0)$ multiplicamos todo por $((diff V)/(diff theta))_p$ 
-$ ((diff theta)/(diff p))_V ((diff V)/(diff theta))_p + gamma ((dif V)/(dif p))_(Q=0) = 0 $
+$ dvp(theta, p, eval: gamma, evalsym:"(") + gamma dvp(theta, V, eval: p, evalsym:"(") dvp(V, p, eval: Q=0, evalsym:"(") = 0 $
+Para despejar la derivada en la definición de $chi_(Q=0)$ multiplicamos todo por $dvp(V, theta, eval: p, evalsym:"(")$ 
+$ dvp(theta, p, eval: V, evalsym:"(") dvp(V, theta, eval: p, evalsym:"(") + gamma ((dif V)/(dif p))_(Q=0) = 0 $
 Por la propiedad ciclica
-$ - ((diff V)/(diff p))_theta + gamma ((dif V)/(dif p))_(Q=0) = 0 $
+$ - dvp(V, p, eval: theta, evalsym:"(") + gamma ((dif V)/(dif p))_(Q=0) = 0 $
 Dividiendo por V y despejando:
-$ gamma 1/V ((dif V)/(dif p))_theta = 1/V ((diff V)/(diff p))_theta => chi_(Q=0) = 1/gamma chi_theta $
+$ gamma 1/V ((dif V)/(dif p))_theta = 1/V dvp(V, p, eval: theta, evalsym:"(") => chi_(Q=0) = 1/gamma chi_theta $
 
 == 4.4 Procesos de los gases perfectos
 #underline[*Proceso isóbaro de un gas perfecto*]:
@@ -359,7 +359,7 @@ $ q = Delta u + w = w = p_1 v_1 ln (v_2)/(v_1) = R theta_1 ln (p_1)/(p_2) $
 
 #underline[*Proceso politrópico de un gas perfecto*]: 
 La ecuación de proceso se obtiene integrando la politrópica con la ecuación de estado: 
-$ ((diff theta)/(diff p))_V dif p + k ((diff theta)/(dif v)) dif v = 0 -> v/R dif p + k p/R dif V = 0 -> 1/p dif p + k 1/v dif V = 0 \ -> ln (p_2)/(p_1) = -k ln (v_2)/(v_1) -> (p_2)/(p_1) = ((v_1)/(v_2))^k -> p_1 v_1^k = p_2 v_2 ^k $
+$ dvp(theta, p, eval: V, evalsym:"(") dif p + k dvp(theta, v, eval: p, evalsym:"(") dif v = 0 -> v/R dif p + k p/R dif V = 0 -> 1/p dif p + k 1/v dif V = 0 \ -> ln (p_2)/(p_1) = -k ln (v_2)/(v_1) -> (p_2)/(p_1) = ((v_1)/(v_2))^k -> p_1 v_1^k = p_2 v_2 ^k $
 El trabajo es
 $ w = integral_1^2 p dif v = p_1 v_1^k integral_1^2 (dif v)/(v^k) = - (p_1 v_1)/(k-1) [((v_2)/(v_1))^(1-k)-1] $
 La energía interna es
@@ -520,28 +520,28 @@ $ Delta S = sigma + integral_1^2 (delta Q)/T |_I <=> dif S = delta sigma + (delt
 #grid(align: horizon, columns:3, column-gutter: .5cm, $dif U = delta Q - p dif V \ delta Q = T dif S $, $ dif U = T dif S - p dif V$, [Ecuación de Gibbs])
 $ -> dif S = 1/T dif U + p/T dif V $
 - Desarrollando: 
-$ dif S = 1/T ((diff U)/(diff T))_V dif T + 1/T [((diff U)/(diff V))_T+p] dif V $
+$ dif S = 1/T dvp(U, T, eval: V, evalsym:"(") dif T + 1/T [dvp(U, V, eval: T, evalsym:"(")+p] dif V $
 Identificando derivadas parciales: 
-$ ((diff S)/(diff T))_V = 1/T((diff U)/(diff T))_V ; ((diff S)/(diff V))_T = 1/T [((diff U)/(diff V))_T + p ] $
+$ dvp(S, T, eval: V, evalsym:"(") = 1/T dvp(U, T, eval: V, evalsym:"(") ; dvp(S, V, eval: T, evalsym:"(") = 1/T [dvp(U, V, eval: T, evalsym:"(") + p ] $
 Como la entropía es función de estado, es una diferencial exacta, y cumple la condición de Schwartz:
-$ diff/(diff T)[((diff S)/(diff V))_T]_V = diff/(diff V)[((dif S)/(diff T))_V]_T $
-$ diff/(diff T)[((diff S)/(diff V))_T]_V = diff/(diff T) [1/T [((diff U)/(diff V))_T + p ]]_T = 1/T((diff^2U)/(diff T diff V))-1/T^2 ((diff U)/(diff V))_T+1/T((diff p)/(diff T))_V - p/(T^2) $
-$ diff/(diff V) [((diff S)/(diff T))_V]_T = diff/(diff V)[1/T ((diff U)/(diff T))_V]_T = 1/T ((diff^2 U)/(diff V diff T)) $
+$ diff/(diff T)[dvp(S, V, eval: T, evalsym:"(")]_V = diff/(diff V)[dvp(S, T, eval: V, evalsym:"(")]_T $
+$ diff/(diff T)[dvp(S, V, eval: T, evalsym:"(")]_V = diff/(diff T) [1/T [dvp(U, V, eval: T, evalsym:"(") + p ]]_T = 1/T((diff^2U)/(diff T diff V))-1/T^2 dvp(U, V, eval: T, evalsym:"(")+1/T dvp(p, T, eval: V, evalsym:"(") - p/(T^2) $
+$ diff/(diff V) [dvp(S, T, eval: V, evalsym:"(")]_T = diff/(diff V)[1/T dvp(U, T, eval: V, evalsym:"(")]_T = 1/T ((diff^2 U)/(diff V diff T)) $
 Reordenando y simplificando:
-#stack(spacing: .5cm, dir:ltr,$ -1/T^2 ((diff U)/(diff V))_T + 1/T ((diff p)/(diff T))_V - p/T^2 = 0 -> $, [#rect($ T((diff p)/(diff T))_V = ((diff U)/(diff V))_T + p $)])
+#stack(spacing: .5cm, dir:ltr,$ -1/T^2 dvp(U, V, eval: T, evalsym:"(") + 1/T dvp(p, T, eval: V, evalsym:"(") - p/T^2 = 0 -> $, [#rect($ T dvp(p, T, eval: V, evalsym:"(") = dvp(U, V, eval: T, evalsym:"(") + p $)])
 Consecuencias: #[
   - Relación de Mayer generalizada: #[
-    - Teníamos: $ C_p - C_V = [((diff U)/(diff V))_T + p ]((diff V)/(diff T))_p $
-    - Sustituyendo: $ C_p - C_v = T ((diff p)/(diff T))_V ((diff V)/(diff T))_p $
+    - Teníamos: $ C_p - C_V = [dvp(U, V, eval: T, evalsym:"(") + p ]dvp(V, T, eval: p, evalsym:"(") $
+    - Sustituyendo: $ C_p - C_v = T dvp(p, T, eval: V, evalsym:"(") dvp(V, T, eval: p, evalsym:"(") $
     - En términos de coeficientes térmicos: $ C_p - C_V = alpha beta p V T = (alpha^2 V T)/chi_T $
   ]
-  - Ley de Joule para los gases ideales: $ ((diff U)/(diff V))_T = T ((diff p)/(diff T))_V - p = T p/T - p = 0 => ((diff U)/(diff V))_T = 0 $
+  - Ley de Joule para los gases ideales: $ dvp(U, V, eval: T, evalsym:"(") = T dvp(p, T, eval: V, evalsym:"(") - p = T p/T - p = 0 => dvp(U, V, eval: T, evalsym:"(") = 0 $
 ]
 == 6.4 Cálculo de variaciones de entropía
 - La entropía es función de estado, solo hacen falta los estados inicial y final. #[
-  - Teníamos: $ dif S = 1/T ((diff U)/(diff T))_V dif T + 1/T[((diff U)/(diff V))_T + p ]dif V $ y $ C_V = ((diff U)/(diff T))_V ; ((diff U)/(diff V))_T + p = T((diff p)/(diff T))_V $
-  - Entonces: $ dif S = C_V (dif T)/T + ((diff p)/(diff T))_V dif V $
-  - En términos de $p$ y $T$: $ dif S = C_p (dif T)/T - ((diff V)/(diff T))_p dif p $
+  - Teníamos: $ dif S = 1/T dvp(U, T, eval: V, evalsym:"(") dif T + 1/T [dvp(U, V, eval: T, evalsym:"(") + p ]dif V $ y $ C_V = dvp(U, T, eval: V, evalsym:"(") ; dvp(U, V, eval: T, evalsym:"(") + p = T dvp(p, T, eval: V, evalsym:"(") $
+  - Entonces: $ dif S = C_V (dif T)/T + dvp(p, T, eval: V, evalsym:"(") dif V $
+  - En términos de $p$ y $T$: $ dif S = C_p (dif T)/T - dvp(V, T, eval: p, evalsym:"(") dif p $
   - En términos de $p$ y $V$: $ dif S = C_v/T dvp(T, p, eval:V, evalsym:"(") $ 
 ]
 #grid(columns:3, column-gutter: .5cm, 
