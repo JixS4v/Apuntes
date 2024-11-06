@@ -51,7 +51,7 @@ La termodinámica posee las siguientes características:
 == 1.4. Estado de equilibrio termodinámico
 - Se dice que un sistema está en equilibrio termodinámico cuando sus magnitudes termodinámicas son constantes en el tiempo y uniformes en el espacio.
 - Solamente un sistema aislado puede estar estrictamente en equilibrio
-- En sistemas no aislados el equilibrio se establece cuando el sistema no interacciona con el entorno, es decir cuando hay fuerzas sin equilibrar debidas a diferencias de parámetros intensivos entre sistema y entorno.
+- En sistemas no aislados el equilibrio se establece cuando el sistema no interacciona con el entorno, es decir cuando no hay fuerzas sin equilibrar debidas a diferencias de parámetros intensivos entre sistema y entorno.
 - No debe de confundirse estado de equilibrio con _estado estacionario_
 
 == 1.5. Concepto de proceso termodinámico
