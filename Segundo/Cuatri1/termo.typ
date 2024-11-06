@@ -173,7 +173,7 @@ Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar la
 
 - Sin variación de energía cinética y potencial: $  dif U = delta Q - delta W <=> Delta U = Q - W $ #[
   - En procesos cuasietáticos: $ delta Q =  dif  U + delta W =  dif U + p  dif V $ $ Q = Delta U + integral_1^2 p  dif V $
-  - En procesos adiabáticos ($delta Q = 0$: $ dif U = - delta W <=> Delta U = -W $
+  - En procesos adiabáticos ($delta Q = 0$): $ dif U = - delta W <=> Delta U = -W $
   - En procesos cíclicos ($Delta U = 0$): $ 0 = Q-W <=> Q=W $
 ]
 
@@ -182,15 +182,15 @@ Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar la
 #underline[*Entalpía*]: $H = U + p V => Q|_p = Delta H$
 
 #set math.cases(reverse:true)
-#underline[*Formulación del Primer Principio de la Termodinámica*]: $ cases( U = H - p V -> dif U =  dif  H - p  dif V - V dif p ,  delta Q =  dif U + p | dif V) -> dif H = delta Q + V dif p $
+#underline[*Formulación del Primer Principio de la Termodinámica*]: $ cases( U = H - p V -> dif U =  dif  H - p  dif V - V dif p ,  delta Q =  dif U + p dif V) -> dif H = delta Q + V dif p $
 #pagebreak(weak:true)
 = 3. Ecuaciones de estado
 == 3.1. Ecuaciones de estado
 - #underline[*Ecuación de estado*]: Cualquier función, obtenida teórica o experimentalmente, que relaciona las variables termodinámicas de un sistema. #[
   - Dependerá de las variables escogidas (de acuerdo con el Principio Cero: las variables externas pueden expresarse en función de las variables externas y de la temperatura)
   - Para los sistemas habituales #[
-    - Si el parámetro interno es la enegría interna:#linebreak() Ecuación energética de estado $ U = U(V,0) $
-    - Si el parámetro interno es la presión: #linebreak() Ecuación térmica de estado $ p = p(V,0) $
+    - Si el parámetro interno es la enegría interna:#linebreak() Ecuación energética de estado $ U = U(V,theta) $
+    - Si el parámetro interno es la presión: #linebreak() Ecuación térmica de estado $ p = p(V,theta) $
   ]
 ]
 
@@ -218,13 +218,11 @@ Además, hay que especificar completamente un estado $(p, V, theta)$
 - Aplicación al gas ideal #[
   - #underline[Ley de Boyle]: a temperatura constante, el producto de la presión por el volumen es constante para una masa dada. Derivando con respecto a $p$:$ (p V)_theta = "constante" => p dvp(V, p, eval: theta, evalsym:"(") + V = 0 => chi_theta = - 1/V dvp(V, p, eval: theta, evalsym:"(") = 1/p $ (coeficiente de compresibilidad isotérmica)
   - #underline[Ley de Gay-Lussac]: a presión constante, el volumen de una masa dada de gas es proporcional a la temperatura. Derivando con respecto a $theta$: $ (V/theta)_p = "constante" => theta dvp(V, theta, eval: p, evalsym:"(") - V = 0 => alpha = 1/V dvp(V, theta, eval: p, evalsym:"(") = 1/theta $ (coeficiente de dilatación isobárica)
+  - #underline[Ley de Avogadro]: en condiciones normales (0ºC y 1 atm), un mol de cualquier gas ocupa un volumen de 22.4 L. Esto proporciona el estado totalmente definido que permite la determinación de la constante: $ (V_(N C))/n = "cnst"(theta_(N C))/(n p_(N C)) => "cnst" = n [(p_(N C))/(theta_(N C))(V/n)_(N C)]=n tilde(R) $ con $ tilde(R) = 101300/273.15 22.4 = 8310 "J" dot "kmol"^(-1) dot "K"^(-1) $
 ]
-Entonces: $ dif V = alpha V dif theta - chi_0 V dif p => (dif V)/V = alpha dif theta - chi_0 dif p = (dif theta)/theta - (dif p)/p => p V = "cnst"times theta$
-- Aplicación al gas ideal: #[
-  Ley de Avogadro: en condiciones normales (0ºC y 1 atm), un mol de cualquier gas ocupa un volumen de 22.4 L. Esto proporciona el estado totalmente definido que permite la determinación de la constante: $ (V_(N C))/n = "cnst"(theta_(N C))/(n p_(N C)) => "cnst" = n [(p_(N C))/(theta_(N C))(V/n)_(N C)]=n tilde(R) $ con $ tilde(R) = 101300/273.15 22.4 = 8310 "J" dot "kmol"^(-1) dot "K"^(-1) $
-]
+Entonces: $ dif V = alpha V dif theta - chi_0 V dif p => (dif V)/V = alpha dif theta - chi_0 dif p = (dif theta)/theta - (dif p)/p => p V = "cnst"times theta $
 #set math.cases(reverse:false)
-- Finalmente: $ p V = n tilde(R) theta <=> cases(p tilde(v) = tilde(R) theta, p V = m/M tilde(R) theta = m R theta <=> p v = R theta) $
+Finalmente: $ p V = n tilde(R) theta <=> cases(p tilde(v) = tilde(R) theta, p V = m/M tilde(R) theta = m R theta <=> p v = R theta) $
 
 == 3.3 Propiedades energéticas de un sistema
 - #underline[*Definición*]: propiedades energéticas son aquellas que expresan el cambio de la energía interna de un sistema, o de calor intercambiado or un sistema a lo largo de un proceso, como consecuencia de la variación de alguna variable termodinámica.
