@@ -465,11 +465,12 @@ Del griego 'en-tropie': dirección intrínseca
   - Macroscópica (relacionada con pérdidas de calor irreversibles), como fue definida inicialmente por Rudolf Clausius en los 1860 y se hara en todo lo que siguen
   - Microscópica (relacionada con la probabilidad estadística de un estado) como hizo Ludwig Boltzmann en 1877
 ]
+#grid(columns:2, column-gutter:1cm, [
 - Un ciclo arbitrario puede aproximarse por un gran numero de ciclos consistentes en: #[
   - 2 procesos adiabáticos
   - 2 procesos isotérmicos
 ]
-#image("assets/figure_2024-11-05-16-44-39.png")
+], image("assets/figure_2024-11-06-15-02-31.png"))
 - Para cada ciclo $i$: #[
   - Si es reversible (Carnot) entonces: $ (Q^i_a)/(Q^i_c)=-(T_a^i)/(T_c^i) => (Q^i_a)/(T^i_a)+(Q^i_c)/(T^i_c) = 0 $
   - Si es irreversible, como el rendimiento es menor que el de un ciclo de Carnot, para un $Q^i_a$ dado es $|Q^i_(c("rev"))| < |Q^i_(c("irrev"))| -> |Q^i_(c("rev"))| > |Q^i_(c("irrev"))|$ $ Q^i_a/T^i_a + Q^i_c/T^i_c < 0 $
@@ -477,14 +478,15 @@ Del griego 'en-tropie': dirección intrínseca
 - Sumando para todos los ciclos, se obtiene: $ sum_i Q^i_a/T^i_a + Q^i_c/T^i_c <= 0 $ Donde el signo $=$ corresponde al ciclo reversible
 - En el limite en que se usa un numero infinito de ciclos para aproximar perfectamente el ciclo inicial se obtiene finalmente la desigualdad de Clausius
 #rect($ integral.cont (delta Q)/T <= 0 $)
+#grid(columns:2, column-gutter: 1cm, [
 #underline[*Entropía*]:
 Sea un ciclo reversible de un sistema cerrado:
-#image("assets/figure_2024-11-05-16-41-08.png")
+
 Por Clausius:
 $ 0 = integral.cont (delta Q)/T = integral_1^2 (delta Q)/T |_a + integral_2^1 (delta Q)/T |_b => integral_1^2 (delta Q)/T |_a - integral_1^2 (delta Q)/T |_b = 0 $
 Para cualquier trayecto reversible: $ integral_1^2 (delta Q)/T |_a = integral_1^2 (delta Q)/T |_b = integral_1^2 (delta Q)/T |_c = ... $
 La entropía (función de estado) se define como:
-#rect($ dif S = (delta Q)/T |_"REV" => S_2 - S_1 = integral_1^2 (delta Q)/T|_"REV" $)
+#rect($ dif S = (delta Q)/T |_"REV" => S_2 - S_1 = integral_1^2 (delta Q)/T|_"REV" $)], image("assets/figure_2024-11-05-16-41-08.png"))
 En procesos adiabáticos reversibles y en prpocesos reversibles de sistemas aíslados: #rect($ dif S = 0 => Delta S = 0 $ )
 
 - Diagrama $T-s$: #[
