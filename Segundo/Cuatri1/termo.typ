@@ -1,3 +1,5 @@
+#import "@preview/diverential:0.2.0": *
+
 #align(center, text(25pt)[*Termodinámica*])
 = 1. Conceptos básicos
 == 1.1. Naturaleza de la Termodinámica
@@ -463,3 +465,107 @@ Del griego 'en-tropie': dirección intrínseca
   - Macroscópica (relacionada con pérdidas de calor irreversibles), como fue definida inicialmente por Rudolf Clausius en los 1860 y se hara en todo lo que siguen
   - Microscópica (relacionada con la probabilidad estadística de un estado) como hizo Ludwig Boltzmann en 1877
 ]
+- Un ciclo arbitrario puede aproximarse por un gran numero de ciclos consistentes en: #[
+  - 2 procesos adiabáticos
+  - 2 procesos isotérmicos
+]
+#image("assets/figure_2024-11-05-16-44-39.png")
+- Para cada ciclo $i$: #[
+  - Si es reversible (Carnot) entonces: $ (Q^i_a)/(Q^i_c)=-(T_a^i)/(T_c^i) => (Q^i_a)/(T^i_a)+(Q^i_c)/(T^i_c) = 0 $
+  - Si es irreversible, como el rendimiento es menor que el de un ciclo de Carnot, para un $Q^i_a$ dado es $|Q^i_(c("rev"))| < |Q^i_(c("irrev"))| -> |Q^i_(c("rev"))| > |Q^i_(c("irrev"))|$ $ Q^i_a/T^i_a + Q^i_c/T^i_c < 0 $
+]
+- Sumando para todos los ciclos, se obtiene: $ sum_i Q^i_a/T^i_a + Q^i_c/T^i_c <= 0 $ Donde el signo $=$ corresponde al ciclo reversible
+- En el limite en que se usa un numero infinito de ciclos para aproximar perfectamente el ciclo inicial se obtiene finalmente la desigualdad de Clausius
+#rect($ integral.cont (delta Q)/T <= 0 $)
+#underline[*Entropía*]:
+Sea un ciclo reversible de un sistema cerrado:
+#image("assets/figure_2024-11-05-16-41-08.png")
+Por Clausius:
+$ 0 = integral.cont (delta Q)/T = integral_1^2 (delta Q)/T |_a + integral_2^1 (delta Q)/T |_b => integral_1^2 (delta Q)/T |_a - integral_1^2 (delta Q)/T |_b = 0 $
+Para cualquier trayecto reversible: $ integral_1^2 (delta Q)/T |_a = integral_1^2 (delta Q)/T |_b = integral_1^2 (delta Q)/T |_c = ... $
+La entropía (función de estado) se define como:
+#rect($ dif S = (delta Q)/T |_"REV" => S_2 - S_1 = integral_1^2 (delta Q)/T|_"REV" $)
+En procesos adiabáticos reversibles y en prpocesos reversibles de sistemas aíslados: #rect($ dif S = 0 => Delta S = 0 $ )
+
+- Diagrama $T-s$: #[
+  - Permite representar en la misma gráfica la temperatura y el calor transmitido reversible (área bajo la curva del proceso)
+  - En un ciclo el área interior es el calor neto intercambiado ($Q_"ciclo" = W$)
+]
+#stack(dir:ltr,image("assets/figure_2024-11-05-16-56-39.png"), image("assets/figure_2024-11-05-16-59-01.png"))
+
+== 6.2 Procesos reales: generación de Entropía
+#grid(columns:2, [
+- Cambio de entropía en procesos irreversibles #[
+- Cerramos el ciclo con un proceso reversible $ integral.cont (delta Q)/T = integral_1^2 (delta Q)/T |_I - integral_1^2 (delta Q)/T |_R = integral_1^2 (delta Q)/T |_I - (S_2-S_1) < 0 $ $ -> Delta S > integral_1^2 (delta Q)/T|_I => dif S > (delta Q)/T |_I $
+]], image("assets/figure_2024-11-05-17-03-38.png")
+)
+*Principio del incremento de entropía:*
+#grid(columns:2,column-gutter: .5cm, [En sistemas aislados: \ En sistemas cerrados adiabáticos:
+], [ #align(horizon)[$ Delta S>0=>dif S>0 $
+]])
+*Generación de entropía*
+$ Delta S = sigma + integral_1^2 (delta Q)/T |_I <=> dif S = delta sigma + (delta Q)/T|_I, sigma > 0, delta sigma > 0 $
+
+- Extensión a sistemas no adiabáticos: #[
+  - El universo es un sistema aislado: $delta Q_E = - delta Q_S$ $ 
+  dif S_U &= dif S_S + dif S_E >=0 \ 
+  dif S_S &= dif (delta Q_S)/T_S + delta sigma_S \
+  dif S_E &= dif (delta Q_E)/T_E + delta sigma_E \
+  \
+  dif S_U &= dif (delta Q_S)/T_S + dif (delta Q_E)/T_E + delta sigma_S + delta sigma_E = delta Q_s[1/T_S - 1/T_E] + delta sigma_S + delta sigma_E >= 0 
+  $
+]
+== 6.3. Relación entre ecuaciones de estado
+- Combinando el primer y segundo principios:
+#grid(align: horizon, columns:3, column-gutter: .5cm, $dif U = delta Q - p dif V \ delta Q = T dif S $, $ dif U = T dif S - p dif V$, [Ecuación de Gibbs])
+$ -> dif S = 1/T dif U + p/T dif V $
+- Desarrollando: 
+$ dif S = 1/T((diff U)/(diff T))_V dif T + 1/T[((diff U)/(diff V))_T+p] dif V $
+Identificando derivadas parciales: 
+$ ((diff S)/(diff T))_V = 1/T((diff U)/(diff T))_V ; ((diff S)/(diff V))_T = 1/T [((diff U)/(diff V))_T + p ] $
+Como la entropía es función de estado, es una diferencial exacta, y cumple la condición de Schwartz:
+$ diff/(diff T)[((diff S)/(diff V))_T]_V = diff/(diff V)[((dif S)/(diff T))_V]_T $
+$ diff/(diff T)[((diff S)/(diff V))_T]_V = diff/(diff T) [1/T [((diff U)/(diff V))_T + p ]]_T = 1/T((diff^2U)/(diff T diff V))-1/T^2 ((diff U)/(diff V))_T+1/T((diff p)/(diff T))_V - p/(T^2) $
+$ diff/(diff V) [((diff S)/(diff T))_V]_T = diff/(diff V)[1/T ((diff U)/(diff T))_V]_T = 1/T ((diff^2 U)/(diff V diff T)) $
+Reordenando y simplificando:
+#stack(spacing: .5cm, dir:ltr,$ -1/T^2 ((diff U)/(diff V))_T + 1/T ((diff p)/(diff T))_V - p/T^2 = 0 -> $, [#rect($ T((diff p)/(diff T))_V = ((diff U)/(diff V))_T + p $)])
+Consecuencias: #[
+  - Relación de Mayer generalizada: #[
+    - Teníamos: $ C_p - C_V = [((diff U)/(diff V))_T + p ]((diff V)/(diff T))_p $
+    - Sustituyendo: $ C_p - C_v = T ((diff p)/(diff T))_V ((diff V)/(diff T))_p $
+    - En términos de coeficientes térmicos: $ C_p - C_V = alpha beta p V T = (alpha^2 V T)/chi_T $
+  ]
+  - Ley de Joule para los gases ideales: $ ((diff U)/(diff V))_T = T ((diff p)/(diff T))_V - p = T p/T - p = 0 => ((diff U)/(diff V))_T = 0 $
+]
+== 6.4 Cálculo de variaciones de entropía
+- La entropía es función de estado, solo hacen falta los estados inicial y final. #[
+  - Teníamos: $ dif S = 1/T ((diff U)/(diff T))_V dif T + 1/T[((diff U)/(diff V))_T + p ]dif V $ y $ C_V = ((diff U)/(diff T))_V ; ((diff U)/(diff V))_T + p = T((diff p)/(diff T))_V $
+  - Entonces: $ dif S = C_V (dif T)/T + ((diff p)/(diff T))_V dif V $
+  - En términos de $p$ y $T$: $ dif S = C_p (dif T)/T - ((diff V)/(diff T))_p dif p $
+  - En términos de $p$ y $V$: $ dif S = C_v/T dvp(T, p, eval:V, evalsym:"(") $ 
+]
+#grid(columns:3, column-gutter: .5cm, 
+[Para: 
+$ dif s &= c_v (dif T)/T + R (dif v)/v \
+dif s &= c_p (dif T)/T - R (dif p)/p \
+dif s &= c_v (dif p)/p + c_p (dif v)/v $], 
+[#underline[Gas ideal]
+$ Delta s &= integral c_v (dif T)/T + R ln (v_2)/(v_1) \
+ Delta s &= integral c_p (dif T)/T - R ln p_2/p_1 \
+ Delta s &= integral c_v (dif p)/p + integral c_p (dif v)/v $
+],
+[#underline[Gas perfecto]
+$ Delta s &= c_v ln (T_2)/(T_1) + R ln v_2/v_1 \
+  Delta s &= c_p ln (T_2)/(T_1) - R ln p_2/p_1 \
+  Delta s &= c_v ln (p_2)/(p_1) + c_p ln (v_2)/(v_1) $
+])
+#pagebreak(weak:true)
+
+= 7. Relaciones Termodinámicas
+== 7.1. Sistemas abiertos: potencial químico
+Ecuación de Gibbs en sistemas cerrados: $ dif U = T dif S - p dif V $ 
+establece la dependencia entre $U$, $S$ y $V$ como: $ U = U(S,V)$
+
+En sistemas abiertos $U$ depende también de la masa (o numero de moles) del sistema. Entonces: $ U = U(S,V,n) $
+Entonces la ecuación de Gibbs puede generalizarse como:
+$ dif U = T dif S - p dif V + mu dif n$ 
