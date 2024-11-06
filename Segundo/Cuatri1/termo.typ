@@ -520,7 +520,7 @@ $ Delta S = sigma + integral_1^2 (delta Q)/T |_I <=> dif S = delta sigma + (delt
 #grid(align: horizon, columns:3, column-gutter: .5cm, $dif U = delta Q - p dif V \ delta Q = T dif S $, $ dif U = T dif S - p dif V$, [Ecuación de Gibbs])
 $ -> dif S = 1/T dif U + p/T dif V $
 - Desarrollando: 
-$ dif S = 1/T((diff U)/(diff T))_V dif T + 1/T[((diff U)/(diff V))_T+p] dif V $
+$ dif S = 1/T ((diff U)/(diff T))_V dif T + 1/T [((diff U)/(diff V))_T+p] dif V $
 Identificando derivadas parciales: 
 $ ((diff S)/(diff T))_V = 1/T((diff U)/(diff T))_V ; ((diff S)/(diff V))_T = 1/T [((diff U)/(diff V))_T + p ] $
 Como la entropía es función de estado, es una diferencial exacta, y cumple la condición de Schwartz:
