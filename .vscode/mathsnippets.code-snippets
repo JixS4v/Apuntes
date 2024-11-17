@@ -1,0 +1,58 @@
+{
+	"Integral": {
+  		"prefix": "int",
+  		"body": [
+    	"integral_${1}^${2}"
+  		],
+  	"description": "Integral definida"
+	},
+	"Closed path integral": {
+		"prefix": "oint",
+		"body": [
+	  "integral.cont_${1}"
+		],
+	"description": "Integral de camino cerrado"
+  	},
+	"Double integral": {
+		"prefix": "iint",
+		"body": [
+	  	"integral.double"
+		],
+	"description": "Integral doble"
+  	},
+	"Partial derivative": {
+		"prefix": "part",
+		"body": [
+	  "dvp(${1},${2})"
+		],
+	"description": "Derivada parcial"
+  	},
+	"Partial derivative evaluated": {
+		"prefix": "epart",
+		"body": [
+	  "dvp(${1},${2}, eval:${3}, evalsym:\")\")"
+		],
+	"description": "Derivada parcial evaluada"
+  	},
+	"Differential of x": {
+		"prefix": "dx",
+		"body": [
+	  "dif x"
+		],
+	"description": "Diferencial de x"
+  	},
+	"Differential of y": {
+		"prefix": "dy",
+		"body": [
+	  "dif y"
+		],
+	"description": "Diferencial de y"
+  	},
+	"Differential of t": {
+		"prefix": "dt",
+		"body": [
+	  "dif t"
+		],
+	"description": "Diferencial de t"
+  	},
+}
