@@ -2,6 +2,10 @@
 
 
 #align(center, text(25pt)[*Mecánica Analítica*])
+
+#outline()
+#pagebreak(weak:true)
+
 = 1. Mecánica Newtoniana
 #underline[*Leyes de Newton*]
 + Si no actúa una fuerza neta sobre un cuerpo, este permanece en su estado inicial de reposo o de movimiento rectilíneo uniforme.
