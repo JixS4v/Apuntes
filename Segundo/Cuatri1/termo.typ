@@ -568,4 +568,30 @@ establece la dependencia entre $U$, $S$ y $V$ como: $ U = U(S,V)$
 
 En sistemas abiertos $U$ depende también de la masa (o numero de moles) del sistema. Entonces: $ U = U(S,V,n) $
 Entonces la ecuación de Gibbs puede generalizarse como:
-$ dif U = T dif S - p dif V + mu dif n$ 
+$ dif U = T dif S - p dif V + mu dif n $ 
+donde $ mu = dvp(U,N,eval: (S,V), evalsym: "(") $
+es el potencial químico del sistema
+
+== Complementos matemáticos - Funciones homogéneas
+- Una función #rect($psi(x_1, ..., x_n)$) se dice que es homogénea de orden $r$ si $ psi(lambda x_1, ..., lambda x_n) = lambda^r phi(x_1, ..., x_n) $
+- Casos particulares #[
+  - $r=0$: magnitudes intensivas $ psi(lambda x_1, ..., lambda x_n) = psi(x_1, ..., x_n) $
+  - $r=1$: magnitudes extensivas $ psi(lambda x_1, ..., lambda x_n) = lambda psi(x_1, ..., x_n) $
+]
+- Ecuaciones para magnitudes extensivas: #[
+  - Adoptando la notación $tilde(x) = lambda x_i $, podemos decir que $tilde(psi)(tilde(x)_1,...,tilde(x)_n) = lambda psi(x_1, ..., x_n)$
+  - Diferenciando con respecto a $lambda$ $dvp(psi, lambda) = sum_(i =1)^(n) dvp(tilde(psi), tilde(x)_i) dv(tilde(x)_i, lambda) = sum_(i=1)^(n) dvp(tilde(psi), tilde(x)_i) x_i = psi(x_1, ..., x_n) forall lambda $
+  - Tomando $lambda = 1$, $tilde(psi)(tilde(x)_i) = psi(x_i)$, y definiendo la magnitud intensiva $y_i = dvp(psi, x_i)$ queda finalmente la Ecuación de Euler $ psi(x_1, ..., x_n) = sum_(i=1)^(n) dvp(psi, x_i) equiv sum_(i=1)^(n)  $
+  - La expresión de la diferencial $dif psi(x_1, ..., x_n) = sum_(i=1)^(n) dvp(psi,x_i, eval:x_(x!=i), evalsym:")") space dif x_i equiv sum_(i=1)^(n) y_i dif x_i $ se llama en Termodinámica Ecuación de Gibbs.
+  - Diferenciando la ecuación de Euler: $ dif psi = sum_(i=1)^(n) [y_i dif x_i + x_i dif y_i] $ Comparando con la ecuación de Gibbs queda; $ sum_(i=1)^(n) x_i dif y_i = 0 $ que es la Ecuación de Gibbs-Duhem
+]
+
+== 7.2. Representación energética
+
+La ecuacion fundamental es la expresión de la energía interna en función de variables independientes extensivas. 
+- Ecuación energética fundamental: $U = U(S,V,n)$ #[
+  - Ecuación de Gibbs: $ dif U = T dif S - p dif V + mu dif n $
+  - Ecuación de Euler : $ dif U = T S - p V + mu n $
+  - Ecuación de Gibbs-Duhem: $ n dif mu = S dif T + V dif p => dif mu = - tilde(s) dif T + tilde(v) dif p $
+]
+- Al expresar la energía interna en términos de sus variables independientes naturales, se obtiene información exhaustiva sobre el sistema.
