@@ -1,8 +1,12 @@
-#import "@preview/diverential:0.2.0": *
+#import "config.typ": *
+
 
 #align(center, text(25pt)[*Termodinámica*])
-= 1. Conceptos básicos
-== 1.1. Naturaleza de la Termodinámica
+
+#show: doc => template(doc)
+
+= Conceptos básicos
+== Naturaleza de la Termodinámica
 #figure(table(
   columns:3,
   table.header[][Microscopico][Macroscopico], [Equlibrio], [Mecanica estadística], [_*Termodinámica*_], [Fuera del equilibrio], [Teoría cinética], [Fenómenos de transporte]
@@ -12,7 +16,7 @@ La termodinámica posee las siguientes características:
 - Es una teoría macroscopica y fenomenológica
 - No hay una hipótesis sobre la estructura de la materia (descripción de solidos y fluidos como medios continuos)
 
-== 1.2. Concepto de un sistema termodinámico: clasificación
+== Concepto de un sistema termodinámico: clasificación
 #underline[*Sistema termodinámico*]: Región _macroscópica_ del espacio delimitada por una superficie cerrada (paredes)
 - Las paredes pueden ser reales o imaginarias.
 - La elección del sistema (paredes) depende del problema que se quiera resolver y de la información de que se dispone (las variables termodinámicas y/o las energías).
@@ -33,7 +37,7 @@ La termodinámica posee las siguientes características:
   [Abiertos], [Intercambian Materia y Energía con el entorno], [Cerrados], [Intercambian Energía con el entorno, pero no Materia], [Aislados], [Ni intercambian materia, ni intercambian energía con el entorno]
 )
 
-== 1.3. Variables de estado: magnitudes extensivas e intensivas
+==  Variables de estado: magnitudes extensivas e intensivas
 #underline[*Variables termodinámicas*]: Atributos de un sistema termodinámico que lo caracterizan en el momento actual y son independientes de su historia pasada.
 
 #underline[*Variables o parámetros de estado*]: Conjunto reducido de parámetros que permite describir al sistema.
@@ -48,13 +52,13 @@ La termodinámica posee las siguientes características:
 
 #underline[*Parámetros intensivos*]: Parámetros que no dependen de la masa, tienen un carácter local. (Presión, tensión superficial). Podemos incluir en estos las magnitudes _específicas_ (por unidad de masa)
 
-== 1.4. Estado de equilibrio termodinámico
+==  Estado de equilibrio termodinámico
 - Se dice que un sistema está en equilibrio termodinámico cuando sus magnitudes termodinámicas son constantes en el tiempo y uniformes en el espacio.
 - Solamente un sistema aislado puede estar estrictamente en equilibrio
 - En sistemas no aislados el equilibrio se establece cuando el sistema no interacciona con el entorno, es decir cuando no hay fuerzas sin equilibrar debidas a diferencias de parámetros intensivos entre sistema y entorno.
 - No debe de confundirse estado de equilibrio con _estado estacionario_
 
-== 1.5. Concepto de proceso termodinámico
+==  Concepto de proceso termodinámico
 - Un proceso termodinámico es el paso de un estado de equilibrio a otro como consecuencia de la interacción del sistema con el entorno.
 - El proceso puede seguirse a través de la variación de las magnitudes termodinámicas #[
 - Funciones de estado, que solo dependen de los estados inicial y final Funciones de proceso
@@ -62,7 +66,7 @@ La termodinámica posee las siguientes características:
 #underline[*Representación gráfica*]: El proceso se puede representar mediante diagramas que muestran la evolucion de unas magnitudes termodinámicas frente a otras. El espacio euclídeo correspondiente se llama espacio termodinámico de estados.
 #figure(image("diagramatermo.png"), caption: [Ejemplo de un diagrama representando un corte del espacio termodinámico de estados])
 
-== 1.6. Tipos de procesos termodinámicos
+==  Tipos de procesos termodinámicos
 #underline[*Procesos cíclicos*]: Procesos en que el estado inicial coincide con el final.
 
 #underline[*Procesos abiertos*]: Procesos en los que al menos una variable cambia entre los dos estados
@@ -80,7 +84,7 @@ $ ((d psi)/(d t))_"exp" << ((d psi)/(d t))_"rel" $
 #underline[*Procesos no estáticos*]: Procesos en que ambos tiemos son comparables: 
 $ Delta t_"exp" approx Delta t_"rel" $
 
-== 1.7. Postulados de la Termodinámica
+==  Postulados de la Termodinámica
 #underline[*Primer postulado de la Termodinámica*]: #[
   - Todo sistema aislado alcanza, con el tiempo, un estado de equilibrio termodinámico que no puede abandonar espontáneamente #[
 - Es de carácter estadístico: concepto de "estado más probable"
@@ -89,7 +93,7 @@ $ Delta t_"exp" approx Delta t_"rel" $
 - Hay que definir una nueva variable: la temperatura (interna e intensiva)
 - Principio cero: los parámetros internos son función de los parámetros externos y de la temperatura.]]
 
-== 1.8 Escalas termométricas
+== Escalas termométricas
 
 #underline[*Definición operacional de temperatura*]:
 - Elección de un sistema de referencia (termómetro)
@@ -101,10 +105,10 @@ $ Delta t_"exp" approx Delta t_"rel" $
 #underline[*Puntos fijos*]: Estados patrón fácilmente reproducibles a los que se asignan valores arbitrarios para determinar la función termométrica. #[
   - Hielo puro en equilibrio con agua pura saturada de aire a 1 atm
   - Agua pura en equilibrio con su vapor a 1 atm
-  - Punto triple del agua (273.16 K)
+  - Punto triple del agua (2716 K)
 ]
 
-== 1.9. Una definición empírica de temperatura
+== Una definición empírica de temperatura
 
 - Buscamos medir la temperatura con distintas masas de gas a volumen constante: #[
   - Tomamos una cierta masa $m_1$ de un gas dado
@@ -120,9 +124,9 @@ Así, se tiene la presión $p$ del gas a la temperatura objetivo $theta_t$, para
 Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar las rectas que cruzan los puntos. El punto donde las rectas correspondientes a los distintos gases se cruzan obtenemos la presión
 
 #pagebreak(weak:true)
-= 2. Primer principio de la Termodinámica
+=  Primer principio de la Termodinámica
 
-== 2.1 Energía interna, calor y Trabajo
+==  Energía interna, calor y Trabajo
 #underline["*Energía*"]: Toda causa capaz de producir _trabajo_
 - Se manifiesta de muchas manenras y puede _transmitirse_ entre sistemas o _transformarse_ de unas formas a otras.
 
@@ -155,7 +159,7 @@ Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar la
   ]
 ]
 
-== 2.2. Conservación de la energía
+==  Conservación de la energía
 - La energía ni se crea ni se destruye, solo se transforma.
 - A escalas subatómicas #[
   - La energía no está sujeta al principio de incertidumbre
@@ -169,7 +173,7 @@ Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar la
   - $Delta (E_"interna" + E_"mecánica") = (Q_"entrante" - Q_"saliente") - (W_"sobre sistema" - W_"por sistema") + (E_"materia entrante" - E_"materia saliente")$
 ]
 
-== 2.3. Formulación para sistemas cerrados
+==  Formulación para sistemas cerrados
 
 - Sin variación de energía cinética y potencial: $  dif U = delta Q - delta W <=> Delta U = Q - W $ #[
   - En procesos cuasietáticos: $ delta Q =  dif  U + delta W =  dif U + p  dif V $ $ Q = Delta U + integral_1^2 p  dif V $
@@ -177,15 +181,15 @@ Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar la
   - En procesos cíclicos ($Delta U = 0$): $ 0 = Q-W <=> Q=W $
 ]
 
-== 2.4. Entalpía
+==  Entalpía
 
 #underline[*Entalpía*]: $H = U + p V => Q|_p = Delta H$
 
 #set math.cases(reverse:true)
 #underline[*Formulación del Primer Principio de la Termodinámica*]: $ cases( U = H - p V -> dif U =  dif  H - p  dif V - V dif p ,  delta Q =  dif U + p dif V) -> dif H = delta Q + V dif p $
 #pagebreak(weak:true)
-= 3. Ecuaciones de estado
-== 3.1. Ecuaciones de estado
+=  Ecuaciones de estado
+==  Ecuaciones de estado
 - #underline[*Ecuación de estado*]: Cualquier función, obtenida teórica o experimentalmente, que relaciona las variables termodinámicas de un sistema. #[
   - Dependerá de las variables escogidas (de acuerdo con el Principio Cero: las variables externas pueden expresarse en función de las variables externas y de la temperatura)
   - Para los sistemas habituales #[
@@ -194,7 +198,7 @@ Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar la
   ]
 ]
 
-== 3.2. Coeficientes térmicos de un sistema
+==  Coeficientes térmicos de un sistema
 - En general, obtener la ecuación térmica de estado no es sencillo
 - Los coeficientes térmicos proporcionan un método general: #linebreak() integración de diferenciales de variables
 $ V = V(theta, p) -> dif V = dvp(V, theta, eval: p, evalsym:"(") dif theta + dvp(V, p, eval: theta, evalsym:"(") dif p $
@@ -219,12 +223,12 @@ Además, hay que especificar completamente un estado $(p, V, theta)$
   - #underline[Ley de Boyle]: a temperatura constante, el producto de la presión por el volumen es constante para una masa dada. Derivando con respecto a $p$:$ (p V)_theta = "constante" => p dvp(V, p, eval: theta, evalsym:"(") + V = 0 => chi_theta = - 1/V dvp(V, p, eval: theta, evalsym:"(") = 1/p $ (coeficiente de compresibilidad isotérmica)
   - #underline[Ley de Gay-Lussac]: a presión constante, el volumen de una masa dada de gas es proporcional a la temperatura. Derivando con respecto a $theta$: $ (V/theta)_p = "constante" => theta dvp(V, theta, eval: p, evalsym:"(") - V = 0 => alpha = 1/V dvp(V, theta, eval: p, evalsym:"(") = 1/theta $ (coeficiente de dilatación isobárica)
   - Entonces: $ dif V = alpha V dif theta - chi_0 V dif p => (dif V)/V = alpha dif theta - chi_0 dif p = (dif theta)/theta - (dif p)/p => p V = "cnst"times theta $
-  - #underline[Ley de Avogadro]: en condiciones normales (0ºC y 1 atm), un mol de cualquier gas ocupa un volumen de 22.4 L. Esto proporciona el estado totalmente definido que permite la determinación de la constante: $ (V_(N C))/n = "cnst" (theta_(N C))/(n p_(N C)) => "cnst" = n [(p_(N C))/(theta_(N C))(V/n)_(N C)]=n tilde(R) $ con $ tilde(R) = 101300/273.15 22.4 = 8310 "J" dot "kmol"^(-1) dot "K"^(-1) $
+  - #underline[Ley de Avogadro]: en condiciones normales (0ºC y 1 atm), un mol de cualquier gas ocupa un volumen de 24 L. Esto proporciona el estado totalmente definido que permite la determinación de la constante: $ (V_(N C))/n = "cnst" (theta_(N C))/(n p_(N C)) => "cnst" = n [(p_(N C))/(theta_(N C))(V/n)_(N C)]=n tilde(R) $ con $ tilde(R) = 101300/2715 24 = 8310 "J" dot "kmol"^(-1) dot "K"^(-1) $
 ]
 #set math.cases(reverse:false)
 Finalmente: $ p V = n tilde(R) theta <=> cases(p tilde(v) = tilde(R) theta, p V = m/M tilde(R) theta = m R theta <=> p v = R theta) $
 
-== 3.3 Propiedades energéticas de un sistema
+== Propiedades energéticas de un sistema
 - #underline[*Definición*]: propiedades energéticas son aquellas que expresan el cambio de la energía interna de un sistema, o de calor intercambiado or un sistema a lo largo de un proceso, como consecuencia de la variación de alguna variable termodinámica.
 - #underline[*Características*]: #[
   - Se obtienen generalmente de forma experimental
@@ -274,8 +278,8 @@ C_V = C_p + [dvp(H, p, eval: theta, evalsym:"(") - V]dvp(p, theta, eval: V, eval
   - Para gases ideales, la ecuación de estado lleva directamente a: $ mu = C_V theta/p ; lambda = C_p theta/V $
 ]
 #pagebreak(weak:true)
-== 4. Procesos Termodinámicos Fundamentales
-== 4.1. Formas de Pfaff del Primer Principio
+==  Procesos Termodinámicos Fundamentales
+==  Formas de Pfaff del Primer Principio
 Hemos obtenido que $ C_v = dvp(U, theta, eval: V, evalsym:"(") l_v = dvp(U, V, eval: theta, evalsym:"(") + p $
 Entonces
 $ delta Q = dif U + p dif V = dvp(U, theta, eval: v, evalsym:"(") dif theta + [dvp(U, V, eval: theta, evalsym:"(") + p] dif V  => delta Q = C_v dif theta + l_v dif V "(Primera forma de Pfaff)" $
@@ -290,7 +294,7 @@ $ lambda = dvp(H, V, eval: p, evalsym:"(") mu = dvp(H, p, eval: v, evalsym:"(") 
 $ delta Q = dif H - V dif p = [dvp(H, p, eval: V, evalsym:"(") - V ] dif p + dvp(H, V, eval: p, evalsym:"(") dif V = mu dif p + lambda dif V $
 $ => delta Q = mu dif p + lambda dif V "(Tercera forma de Pfaff)" $
 
-== 4.2 Procesos politrópicos
+== Procesos politrópicos
 - #underline[*Proceso politrópico*]: 
 Proceso en que la capacidad térmica del sistema permanece constante #[
   - Ecuación: A partir de la Tercera forma de Pfaff: $delta Q = mu dif p + lambda dif V$ #[
@@ -313,7 +317,7 @@ Proceso en que la capacidad térmica del sistema permanece constante #[
     - Isócoro: $ C= C_V => k->oo $ 
     ]
 ]
-== 4.3. Compresibilidad adiabática
+==  Compresibilidad adiabática
 #underline[*Compresibilidad adiabática*]: $ X_(Q=0) = -1/V ((dif V)/(dif p))_(Q=0) $
 La ecuación funcional de este proceso se obtiene considerando $k=gamma$ en la politrópica $ dvp(theta, p, eval: V, evalsym:"(") dif p + gamma dvp(theta, V, eval: p, evalsym:"(") dif V = 0 $
 Derivando con respecto a $p$ obtenemos
@@ -325,7 +329,7 @@ $ - dvp(V, p, eval: theta, evalsym:"(") + gamma ((dif V)/(dif p))_(Q=0) = 0 $
 Dividiendo por V y despejando:
 $ gamma 1/V ((dif V)/(dif p))_theta = 1/V dvp(V, p, eval: theta, evalsym:"(") => chi_(Q=0) = 1/gamma chi_theta $
 
-== 4.4 Procesos de los gases perfectos
+== Procesos de los gases perfectos
 #underline[*Proceso isóbaro de un gas perfecto*]:
 Aplicando la ecuación de estado se obtiene la ecuación del proceso: 
 $ p v_1 = R theta_1; p v_1  = R theta_2 => (v_1)/(theta_1) = (v_2)/(theta_2) $
@@ -374,12 +378,12 @@ $ Delta u  = c_v Delta theta = (R theta_1)/(gamma - 1 )[((p_2)/(p_1))^((gamma -1
 $ q = Delta u + w = 0 $
 
 #pagebreak(weak:true)
-= 5. Segundo Principio de la Termodinámica
-== 5.1 Limitaciones del primer principio
+=  Segundo Principio de la Termodinámica
+== 1 Limitaciones del primer principio
 - Da información sobre la viabilidad energética de los procesos, pero hay procesos naturales no espontáneos, mientras que sus inversos sí lo son
 -> El Segundo Principio determina el sentido de evolución espontánea de los procesos, y cuál es el estado final de equilibrio que se alcanza
 
-== 5.2. Conceptos de motor térmico y de máquina frigorífica
+==  Conceptos de motor térmico y de máquina frigorífica
 #underline[*Motor térmico*]:
 Sistema en el que un fluido evoluciona de forma ciclica intercambiando calor con dos focos, produciendo así trabajo
 
@@ -398,7 +402,7 @@ Efecto frigorífico: $epsilon = (Q_alpha)/(|W|) = (Q_alpha)/(|Q_c|-Q_alpha)$
 Calefacción: $epsilon_c = (|Q_c|)/(|W|) = (|Q_c|)/(|Q_c|-Q_alpha)$
 
 
-== 5.3. Enunciados del Segundo Principio: equivalencia
+==  Enunciados del Segundo Principio: equivalencia
 
 === En términos de motor térmico:
 #underline[Enunciado de Kelvin-Planck]: Es imposible la existencia de una maquina que funcionando ciclicamente solamente absorba calor y produzca trabajo
@@ -408,7 +412,7 @@ El movil o motor de segunda especie es imposible. El movil de segunda especie se
 #underline[Enunciado de Clausius]:
 Es imposible la existencia de un dispositivo, que, funcionando ciclicamente, tenga como unico efecto el paso de calor de un cuerpo frío a otro más caliente
 
-== 5.4. Procesos reversibles e irreversibles
+==  Procesos reversibles e irreversibles
 #underline[*Proceso reversible*]:
 Dado un proceso por el que un sistema pasa de un estado inicial a un estado final, se dice que es reversible si tanto el sistema como el entorno pueden ser devueltos a sus estados iniciales sin una transformación no compensada de calor en trabajo (sin violar el segundo principio)
 -> Todos estos procesos son cuasiestaticos
@@ -426,7 +430,7 @@ La vuelta al estado inicial del sistema y entorno implica una transformación no
   - Cualquier irreversibilidad ocurre en la pared del sistema.
 ]
 
-== 5.5. Ciclo y teoremas de Carnot
+==  Ciclo y teoremas de Carnot
 #underline[*Ciclo de Carnot*]:
 - Se trata de un ciclo externa e internamente reversible
 - Los cuatro procesos reversibles que lo forman son #[
@@ -441,7 +445,7 @@ La vuelta al estado inicial del sistema y entorno implica una transformación no
 #underline[*Segundo teorema de Carnot*]:
 - Todos los motores reversibles que operan entre los mismos focos termicos tienen el mismo rendimiento
 
-== 5.6. Escala termodinámica de temperaturas
+==  Escala termodinámica de temperaturas
 - Es una escala independiente de las características del sistema
 - Está basada en el rendimiento del motor de Carnot (que depende únicamente de las temperaturas de las fuentes)
 
@@ -456,8 +460,8 @@ Esto implica que
 $ f(theta_i, theta_j) = (psi(theta_i))/(psi(theta_j)))$
 Por lo tanto:
 $ (Q_a)/(|Q_c|) = (psi(theta_a))/(psi(theta_c)) equiv (T_a)/(T_c) <-> (Q_a)/(-Q_c) = (T_a)/(T_c) $
-= 6. Entropía e irreversibilidad
-== 6.1. Entropía
+=  Entropía e irreversibilidad
+==  Entropía
 Del griego 'en-tropie': dirección intrínseca
 - La entropía puede introducirse de dos formas complementarias: #[
   - Macroscópica (relacionada con pérdidas de calor irreversibles), como fue definida inicialmente por Rudolf Clausius en los 1860 y se hara en todo lo que siguen
@@ -493,7 +497,7 @@ En procesos adiabáticos reversibles y en prpocesos reversibles de sistemas aís
 ]
 #stack(dir:ltr,image("assets/figure_2024-11-05-16-56-39.png"), image("assets/figure_2024-11-05-16-59-01.png"))
 
-== 6.2 Procesos reales: generación de Entropía
+== Procesos reales: generación de Entropía
 #grid(columns:2, [
 - Cambio de entropía en procesos irreversibles #[
 - Cerramos el ciclo con un proceso reversible $ integral.cont (delta Q)/T = integral_1^2 (delta Q)/T |_I - integral_1^2 (delta Q)/T |_R = integral_1^2 (delta Q)/T |_I - (S_2-S_1) < 0 $ $ -> Delta S > integral_1^2 (delta Q)/T|_I => dif S > (delta Q)/T |_I $
@@ -515,7 +519,7 @@ $ Delta S = sigma + integral_1^2 (delta Q)/T |_I <=> dif S = delta sigma + (delt
   dif S_U &= dif (delta Q_S)/T_S + dif (delta Q_E)/T_E + delta sigma_S + delta sigma_E = delta Q_s[1/T_S - 1/T_E] + delta sigma_S + delta sigma_E >= 0 
   $
 ]
-== 6.3. Relación entre ecuaciones de estado
+==  Relación entre ecuaciones de estado
 - Combinando el primer y segundo principios:
 #grid(align: horizon, columns:3, column-gutter: .5cm, $dif U = delta Q - p dif V \ delta Q = T dif S $, $ dif U = T dif S - p dif V$, [Ecuación de Gibbs])
 $ -> dif S = 1/T dif U + p/T dif V $
@@ -537,7 +541,7 @@ Consecuencias: #[
   ]
   - Ley de Joule para los gases ideales: $ dvp(U, V, eval: T, evalsym:"(") = T dvp(p, T, eval: V, evalsym:"(") - p = T p/T - p = 0 => dvp(U, V, eval: T, evalsym:"(") = 0 $
 ]
-== 6.4 Cálculo de variaciones de entropía
+== Cálculo de variaciones de entropía
 - La entropía es función de estado, solo hacen falta los estados inicial y final. #[
   - Teníamos: $ dif S = 1/T dvp(U, T, eval: V, evalsym:"(") dif T + 1/T [dvp(U, V, eval: T, evalsym:"(") + p ]dif V $ y $ C_V = dvp(U, T, eval: V, evalsym:"(") ; dvp(U, V, eval: T, evalsym:"(") + p = T dvp(p, T, eval: V, evalsym:"(") $
   - Entonces: $ dif S = C_V (dif T)/T + dvp(p, T, eval: V, evalsym:"(") dif V $
@@ -561,8 +565,8 @@ $ Delta s &= c_v ln (T_2)/(T_1) + R ln v_2/v_1 \
 ])
 #pagebreak(weak:true)
 
-= 7. Relaciones Termodinámicas
-== 7.1. Sistemas abiertos: potencial químico
+= Relaciones Termodinámicas
+== Sistemas abiertos: potencial químico
 Ecuación de Gibbs en sistemas cerrados: $ dif U = T dif S - p dif V $ 
 establece la dependencia entre $U$, $S$ y $V$ como: $ U = U(S,V)$
 
@@ -586,7 +590,7 @@ es el potencial químico del sistema
   - Diferenciando la ecuación de Euler: $ dif psi = sum_(i=1)^(n) [y_i dif x_i + x_i dif y_i] $ Comparando con la ecuación de Gibbs queda; $ sum_(i=1)^(n) x_i dif y_i = 0 $ que es la Ecuación de Gibbs-Duhem
 ]
 
-== 7.2. Representación energética
+== Representación energética
 
 La ecuacion fundamental es la expresión de la energía interna en función de variables independientes extensivas. 
 - Ecuación energética fundamental: $U = U(S,V,n)$ #[

@@ -1,12 +1,11 @@
-#import "@preview/diverential:0.2.0": *
-
+#import "config.typ": *
 
 #align(center, text(25pt)[*Mecánica Analítica*])
 
-#outline()
-#pagebreak(weak:true)
 
-= 1. Mecánica Newtoniana
+#show: doc => template(doc)
+
+= Mecánica Newtoniana
 #underline[*Leyes de Newton*]
 + Si no actúa una fuerza neta sobre un cuerpo, este permanece en su estado inicial de reposo o de movimiento rectilíneo uniforme.
 + La relación que existe entre la fuerza neta que se aplica a un cuerpo y la
@@ -69,9 +68,8 @@ Aplicado a las fuerzas:
 
 #underline[*Centro de masas*]:
 El centro de masas de un sistema de partículas es el punto que se comporta como si toda la masa del sistema estuviera concentrada en él. Se puede calcular como: $arrow(R) = (1/M) sum_(i=1)^N m_i arrow(r_i)$
-#pagebreak(weak:true)
-= 2. Formulación Lagrangiana
-== 2.1. Prerequisitos
+= Formulación Lagrangiana
+== Prerequisitos
 #underline[*Ligadura*]: Restricción del movimiento de una partícula.
 Tipos de ligadura:
 - Ligaduras holónomas: Reducen el grado de libertad
@@ -91,7 +89,7 @@ Definimos el espacio de configuraciones como todas las posiciones instantáneas 
 #underline[*Desplazamientos virtuales*]:
 Un desplazamiento virtual es un desplazamiento infinitesimal que no viola las ligaduras del sistema, realizado en un instante dado. Se puede escribir como $delta q_i$. El tiempo en este caso permanece fijado.
 
-== 2.2. Principio de D'Alembert
+== Principio de D'Alembert
 Podemos positar que en un sistema en equilibrio donde $F_i=0$, $F_i dot delta r_i$, el trabajo virtual, también será 0. Entonces, la suma de todos estos productos también se anulará: $ sum_i F_i dot delta r_i = 0 $
 Descomponemos $F_i$ en dos partes, la fuerza aplicada $F_i^((a))$ y la fuerza de ligadura $f_i$: $ F_i = F_i^((a)) + f_i $
 Entonces, $ sum_i F_i^((a)) dot delta r_i + sum_i f_i dot delta r_i = 0 $
@@ -109,7 +107,7 @@ $ sum_i (F_i^((a))-p_i) dot delta r_i = 0 $
 
 Esto es el Principio de D'Alembert.
 
-== 2.3. Derivación de las ecuaciones de Lagrange
+== Derivación de las ecuaciones de Lagrange
 
 Hemos conseguido nuestro objetivo en que las fuerzas de ligadura ya no aparecen, y se puede omitir el superíndice $(a)$. Aún no está en una forma que nos permita desarollar ecuaciones de movimiento para el sistema. Debemos transfomar el principio en una expresión de desplazamientos virtuales de las coordenadas generalizadas, que son independientes entre sí (para ligaduras holónomas), para que los coeficientes de las $delta q_i$ puedan ser nulos.
 Empezamos por las ecuaciones de transformación: 
@@ -158,7 +156,7 @@ Es importante notar que para un conjunto particular de ecuaciones de movimiento 
 $ L'(q,dot(q), t) = L(q, dot(q), t) + (dif F)/(dif t) $
 es un Lagrangiano resultando en las mismas ecuaciones de movimiento. Aunque el Lagrangiano definido en función del potencial y la energía cinética es siempre apropiado para un sistema conservativo, no es el único Lagrangiano apropiado para el sistema dado.
 
-== 2.4. Potencial generalizado
+== Potencial generalizado
 Las ecuaciones de Lagrange se pueden escribir en función del Lagrangiano aunque no haya una función potencial $V$ mientras que las fuerzas generalizadas sean obtenidas por una función $U(q_j, dot(q)_j)$ por la fórmula
 $ Q_j = - (diff U)/(diff q_j) + dif/(diff t)((diff U)/(diff dot(q)_j)) $
 En tal caso, las ecuaciones de Lagrange siguen siendo válidas con el Lagrangiano dado por
@@ -189,7 +187,7 @@ Sustituyendo $E_x$ y $(arrow(V) times arrow(B))_x$ estas expresiones, obtenemos 
 $ m dot.double(x)=q[E_x+(arrow(v)times arrow(B))_x] $
 Vemos que esta es idéntica a la expresión de la fuerza de Lorentz, mostrando que podemos obtenerla a través de las ecuaciones de Lagrange.
 
-== 2.5. Función de disipación
+== Función de disipación
 Si hay fuerzas no conservativas que actuan sobre el sistema, las ecuaciones de Lagrange se pueden escribir de forma $ dif/(dif t) ((diff L)/(diff dot(q)_j)) - (diff L)/(diff q_j))= Q_j $
 Donde $L$ contiene el potencial de las fuerzas conservadoras como anteriormente, y $Q_j$ representa las fuerzas que no derivan de un potencial. Esta situación ocurre cuando hay fuerzas friccionales presentes. Ocurre frecuentemente cuando la fuerza de fricción es proporcional a la velocidad de la partícula, tal que su componente $x$ tiene como forma $ F_(f x) = - k_x v_x $ 
 Fuerzas de fricción de este tipo se pueden derivar en terminos de la función $ cal(F)=1/2 sum_i (k_x v_(i x)^2 + k_y v_(i y)^2 + k_z v_(i z)^2) $
@@ -200,16 +198,16 @@ Le podemos dar también una interpretación física. El trabajo realizado por el
 Por lo tanto, $2 cal(F)$ es la tasa de disipación de energía por la fricción. La componente de la fuerza generalizada resultando de la fricción es $ Q_j = sum_i arrow(F)_f_i dot (diff arrow(r)_i)/(diff q_j) &= - sum_i nabla_v cal(F) dot (diff arrow(r)_i)/(diff q_j) \ &= - sum nabla_v cal(F) dot (diff dot(arrow(r))_i)/(diff dot(q)_j) \ &=-(diff cal(F))/(diff dot(q)_j) $
 Por lo que las ecuaciones de Lagrange se escriben como $ dif/(dif t) ((diff L)/(diff dot(q)_j))- (diff L)/(diff q_j) + (diff cal(F))/(diff dot(q)_j) = 0$
 
-== 2.6 Principio de Hamilton
+== Principio de Hamilton
 Hemos conseguido obtener las ecuaciones de Lagrange a partir de un estado instantaneo del sistema y desplazamientos virtuales pequeños sobre este estado. Es decir, a partir de un principio diferencial, como el de D'Alembert. Ahora vamos a obtener las ecuaciones de Lagrange a partir de un principio que considera el movimiento completo del sistema entre dos tiempos $t_1$ y $t_2$. Un principio de esta clase se conoce como un principio integral.
 
-=== 2.6.1. Acción
+=== Acción
 Antes de presentar este principio, el significado de un movimiento del sistema entre $t_1$ y $t_2$ debe de ser enunciado en un lenguaje más preciso. Lo que estamos describiendo en este caso es el camino que toma el sistema en el _espacio de configuraciones_. El tiempo se puede considerar como un parámetro de la curva, a cada punto del camino hay uno o mas valores temporales asociados. Es importante notar que el camino del sistema dentro de este espacio no está necesariamente ligado a un camino en el espacio físico, sino que describe una configuración en un instante dado. Definimos entonces la acción $S$ como la integral de la función Lagrangiana entre los tiempos $t_1$ y $t_2$. $ S = integral_(t_1)^(t_2) L dif t $ 
 
-=== 2.6.2. Principio de Hamilton
+=== Principio de Hamilton
 El principio de Hamilton enuncia que la acción (definida anteriormente) toma un valor _estacionario_. Es decir, que el Lagrangiano es la función que minimiza la acción. Podemos decir entonces que la variación de la acción es nula $delta S = 0$.
 
-=== 2.6.3. Derivación de las ecuaciones de Lagrange a partir del principio de Hamilton
+=== Derivación de las ecuaciones de Lagrange 
 Partamos de la integral de acción:
 $ S = integral_(t_1)^(t_2) L(q_1(t),q_2(t),...,dot(q_1)(t), dot(q_2)(t), ..., t) dif t $ 
 Vamos a obtener su variación considerando $S$ una función de un parámetro $alpha$ que distingue un posible conjunto de caminos entre $t_1$ y $t_2$ $q_n(t, alpha)$. Entonces, podemos introducir $alpha$ como
@@ -229,10 +227,10 @@ $ delta S = integral_(t_1)^(t_2) sum_i ((diff L)/(diff q_i) - dif/dif(t) ((diff 
 Sabiendo que según el principio de Hamilton, $delta S$ es nulo, y que la variación de $q_i$ es arbitraria, nos queda que la primera porción de la integral anterior debe ser nulo. Por lo que obtenemos las ecuaciones de Lagrange:
 $ (diff L)/(diff q_i) - dif/dif(t) ((diff L)/(diff dot(q)_i)) = 0  "para " i "coordenadas generalizadas" $
 
-=== 2.6.4 Extendiendo el principio de Hamilton a sistemas con ligaduras
-Sabemos resolver problemas con ligaduras holónomas eligiendo coordenadas para que las ecuaciones de ligadura se conviertan en ecuaciones triviales $0=0$. Vamos a utilizar el Principio de Hamilton para poder resolver problemas que involucran ligaduras utilizando los multiplicadores de Lagrange.
+=== Sistemas con ligaduras holónomas
+Hemos aprendido a resolver problemas con ligaduras holónomas eligiendo coordenadas para que las ecuaciones de ligadura se conviertan en ecuaciones triviales $0=0$. Vamos a extender el Principio de Hamilton para poder resolver problemas que involucran ligaduras utilizando los multiplicadores de Lagrange.
 
-Primero consideremos las ligaduras holónomas. Cuando derivamos las ecuaciones de Lagrange, las ligaduras holónomas aparecen en el último paso cuando las variaciones en las coordenadas generalizadas ya eran consideradas independientes entre sí. Sin embargo, las variaciones de los desplazamientos virtuales de estas no tienen que conformar con las ligaduras. Si hay $n$ variables y $m$ ecuaciones de ligadura $f_alpha$ de forma $f(q_1, ..., q_n, t) = 0$ los desplazamientos virtuales adicionales se pueden eliminar por el método de los multiplicadores indeterminados de Lagrange.
+Cuando derivamos las ecuaciones de Lagrange, las ligaduras holónomas aparecen en el último paso cuando las variaciones en las coordenadas generalizadas ya eran consideradas independientes entre sí. Sin embargo, las variaciones de los desplazamientos virtuales de estas no tienen que conformar con las ligaduras. Si hay $n$ variables y $m$ ecuaciones de ligadura $f_alpha$ de forma $f(q_1, ..., q_n, t) = 0$ los desplazamientos virtuales adicionales se pueden eliminar por el método de los multiplicadores indeterminados de Lagrange.
 
 Modificamos la integral de acción para incluir los multiplicadores de Lagrange:
 $ S = integral_1^2 (L + sum_(alpha=1)^(m) lambda_alpha f_alpha) dif t $
@@ -241,7 +239,7 @@ Sin embargo, las variaciones de los desplazamientos virtuales $delta q_i$ no son
 para $k = 1, ..., m $. La igualdadp proviene de la elección de los $lambda_alpha$. También tenemos las mismas expresiónes que esta ecuación para $k = m + 1, ..., n $ donde la igualdad sale de las variaciones virtuales de los $delta q_i$. Esto resuelve el sistema con el coste de introducir las $m$ funciones $lambda_alpha$.. Podemos entender esto considerando que as ecuaciones para $k = 1, ..., n$ se pueden expresar como $ d/(dif t) dvp(L,dot(q)_k) - dvp(L,q_k) = - sum_(alpha = 1)^(m) lambda_alpha dvp(f_alpha,q_k) = Q_k $
 donde $Q_k$ son las fuerzas generalizadas. Las funciones, $Q_k$ tienen las magnitudes de las fuerzas necesarias para producir las ligaduras individuales. Sin embargo, como la eleccción de '+' en el tercer térmimno de las ecuaciones de Lagrange modificadas es arbitraria, solo podemos determinar matemáticamente el valor absoluto de la fuerza, no su dirección. Esto implica que es necesario entender el significado físico de estas fuerzas para poder determinar sus direcciones.
 
-== 2.7. Teoremas de conservación y simetrías
+== Teoremas de conservación y simetrías
 Resolver las ecuaciones de movimiento no es siempre posible, sin embargo, podemos extraer mucha información sobre la naturaleza física del movimiento del sistema. En muchos problemas, un gran número de primeras integrales de las ecuaciones de movimiento es imediatamente obtenible, y estas toman la forma $ f(q_1, ..., q_n, dot(q)_1, ..., q_n, t) = "constante" $ siendo ecuaciones diferenciales de orden 1. Estas primeras integrales son de interés porque nos dicen cosas sobre el sistema físico. Inccluyen, por ejemplo, las leyes de conservación. 
 
 Consideremos por ejemplo un sistema de puntos de masa bajo la influencia de fuerzas que derivan de potenciales dependientes solo de la posición: $ dvp(L,dot(x)_i) equiv dvp(T,dot(x)_i) - dvp(V,dot(x)_i) = dvp(T,dot(x)_i) = diff/(diff dot(x_i)) sum 1/2 m_i(dot(x)^2_i + dot(y)^2_i + dot(z)^2_i ) = m_i dot(x)_i = p_(i x) $ 
