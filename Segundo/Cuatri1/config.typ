@@ -1,5 +1,10 @@
 
 #import "@preview/diverential:0.2.0": *
+#let scr(it) = text(
+  features: ("ss01",),
+  box($cal(it)$),
+)
+
 #let template(doc)= {
 
 set heading(numbering: "1.1.1.")
@@ -37,3 +42,4 @@ outline(title: [Índice], indent: auto, fill: none)
 
 doc
 }
+
