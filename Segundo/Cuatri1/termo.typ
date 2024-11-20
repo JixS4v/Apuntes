@@ -278,7 +278,7 @@ C_V = C_p + [dvp(H, p, eval: theta, evalsym:"(") - V]dvp(p, theta, eval: V, eval
   - Para gases ideales, la ecuación de estado lleva directamente a: $ mu = C_V theta/p ; lambda = C_p theta/V $
 ]
 #pagebreak(weak:true)
-==  Procesos Termodinámicos Fundamentales
+=  Procesos Termodinámicos Fundamentales
 ==  Formas de Pfaff del Primer Principio
 Hemos obtenido que $ C_v = dvp(U, theta, eval: V, evalsym:"(") l_v = dvp(U, V, eval: theta, evalsym:"(") + p $
 Entonces
