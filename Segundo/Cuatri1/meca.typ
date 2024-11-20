@@ -300,3 +300,24 @@ entonces podemos decir que
 $ dv(h,t) + dvp(L,t) = sum_j dvp(cal(F),dot(q)_j)dot(q)_j $
 Por la definición de $cal(F)$, es una función homogénea de las velocidades generalizadas de grado 2. Entonces, aplicando el teorema de Euler, obtenemos: $ dv(h,t) = -2 cal(F) - dvp(L ,t) $
 Si $L$ no es una función explícita del tiempo, y el sistema es tal que $h$ es igual a la energía total, entonces $2 cal(F)$ es la tasa de disipación de la energía.
+
+= Formalismo Hamiltoniano
+Hemos desarrollado la formulación Lagrangiana y estudiado diferentes propiedades dentro de esta. Ahora vamos a introducir el formalismo Hamiltoniano, una formulación alternativa de la teoría. 
+
+== Transformaciones de Legrendre y Ecuaciones de Movimiento de Hamilton
+
+En el formalismo Lagrangiano, un sistema con $n$ grados de libertad posee $n$ ecuaciones de movimiento de forma $dif/(dif t)(dvp(L,dot(q)_i)) - dvp(L,q_i) $
+Como las ecuaciones son de orden 2, el movimiento del sistema solo está determinado para todo el tiempo cuando $2n$ condiciones iniciales se especifican, por ejemplo, las $n$ $q_i$ y n $dot(q)_i$ en un instante dado $t_1$ o las $n$ $q_i$ en dos instantes $t_1$ y $t_2$. Representamos el estado de el sistema con un punto en un espacio de configuraciones $n$-dimensional cuyas coordenadas son las $n$ ccoordenadas generalizadas $q_i$ y siguen el movimiento del sistema a lo largo del tiempo. Físicamente, en el punto de vista Lagrangiano un sistema con $n$ grados de libertad es un problema de $n$ variables indepenidientes $q_i (t)$, y $dot(q)_i$ aparece únicamente como una notación conveniene para indicar la derivada temporal de $q_i$. Las $n$ coordenadas deben ser independientes entre sí. En el formalismo Hamiltoniano no puede haber ecuaciones de ligadura entre las coordenadas. Si las $n$ coordenadas no son independientes, un conjunto reducido de $m$ coordenadas (con $m<n$), debe ser usado para la formulación del problema antes de poder proceder con el resto de pasos.
+
+El formalismo Hamiltoniano se basa en un punto de vista fundamentalmente diferente. Se busca describir el movimiento en términos de ecuaciones de primer orden. Como el número de conidciones iniciales determinando el movimiento debe de seguir siendo $2n$, debe haber $2n$ ecuaciones de primer orden expresadas con $2n$ variables independientes. Entonces las $2n$ ecuaciones de movimiento describen el comportamiento del sistema en un espacio de fases cuyas coordenadas son las $2n$ variables independientes. Al doblar el número de cantidades independientes, es natural elegir que la mitad de ellas sean $n$ coordenadas generalizadas $q_i$. Como veremos, el formalismo es casi simétrico si elegimos que la otra mitad de estas coordenadas sean los momentos conjugados $p_i$ ya introducidos previamente: $ p_i = dvp(L(q_i, dot(q)_j, t) ,dot(q)_i) $
+Donde el índice $j$ representa el conjunto de coordenadas y velocidades generalizadas. Las cantidades $(q,p)$ se conocen como las variables canónicas. 
+Desde un punto de vista matemático, se puede decir que las $q$ y $dot(q)$ se han tratado como variables distintas. En las ecuaciones de Lagrange, la derivada parcial de $L$ con respecto a $q_i$ significa la derivada tomada con las otras $q$ y todas las $dot(q)$ constantes. Similarmente, las derivadas parciales con respecto a $dot(q)_i$, el resto de $dot(q)$ y todas las $q$ se mantienen constantes. Tratandolo estrictamente como un problema matemático, la transición de formulación Lagrangiana a formulación Hamiltoniana corresponde a un cambio de variable: de $q, dot(q), t$ a $q, p, t$, donde $p$ se relaciona a $q$ y $dot(q)$ por la ecuación anterior. El proceso para cambiar las variables de esta forma es dado por la transformación de Legendre.
+
+Consideremos una función con solo dos variables $f(x,y)$, para que un diferencial de $f$ tenga como forma $ dif f = u dif x + v dif y $ 
+Donde $ u = dvp(f,y) quad v=dvp(f,y) $
+Ahora queremos cambiar la base de descripción de $x,y$ a un conjunto distinto de variables $u, y$ para que las cantidades diferenciales se expresen en términos de los diferenciales $dif u$ y $dif y$. Sea $g$ una función de $u$ y de $y$ definida por la función $ g = f- u x $
+Un diferencial de $g$ está dado entonces por $ dif g = dif f - u dif x - x dif u $ 
+O, sustituyendo el diferencial de $f$, $ dif g = v dif y - x dif u $ 
+Que es exactamente la forma que deseamos. Las cantidades $x$ y $v$ son ahora funciones de las variables $u$ e $y$ dadas por las relaciones $ x= -dvp(g,u) quad v = dvp(g,y) $
+que son entonces análogos a los diferenciales de $u$ y $v$ vistos anteriormente.
+La transformación de Legendre así definida es utilizada a menudo en termodinámica. El primer principio relaciona el cambio diferencial en energía total con el cambio de calor y el trabajo realizado, tal que $ dif U = dif Q - dif W $.
