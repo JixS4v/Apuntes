@@ -599,3 +599,43 @@ La ecuacion fundamental es la expresión de la energía interna en función de v
   - Ecuación de Gibbs-Duhem: $ n dif mu = S dif T + V dif p => dif mu = - tilde(s) dif T + tilde(v) dif p $
 ]
 - Al expresar la energía interna en términos de sus variables independientes naturales, se obtiene información exhaustiva sobre el sistema.
+
+Por ejemplo, en el caso de un sistema cerrado: 
+$ U = U(S, V) quad dif U = T dif S - p dif V $
+Parciales primeras : $ dvp(U,S, eval:V, evalsym:")")=T quad ; quad dvp(U,V, eval:S, evalsym:")")=-p $
+Eliminando $S$ se obtiene la ecuación térmica de estado: $p=p(T,V)$
+Parciales segundas: 
+$ dvp(U,S, eval:V, evalsym:")", deg:2) = dvp(T,S, eval:V, evalsym:")") = T 1/T dvp(T,S, eval:V, evalsym:")") = T/C_v => C_v = T dvp(U,S, eval:V, evalsym:")", deg:2)^(-1) $
+$ dvp(U,V, eval:S, evalsym:")", deg:2) = dvp(T,S, eval:V, evalsym:")")=1/(V chi_S)=> chi_S = [V dvp(U,V, eval:S, evalsym:")")]^(-1) $
+
+*Criterio de evolución en procesos no estáticos*
+Consideremos un sistema cerrado que interacciona térmica y mecánicamente con un foco
+#image("assets/figure_2024-11-20-19-51-21.png")
+Si inicialmente la presión y la temperatura son distintas en el sistema y el foco, el sistema completo experimentará un proceso irreversible: 
+$ Delta S_U = Delta S + Delta S_F > 0 $
+El proceso en el foco es reversible. Así, si se transfiere un calor $Q$ al sistema se tiene: $ Delta S_F = - Q/(T_F) $
+Entonces: $ Delta S - Q/(T_F) = 0 $
+Aplicando el primer principio: $ Delta U = Q - p_F Delta V $
+Despejando $Q$: $ T_F Delta S > Delta U + p_f Delta V $ 
+Esta condición puede aplicarse para estudiar la evolución de sistemas con distintas ligaduras si se formula con el potencial adecuado (variables naturales)
+$ S = "cte", V= "cte":$
+$ Delta U < T_F Delta S - p_F Delta V = 0 -> Delta U < 0 $
+La energía interna disminuye por lo que el estado final de equilibrio es un mínimo.
+
+== Representación entrópica
+La ecuación fundamental es la expresión de la entropía en función de variables independientes extensivas: 
+- Ecuación entrópica fundamental: $ S = S(U,V,n) $ #[
+  - Ecuación de Gibbs: $ dif S = 1/T dif U + p/T dif V - mu/T dif n $
+  - Ecuación de Euler: $ S = 1/T U + p/T V - mu/T n $
+  - Ecuación de Gibbs-Duhem: $ U dif(1/T) + V dif (p/T) - n dif(mu/T) = 0 $
+]
+- También se obtiene información exhaustiva sobre el sistema:
+Por ejemplo, un sistema cerrado: $ S=S(U,V) quad dif S = 1/T dif U + p/T dif V $
+Parciales primeras: 
+$ dvp(S,U, eval:V, evalsym:")") = 1/T quad ; quad dvp(S,V, eval:U, evalsym:")") = P/T -> p = (dvp(S,V, eval:U, evalsym:")")/dvp(S,U, eval:V, evalsym:")")) $
+El formalismo se complica algo pero proporciona un criterio en un caso significativo.
+- Criterio de evolución en procesos no estáticos
+- $U="cte"$, $V="cte"$: sistema aislado
+$ Delta S > 1/(T_F) Delta U + (p_F)/(T_F) Delta V = 0 -> Delta S > 0 $
+La entropía aumenta -> El estado final de equilibrio es un máximo
+
