@@ -637,5 +637,56 @@ El formalismo se complica algo pero proporciona un criterio en un caso significa
 - Criterio de evolución en procesos no estáticos
 - $U="cte"$, $V="cte"$: sistema aislado
 $ Delta S > 1/(T_F) Delta U + (p_F)/(T_F) Delta V = 0 -> Delta S > 0 $
-La entropía aumenta -> El estado final de equilibrio es un máximo
+La entropía aumenta $->$ El estado final de equilibrio es un máximo
+
+== Condiciones de equilibrio de un sistema compuesto
+Considerand 2 sistemas separados por una pared, el conjunto aislado
+La condicioón de equilibrio corresponde al maximo de entropía $S$:
+$ S = S_1(U_1, V_1, n_1) + S_2(U_2, V_2, n_2)$
+Vamos a obtener su expresión para diferentes tipos de pared: 
+- Pared diatérmana, fija e impermeable
+$ dif S = dvp(S_1,U_1) dif U_1 + dvp(S_2,U_2) dif U_2 = 1/T_1 dif U_1 + 1/T_2 dif U_2 $
+
+El conjunto es aíslado $-> U = U_1+U_2 = "cte" -> dif U_2 = -dif U_1 $ 
+$ => dif S = (1/T_1 - 1/T_2) dif U_1 $ 
+El equlilibrio corresponde al maximo de entropía por lo que
+$ dif S = 0 -> (1/T_1 - 1/T_2) = 0 -> T_1 = T_2 $
+
+- Pared diatérmana, móvil e impermeable
+$ dif S &= dvp(S_1,U_1) dif U_1 =+ dvp(S_2,U_2) dif U_2 + dvp(S_1,V_1) dif V_1 + dvp(S_2,V_2) dif V_2 \ &= 1/T_1 dif U_1 + 1/T_2 dif U_2 (p_1)/(T_1) dif V_1 + (p_2)/(T_2) dif V_2 $
+El conjunto es aíslado -> $dif U_2 = - dif U_1 $ y $ V= V_1 + V_2-> dif V_2 = -dif V_1$ 
+$ => dif S = (1/T_1 - 1/T_2) dif U_1 + ((p_1)/T_1 - (p_2)/T_2) dif V_1 $
+El equliibrio corresponde al maximo de entropía por lo que
+$ dif S = 0 -> (1/T_1 - 1/T_2) = 0; ((p_1)/T_1 - (p_2)/T_2) = 0 -> T_1 = T_2; p_1 = p_2 $
+
+- Pared diatérmana, fija y permeable
+$ dif S = dvp(S_1,D_1) dif U_1 + dvp(S_2,U_2) dif U_2 + dvp( S_1,n_1) dif n_1 + dvp(S_2,n_2) dif n_2 = 1/T_1 dif U_1 + 1/T_2 dif U_2 - dvp(mu_1,T_1) dif n_1 - dvp(mu_2,T_2) dif n_2 $
+El conjunto es aíslado $->$ $dif U_2 = - dif U_1$ y también $n = n_1 + n_2 => dif n_2 = - dif n_1$
+$ => dif S = (1/T_1 - 1/T_2 ) dif U_1 - ((mu_1)/T_1 - (mu_2)/T_2 ) dif n_1 $
+El equlibrio corresponde al maximo de entropía por lo que
+$ dif S = 0 -> (1/T_1 - 1/T_2 ) = 0; ((mu_1)/T_1 - (mu_2)/T_2) = 0 -> T_1 = T_2 space mu_1 = mu_2 $
+
+== Limitaciones de la representación energética
+- Para calcular magnitudes otras que $C_v$ o $chi_S$ hay que usar la relación de Mayer generalizada (para $C_p$), y para los coeficientes térmicos
+$ T = T(S,V) => dif T = dvp(U,S, eval:V, evalsym:")", deg: 2) dif S + dvp(U, V,S) dif V quad T = dvp(U,S, eval:V, evalsym:")") $
+$ p = p(S,V) => -dif p = dvp(U,S,V) dif S + dvp(U,V, eval:S, evalsym:")", deg:2 ) dif V quad p = dvp(U,V, eval:S, evalsym:")")  $
+Por ejemplo, $beta$: poniendo $dif V = 0 $ y eliminando $dif S $: $ beta = 1/p dvp(p,T, eval:V, evalsym:")") = dvp(U,V, eval:S, evalsym:")")^(-1) dvp(U,S,V) dvp(U,S, eval:V, evalsym:")", deg:2 )^(-1) $
+Vemos que no es práctico. Exploremos una alternativa
+== Transformación de Legendre
+Dada una función $psi$ de las variables extensivas $x_i$, vamos a definir una función cuyas variables naturales sean las intensivas $y_i$, es decir 
+$ psi(x_1,..., x_n) => phi(y_1,...,y_n) quad y_i dvp(psi,x_i) $
+Entonces, definimos la transformación de Legendre para un conjunto parcial de variables (las $k$) primeras: 
+$ phi(y_1,..., y_k, x_(k+1), ..., x_n)&=psi - sum_(i=1)^(k) y_i x_i \ &= psi - sum_(i=1)^(k) x_i dvp(psi,x_i) $
+
+== Entalpía
+La magnitud resultante de sustituir V por su variable conjugada $p$ mediante una transformación de Legendre sobre $U$ se denomina entalpía y se denota $H$:
+$ U -> U-V dvp(U,V, eval:S, evalsym:")") => H = U + p V $ 
+
+En la ecuación de Gibbs: 
+$ dif H = dif U + dif (p V) = (T dif S - p dif V + mu dif n ) + p dif V + V dif p $
+$-> dif H = T dif S + V dif p + mu dif n quad -> H = H(S,p,n) $ 
+
+En las ecuaciones de Euler y Gibbs-Duhem
+$ H = T S + mu n $
+$ n dif mu = - S dif T + V dif p $
 
