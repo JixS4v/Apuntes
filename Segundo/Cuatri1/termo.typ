@@ -690,3 +690,93 @@ En las ecuaciones de Euler y Gibbs-Duhem
 $ H = T S + mu n $
 $ n dif mu = - S dif T + V dif p $
 
+=== Información obtenible en sistemas cerrados
+
+- Parciales primeras: $ dvp(H,S, eval:p, evalsym:")") = T space ; space dvp(H,p, eval:S, evalsym:")") = V => p =  p(T,V) $
+- Parciales segundas 
+$ dvp(H,S, eval:p, evalsym:")", deg:2) = T/T dvp(T,S, eval:, evalsym:")") = T/C_p => C_p = T dvp(H,S, eval:p, evalsym:")", deg: 2)^(-1)$
+$ dvp(H,p, eval:S, evalsym:")", deg:2 ) = dvp(V,p, eval:S, evalsym:")") = -V chi_S => chi_S = -1/V dvp(H,p, eval:S, evalsym:")" , deg:2) $
+
+=== Criterio de evolución en procesos no estáticos
+- $ S = "cte", p=p_F="cte"$: $H$ es el potencial natural: $ Delta U < T_F Delta S - p_F Delta V = -p_F Delta V $
+$ -> Delta U + p_F Delta V < 0 $
+Pero
+$ H = U+p V -> Delta H = Delta U + p_F Delta V < 0 $
+$ -> Delta H < 0 $
+La entalpía disminuye por lo que el estado final de equilibrio es un mínimo.
+
+== Potencial de Hemholtz
+La magnitud resultante de sustituir $S$ por su variable conjugada $T$ mediante una transformación de Legendre sobre $U$ se denomina potencial de Hemholtz y se denota $F$:
+$ U -> U-S dvp(U,S, eval:V, evalsym:")") => F = U-T S $
+
+En la ecuación de Gibbs:
+$ dif F &= dif U - dif (T S ) \ &= (T dif S - p dif V + mu dif n ) - T dif S - S dif T \ &= -S dif T - p dif V + mu dif n$
+$ => F = F(T,V,N ) $
+
+En las ecuaciones de Euler y Gibbs-Duhem:
+$ F = - p V + mu n $
+$ n dif mu = -S dif T + V dif p $
+
+=== Información obtenible en sistemas cerrados
+- Parciales primeras: 
+$ dvp(F,T, eval:V, evalsym:")") = -S space ; space dvp(F,V, eval:T, evalsym:")") = - p -> space p = p(T,V) $
+- Parciales segundas: 
+$ dvp(F,V, eval:T, evalsym:")", deg:2) = - dvp(p,V, eval:T, evalsym:")") = 1/(V chi_T ) => chi_T = [V dvp(F,V, eval:T, evalsym:")", deg:2)^(-1)] $
+$ dvp(F,T, eval:V, evalsym:")", deg:2 ) = - dvp(S,T, eval:V, evalsym:")") = -T/T dvp(S,T, eval:V, evalsym:")") = - (C_V)/T => C_V = -T dvp(F,T, eval:V, evalsym:")", deg:2) $
+
+=== Criterio de evolución en procesos no estáticos
+- $ T = T_F = "cte" $, $V = "cte"$: $F$ es el potencial natural: $ Delta U < T_F Delta S - p_F Delta V = T_F Delta S $ $ -> Delta U - T_F Delta S < 0 $
+Pero 
+$ F = U-T S -> Delta F = Delta U - T_F Delta S < 0 $
+$ -> Delta F < 0 $
+El potencial de Hemholtz disminuye por lo que el estado final de equilibrio es un mínimo.
+
+== Potencial de Gibbs
+La magnitud resultante de sustituir $S$ y $V$ por sus variables conjugadas $T$ y $p$ respectivamente, mediante una transformación de Legendre sobre U: $ U -> U - S dvp(U,S, eval:V, evalsym:")") - V dvp(U,V, eval:S, evalsym:")") => G = U-T S + p V $
+
+En la ecuación de Gibbs: 
+$ dif G &= dif U - dif (T S ) + dif (p V ) \ &= (T dif S - p dif V + mu dif n ) - T dif S - S dif T + p dif V + V dif p $
+$ dif G = -S dif T + V dif p + mu dif n -> G = G(T, p, n) $
+
+En las ecuaciones de Euler y Gibbs-Duhem:
+$ G = mu n $
+$ n dif mu = - S dif T + V dif p $
+
+=== Información obtenible en sistemas cerrados
+- Parciales primeras:
+$ dvp(G,T, eval:p, evalsym:")") = -S space ; space dvp(G,p, eval:T, evalsym:")") = V -> space V = V(T,p ) $
+
+- Parciales segundas:
+$ dvp(G,T, eval:p, evalsym:")", deg:2 ) = - dvp(S,T, eval:p, evalsym:")") = - T/T dvp(S,T, eval:p, evalsym:")") = - (C_p)/T => C_p == - T dvp(G,T, eval:p, evalsym:")", deg:2) $
+$ dvp(G,p, eval:T, evalsym:")") = dvp(V,p, eval:T, evalsym:")") = - V chi_T => chi_T = -1/V dvp(G,p, eval:T, evalsym:")", deg:2 ) $
+
+=== Criterio de evolución en procesos no estáticos
+- $ p= p_f = "cte", T = T_F = "cte"$: $G$ es el potencial natural:
+$ Delta U < T_F Delta S - p_F Delta V $
+$ -> Delta U + p_F Delta V - T_F Delta S < 0 $
+Pero 
+$ G = U- T S + p V space -> Delta G = Delta U + p_F Delta V - T_F Delta S < 0 $
+$ -> Delta G < 0 $
+
+El potencial de Gibbs disminuye por lo que el estado final de equilibrio es un mínimo.
+
+== Relaciones de Maxwell
+- Las relaciones de Maxwell se obtinen al aplicar la condición de Schwartz a los distintos potenciales termodinámicos 
+$ dif U &= T dif S - p dif V quad -> quad dvp(p,S, eval:V, evalsym:")") &= dvp(T,V, eval:S, evalsym:")") \
+dif F &= -p dif V - S dif T quad -> quad dvp(p,T, eval:V, evalsym:")") &= dvp(S,V, eval:T, evalsym:")") \
+dif H &= T dif S + V dif p quad -> quad dvp(V,S, eval:p, evalsym:")") &= dvp(T,p, eval:S, evalsym:")") \
+dif G &= - S dif T + V dif p quad -> quad dvp(V,T, eval:p, evalsym:")") &= - dvp(S,p, eval:T, evalsym:")") $
+
+Estas nos permiten sustituir las derivadas parciales en las que interviene la entropía por relaciones entre variables que podremos medir más fácilmente
+
+=== Ejemplo
+Necesitamos conocer $dvp(U,V, eval:T, evalsym:")")$
+
+$ dif U = T dif S - p dif V =& T [dvp(S,T, eval:V, evalsym:")") dif T + dvp(S,V, eval:T , evalsym:")") dif V ] - p dif V \
+&=  T dvp(S,T, eval:V, evalsym:")") dif T + [T dvp(S,V, eval:T, evalsym:")") - p] dif V $
+$ -> dvp(U,V, eval:T, evalsym:")") = T dvp(S,V, eval:T, evalsym:")") - p $
+
+Utilizando las relaciones de Maxwell:
+
+Sabiendo que $ dvp(S,V, eval:T, evalsym:")") = dvp(p,T, eval:V, evalsym:")") $
+$dif U$ se quda en $ dvp(U,V, eval:T, evalsym:")") = T dvp(p,T, eval:V, evalsym:")") - p $
