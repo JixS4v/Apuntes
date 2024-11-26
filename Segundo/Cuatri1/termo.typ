@@ -206,9 +206,9 @@ $ p = p(theta, V) -> dif p = dvp(p, theta, eval: V, evalsym:"(") dif theta + dvp
 $ theta = theta (p, V)-> dif theta = dvp(theta, p, eval: V, evalsym:"(") dif p + dvp(theta, V, eval: p, evalsym:"(") dif V $
 
 Hay 3 coeficientes térmicos:
-- Coeficiente de dilatación isobárica: $alpha = 1/V dvp(V, theta, eval: p, evalsym:"(")$
-- Coeficiente de compresibilidad isotérmica: $chi_theta = - 1/V dvp(V, p, eval: theta, evalsym:"(")$
-- Coeficiente piezotérmico: $beta = 1/p dvp(p, theta, eval: V, evalsym:"(")$
+- Coeficiente de dilatación isobárica: $ alpha = 1/V dvp(V, theta, eval: p, evalsym:"(") $
+- Coeficiente de compresibilidad isotérmica: $ chi_theta = - 1/V dvp(V, p, eval: theta, evalsym:"(") $
+- Coeficiente piezotérmico: $ beta = 1/p dvp(p, theta, eval: V, evalsym:"(") $
 
 Relación entre los 3 coeficientes (propiedad cíclica): $ dvp(p, V, eval: theta, evalsym:"(") dvp(V, theta, eval: p, evalsym:"(") dvp(theta, p, eval: V, evalsym:"(") = -1 => (- 1/(chi_theta V))(alpha V)(1/(beta p))=-1 => alpha = beta chi_theta p $
 
@@ -287,10 +287,10 @@ Igualmente
 $ C_p=dvp(H, theta, eval: p, evalsym:"(") h_p = dvp(H, p, eval: theta, evalsym:"(") - V $
 $ delta Q = dif H - V dif p = dvp(H, theta, eval: p, evalsym:"(") dif theta + [dvp(H, p, eval: theta, evalsym:"(") - V] dif p => delta Q = C_p dif theta + h_p dif p "(Segunda forma de Pfaff)" $
 Finalmente
-$ mu = dvp(U, p, eval: V, evalsym:"(") lambda = dvp(U, V, eval: p, evalsym:"(") + p $
+$ mu = dvp(U, p, eval: V, evalsym:"(") space lambda = dvp(U, V, eval: p, evalsym:"(") + p $
 $ delta Q = dif U + p dif V = [dvp(U, V, eval: p, evalsym:"(") + p ] dif V + dvp(U, p, eval: v, evalsym:"(") dif p = mu dif p + lambda dif V $
 o, equivalentemente
-$ lambda = dvp(H, V, eval: p, evalsym:"(") mu = dvp(H, p, eval: v, evalsym:"(") - V $
+$ lambda = dvp(H, V, eval: p, evalsym:"(") space mu = dvp(H, p, eval: v, evalsym:"(") - V $
 $ delta Q = dif H - V dif p = [dvp(H, p, eval: V, evalsym:"(") - V ] dif p + dvp(H, V, eval: p, evalsym:"(") dif V = mu dif p + lambda dif V $
 $ => delta Q = mu dif p + lambda dif V "(Tercera forma de Pfaff)" $
 
@@ -298,7 +298,7 @@ $ => delta Q = mu dif p + lambda dif V "(Tercera forma de Pfaff)" $
 - #underline[*Proceso politrópico*]: 
 Proceso en que la capacidad térmica del sistema permanece constante #[
   - Ecuación: A partir de la Tercera forma de Pfaff: $delta Q = mu dif p + lambda dif V$ #[
-    - Por definición $ delta Q = C dif theta "y" lambda = C_p = dvp(theta, V, eval: p, evalsym:"(") mu = C_v dvp(theta, p, eval: V, evalsym:"(") $ $ => C dif theta = C_v dvp(theta, p, eval: V, evalsym:"(") dif p = C_p dvp(theta, V, eval: p, evalsym:"(") dif V $
+    - Por definición $ delta Q = C dif theta space "y" space lambda = C_p = dvp(theta, V, eval: p, evalsym:"(") space mu = C_v dvp(theta, p, eval: V, evalsym:"(") $ $ => C dif theta = C_v dvp(theta, p, eval: V, evalsym:"(") dif p = C_p dvp(theta, V, eval: p, evalsym:"(") dif V $
     - Desarrollando $dif theta$ en términos de $dif p$ y $dif V$ y reordenando: $ C[dvp(theta, p, eval: V, evalsym:"(") dif p + dvp(theta, V, eval: p, evalsym:"(") dif V] = C_V dvp(theta, p, eval: V, evalsym:"(") dif p + C_p dvp(theta, V, eval: p, evalsym:"(") dif V (C_v - C)dvp(theta, p, eval: V, evalsym:"(") dif p _ (C_p - C)dvp(theta, V, eval: p, evalsym:"(") dif V = 0 $
     - Dividiendo por $C_v - C$ se obtiene $ dvp(theta, p, eval: V, evalsym:"(") + (C_p - C)/(C_v - C) dvp(theta, V, eval: p, evalsym:"(") dif V = 0 $
     - El índice politrópico se define como $ k = (C_p - C)/(C_v - C) $
@@ -331,6 +331,7 @@ $ gamma 1/V ((dif V)/(dif p))_theta = 1/V dvp(V, p, eval: theta, evalsym:"(") =>
 
 == Procesos de los gases perfectos
 #underline[*Proceso isóbaro de un gas perfecto*]:
+
 Aplicando la ecuación de estado se obtiene la ecuación del proceso: 
 $ p v_1 = R theta_1; p v_1  = R theta_2 => (v_1)/(theta_1) = (v_2)/(theta_2) $
 El trabajo es 
@@ -340,8 +341,9 @@ $ q = Delta h = c_p Delta theta = gamma/(gamma-1) p Delta v $
 Aplicando el primer principio
 $Delta u = q - w = c_p Delta theta - R Delta theta = c_v Delta theta = 1/(gamma-1) p Delta v $
 #underline[*Proceso isocóro de un gas perfecto*]:
+
 Ecuacion de proceso
-$ p_1 v = R theta_1 ; p_2 v = R theta_2 => (p_1)/(theta_1) = (p_2)/(theta_2)$
+$ p_1 v = R theta_1 ; p_2 v = R theta_2 => (p_1)/(theta_1) = (p_2)/(theta_2) $
 El trabajo es nulo ya que el volumen es constante: 
 $ w = integral_1^2 p dif v = 0 $
 La energía interna es
@@ -350,8 +352,9 @@ Aplicando el primer principio
 $ q = Delta u + w = Delta u = c_v Delta theta = c_v v (Delta p)/R = 1/(gamma - 1) v Delta p = Delta u $
 
 #underline[*Proceso isotermo de un gas perfecto*]:
+
 Ecuación de proceso
-$p_1 v_1 = R theta ; p_2 v_2 = R theta => p_1 v_1 = p_2 v_2 $
+$ p_1 v_1 = R theta ; p_2 v_2 = R theta => p_1 v_1 = p_2 v_2 $
 El trabajo es
 $ w = integral_1^2 p dif v = p_1 v_1 integral_1^2 (dif v)/v = p_1 v_1 ln (v_2)/(v_1) = R theta_1 ln (p_1)/(p_2)$
 La energía interna es
@@ -360,7 +363,9 @@ Aplicando el primer principio
 $ q = Delta u + w = w = p_1 v_1 ln (v_2)/(v_1) = R theta_1 ln (p_1)/(p_2) $
 
 #underline[*Proceso politrópico de un gas perfecto*]: 
+
 La ecuación de proceso se obtiene integrando la politrópica con la ecuación de estado: 
+
 $ dvp(theta, p, eval: V, evalsym:"(") dif p + k dvp(theta, v, eval: p, evalsym:"(") dif v = 0 -> v/R dif p + k p/R dif V = 0 -> 1/p dif p + k 1/v dif V = 0 \ -> ln (p_2)/(p_1) = -k ln (v_2)/(v_1) -> (p_2)/(p_1) = ((v_1)/(v_2))^k -> p_1 v_1^k = p_2 v_2 ^k $
 El trabajo es
 $ w = integral_1^2 p dif v = p_1 v_1^k integral_1^2 (dif v)/(v^k) = - (p_1 v_1)/(k-1) [((v_2)/(v_1))^(1-k)-1] $
@@ -370,8 +375,10 @@ Aplicando el primer principio
 $ q = Delta u + w = (k-gamma)/((gamma-1)(k-1)) p_1 v_1 [((v_2)/(v_1))^(1-k) - 1] $
 
 #underline[*Proceso adiabático de un gas perfecto*]:
+
 Considerando el caso particular $k=gamma$ en las ecuaciones politrópicas se obtiene
-$p_1 v_1^gamma = p_2 v_2^gamma ; p_1^(1-gamma) theta^gamma = p_2^(1-gamma)theta_2^gamma ; v_1^(gamma-1) theta_1 = v_2^(gamma - 1 ) theta_2 $
+
+$ p_1 v_1^gamma = p_2 v_2^gamma ; p_1^(1-gamma) theta^gamma = p_2^(1-gamma)theta_2^gamma ; v_1^(gamma-1) theta_1 = v_2^(gamma - 1 ) theta_2 $
 
 $ w = integral_1^2 p dif v = -(p_1 v_1)/(gamma -1 ) [ ((v_2)/(v_1))^(1-gamma) - 1 ] = - Delta u $
 $ Delta u  = c_v Delta theta = (R theta_1)/(gamma - 1 )[((p_2)/(p_1))^((gamma -1)/gamma) - 1]$
