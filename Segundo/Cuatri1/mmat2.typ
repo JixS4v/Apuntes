@@ -192,3 +192,157 @@ $ f(x) = 1/sqrt(2 pi) integral_(-oo)^oo cal(F){f}(w) e^(i w x) dif w $
 + Derivada: $cal(F){f'(x)} = i w cal(F){f(x)}$
 + Convolución: $cal(F){f*g} = sqrt(2pi)cal(F){f} cal(F){g}$
 + Desplazamiento: $cal(F){f(x-a)} = e^(-i w a) cal(F){f(x)}$
+
+= Resolución de ecuaciones diferenciales ordinarias por series de potencias
+
+== Series de potencias
+Una serie de potencias es una serie infinita de forma 
+$ sum_(m=0)^(oo) a_m (x - x_0)^m = a_0 + a_1 (x-x_0) + a_2 (x-x_0)^2 + ...  $ 
+$a_m$ son los coeficientes de la serie (constantes). $x_0$ es el centro de la serie (constante) y $x$ es la variable independiente.
+
+Ejemplos a conocer de las series de potencias
+$
+1/(1-x) &= sum_(m=0)^(oo) x^m \
+e^x &= sum_(m=0)^(oo) x^m/m! \
+cos x &= sum_(m=0)^(oo) (-1)^m x^(2m)/(2m)! \
+sin x &= sum_(m=0)^(oo) (-1)^m x^(2m+1)/(2m+1)! \
+$
+
+== Método de las series de potencias
+Paara una ecuacion dada: 
+$ y'' + p(x) y' + q(x) y = 0 $
+
+Primero representamos $p(x)$ y $q(x)$ por series de potencias. Si $p(x)$ y $q(x)$ son polinomios no es necesario hacer nada en el primer paso.
+
+Luego, suponemos una solución en forma de serie de potencias (sin conocer aún los coeficientes):
+$ y = sum_(m=0)^(oo) a_m x^m = a_0 + a_1 x + a_2 x^2 + a_3 x^3$
+
+Ahora derivamos para obtener su primer y segunda derivada: 
+$ 
+y' &= sum_(m=1)^(oo) m a_m x^(m-1) \
+y'' &= sum_(m=2)^(oo) m(m-1) a_m x^(m-2)
+$
+
+Las introducimos en la ecuación diferencial:
+$ sum_(m=2)^(oo) m(m-1) a_m x^(m-2) + p(x) sum_(m=1)^(oo) m a_m x^(m-1) + q(x) sum_(m=0)^(oo) a_m x^m $
+(Siendo $q(x)$ y $p(x)$ los desarrollos en serie de potencias correspondientes)
+
+A continuación agrupamos los términos de la misma potencia y así podremos ir determinando sucesivamente los coeficientes de la serie de potencias. Luego sustituiremos estos en la expresión de $y$ para obtener la solución de la ecuación diferencial.
+
+=== Ejemplo
+Dada la ecuación diferencial
+$ y' - y = 0 $
+
+Realizamos el desarrollo de potencias:
+$ (a_1 + 2 a_2 x + 3a_3 x^2 + ... ) - (a_0 + a_1 x + a_2 x^2 + ... ) = 0 $
+Agrupamos las potencias iguales de $x$
+$ (a_1 - a_0) + (2a_2 - a_1) x + (3a_3 - a_2) x^2 + ... = 0 $
+Al igualar a 0 las restas de los coeficientes:
+$ a_1 - a_0 = 0, quad 2a_2 - a_1 = 0, quad 3a_3 - a_2 = 0 $
+Reconocemos un patrón:
+$ a_1 = a_0 , quad a_2 = a_1 / 2 = a_0 / 2! , quad a_3 = a_2 / 3 = a_0 / 3! $
+Por lo que la solución general es 
+$ y = a_) + a_0 x + a_0/2! x^2 + a_0/3! x^3 + ... $
+Factorizando por $a_0$:
+$ y = a_0 (1+x+x^2/2! + x^3/3!+ ...) = a_0 e^x $
+
+== Teoría del método de las series de potencias
+=== Conceptos básicos
+
+Definimos la $n$-ésima suma parcial de una serie de potencias $s_n(x)$ como
+$ s_n(x) = a_0 + a_1 (x-x_0) + a_2 (x-x_0)^2 + ... + a_n(x-x_0)^n $
+Si omitimos los términos de $s_n$ de la serie de potencias, la expresión que queda será 
+$ R_n(x) = a_(n+1) (x-x_0)^(n+1) + a_(n+2) (x-x_0)^(n+2) + ... $
+Se denomina residuo de la serie de potencias después del $n$-ésimo término. 
+
+Si para alguna $x=x_1$ la suma parcial converge, es decir 
+$ lim_(n->oo) s_n(x_1) = s(x_1) $
+Entonces la serie se dice convergente en $x=x_1$ y que $s(x_1)$ es la suma de la serie en $x=x_1$. Se escribe entonces
+$ s(x_1) = sum_(m=0)^(oo) a_m (x_1 - x_0)^m $
+Entonces para cada $n$
+$ s(x_1) = s_n (x_1) + R_n (x_1) $
+Si la sucesión diverge en $x=x_1$ se dice que la serie es divergente en $x=x_1$. Cuando converja, para cualquier $epsilon>0 exists N $ (depende de $epsilon$) tal que:
+$ |R_n(x_1)| = |s(x_1) - s_n (x_1) | < epsilon forall n > N $
+
+=== Radio de convergencia
+Las series de potencias siempre convergen en $x=x_0$ porque se anulan todos sus términos salvo $a_0$. 
+Si hay más valores de $x$ para los que la serie converge (que no siempre es el caso), se define un intervalo de convergencia. Si es finito, tiene un punto medio $x_0$ por lo que tiene un radio, que se denomina radio de convergencia. $ |x-x_0| < R $
+La serie converge para los valores dentro del radio y diverge para los valores fuera de él.
+El radio de convergencia se puede obtener con la siguiente fórmula
+$ 1/R = lim_(m->oo) |a_(m+1)/a_m | $
+siempre que este límite exista. Cuando el límite es infinito, entonces $R=0$ y la serie converge solo en $x=x_0$. Si el límite es cero, entonces $R=oo$ y la serie converge para todos los valores de $x$.
+
+Para cada $x$ para que una serie de potencias converge, tiene un valor especifico $s(x)$. Decimos entonces que representa a la función $s(x)$ en el intervalo de convergencia y se describe $ s(x) = sum_(m=0)^(oo)  a_m (x-x_0)^m quad forall x in (x_0 - R, x_0+R) $
+
+=== Operaciones con series de potencias
+==== Derivación término a término
+Si $ y(x) = sum_(m=0)^(oo) a_m (x-x_0)^m $
+converge para |x-x_0| < R, entonces su derivada $y'(x)$ también converge en el mismo intervalo y se tiene
+$ y'(x) = sum_(m=1)^(oo) m a_m (x-x_0)^(m-1) quad forall x in (x_0 - R, x_0+R) $
+
+Esto ocurre de manera identica con las derivadas de orden superior.
+
+=== Adición término a término
+Si las series $ sum_(m=0)^(oo)  a_m (x-x_0)^m quad "y" quad sum_(m=0)^(oo) b_m (x - x_0)^m $
+Tienen radios de convergencia positivos y sus sumas son $f(x)$ y $g(x)$ entonces la serie 
+$ sum_(m=0)^oo (a_m + b_m )(x-x_0)^m $
+Converge para la intersección entre los dos intervalos de convergencia y representa $f(x)+g(x)$
+
+==== Multiplicación término a término
+Si las series $ sum_(m=0)^(oo)  a_m (x-x_0)^m quad "y" quad sum_(m=0)^(oo) b_m (x - x_0)^m $
+tienen radios de convergencia positivos y sus sumas son $f(x)$ y $g(x)$ entonces la serie obtenida al multiplicar cada término de la primera serie por cada término de la segunda serie y agrupar sus potencias es $ sum_(m=0)^(oo) sum_(i=0)^(m) (a_i b_(m-i)) (x-x_0)^m $
+esta serie converge y representa $f(x)g(x)$ para la intersección de los intervalos de convergencia de las series originales.
+
+==== Cancelación de todos los coeficientes
+Si una serie de potencias tiene un radio de convergencia positivo y una suma identidad con cero en este intervalo, entonces todos sus coeficientes son cero.
+
+==== Cambio de los índices de la sumatoria
+El índice de una sumatoria es una variable muda y se puede cambiar. Podemos fijar $m=s+2 <=> s=m-2 $
+$ sum_(m=0)^(oo) a_m (x-x_0)^m = sum_(s=2)^(oo) a_(s+2) (x-x_0)^(s+2) = sum_(s=0)^(oo) a_(s+2) (x-x_0)^(s+2) $
+
+Es necesario hacer esto para poder expresar la suma de dos series como una sola suma.
+
+==== Existencia de las soluciones. Funciones analíticas reales
+
+El criterio para determinar si una ecuación diferencial de forma $ y'' + p(x) y' + q(x) y = r(x) $
+tiene solución en forma de serie de potencias es si las funciones $p,q$ y $r$ tienen representaciones en series de potencias. Esto se cumple tambíen si tenemos una ecuación de forma $ tilde(h)(x) y'' + tilde(p)(x) y' + tilde(q)(x) y = tilde(r)(x) $
+donde las funciones $tilde(h), tilde(p), tilde(q)$ y $tilde(r)$ tienen representaciones en series de potencias y $tilde(h)(x_0) != 0$
+
+===== Función analítica real
+Una función real $f(x)$ se llama analítica en un punto $x = x_0$ si puede representarse por una serie de potencias en $x-x_0$ con radio de convergencia $R>0$.
+
+== Ecuación de Legendre. Polinomios de Legendre.
+
+La ecuación diferencial de Legendre tiene como forma 
+
+#rect($ (1-x^2)y'' - 2x y' + n(n+1) y = 0 $)
+el parámetro $n$ es un número real dado.
+A sus soluciones se les llama funciones de Legendre y son consideradas una categoría de funciones especiales.
+Se observa que los coeficientes de la ecuación son analíticos en $x=0$ y que $tilde(h)(x) = 1-x^2 !=0$ en $x=0$. Por lo tanto, la ecuación de Legendre tiene soluciones en forma de serie de potencias en $x=0$.
+
+Al sustituir la expresión general de la serie de potencias y sus derivadas en la ecuación de legendre, se llega a la ecuación 
+$ sum_(m=2)^(oo)  m(m-1)a_m x^(m-2) - sum_(m=2)^(oo) m(m-1) a_m x^m - 2 sum_(m=1)^(oo)  m a_m x^m + k sum_(m=0)^(oo) a_m x^m = 0 $
+Al desarrollarse obtenemos
+$ 2 dot 1 a_2 + 3 dot 2 a_3 x +4 dot 3 x^2 + ... + (s+2)(s+1)a_(s+2) x^s \ + ...  - 2 dot 1 a_2 x^2   - ... - s(s-1)a_s x^s \ - ... - 2 dot 1 a_1 x - 2 dot d a_2 x^2 - ... - 2 s a_s x^2 \ - ... + k a_0 + k a_1 x + k a_2 x^2 + ... + k a_s x^s + ... = 0 $
+
+Siendo $k=n(n+1)$, obtenemos las siguientes identidades para los coeficientes de la serie de potencias:
+$ 2a_2 + n(n+1)a_0 &= 0 space "coeficientes de " x^0\ 
+6a_3 + [-2 + n(n+1)]a_1 &= 0 space "coeficientes de " x^1 $
+y en general
+$ (s+2)(s+1)a_(s+2) + [-s(s-1) - 2s + n(n+1)]a_s = 0 $
+con $s=2,3,...$
+Podemos escribir que
+$ a_(s+2) = - ((n-s)(n+s+1))/((s+2)(s+1)) a_s $
+Obtenemos una relación de recurrencia.
+Nos permite obtener cada coeficiente en términos del segundo anterio, con excepción de $a_0$ y $a_1$ que quedan como constantes. 
+
+Entonces obtenemos una solución de forma 
+$ y(x) = a_0 y_1 (x) + a_1 y_2 (x) $
+Donde 
+$ y_1 (x) = 1 - (n(n+1))/2! x^2 + ((n-2)n(n+1)(n+3))/4! x^4 - + ... $
+y
+$ y_2 (x) = x - ((n-1)(n+2))/3! x^3 + ((n-3)(n-1)(n+2)(n+4))/5! x^5 - + ... $
+Estas series tienen radio de convergencia 1. 
+
+=== Polinomios de Legendre
+Cuando el parametro $n$ de la ecuación de Legendre es un entero no negativo, el segundo miembro de la relación de recurrencia es nulo cuando $s=n$ y por lo tanto $a_(n+2)=0, a_n+4=0,a_(n+6) = 0, ...$ Por consecuencia, si $n$ es par, $y_1(x)$ se reduce a un polinomio de grado $n$. Si $n$ es impar, se cumple lo mismo para $y_2(x)$. Estos polinomios, multiplicados por algunas constantes, se llaman polinomios de Legendre.

@@ -37,6 +37,11 @@ show outline.entry.where(
   text(14pt)[#(it)]
 }
 
+show outline.entry.where(
+  level: 5
+): it => {
+  text(14pt)[#(it)]
+}
 
 outline(title: [Índice], indent: auto, fill: none)
 
