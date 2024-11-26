@@ -405,8 +405,11 @@ Maquina en la que el ciclo se recorre de forma inversa, consumiendo trabajo y co
 El 1er principio solo implica la existencia de un foco al que ceder calor
 
 Coeficientes de prestaciones
-Efecto frigorífico: $epsilon = (Q_alpha)/(|W|) = (Q_alpha)/(|Q_c|-Q_alpha)$
-Calefacción: $epsilon_c = (|Q_c|)/(|W|) = (|Q_c|)/(|Q_c|-Q_alpha)$
+
+Efecto frigorífico: 
+$ epsilon = (Q_alpha)/(|W|) = (Q_alpha)/(|Q_c|-Q_alpha) $
+Calefacción: 
+$ epsilon_c = (|Q_c|)/(|W|) = (|Q_c|)/(|Q_c|-Q_alpha) $
 
 
 ==  Enunciados del Segundo Principio: equivalencia
