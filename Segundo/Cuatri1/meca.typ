@@ -242,6 +242,17 @@ Sin embargo, las variaciones de los desplazamientos virtuales $delta q_i$ no son
 para $k = 1, ..., m $. La igualdadp proviene de la elección de los $lambda_alpha$. También tenemos las mismas expresiónes que esta ecuación para $k = m + 1, ..., n $ donde la igualdad sale de las variaciones virtuales de los $delta q_i$. Esto resuelve el sistema con el coste de introducir las $m$ funciones $lambda_alpha$.. Podemos entender esto considerando que as ecuaciones para $k = 1, ..., n$ se pueden expresar como $ d/(dif t) dvp(L,dot(q)_k) - dvp(L,q_k) = - sum_(alpha = 1)^(m) lambda_alpha dvp(f_alpha,q_k) = Q_k $
 donde $Q_k$ son las fuerzas generalizadas. Las funciones, $Q_k$ tienen las magnitudes de las fuerzas necesarias para producir las ligaduras individuales. Sin embargo, como la eleccción de '+' en el tercer térmimno de las ecuaciones de Lagrange modificadas es arbitraria, solo podemos determinar matemáticamente el valor absoluto de la fuerza, no su dirección. Esto implica que es necesario entender el significado físico de estas fuerzas para poder determinar sus direcciones.
 
+=== Sistemas con ligaduras no holónomas
+En general, las ligaduras no holónomas no se pueden expresar por medio de un principio variacional. Una excepción es el caso de las ligaduras semi-holónomas o cinéticas, cuyas ecuaciones son de la forma 
+$ f_alpha (q_1, ..., q_n ; dot(q)_1, ..., dot(q)_n; t) = 0 $
+Donde $alpha=1,2,...,m$. Se escribe a menudo estas ecuaciones en una forma restringida
+$ f_alpha = sum_(k=1)^(n) a_(a k) dot(q)_k + a_0 = 0 $
+Donde $f_alpha$ son unas expresiones diferenciales no integrables y $a_(a k)$ y $a_0$ son funciones de las coordenadas generalizadas y el tiempo. En estos casos, como no podemos integrar las ligaduras, hay mas variables que ecuaciones. Sin embargo, podemos tratar sus variaciones de la misma forma escribiendo
+$ delta integral_(t_1)^(t_1) ( L + sum_(alpha=1)^(m) mu_alpha f_alpha) dif t = 0 $
+Dond $mu$ son los multiplicadores de Lagrange. Si asumimos que $mu_alpha = mu_alpha (t)$, las ecuaciones que resultan de los desplazamientos virtuales son
+$ dif/(dif t) dvp(L,dot(q)_k ) - dvp(L,q_k) = Q_k = - sum_(alpha=1)^(m) mu_alpha dvp(f_alpha,dot(q)_k) $
+y las $delta mu_alpha$ dan las ecuaciones de ligadura. 
+La ecuación integral y la ecuación de Lagrange nos permiten conseguir $n+m$ ecuaciones para las $n+m$ incógnitas. Por lo tanto, se pueden interpretar como equivalentes a un sistema holónomo con $n+m$ ecuaciones y fuerzas generalizadas $Q_k$. La generalización a $mu_alpha = mu_alpha (q_1,...,q_n;dot(q)_1,...,dot(q)_n; t) $ es simple. 
 == Teoremas de conservación y simetrías
 Resolver las ecuaciones de movimiento no es siempre posible, sin embargo, podemos extraer mucha información sobre la naturaleza física del movimiento del sistema. En muchos problemas, un gran número de primeras integrales de las ecuaciones de movimiento es imediatamente obtenible, y estas toman la forma $ f(q_1, ..., q_n, dot(q)_1, ..., q_n, t) = "constante" $ siendo ecuaciones diferenciales de orden 1. Estas primeras integrales son de interés porque nos dicen cosas sobre el sistema físico. Inccluyen, por ejemplo, las leyes de conservación. 
 
