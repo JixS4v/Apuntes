@@ -416,6 +416,7 @@ $ epsilon_c = (|Q_c|)/(|W|) = (|Q_c|)/(|Q_c|-Q_alpha) $
 
 === En términos de motor térmico:
 #underline[Enunciado de Kelvin-Planck]: Es imposible la existencia de una maquina que funcionando ciclicamente solamente absorba calor y produzca trabajo
+
 #underline[Enunciado de Ostwald]:
 El movil o motor de segunda especie es imposible. El movil de segunda especie se define como una maquina con una sola fuente o monoterma
 === En terminos de máquina frigorífica
@@ -426,6 +427,7 @@ Es imposible la existencia de un dispositivo, que, funcionando ciclicamente, ten
 #underline[*Proceso reversible*]:
 Dado un proceso por el que un sistema pasa de un estado inicial a un estado final, se dice que es reversible si tanto el sistema como el entorno pueden ser devueltos a sus estados iniciales sin una transformación no compensada de calor en trabajo (sin violar el segundo principio)
 -> Todos estos procesos son cuasiestaticos
+
 #underline[*Proceso irreversible*]:
 La vuelta al estado inicial del sistema y entorno implica una transformación no compensada de calor en trabajo (violación del segundo principio)
 -> Casi todos los procesos no estáticos son irreversibles (Fricción, transferencia de calor por diferencia de temperatura, expansión al vacío, difusión...)
@@ -449,6 +451,7 @@ La vuelta al estado inicial del sistema y entorno implica una transformación no
   + Expansión adiabática ($delta Q = 0$)
   + Cesión de calor isoterm($T_"sumidero"- T_"sistema" = 0 $)
 ]
+
 #underline[*Primer teorema de Carnot*]:
 - No puede existir un motor termico que, funcionando entre dos focos termicos dados tenga mayor rendimiento que uno de Carnot funcionando entre los mismo focos
 
