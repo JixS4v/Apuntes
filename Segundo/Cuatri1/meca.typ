@@ -440,3 +440,35 @@ Aquí el integrando de la integral de acción es una función de $dot(p)$ y se p
 El requisito de variación independiente de $q$ y $p$, tan esencial para la derivación, muestra la diferencia fundamental entre los formalismos Lagrangiano y Hamiltoniano. Ninguna de las dos coordenadas se debe considerar el conjunto de variables más fundamental, ambos son igualmente independientes. Únicamente ampliando el número de variables independientes de $n$ a $2n$ se puede obtener unas ecuaciones de movimiento de primer orden. En un sentido, los nombres coordenadas y momentos son engañosos, porque hacen pensar en las coordenadas espaciales y los momentos lineales o angulares. Un sentido más amplio se debería de dar a estos términos. La división entre coordenadas y momentos corresponde a una seprarción de las variables independientes que describen el movimiento en dos grupos que tienen una relación casi simétrica entre sí a través de las ecuaciones de Hamilton.
 
 == El principio de Mínima Acción
+Otro principio variacional asociado con el formalismo Hamiltoniano se conoce como principio de mínima acción. Utiliza un nuevo tipo de variacion, $Delta$-variación, que requiere una explicación detallada. En el proceso de $delta$-variación utilizado en el principio de Hamilton, el camino variado en el espacio de configuraciones siempre acababa en un punto final representando la configuración del sistema en el mismo tiempo $t_1$ y $t_2$  como el camino correcto. Para obtener las ecuaciones de movimiento de lagrange, también requirimos que el camino variado vuelva a los mismos puntos extremos en espacio de configuración, es decir $delta q_i(t_1) = delta q_i (t_2) = 0 $ La $Delta$-variación está menos restringida. En general, el camino variado sobre el que evaluamos la integral puede acabar en un tiempo diferente al camino correcto, y puede haber una variación de las coordenadas en el punto final. Podemos, sin embargo, utilizar la misma parametrización del camino variado como en la $delta$-variacion. En la notación que hemos visto previamente, una familia de caminos variados posibles se define por dos funciones: 
+$ q_i (t,alpha) = q_i (t, 0) + alpha eta_i (t) $
+Donde $q_i(t,0)$ es el camino correcto, y $eta_i(t)$ es una función arbitraria que no necesariamente tiene que ser cero en los puntos extremos. El unico requisito es que sea continua y difeenciable. 
+Evaluemos la $Delta$-variación de la integral de acción:
+$ Delta integral_(t_1)^(t_2) L dif t equiv integral_(t_1+Delta t_1)^(t_2+Delta t_2) L (alpha) dif t - integral_(t_1)^(t_2) L(0) dif t $
+Donde $L(alpha)$ implica que la integral se evalua sobre el camino variado y $L(0)$ corresponde al camino real. La variación está claramente compuesta de dos partes. Una proviene del cambio de los limites de la integral a infinitesimales de primer orden, esta parte es el integrando en el camino real por la diferencia de limites en tiempo. La segunda parte está causada por el cambio del integrando en el camino variado, pero ahora entre los mismos limites que la integral original. Podemos entonces escribir la $Delta$- variación de la integral de acción como
+$ Delta integral_(t_1)^(t_2) L dif t  = L ( t_2 ) Delta t_2 - L(t_1) Delta t_1 + integral_(t_1)^(t_2) delta L dif t $
+Aquí la variación en la segunda integral se puede realizar a través de una parametrizacion del camino variado, exactamente como en el principio de Hamilton excepto que la variación en $q_i$ no se anula en los puntos extremos. Los puntos extremos que salen en la integración por partes se deben de mantener, y el término integral de la derecha aparece como
+$ integral_(t_1)^(t_2) delta L dif t = integral_(t_1)^(t_2) [ dvp(L,q_i) - dif/(dif t) (dvp(L,dot(q)_i))] delta q_i dif t + dvp(L,dot(q)_i) delta q_i |_1^2 $
+Por las ecauciones de lagrange, las cantidades en los corchetes desparecen, y la $Delta$-variación entonces toma la forma de 
+$ Delta integral_(t_1)^(t_2) L dif t = (L Delta t + p_i delta q_i )|^2_1 $
+Aquí $delta q_i$ es la variación en $q_i$ en los puntos extremos originales $t_1$ y $t_2$. Buscamos expresar la $Delta$-variación en términos la variacion $Delta q_i$ entre $q_i$ en los puntos extremos del camino real y $ q_i$ en los extremos del camino variado, incluyendo la variación en el tiempo correspondiente de inicio y fin. Está claro que estas variaciones están conectadas por la relación
+$ Delta q_i = delta q_i + dot(q)_i Delta t $
+Entonces, podemos reformular la $Delta$-variación de la integral de acción como
+$ Delta integral_(t_1)^(t_2) L dif t = (L Delta t - p_i dot(q)_i Delta t + p_i Delta q_i)|^2_1 $
+o 
+$ Delta integral_(t_1)^(t_2) L dif t = (p_i Delta q_i - H Delta t )^2_1 $
+Para obtener el principio de mínima acción, restringimos nuestras consideraciones a tres requisitos importantes: 
++ Solo se consideran sistemas para los que $L$, y por tanto $H$ no son funciones explícitas del tiempo, y por consecuencia $H$ se conserva
++ La variación es tal que $H$ se conserva en el camino variado y en el camino real.\
++ Los caminos variados están limitados por el requisito de que $Delta q_i$ se anule en los puntos extremos (pero no $Delta t$)
+
+La naturaleza de la variación resultante se puede ilustrar notando que el camino variado que satisface estas condiciones tambíen puede describir la misma curva en el espacio de configuraciones que el camino real. La diferencia será la velocidad con la que el punto del sistema atraviese esta curva, es decir que las funciones $q_i (t)$ serán alteradas para el camino variado. Para poder preservar el mismo valor del Hamiltoniano en todos los puntos del camino variado, los tiempos de los puntos extremos deben de ser cambiados. Con estos requisitos satisfchos, la $Delta$-variación de la integral de acción se convierte en
+$ Delta integral_(t_1)^(t_2) L dif t = - H (Delta t_2 - Delta t_1) $
+Pero bajo las mismas condiciones, la integral de acción se convierte en 
+$ integral_(t_1)^(t_2) L dif t = integral_(t_1)^(t_2) p_i dot(q)_i dif t - H(t_2 - t_1) $
+Que tiene como $Delta$-variación
+$ Delta integral_(t_1)^(t_2) L dif t = Delta integral_(t_1)^(t_2) p_i dot(q)_i dif t - H(Delta t_2 - Delta t_1) $
+Comparando esto con la ecuación obtenida anteriormente, obtenemos el principio de mínima acción (tradicional, aunque se suele llamar así también al principio de Hamilton hoy en día) 
+ $ Delta integral_(t_1)^(t_2) p_i dot(q)_i dif t = 0 $
+
+= Transformaciones canónicas
