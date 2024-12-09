@@ -123,7 +123,6 @@ $ Delta t_"exp" approx Delta t_"rel" $
 Así, se tiene la presión $p$ del gas a la temperatura objetivo $theta_t$, para la masa y el volumen escogidos, $m_n$, $V_"ref"$
 Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar las rectas que cruzan los puntos. El punto donde las rectas correspondientes a los distintos gases se cruzan obtenemos la presión
 
-#pagebreak(weak:true)
 =  Primer principio de la Termodinámica
 
 ==  Energía interna, calor y Trabajo
@@ -187,7 +186,6 @@ Repitiendo esto para distintas masas de gas y distintos gases, podemos trazar la
 
 #set math.cases(reverse:true)
 #underline[*Formulación del Primer Principio de la Termodinámica*]: $ cases( U = H - p V -> dif U =  dif  H - p  dif V - V dif p ,  delta Q =  dif U + p dif V) -> dif H = delta Q + V dif p $
-#pagebreak(weak:true)
 =  Ecuaciones de estado
 ==  Ecuaciones de estado
 - #underline[*Ecuación de estado*]: Cualquier función, obtenida teórica o experimentalmente, que relaciona las variables termodinámicas de un sistema. #[
@@ -277,7 +275,6 @@ C_V = C_p + [dvp(H, p, eval: theta, evalsym:"(") - V]dvp(p, theta, eval: V, eval
   - Cantidad de energía en forma de calor que se necesita para conseguir una variación unidd de la presion o el volumen a volumen o presión constante, respectivamente: $ delta Q|_V = mu dif p ;delta Q|_p = lambda dif V $ Del primer principio y desarrollando $dif U$ en términos de $dif p$ y $dif V$: $ delta Q = dif U + p dif V = [dvp(U, V, eval: p, evalsym:"(") + p]dif V + dvp(U, p, eval: V, evalsym:"(") dif p $ $ "Si" dif V = 0 -> delta Q|_v = dvp(U, p, eval: V, evalsym:"(") dif p -> $ $ mu = dvp(U, p, eval: V, evalsym:"(") = dvp(U, theta, eval: V, evalsym:"(")dvp(theta, p, eval: V, evalsym:"(") = C_v dvp(theta, p, eval: V, evalsym:"(") $ Haciendo lo mismo con la entalpía, del primer principioo y desarrollando $dif H$ en términos de $dif p$ y $dif V$: $ delta Q = dif H - V dif p = [dvp(H, p, eval: V, evalsym:"(") - V] dif p + dvp(H, V, eval: p, evalsym:"(") dif V $ $ "Si" dif p = 0 -> delta Q |_p = dvp(H, V, eval: p, evalsym:"(") dif V ->$ $lambda = dvp(H, V, eval: p, evalsym:"(") = dvp(H, theta, eval: p, evalsym:"(")dvp(theta, V, eval: p, evalsym:"(") = C_p dvp(theta, V, eval: p, evalsym:"(") $
   - Para gases ideales, la ecuación de estado lleva directamente a: $ mu = C_V theta/p ; lambda = C_p theta/V $
 ]
-#pagebreak(weak:true)
 =  Procesos Termodinámicos Fundamentales
 ==  Formas de Pfaff del Primer Principio
 Hemos obtenido que $ C_v = dvp(U, theta, eval: V, evalsym:"(") l_v = dvp(U, V, eval: theta, evalsym:"(") + p $
@@ -384,7 +381,6 @@ $ w = integral_1^2 p dif v = -(p_1 v_1)/(gamma -1 ) [ ((v_2)/(v_1))^(1-gamma) - 
 $ Delta u  = c_v Delta theta = (R theta_1)/(gamma - 1 )[((p_2)/(p_1))^((gamma -1)/gamma) - 1]$
 $ q = Delta u + w = 0 $
 
-#pagebreak(weak:true)
 =  Segundo Principio de la Termodinámica
 == 1 Limitaciones del primer principio
 - Da información sobre la viabilidad energética de los procesos, pero hay procesos naturales no espontáneos, mientras que sus inversos sí lo son
@@ -478,6 +474,7 @@ Esto implica que
 $ f(theta_i, theta_j) = (psi(theta_i))/(psi(theta_j)))$
 Por lo tanto:
 $ (Q_a)/(|Q_c|) = (psi(theta_a))/(psi(theta_c)) equiv (T_a)/(T_c) <-> (Q_a)/(-Q_c) = (T_a)/(T_c) $
+
 =  Entropía e irreversibilidad
 ==  Entropía
 Del griego 'en-tropie': dirección intrínseca
@@ -581,7 +578,6 @@ $ Delta s &= c_v ln (T_2)/(T_1) + R ln v_2/v_1 \
   Delta s &= c_p ln (T_2)/(T_1) - R ln p_2/p_1 \
   Delta s &= c_v ln (p_2)/(p_1) + c_p ln (v_2)/(v_1) $
 ])
-#pagebreak(weak:true)
 
 = Relaciones Termodinámicas
 == Sistemas abiertos: potencial químico
