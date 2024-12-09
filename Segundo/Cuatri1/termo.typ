@@ -488,7 +488,7 @@ Del griego 'en-tropie': dirección intrínseca
 ], image("assets/figure_2024-11-06-15-02-31.png"))
 - Para cada ciclo $i$: #[
   - Si es reversible (Carnot) entonces: $ (Q^i_a)/(Q^i_c)=-(T_a^i)/(T_c^i) => (Q^i_a)/(T^i_a)+(Q^i_c)/(T^i_c) = 0 $
-  - Si es irreversible, como el rendimiento es menor que el de un ciclo de Carnot, para un $Q^i_a$ dado es $|Q^i_(c("rev"))| < |Q^i_(c("irrev"))| -> |Q^i_(c("rev"))| > |Q^i_(c("irrev"))|$ $ Q^i_a/T^i_a + Q^i_c/T^i_c < 0 $
+  - Si es irreversible, como el rendimiento es menor que el de un ciclo de Carnot, para un $Q^i_a$ dado es $|Q^i_(c("rev"))| < |Q^i_(c("irrev"))| -> Q^i_(c("rev")) > Q^i_(c("irrev"))$ $ Q^i_a/T^i_a + Q^i_c/T^i_c < 0 $
 ]
 - Sumando para todos los ciclos, se obtiene: $ sum_i Q^i_a/T^i_a + Q^i_c/T^i_c <= 0 $ Donde el signo $=$ corresponde al ciclo reversible
 - En el limite en que se usa un numero infinito de ciclos para aproximar perfectamente el ciclo inicial se obtiene finalmente la desigualdad de Clausius
@@ -526,10 +526,10 @@ $ Delta S = sigma + integral_1^2 (delta Q)/T |_I <=> dif S = delta sigma + (delt
 - Extensión a sistemas no adiabáticos: #[
   - El universo es un sistema aislado: $delta Q_E = - delta Q_S$ $ 
   dif S_U &= dif S_S + dif S_E >=0 \ 
-  dif S_S &= dif (delta Q_S)/T_S + delta sigma_S \
-  dif S_E &= dif (delta Q_E)/T_E + delta sigma_E \
+  dif S_S &= (delta Q_S)/T_S + delta sigma_S \
+  dif S_E &= (delta Q_E)/T_E + delta sigma_E \
   \
-  dif S_U &= dif (delta Q_S)/T_S + dif (delta Q_E)/T_E + delta sigma_S + delta sigma_E = delta Q_s[1/T_S - 1/T_E] + delta sigma_S + delta sigma_E >= 0 
+  dif S_U &= (delta Q_S)/T_S + (delta Q_E)/T_E + delta sigma_S + delta sigma_E = delta Q_s [1/T_S - 1/T_E] + delta sigma_S + delta sigma_E >= 0 
   $
 ]
 ==  Relación entre ecuaciones de estado
