@@ -392,12 +392,17 @@ $ q = Delta u + w = 0 $
 
 ==  Conceptos de motor térmico y de máquina frigorífica
 #underline[*Motor térmico*]:
-Sistema en el que un fluido evoluciona de forma ciclica intercambiando calor con dos focos, produciendo así trabajo
+Sistema en el que un fluido evoluciona de forma ciclica intercambiando calor con dos focos (recibiendo un calor $Q_a$ y cediendo un calor $Q_c$), produciendo así trabajo $W$
 
 Por el 1er principio solo se requeriria un foco del que absorber calor.
 
 Concepto de Rendimiento
-$ eta = W/(Q_alpha) = (Q_alpha - |Q_c|)/(Q_alpha) = 1-(|Q_c|)/(Q_alpha) $
+$ eta = W/(Q_a) $ 
+Cuantifica la proporción de calor cedido utilizada para producir trabajo
+
+Sabemos que por definición $Q_a = W+Q_c$ (Conservación de energía) y por tanto $Q_a - Q_c = W => W = Q_a + |Q_c|$
+
+$ => eta = W/Q_a = (Q_a - |Q_c|)/(Q_a) = 1-(|Q_c|)/(Q_a) $
 
 #underline[*Máquina frigorífica*]:
 Maquina en la que el ciclo se recorre de forma inversa, consumiendo trabajo y convirtiendolo en un flujo de calor desde temperaturas bajas a temperaturas altas
@@ -407,9 +412,9 @@ El 1er principio solo implica la existencia de un foco al que ceder calor
 Coeficientes de prestaciones
 
 Efecto frigorífico: 
-$ epsilon = (Q_alpha)/(|W|) = (Q_alpha)/(|Q_c|-Q_alpha) $
+$ epsilon = (Q_a)/(|W|) = (Q_a)/(|Q_c|-Q_a) $
 Calefacción: 
-$ epsilon_c = (|Q_c|)/(|W|) = (|Q_c|)/(|Q_c|-Q_alpha) $
+$ epsilon_c = (|Q_c|)/(|W|) = (|Q_c|)/(|Q_c|-Q_a) $
 
 
 ==  Enunciados del Segundo Principio: equivalencia
@@ -462,7 +467,7 @@ La vuelta al estado inicial del sistema y entorno implica una transformación no
 - Es una escala independiente de las características del sistema
 - Está basada en el rendimiento del motor de Carnot (que depende únicamente de las temperaturas de las fuentes)
 
-$ eta = W/(Q_a) = 1 - (|Q_c|)/(Q_alpha) = Phi (theta_a, theta_c) $
+$ eta = W/(Q_a) = 1 - (|Q_c|)/(Q_a) = Phi (theta_a, theta_c) $
 $ => (Q_a)/(|Q_c|) = 1/(1- Phi(theta_a, theta_c)) = f(theta_a, theta_c) $
 
 Para encontrar la forma de $f(theta_a,theta_c)$, consideremos un foco intermedio
