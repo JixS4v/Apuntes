@@ -566,9 +566,9 @@ Entonces el Hamiltoniano como función de $Q$ y $P$ sería
 $ K = H = (f^2 (P))/(2 m) (cos^2 Q + sin^2 Q) = (f^2(P))/(2 m) $
 por lo que $Q$ es cíclica. El problema es hallar la forma de la función $f(P)$ que convierte la transformación en canónica. 
 Si utilizamos una función generatriz de tipo 1 dada por 
-$F_1 = (m omega q^2)/2 1/(cos Q) $
+$F_1 = (m omega q^2)/2 1/(tan Q) $
 Entonces las ecuaciones de transformación son
-$ p = dvp(F_1,q) = m omega q 1/(cos Q) $
+$ p = dvp(F_1,q) = m omega q 1/(tan Q) $
 $ P = - dvp(F_1,Q) = (m omega q^2)/(2 sin^2 Q) $
 Despejando $q$ y $p$
 $ q = sqrt((2 P)/(m omega)) sin Q $
