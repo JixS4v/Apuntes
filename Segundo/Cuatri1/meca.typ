@@ -517,3 +517,76 @@ con
 $ K = H + dvp(F_2,t) $
 El resto de ecuaciones para los diferentes tipos de fución figuran en esta tabla: 
 #table(columns:3, align: center+horizon, table.header("Función Generatriz", "Derivadas de la \n función generatriz", "Caso especial trivial"), $ F=F_1(q,Q,t) $, $ p_i = dvp(F_1,q_i) quad P_i = - dvp(F_1,Q_i) $, $ F_1 = q_i Q_i , quad Q_i = p_i, quad P_i = - q_i $, $ F=F_2(q,P,t) - Q_i P_i $ , $ p_i = dvp(F_2,q_i) quad Q_i = dvp(F_2,P_i) $, $ F_2 = q_i P_i quad Q_i = q_i quad P_i = p_i $, $ F = F_3(p,Q,t) + q_i p_i $, $ q_i = - dvp(F_3,p_i), quad dvp(F_3,Q_i) $, $ F_3 = p_i Q_i , quad Q_i = -q_i , quad P_i = -p_i $, $ F = F_4 (p, P, t) + q_i p_i - Q_i P_i $, $ q_i = -dvp(F_4,p_i) quad Q_i = dvp(F_4,P_i) $, $ F_4 = p_i P_i , quad Q_i = p_i, quad P_i = -q_i $)
+Es importante notar que una función generatriz apropiada no tiene que conformar a uno de los 4 tipos básicos para todos los grados de libertad del sistema. Es posible, y para algunas transformaciones canónicas necesario, utilizar una función transformadora que mezcla los 4 tipos. Utilizando un ejemplo simple, puede ser deseable para una transformación canónica en particular con dos grados de libertad que su función generatriz sea de forma $ F'(q_1, p_2, P_1, Q_2, t) $
+Esta función generatriz se relacionaría con $F$ por la ecuación:
+$ F = F'(q_1, p_2, P_1, Q_2, t) - Q_1 P_1 + q_2 p_2 $
+Y las ecuaciones de transformación serían:
+$ p_1 = dvp(F',q_1), quad Q_1 = dvp(F',P_1) \ q_2 = - dvp(F',p_2), quad P_2 = - dvp(F', Q_2 ) $
+Con $ K = H + dvp(F',t) $
+
+== Ejemplos de transformaciones canónicas
+La naturaleza de las transformaciones canónicas y el rol de la función generatriz se puede ilustrar con unos ejemplos simples pero importantes. Consideremos primero una función generatriz de tipo 2 con la forma particular
+$ F_2 = q_i P_i $
+Las ecuaciones de transformación son entonces
+$ p_i &= dvp(F_2,q_i) = P_i, \ Q_i &= dvp(F_2,P_i) = q_i \ K &= H $
+
+Las coordenadas nuevas y las viejas son las mismas, por lo tanto $F_2$ solo genera la transformación identidad. También es importante notar que la función generatriz particular $F_3 = p_i Q_i$ tambíen genera una transformación identidad pero con signos negativos, es decir $Q_i = -q_i space P_i = -p_i$.
+Un tipo más general de transformación se describe por la función generatriz $F_2 = f_i (q_1, ... , q_nabla; t) P_i $ 
+donde $f_i$ es un conjunto deseado de funciones independientes. Las ecuaciones de transformación son entonces
+$ Q_i = dvp(F_2, P_i) = f_i (q_1,...,q_n, t) $
+Por lo tanto, con esta función generatriz las nuevas coordenadas solo dependen de las antiguas coordenadas y el tiempo y no de los momentos. Una transformación de este tipo es un ejemplo de la clase de transformaciones de punto definidas anteriormente. Entonces, para definir una transformación de punto, las funciones $f_i$ tienen que ser independientes y invertibles, para que las $q_j$ puedan ser expresadas en términos de las $Q_i$ y el tiempo. Como las $f_i$ son completamente arbitrarias aparte de estas condiciones, concluimos que todas las transformaciones de punto son canónicas. 
+Es importante notar que esta ecuación no es la única que lleva a las transformaciones de punto especificadas por las $f_i$. Claramente la misma transformación de punto está implicita en la forma más general 
+$ F_2 = f_i (q_1, ..., q_n ; t) P_i + g(q_1,...,q_n; t) $
+Donde $g(q,t)$ es cualquier funció diferenciable de las antiguas coordenadas y el tiempo. En este caso las transformaciones para las coordenadas son iguales, pero para los momentos se convierten en 
+$ p_j = dvp(F_2,q_j) = dvp(f_i,q_j) P_i + dvp(g,q_j) $
+Podemos invertir estas ecuacinoes para encontrar $P$ en función de $(q,p)$, que es más conveniente de hacer en notación matricial:
+$ bold(p) = dvp(bold(f),bold(q)) bold(P) + dvp(g,bold(q)) $
+Aquí $bold(p), bold(P),$ y $dvp(g,bold(q))$ son los $n$ elementos de matrices columna y $dvp(bold(f),bold(q))$ es una matriz cuadrada cuyo $i j$ésimo elemento es $dvp(f_i,q_j)$ en dos dimensiones, podemos visualizar esto como:
+$ mat(p_1;p_2) = mat(dvp(f_1,q_1), dvp(f_1,q_2); dvp(f_2,q_1), dvp(f_2,q_2)) mat(P_1; P_2) + mat(dvp(g,q_1); dvp(g,q_2)) $
+Por lo tanto, $bold(P)$ es una aplicación lineal de $bold(p)$ dada por 
+$ bold(P) = mat(dvp(bold(f), bold(q)))^(-1) mat(bold(p) - dvp(g,bold(q))) $
+Por lo tanto, las ecuaciones de transformación de $Q$ son independientes de $g$ y solo dependen de $f_i (q,t)$, pero las ecuaciones de transformación de $P$ si que dependen de $g$ y son en general funciones de las antiguas coordenadas y momentos. La transformación de punto original entonces es un caso particular de esta transformación donde $g=0$. 
+
+Una transformación interesante es dada por una función generatriz de tipo 1, de forma 
+$ F_1 = q_k Q_k $ 
+Las ecuaciones de transformación son entonces
+$ p_i &= dvp(F_i, q_i) = Q_i \ P_i &= - dvp(F_1,Q_i) = - q_i $
+En efecto, esta transformación intercabia los momentos y las coordenadas; las nuevas coordenadas son los antiguos momentos y los nuevos momentos son las antiguas coordenadas. Se puede obtener el mismo resultado con una función generatriz de tipo 4 tal que $F_4 = p_i P_i$. Esto muestra que las coordenadas generalizadas son realmente independientes y ya no se pueden considerar como coordenadas espaciales y momentos lineales o angulares. Ambos son necesarioso para describir el movimiento de un sistema en el formalismo Hamiltoniano. La distinción es una de nomenclatura esencialmente. Podemos intercambiar los nombres con como mucho un cambio de signo. 
+
+Una transformación que deja algunas de las parejas de $q$ y $p$ sin cambios y intercambia las otras se conoce entonces como una de forma mixta. Entonces, en un sistema con dos grados de libertad, la transformación que intercambia $q_2$ y $p_2$ y deja $q_1$ y $p_1$ sin cambios se puede describir por la función generatriz
+$ F = q_1 P_1 + q_2 Q_2 $
+Que es una mezcla de los tipos 1 y 2.
+
+== El oscilador armónico
+Como un ejemplo final, consideremos una transformación canónica que nos permite resolver el problema de un oscilador armónico simple unidimensional. Si la constante de fuerza es $k$, el hamiltoniano de este problema en términos de las coordenadas obvias es 
+$ H = p^2 / (2m) + (k q^2)/2 $
+Si tomamos $k/m = omega^2$, $H$ también se puede escribir como $ H = 1/(2m) (p^2 + m^2 omega^2 q^2 ) $
+
+Esta forma del hamiltoniano, como la suma de dos cuadrados, sugiere una transformación donde $H$ es cíclico en la nueva coordenada. Si pudiesemos encontrar una transformación canónica de forma 
+$ p &= f(P) cos Q \ q &= (f(P))/(m omega) sin Q $
+Entonces el Hamiltoniano como función de $Q$ y $P$ sería 
+$ K = H = (f^2 (P))/(2 m) (cos^2 Q + sin^2 Q) = (f^2(P))/(2 m) $
+por lo que $Q$ es cíclica. El problema es hallar la forma de la función $f(P)$ que convierte la transformación en canónica. 
+Si utilizamos una función generatriz de tipo 1 dada por 
+$F_1 = (m omega q^2)/2 1/(cos Q) $
+Entonces las ecuaciones de transformación son
+$ p = dvp(F_1,q) = m omega q 1/(cos Q) $
+$ P = - dvp(F_1,Q) = (m omega q^2)/(2 sin^2 Q) $
+Despejando $q$ y $p$
+$ q = sqrt((2 P)/(m omega)) sin Q $
+Y por comparación podemos encontrar $f(P) = sqrt(2 m omega P) $
+Por lo que el hamiltoniano en las variables transformadas es 
+$ H = omega P $
+como el Hamiltoniano es cíclico en $Q$, el momento conjugado $P$ es constante. Se puede ver de la expresión del hamiltoniano que $P$ es igual a la energía total del sistema dividido por $omega$.
+
+$P = E/omega $
+La ecuación de movimiento de $Q$ se reduce a 
+$ dot(Q) = dvp(H,P) = omega $
+con la solución imediata
+$ Q = omega t + alpha $
+Donde $alpha$ depende de las condiciones iniciales
+Las soluciones de $q$ y $p$ son
+$ q = sqrt((2 E)/(m omega^2)) sin (omega t + alpha ) $
+$ p = sqrt(2 m E ) cos (omega t + alpha) $
+
+Estas soluciones se podrían haber obtenido de forma más fácil simplemente utilizando la mecánica Lagrangiana pero es una forma útil de ilustrar el uso de las transformaciones canónicas.
