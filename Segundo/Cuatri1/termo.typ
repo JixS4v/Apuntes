@@ -1,9 +1,7 @@
 #import "config.typ": *
 
 
-#align(center, text(25pt)[*Termodinámica*])
-
-#show: doc => template(doc)
+#show: doc => template(doc, "Termodinámica")
 
 = Conceptos básicos
 == Naturaleza de la Termodinámica

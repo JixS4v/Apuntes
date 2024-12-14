@@ -1,8 +1,6 @@
 #import "config.typ": *
 
-#align(center, text(25pt)[*Metodos Matemáticos II*])
-
-#show: doc => template(doc)
+#show: doc => template(doc, "Métodos Matemáticos II")
 
 = Análisis de Fourier
 == Propiedades de las funciones periodicas

@@ -1,11 +1,9 @@
 #import "config.typ": *
 
-#align(center, text(25pt)[*Mecánica Analítica*])
 
 
-#show: doc => template(doc)
+#show: doc => template(doc, "Mecánica Analítica")
 
-Estos apuntes están mayoritariamente basados en la 3ra edición de "Mecánica Clásica" de Goldstein, Pool, y Safko. 
 
 = Mecánica Newtoniana
 #underline[*Leyes de Newton*]
@@ -115,7 +113,7 @@ Esto es el Principio de D'Alembert.
 Hemos conseguido nuestro objetivo en que las fuerzas de ligadura ya no aparecen, y se puede omitir el superíndice $(a)$. Aún no está en una forma que nos permita desarollar ecuaciones de movimiento para el sistema. Debemos transfomar el principio en una expresión de desplazamientos virtuales de las coordenadas generalizadas, que son independientes entre sí (para ligaduras holónomas), para que los coeficientes de las $delta q_i$ puedan ser nulos.
 Empezamos por las ecuaciones de transformación: 
 $ r_i = r_i (q_1, q_2, ..., q_n, t) $ (asumiendo $n$ coordenadas independientes). 
-Ahora utilizaremos la regla de la cadena para derizar con respecto al tiempo, con lo que $ v_i = (dif r_i)/(dif t) = sum_k (diff r_i)/(diff q_k)dot(q)_k + (diff r_i)/(diff t) $
+Ahora utilizaremos la regla de la cadena para derivar con respecto al tiempo, con lo que $ v_i = (dif r_i)/(dif t) = sum_k (diff r_i)/(diff q_k)dot(q)_k + (diff r_i)/(diff t) $
 Similarmente, el desplazamiento irtual $delta r_i$ puede conectarse con los desplazamientos virtuales $delta q_i$ por 
 $ delta r_i = sum_j (diff r_i)/(diff q_j) delta q_j $
 

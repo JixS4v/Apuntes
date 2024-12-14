@@ -1,13 +1,20 @@
 
 #import "@preview/diverential:0.2.0": *
+#import "@preview/hydra:0.5.1": hydra
 #let scr(it) = text(
   features: ("ss01",),
   box($cal(it)$),
 )
 
-#let template(doc)= {
+#let template(doc, title)= {
 
 set heading(numbering: "1.1.1.")
+
+align(center, text(25pt)[#strong(title)])
+align(center+horizon, text(20pt)[Apuntes de Segundo de GIFIS])
+pagebreak()
+
+
 
 show heading.where(level: 1, outlined: true): it => {
 	pagebreak(weak:true)
@@ -43,7 +50,14 @@ show outline.entry.where(
   text(14pt)[#(it)]
 }
 
+
 outline(title: [Índice], indent: auto, fill: none)
+
+
+set page(paper: "a4", margin: (y: 4em), numbering: "1", header: context {
+    align(left, emph(hydra()))
+  line(length: 100%)
+})
 
 doc
 }
