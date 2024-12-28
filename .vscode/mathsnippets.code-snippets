@@ -28,7 +28,7 @@
 	"description": "Derivada parcial"
   	},
 	"Partial derivative evaluated": {
-		"prefix": "epart",
+		"prefix": "parte",
 		"body": [
 	  "dvp(${1},${2}, eval:${3}, evalsym:\")\")"
 		],

@@ -1,5 +1,6 @@
 
 #import "@preview/diverential:0.2.0": *
+#import "@preview/xarrow:0.3.1": *
 #import "@preview/hydra:0.5.1": hydra
 #let scr(it) = text(
   features: ("ss01",),

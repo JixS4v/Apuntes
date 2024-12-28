@@ -792,3 +792,130 @@ Utilizando las relaciones de Maxwell:
 
 Sabiendo que $ dvp(S,V, eval:T, evalsym:")") = dvp(p,T, eval:V, evalsym:")") $
 $dif U$ se quda en $ dvp(U,V, eval:T, evalsym:")") = T dvp(p,T, eval:V, evalsym:")") - p $
+
+= Sistemas homogéneos monocomponente
+== Ecuaciones de estado
+La ecuación del gas ideal es claramente insuficiente. Es por eso que se han propuesto ecuaciones de estado más generales:
+
+- Ecuación de Van der Waals: $ (p + a/v^2)(v-b) = R T $
+- Ecuación de Redlich-Kwong: $ p = R T/(v-b) - a/(T^(1/2) v (v+b)) $
+- Ecuaciones de Clausius y de Berthellot
+$ [p + a/(T(v+c)^2)](v-b) = R T xarrow(c=0) [p + a/(T v^2) (v-b) ] = R T $
+- Ecuación de Dieterici:
+$ p = R T/(v-b) exp(-a/(R T v)) $
+
+Todas estas vuelven a la ecuación del gas ideal para $v->oo$
+
+== Variables reducidas
+Buscamos las coordenadas del punto crítico de un gas de Van der Waals:
+
+El punteo crítico es un punto de inflexión con tangente horizontal:
+$ dvp(p,v, eval:T, evalsym:")") = 0 quad ; quad dvp(p,v, eval:T, evalsym:")", deg:2) quad ; quad [p_c+a/v_c^2 ] (v_c - b) = R T_c $
+
+Despejando $p$ :
+$ p = (R T)/(v-b) - a/v^2 $
+Calculamos las derivadas parciales
+$ dvp(p,v, eval:T, evalsym:")") = (- R T_c) / (v_c -b)^2 + (2 a)/(v_c^3) = 0 $
+$ dvp(p,v, eval:T, evalsym:")", deg:2) = (2 R T_c)/(v_c-b)^3 - (6a)/v_c^4 = 0 $
+Tenemos 3 ecuaciones con 3 incógnitas. Resolviendo:
+$ cases((R T_c)/(v_c-b)^2 = (2a)/(v_c^3), (2 R T_c)/((v_c - b)^(2+1)) = (6a)/v_c^4)) => (4a)/((v_c-b)v_c^3) = (6a)/(v_c^4) => 2/(v_c-b) = 3/v_c -> v_c = 3b $
+$ R T_c = (2a)/v_c^3 (v_c - b)^2 = (8 a b^2)/(27 b^3) -> T_c = (8 a)/(27 R b) $
+$ p_c = (R T_c)/ (v_c-b) - a/v_c^2 = (8a)/(27b 2b) - a/(9b^2) -> p_c = a/(27b^2) $
+Por lo que las constantes del gas son
+$ b = 1/3 v_c quad ; quad a = 3p_c v_c^2 quad ; quad R = 8/3 (p_c v_c)/(T_c) $
+Sustituyendo las constantes en la ecuación de Van der Waals:
+$ (p+ (3 p_c v_c^2)/v^2) (v - 1/3 v_c) = 8/3 (p_c v_c)/(T_c) T $
+$ => (p/p_c + (3v_c^2)/(v^2))(v-1/3 v_c) = 8/3 v_c / T_c T -> (p/p_c + (3v_c^2)/v^2) (v/v_c - 1/3) = 8/3 T/T_c $
+Definimos las variables reducidas como:
+$ v_r = v/v_c quad ; quad T_r = T/T_c quad ; quad p_r = p/p_c $
+Finalmente:
+$ (p_r + 3/(v_r^2)) (v_r - 1/3) = 8/3 T_r $
+
+=== Ley de los estados correspondientes
+Si iguales cantidades de masa de dos gases se encuentran a igual presión reducida y ocupan el mismo volumen reducido, su temperatura reducida es también la misma. Esta ley se cumple para los gases que cumplan una determinada ecuación de estado. 
+
+== Desarrollos del virial
+Se supone que existen desarrollos de forma
+$ p v = A + B/v + C/v^2 + ... $
+$ p v = A' + B' p + C' p^2 + ... $
+Por el limite del gas ideal, debe cumplirse que $ A = A' = R T $
+
+Podemos relacionar los coeficientes de ambos desarrollos
+$ p v = A' + B' [A/v + B/v^2 + C/v^3 + ...] + C' [A/v^2 + B/v^3 + C/v^4 + ...] + ... $
+Por lo que 
+$ p v = A' + 1/v (B'A) + 1/v^2 (B'B + C'A^2) $
+Comparando:
+$ B = A'B' quad C = A'B'^2 + C'A'^2 $
+invirtiendo:
+$ B' = B/A quad C' = (C A - B^2)/A^3 $
+
+== Diagrama de Amagat
+#image("assets/figure_2024-12-28-22-12-23.png")
+Es una representación de $p v$ en función de $p$ y distintas temperaturas. 
+El lugar geométrico de los mínimos es una curva bien definida que no está presente para temperaturas más altas.
+El punto en cada isoterma se llama punto de Boyle y se calcula como $ lim_(p->0) dvp((p v),p, eval:T, evalsym:")") = 0 $
+
+=== Determinación del punto de Boyle
+Partimos del desarrollo del virial:
+$ p v = A' + B'p + C'p^2+... $
+La pendiente de la isoterma para una temperatura $T$ es:
+$ dvp(p v,p, eval:T, evalsym:")") = B' + 2 C' p = 0 => lim_(p->0) dvp((p v),p, eval:T, evalsym:")") = B' $
+La condición buscada es entonces que $B'=0$. Para un gas de Van der Waals:
+$ B' = (R T b - a)/(R T) = 0 -> T_b = a/(R b) -> T_b = 27/8 T_c $
+
+=== Interpretación de la temperatura de Boyle
+Utilizando la ecuación de Van der Waals:
+
+Si $B'=0$, el desarrollo del virial a $T_B$ queda como $ p v = R T_B + C'p^2 + ... $
+Para un gas de Van der Waals:
+$ C' = (C A - B^2 )/A^3 quad A = R T quad ; quad B = R T b -a  quad ; quad C = R T b^2 quad T_c = a/(R b) $
+$ -> C'(T_B) = b^3 / a $
+Entonces, a la temperatura de Boyle
+$ p v = a/b + b^3/a p^2 + ... $
+Como $b<<a$, el gas a $T_B$ se comporta como ideal en un intervalo amplio de presiones.
+
+== Factor de Compresibilidad
+El factor de compresibilidad nos permite caracterizar un gas en función de su desviación del comportamiento ideal. Se define como:
+$ Z = v/v_("ideal") = v/((R T)/p) = (p v)/(R T) $
+En terminos de desarrollos del virial:
+$ Z = 1 + tilde(B)/v + tilde(C)/v^2 + ... quad Z = 1+ tilde(B)' p + tilde(C)' p^2 + ... $
+siendo
+$ tilde(B) = B/(R T) quad ; quad tilde(C) = C/(R T) quad ; quad ... $
+
+Aplicando la ley de los estados correspondientes a gases que cumplan una cierta ecuación de estado, podemos escribir:
+$ Z = (p v)/(R T) = (p_r v_r)/(T_r) (p_c v_c)/(R T_c) => Z = Z(p_r, T_r) $
+
+También podemos obtener Z a partir de los coeficientes térmicos
+$ dvp(ln z,T, eval:p, evalsym:")") &= dvp(ln v,T, eval:p, evalsym:")") - 1/T = 1/v dvp(v,T, eval:p, evalsym:")") - 1/T = alpha - 1/T \
+dvp(ln z,p, eval:T, evalsym:")") &= dvp(ln v,p, eval:T, evalsym:")") - 1/T = 1/v dvp(v,p, eval:T, evalsym:")") - 1/T = beta - 1/T \
+dvp(ln Z,p, eval:T, evalsym:")") &= 1/v dvp(v,p, eval:T, evalsym:")") + 1/p = 1/p - chi_T $
+
+== Coeficiente Joule-Kelvin
+El efecto joule kelvin es el cambio de temperatura asociado a la expansión de un gas en un dispositivo de estrangulamiento.
+Se define el coeficiente Joule-Kelvin como la pendiente de las isoentálpicas en un diagrama p-T:
+$ mu_(J K) = dvp(T,p, eval:h, evalsym:")") $
+Por la propiedad cíclica:
+$ dvp(T,p, eval:h, evalsym:")") dvp(p,h, eval:T, evalsym:")") dvp(h,T, eval:p, evalsym:")") = - 1 => dvp(T,p, eval:h, evalsym:")") = - dvp(h,p, eval:T, evalsym:")")/dvp(h,T, eval:p, evalsym:")") = -1/c_p dvp(h,p, eval:T, evalsym:")") $
+También sabemos que
+$ dif h = T dif s + v dif p -> dvp(h,p, eval:T, evalsym:")") = T dvp(s,p, eval:T, evalsym:")") + v quad ; quad dvp(s,p, eval:T, evalsym:")") = - dvp(v,T, eval:p, evalsym:")") " (R. Maxwell)" $
+Por lo que
+$ dvp(h,p, eval:T, evalsym:")") = v- T dvp(v,T, eval:p, evalsym:")") $ 
+Finalmente
+$ mu_(J K) = 1/c_p [T dvp(v,T, eval:p, evalsym:")") - v] $
+
+=== Interpretación física - Temperatura de inversión
+Definimos la temperatura de inversión como la temperatura donde el coeficiente Joule-Kelvin se anula. Más allá de este, una compresión isoentálpica enfriará el gas y una expansión lo calentará. Hay una temperatura donde la curva de inversión cruza el eje vertical que es la máxima temperatura de inversión.
+
+#image("assets/figure_2024-12-28-22-59-53.png")
+
+=== Cálculo de la máxima temperatura de inversión
+Tomando el ejemplo de un gas de Van der Waals
+
+$ R dvp(T,v, eval:p, evalsym:")")= p + a/v^2 - (2 a)/v^3 (v-b) = (R T)/(v-b) - (2a)/v^3 (v-b) = ( R T v^3 - 2a (v-b)^2)/(v^3 (v-b)) $
+$ -> dvp(v,T, eval:p, evalsym:")") = (R v^3 (v-b))/(R T v^3 - 2 a(v-b)^2 ) -> T dvp(v,T, eval:p, evalsym:")") = (R T v^3 (v-b))/(R T v^3 - 2 a (v-b)^2) $
+$ -> T dvp(v,T, eval:p, evalsym:")") - v = (R T v^3 (v-b))/(R T v^3 - 2 a (v-b)^2) - v = (R T v^3 b - 2 a v(v-b)^2)/(R T v^3 - 2 a (v-b)^2) $
+$-> mu_(J K) = -1/C_p (R T v^3 b - 2 a v (v-b)^2)/(R T v^3 - 2 a (v-b)^2 ) $
+$ mu_(J K) = 0 => R T_i v^3 b = 2 a v (v-b)^2 => T_i = (2 a (v_i)-b)/(R v_i^2 b) $
+En $p->0$ ($v->oo$)
+$T_i^("max") = (2a)/(R b) -> T_i^("max") = 27/5 T_c $
+
