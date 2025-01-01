@@ -1219,3 +1219,26 @@ $ Delta tilde(s) = sum_i x_i [integral_(T_0)^T tilde(c)_(p_i) (dif T)/T - tilde(
 En el caso de un gas perfecto
 $ Delta tilde(s) = sum_i x_i [tilde(c)_(p_i) ln T/T^0 - tilde(R) ln p/p_0] $
 
+== Mezclas ideales de gases reales
+=== Ecuación de estado
+$ V = (n tilde(R) T)/p sum_i x_i (Z_i)_(T,p) $
+Definiendo el factor de compresibilidad de la mezcla como
+$ Z_m = sum_i x_i (Z_i)_(T,p) $
+la ecuación de estado queda como
+$ p V = n tilde(R) T Z_m quad ; quad (Z_i)_(T,p) = Z(p_(r_i), T_(r_i)) $
+Alternativamente, podemos utilizar la regla de Kay, en vez de ponderar las $Z$ ponderamos las coordenadas críticas
+Definimos $ T'_c = sum_i x_i T_(c_i) quad p'_c = sum_i x_i p_(c_i) $
+y calculamos $Z_m$ como $Z_m = Z(p/(p'_c) , T/(T'_c)) $
+
+=== Variación de magnitudes termodinámicas
+Para calcularlas para la mezcla a partir de los componentes, hay que verificar la validez de la ley de los estados correspondientes
+
+Por ejemplo en el caso de la entalpía
+$ dif tilde(h)_m = T_m dif tilde(s)_m + tilde(v)_m dif p_m $
+Y si no varía la composición
+$ dif (sum x_i tilde(h)_i ) = T_m dif(sum x_i tilde(s)_i) + (sum x_i tilde(v)_i) dif p_m $
+$ => sum x_i [ dif tilde(h)_i T_m dif tilde(s)_i - tilde(v)_i dif p_m ] = 0 $
+$ => dif tilde(h)_i = T_m dif tilde(s)_i + tilde(v)_i dif p_m $
+Así las correcciones debidas al factor de compresibilidad se pueden calcular utilizando la presión de la mezcla para calcular la presión reducida de cada componente
+
+Es importante recordar que la posibilidad de esos cálculos depende de que se haya supuesto la ley de aditividad de los volúmenes.
