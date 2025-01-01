@@ -904,8 +904,7 @@ Finalmente
 $ mu_(J K) = 1/c_p [T dvp(v,T, eval:p, evalsym:")") - v] $
 
 === Interpretación física - Temperatura de inversión
-Definimos la temperatura de inversión como la temperatura donde el coeficiente Joule-Kelvin se anula. Más allá de este, una compresión isoentálpica enfriará el gas y una expansión lo calentará. Hay una temperatura donde la curva de inversión cruza el eje vertical que es la máxima temperatura de inversión.
-
+Definimos la temperatura de inversión como la temperatura donde el coeficiente Joule-Kelvin se anula. Más allá de este, una compresión isoentálpica enfriará el gas y una expansión lo calentará. Hay una temperatura donde la curva de inversión cruza el eje vertical que es la máxima temperatura de inversión, donde $p->0$.
 #image("assets/figure_2024-12-28-22-59-53.png")
 
 === Cálculo de la máxima temperatura de inversión
@@ -918,4 +917,305 @@ $-> mu_(J K) = -1/C_p (R T v^3 b - 2 a v (v-b)^2)/(R T v^3 - 2 a (v-b)^2 ) $
 $ mu_(J K) = 0 => R T_i v^3 b = 2 a v (v-b)^2 => T_i = (2 a (v_i)-b)/(R v_i^2 b) $
 En $p->0$ ($v->oo$)
 $T_i^("max") = (2a)/(R b) -> T_i^("max") = 27/5 T_c $
+
+También hay otra forma de calcularlo
+$ mu_(J K) = 0 => T dvp(v,T, eval:p, evalsym:")") - v = 0 => 1/v dvp(v,T, eval:p, evalsym:")") - 1/T = 0 $
+pero
+$ 1/v dvp(v,T, eval:p, evalsym:")") - 1/T = dvp(ln Z,T, eval:p, evalsym:")") $
+En un entorno de la máxima temperatura de inversión, $p->0$, por lo que
+$ Z approx 1 + tilde(B)' p $
+
+por lo que podemos escribir la condición como
+$ dvp(ln Z,T, eval:p, evalsym:")") approx dvp(ln(1+tilde(B)'p),p, eval:T, evalsym:")") approx dvp(tilde(B)' p,T, eval:p, evalsym:")") = p dvp(tilde(B)',T, eval:p, evalsym:")") = 0 => dv(tilde(B)', T, eval:T_i^("max"), evalsym: ")") = 0 $
+En un gas de Van der Waals
+$ B' = B/( R T) = (R T b - a )/(R T) = b - a/(R T) $
+y 
+$ tilde(B)' = (B')/(R T) = b/(R T) - a/(R T)^2 $
+Por lo que
+$ dv(tilde(B)', T) = (-b)/(R T^2) - (-2a)/(R^2 T^3) = 1/(R T^2) (-b + (2a)/(R T)) $
+Finalmente
+$ dv(tilde(B)', T, eval:T_i^("max"), evalsym:")") = 0 => -b + (2a)/(R T_i^("max")) = 0 => T_i^("max") = (2 a)/(R b) $
+
+
+= Transiciones de fase en sistemas heterogéneos monocomponente
+
+== Concepto de fase
+Una fase es una cantidad de materia homogénea que está limitada por superficie a través de la cual las propiedades físicas cambian bruscamente. Por ejemplo, agua líquida en presencia de hielo.
+
+== Equilibrio entre fases
+Supongamos un sistema monocomponente constituido por dos fases, tal que las dos fases están a la misma temperatura y presión y estas son constantes.
+
+Dado que el potencial de Gibbs es constante en estas condiciones (ya que $dif G$ depende de $dif T$ y $dif p$) se dice que es la magnitud natural. 
+El potencial de gibbs total es
+$ G = m_1 g_1 + m_2 g_2 $
+Su diferencial entonces es
+$ dif G = g_1 dif m_1 + m_1 dif g_1 + g_2 dif m_2 + m_2 dif g_2 $
+Como $ dif G = 0$, $dif g_1 = 0$ y $dif g_2 = 0 $
+$ g_1 dif m_1 = - g_2 dif m_2 $
+Sabiendo que $m_1+m_2 = "cte" => dif m_1 + dif m_2 = 0 $
+$ g_1(T,p) = g_2(T,p) $
+
+Ahora vamos a tratar el mismo sistema pero con $v,T$ constantes
+Aquí la magnitud natural es el podencial de Hemholtz:
+$ F = m_1 f_1 + m_2 f_2 $
+En este caso $f_1$ y $f_2$ no son necesariamente constantes ya que dependen de $v_1$ y $v_2$.
+$ dif F = f_1 dif m_1 + f_2 dif m_2 + m_1 dif f_1 + m_2 dif f_2 = 0 $
+
+También sabemos que $ V = m_1 v_1 + m_2 v_2 = "cte" => dif V = m_1 dif v_1 + m_2 dif v_2 + dif m_1 v_1 + dif m_2 v_2 = 0 $
+Multiplicando por $p$ y sumando a $dif F$ 
+$ dif F + p dif V = f_1 dif m_1 + f_2 dif m_2 + m_1 dif f_1 + m_2 dif f_2 + p m_1 dif v_1 + p m_2 dif v_2 = 0 $
+$ (f_1 + p v_1 ) dif m_1 + (f_2 + p v_2) dif m_2 + m_1 (dif f_1 + p dif v_1) + m_2 (dif f_2 + p dif v_2) = 0 $
+Pero sabemos que $ dif f = - s dif T - p dif v = - p dif v $
+Por lo que
+$ (f_1 + p v_1 ) dif m_1 + (f_2 + p v_2) dif m_2 = 0 $
+Y sigue cumpliendose que $ dif m_1 = - dif m_2 $
+por lo que 
+$ f_1 + p v_1 = f_2 + p v_2 => g_1 = g_2 $
+Por lo que la condición de equilibrio entre fases siempre será la misma sin importar las ligaduras aplicadas.
+
+== Ecuación de Clausius-Clayperon
+Proporciona una relación que nos permite describir el equilibrio entre fases.
+Partiendo de un estado de equilibrio, donde $g_1 = g_2$, si el estado resultante de una pequeña modificación,
+$ g_1 + dif g_1 = g_2 + dif g_2 => dif g_1 = dif g_2 => -s_1 dif T + v_1 dif p = - s_2 dif T + v_2 dif p $
+Agrupando
+$ (v_1 - v_2) dif p = (s_1 - s_2) dif T => dv(p,T) = (s_2 - s_1)/(v_2 - v_1) = (Delta s)/(Delta v) $
+El calor latente de un cambio de fase es 
+$ l = T Delta s $
+por lo que
+$ dv(p,t) = (Delta s)/(Delta v) = l/(T Delta v) $
+
+En las líneas de vaporización en un diagrama $p$-$T$ $l>0$ y $Delta v>0$ por lo que $dv(p,T)>0$.
+En cambio en una línea de fusión $l>0$ y $v approx 0$ por lo que el signo de la pendiente depende de el signo de $Delta v$
+
+=== Integración para vaporización y sublimación
+Partimos de dos hipótesis:
+- El volumen de la fase condensada es mucho menos que el de la fase vapor $Delta v = v_2 - v_1 approx v_2 $
+- La fase vapor tiene un comportamiento ideal $v_2 = (R T)/p $
+
+En la ecuación de Clausius-Clayperon:
+$ dv(p,T) = l/(T Delta v) approx l/(T v_2) = (l p)/(R T^2) => (dif p)/p = l/R (dif T)/T^2 $
+El calor latente no depende de $T$
+$ ln p = - l/R 1/T + C => p = C' e^(-l/(R T)) $
+Donde $C'$ es una constante de integración.
+
+== Calor latente y ecuación de Clausius
+
+La variación del calor latente a lo largo de la curva de equilibrio entre fases es:
+$ dif (l/T) = dvp(l/T,p, eval:T, evalsym:")") dif p + dvp(l/T,T, eval:p, evalsym:")") dif T $
+$ => dif/(dif T) (l/T) = dvp(l/T,p, eval:T, evalsym:")") dv(p,T) + dvp(l/T,T, eval:p, evalsym:")") $
+sabiendo que $ l = T Delta s $
+$ dif/(dif T) (l/T) = dvp(Delta s,p, eval:T, evalsym:")") dv(p,T) + dvp(Delta s,T, eval:p, evalsym:")") $
+Por relaciones de Maxwell sabemos que
+$ dvp(s,p, eval:T, evalsym:")") = -dvp(v,T, eval:p, evalsym:")") => dvp(Delta s,p, eval:T, evalsym:")") = dvp(Delta v,T, eval:p, evalsym:")") $
+También sabemos que
+$ c_p = T dvp(s,T, eval:p, evalsym:")") => dvp(Delta s,T, eval:p, evalsym:")") = (Delta c_p)/T $
+Sustituyendo
+$ dif/(dif T) (l/T) = - dvp(Delta v,T, eval:p, evalsym:")") dv(p,T) + (Delta c_p)/T $
+Que es la ecuación de Clausius
+
+En la vaporización y sublimación:
+$ dif/(dif T) (l/T) = (Delta c_p)/T - dvp(v_2,T, eval:p, evalsym:")") dv(p,T) = (Delta c_p)/T - R/p (l p)/(R T^2) = (Delta c_p)/T - l/T^2 $
+$ => 1/T dv(l,T) - l/(T^2) = (Delta c_p)/T - l/T^2 => dv(l,T) = Delta c_p $
+$ => dif l = Delta c_p dif T => l(T) - l(T_3) = integral_(T_3)^T Delta c_p dif T $
+
+== Propiedades termodinámicas en sistemas bifásicos
+
+Título de un vapor:
+$ x = m_v/(m_v + m_l) $
+Es inmediatamente aparente que los estados bajo la campana de saturación quedan determinados por los valores en la curva de saturación y el título del estado:
+$ V = V_l + V_v = m_l v_l + m_v v_v $
+$ v = V/m = (m_l v_l + m_v v_v)/(m_v + m_l) = m_l / (m_v + m_l) v_l + m_v /(m_v + m_l) v_v -> v = (1-x) v_l + x v_v $
+Similarmente
+$ h = (1-x) h_l + x h_v $
+$ s = (1-x) s_l + x s_v $
+$ u = (1-x) u_l + x u_v $
+Recíprocamente
+$ x = (v-v_l)/(v_v - v_l) = (h-h_l)/(h_v-h_l) = (s - s_l)/(s_v - s_l) = (u-u_l)/(u_v - u_l) $
+
+= Sistemas homogéneos multicomponente
+== Descripción del estado del sistema
+La descripción del estado termodinámico de un sistema homogéneo multicomponente requiere de el conocimiento de dos variables intensivas independientes y la especificacióñ de la composición del sistema. 
+
+En un sistema gaseoso cerrado con $k$ componentes, el componente $i$ se caracteriza en términos de:
+- La fracción másica: $ x_(m i) = m_i/m quad, quad m = sum_(i=1)^(k) m_i => sum_(i=1)^(k) = 1 $
+- El número de moles $ n_i = m_i / M_i quad , quad n = sum_(i=1)^(k) n_i $
+- La fracción molar $ x_i = n_i / n => sum_(i=1)^(k) x_i = 1 $
+
+== Propiedades molares parciales
+Vamos a considerar una variable extensiva $Phi$ en un sistema con $k$ componentes. Su dependencia funcional es:
+$ Phi = Phi (T, p, n_1 ,..., n_k) = Phi(T,p,n) $
+Una modificación de la masa del sistema nos lleva a
+$ Phi(T, p, alpha n_1, ..., alpha n_k ) = alpha Phi(T,p,n_1,...,n_k) $
+Se trata de una función homogénea de orden 1, por lo que se cumple el teorema de Euler
+$ Phi = sum_(k)^(i=1)  n_i dvp(Phi,n_i, eval:(T, p, n_(j!=i)), evalsym:")") $
+Definimos entonces la propiedad molar parcial correspondiente como $ overline(phi)_i = dvp(Phi,n_i, eval:(T,p,n_(j!=i)), evalsym:")") quad => Phi = sum_(k)^(i=1)  n_i overline(phi)_i $
+que es una propiedad intensiva del sistema.
+
+== Potenciales termodinámicos
+
+Para la energía interna se tiene
+$ U = U(S,V,n) $
+En forma diferencial
+$ dif U = dvp(U,S, eval:(V,n), evalsym:")") dif S + dvp(U,V, eval:(S,n), evalsym:")") dif V + sum_(k)^(i=1) dvp(U,n_i, eval:(S,V,n_(j!=i)), evalsym:")") dif n_i $
+Identificando términos con la ecuación de Gibbs
+$ dif U = T dif S - p dif V + sum_(k)^(i=1) sum_(i=1)^(k) mu_i dif n_i $
+Donde el potencial químico se define como
+$ mu_i = dvp(U,n_i, eval:(S,V,n_(j!=i)), evalsym:")") $
+Las ecuaciones de Euler y Gibbs-Duhem quedan como
+$ U = T S - p V + sum_(i=1)^(k)  mu_i n_i quad ; quad sum_(k)^(i=1) n_i dif mu_i = - S dif T + V dif p $
+Para el resto de potenciales
+- Potencial de Helmholtz: $ F = F(T, V, n) quad quad dif F &= - S dif T - p dif V + sum_(i=1)^(k)  mu_i dif n_i \ F&= - p V + sum_(i=1)^(k)  mu_i n_i $
+- Entalpía: $ H = H(S, p, n) quad quad dif H &= T dif S + V dif p + sum_(i=1)^(k)  mu_i dif n_i \ H &= T S + sum_(i=1)^(k)  mu_i n_i $
+- Potencial de Gibbs: $ G = G(T,p,n) quad quad dif G &= -S dif T + V dif p + sum_(i=1)^(k)  mu_i dif n_i \ G &= sum_(i=1)^(k)  mu_i n_i $
+
+Podemos entonces escribir
+$ mu_i &= dvp(U,n_i, eval:(S,V,n_(j!=i)), evalsym:")") \ &= dvp(F,n_i, eval:(T,V,n_(j!=i)), evalsym:")") \ &= dvp(H,n_i, eval:(S,p,n_(j!=i)), evalsym:")") \ &= dvp(G,n_i, eval:(T,p,n_(j!=i)), evalsym:")") = overline(g)_i $
+El potencial químico es precisamente el potencial de Gibbs molar parcial: #rect($ mu_i = overline(g)_i $)
+
+Ahora, por la condición de diferencial exacta:
+$ dif G = - S dif T + V dif p + sum_(i=1)^(k) mu_i dif n_i $
+$ => dvp(mu_i,T, eval:(p,n), evalsym:")") = - dvp(S,n_i, eval:(T,p,n_(j!=i)), evalsym:")") = - overline(s)_i $
+$ => dvp(mu_i,p, eval:(T,n), evalsym:")") = dvp(V,n_i, eval:(T,p,n_(j!=i)), evalsym:")") = overline(v)_i $
+
+Ahora, con la ecuación de Gibbs-Duhem:
+$ sum_(i=1)^(k) n_i dif mu_i &= - S dif T + V dif p = sum_(i=1)^(k)  n_i (-overline(s_i)) dif T + sum_(i=1)^(k)  n_i overline(v_i) dif p \ => sum_(i=1)^(k)  n_i dif mu_i &= sum_(i=1)^(k) n_i dvp(mu_i,T, eval:(p,n), evalsym:")") dif T + sum_(i=1)^(k) n_i dvp(mu_i,p, eval:(T,n), evalsym:")") dif p \ => sum_(i=1)^(k)  n_i dif mu_i &= sum_(i=1)^(k) n_i [dvp(mu_i,T, eval:(p,n), evalsym:")") dif T + dvp(mu_i,p, eval:(T,n), evalsym:")") dif p ] $
+Entonces
+$ dif mu_i = dvp(mu_i,T, eval:(p,n), evalsym:")") dif T + dvp(mu_i,p, eval:(T,n), evalsym:")") dif p => mu_i = mu_i (T,p ) $
+$ => -overline(s)_i = dvp(mu_i,T, eval:p, evalsym:")") quad ; quad overline(v)_i = dvp(mu_i,p, eval:T, evalsym:")") $
+Ahora utilizamos las relaciones entre $G$, $H$ y $S$ 
+$ mu_i = dvp(G,n_i, eval:(T,p,n_(i!=j)), evalsym:")") = dvp((H-T S),n_i, eval:(T,p,n_(j!=i)), evalsym:")") = dvp(H,n_i, eval:(T,p,n_(j!=i)), evalsym:")") - T dvp(S,n_i, eval:(T,p,n_(j!=i)), evalsym:")") $
+$ => mu_i = overline(h)_i - T overline(s)_i $
+$ overline(h)_i = mu_i + T overline(s)_i = mu_i - T dvp(mu_i,T, eval:p, evalsym:")") $
+$ => overline(u)_i = overline(h)_i - p overline(v)_i = mu_i T dvp(mu_i,T, eval:p, evalsym:")") - p dvp(mu_i,p, eval:T, evalsym:")") $
+Por lo que cualquier propiedad extensiva del sistema se puede calcular si se conoce $mu_i(T,p)$ para sus componentes. Pero, como podemos obtener $mu_i(T,p) $?
+
+== Fugacidad
+Partiendo de la ecuación de Gibbs-Duhem en sistemas monocomponente
+$ n dif mu = - S dif T + V dif p $ 
+pasando a magnitudes molares
+$ dif mu = - tilde(s) dif T + tilde(v) dif p -> T="cte" -> dif mu = tilde(v) dif p $
+Para un gas ideal
+$ tilde(v) = (tilde(R) T)/p -> dif mu = tilde(R) T (dif p)/p = tilde(R) T dif (ln p) $
+$ mu = mu^0 (T) + tilde(R) T ln p/p_0 $
+Donde $p_0$ es la presión de referencia
+En gases reales, definimos la fugacidad tal que 
+$ mu = mu^0 (T) + tilde(R) T ln f/f_0 $
+tal que
+$ lim_(p->0) f/p = 1 $
+=== Fugacidad en sitemas monocomponente
+Para tener en cuenta el límite $lim_(p->0) f/p = 1$ partimos de
+$ dvp(ln(f/p),p, eval:T, evalsym:")") = dvp(ln f,p, eval:T, evalsym:")") - dvp(ln p ,p , eval:T, evalsym:")") $
+Recordamos que
+$ tilde(v) = dvp(mu,p, eval:T, evalsym:")") = tilde(R) T dvp(ln f,p, eval:T, evalsym:")") => dvp(ln(f/p),p, eval:T, evalsym:")") = tilde(v)/(tilde(R) T) - 1/p $
+Y la definición del factor de compresibilidad
+$ tilde(v)/(tilde(R) T) - 1/p = 1/p ((p tilde(v))/(tilde(R) T) -1 ) = 1/p (Z-1) $
+Entonces
+$ dvp(ln(f/p),p, eval:T, evalsym:")") = 1/p (Z-1) $
+Integrando a $T$ constante entre $p->0$ y $p$ obtenemos
+$ ln f/p = ln f/p |_(p->0) + integral_(p->0)^p 1/p (Z-1) dif p => ln f = ln p + integral_(p->0)^p 1/p (Z-1) dif p $
+Esta expresión se puede integrar directamente a partir del desarrollo del virial para el factor de compresibilidad
+
+En variables reduciddas
+$ ln f/p equiv ln v = integral_(p_r -> 0)^(p_r) 1/p_r (Z-1) dif p $
+Como $Z=Z(T_r, p_r) $, $v=v(T_r, p_r)$ por lo que también podemos aplicar la ley de los estados correspondientes
+
+=== Fugacidad en sistemas multicomponente
+Definimos la fugacidad de un componente $i$ tal que
+$ mu_i = mu_i^0 (T) + tilde(R) T ln (overline(f)_i/overline(f)^0_i) $
+donde $f_i^0$ es la fugacidad del componente puro a la temperatura $T$ y a la presión de referencia $p^0$.
+
+Por lo que la condición para $p->0$ es ahora $ lim_(p->0) overline(f)_i/(x_i p) = 1  $
+En el limite del comportamiento ideal
+$ x_i p = x_i (n tilde(R) T)/V = (n_i tilde(R) T)/V equiv p_i $
+Es decir, la presión parcial del componente $i$ la presión que tendría que ocupar él solo en el volumen $V$ y la temperatura $T$.
+
+Ahora, para la sustancia en mezcla:
+$ overline(v)_i = dvp(mu_i,p, eval:(T,n), evalsym:")") = tilde(R) T dvp(ln bar(f)_i, p, eval:(T,n), evalsym:")") $
+Para la sustancia pura
+$ tilde(v)_i = tilde(R) T dvp(ln f_i,p, eval:T, evalsym:")") $
+Restando
+$ tilde(R) T dvp(ln overline(f)_i/f_i,p, eval:(T,n), evalsym:")") = overline(v)_i - tilde(v_i) $
+Integrando a la temperatura y composición constantes desde $p'->0$:
+$ tilde(R) T [ ln overline(f)_i/f_i - lim_(p'->0) ln overline(f)_i/f_i] = integral_(p'->0)^p (overline(v)_i - tilde(v)_i ) dif p $
+pero
+$ lim_(p'->0) ln overline(f)_i/f_i = ln (x_i p)/p = ln x_i $
+$ => tilde(R) T ln overline(f)_i /(x_i f_i ) = integral_(p'->0)^p (overline(v)_i - tilde(v)_i) dif p $
+
+== Mezclas ideales
+Se trata de las mezclas que cumplen la regla de Lewis-Randall: $ overline(f)_i = x_i f_i $
+Si $mu_i^*$ es el potencial químico del componente puro a la temperatura $T$ y la presión $p$ de la mezcla, entonces:
+$ mu_i = mu_i^* + tilde(R) T ln overline(f)_i/f_i = mu_i^* + tilde(R) T ln x_i $
+Ahora
+$ overline(v)_i  = dvp(mu_i,p, eval:T, evalsym:")") = dvp(mu_i^*,p, eval:T, evalsym:")") = tilde(v)_i $
+Además
+$ dvp(mu_i,T, eval:p, evalsym:")") = - tilde(s)_i $
+y
+$ mu_i = overline(h)_i - T overline(s)_i $
+Así
+$ dvp((mu_i)/T,T, eval:p, evalsym:")") = - mu_i/T^2 + 1/T dvp(mu_i,T, eval:p, evalsym:")") = - (overline(h)_i - T overline(s)_i)/T^2 - overline(s)_i /T = - overline(h)_i/T^2 $
+y
+$ mu_i/T - mu_i^* /T = tilde(R) ln x_i => dvp(mu_i/T, T, eval:p, evalsym:")") - dvp(mu_i^* /T ,T, eval:p, evalsym:")") = 0 $
+Pero
+$ dvp(mu_i/T, T, eval:p, evalsym:")") = - overline(h)_i/T^2 quad dvp(mu_i^* /T ,T, eval:p, evalsym:")") = - tilde(h)_i / T^2 $
+Entonces
+$ overline(h)_i = tilde(h)_i $
+y como $tilde(v)_i = overline(v)_i $
+$ overline(u)_i = tilde(u)_i $
+Entonces
+$ V = sum_(i=1)^(k)  n_i tilde(v)_i quad ; quad H = sum_(i=1)^(k)  n_i tilde(h)_i quad ; quad U = sum_(i=1)^(k)  n_i tilde(u)_i $
+$ tilde(v) = sum_(x_i)^(tilde(v_i)) quad ; quad tilde(h) = sum_(i=1)^(k)  x_i tilde(h)_i quad ; quad tilde(u) = sum_(i=1)^(k) x_i tilde(u)_i $
+En el caso de la entropía entonces
+$ dvp(mu_i,T, eval:p, evalsym:")") = - overline(s)_i $
+y 
+$ dvp(mu_i^*,T, eval:p, evalsym:")") = - tilde(s)_i => dvp((mu_i-mu_i^*),T, eval:p, evalsym:")") = - (overline(s)_i - tilde(s)_i ) $
+Por lo tanto, la variación de entropía asociada a una mezcla ideal es 
+$ Delta S_m = sum_(i=1)^(k)  n_i (overline(s_i) - tilde(s)_i ) = - tilde(R) sum_(i=1)^(k)  n_i ln x_i $
+$ Delta tilde(s)_m = - tilde(R) sum_(i=1)^(k)  x_i ln x_i $
+Obviamente, $Delta tilde(s)_m > 0$ constistentemeinte con la irreversibilidad del proceso de mezcla
+
+Ahora para el potencial de gibbs es imediato que
+$ Delta G_m = Delta H_m - T Delta S_m $
+$Delta H_m = 0$ por lo que
+$Delta G_m = tilde(R) T sum_(i=1)^(k) n_i ln x_i $
+
+$ Delta tilde(g)_m = tilde(R) T sum_(i=1)^(k)  x_i ln x_i $
+Finalemente para el potencial químico
+$ mu_i = mu_i^0 + tilde(R) T ln overline(f)_i /f_i^0 = mu_i^0 + tilde(R) T ln (x_i f_i)/(f_i^0) $
+$ => mu_i = mu_i^0 + tilde(R) T ln f_i/f_i^0 + tilde(R) T ln x_i $
+
+== Mezclas de gases ideales
+Supondremos que el conjunto de la mezcla cumple $ p V = n tilde(R) T $
+
+=== Modelo de Dalton
+Cada gas se comporta como un gas ideal que ocupa todo el volumen a la temperatura de la mezcla
+$ p_i V = n_i tilde(R) T => V sum_i p_i = tilde(R) T sum_i n_i => V sum_i p_i = n tilde(R) T  $
+$ => p = sum_i p_i quad ; quad p_i = x_i p $
+
+=== Modelo de Amagat
+Cada gas se comporta como un gas ideal a la presión y temperatura de la mezcla, y ocupa un cierto volumen menor al volumen de la mezcla
+$ p V_i = n_i tilde(R) T => V_i/V = n_i/n = x_i => V = sum_i V_i $
+
+=== Variación de magnitudes termodinámicas
+Como la energía interna y la entalpía son funciones de $T$, sus variaciones entre dos estados ($T^0, p^0$) y $(T,p)$ serán para cada componente
+Para gases ideales
+$ Delta tilde(u)_i (T,p) - tilde(u)_i (T^0, p^0) = integral_(T^0)^T tilde(c)_(v_i) (T) dif T $
+$ Delta tilde(h)_i = tilde(h)_i (T,p) - tilde(h)_i (T^0, p^0 ) = integral_(T^0)^T tilde(c)_(p_i) (T) dif T $
+Para gases perfectos
+$ Delta tilde(u)_i = tilde(c)_(v_i) (T- T^0 ) $
+$ Delta tilde(h)_i = tilde(c)_(p_i) (T-T^0) $
+Las variaciones para el conjunto de la mezcla son
+$ Delta tilde(u) = sum_i x_i Delta tilde(u)_i quad ; quad Delta tilde(h) = sum_i x_i Delta tilde(h)_i $
+
+En el caso de la entropía
+$ tilde(s) = sum_i x_i overline(s)_i quad ; quad overline(s_i) = tilde(s_i) tilde(R) ln x_i $
+Alternativamente, recordemos que para un gas ideal
+$ dif tilde(s)_i = tilde(c)_(p_i) (dif T)/T - tilde(R) (dif p)/p $
+Así, al pasar de $(T,p)$ a $(T, p_i)$ se tiene
+$ tilde(s)_i (T, p_i) = tilde(s)_i (T,p) - tilde(R) ln (p_i)/p = tilde(s)_i (T,p) - tilde(R) ln x_i equiv overline(s)_i $
+Entonces
+$ tilde(s) (T,p,x) = sum_i x_i [tilde(s)_i (T,p) - tilde(R) ln x_i ] = sum_i x_i tilde(s)_i (T,p_i) $
+Finalmente, su variación entre los estados $ (T^0,p^0)$ y $(T,p)$ es
+$ Delta tilde(s) = sum_i x_i [integral_(T_0)^T tilde(c)_(p_i) (dif T)/T - tilde(R) ln p/p^0 ] $
+En el caso de un gas perfecto
+$ Delta tilde(s) = sum_i x_i [tilde(c)_(p_i) ln T/T^0 - tilde(R) ln p/p_0] $
 

@@ -55,4 +55,11 @@
 		],
 	"description": "Diferencial de t"
   	},
+	"Overline": {
+		"prefix": "obar",
+		"body": [
+	  "overline(${1})"
+		],
+	"description": "Barra"
+  },
 }
