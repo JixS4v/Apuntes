@@ -1242,3 +1242,172 @@ $ => dif tilde(h)_i = T_m dif tilde(s)_i + tilde(v)_i dif p_m $
 Así las correcciones debidas al factor de compresibilidad se pueden calcular utilizando la presión de la mezcla para calcular la presión reducida de cada componente
 
 Es importante recordar que la posibilidad de esos cálculos depende de que se haya supuesto la ley de aditividad de los volúmenes.
+
+= Sistemas heterogéneos multicomponente
+
+== Condiciones de equilibrio
+Consideremos un sistema con 2 fases y 2 componentes, con los 2 componentes presentes en las 2 fases. Cualquier cambio de composición es debido al paso de un componente de una fase a otra.
+
+La condición de equilibrio para este sistema es un mínimo del potencial de Gibbs. Denotando las fases por $a$ y $b$, y los componentes por 1 y 2: 
+$ G = G^((a)) (T,p,n_i^((a)) , n_2^((a)) ) + G^((b)) (T,p,n_1^((b)), n_2^((b))) $
+sujeto a la condición de que el número total de moles de cada componente es constante
+$ n_1 = n_1^((a)) + n_i^((b)) = "const" $
+$ n_2 = n_2^((a)) + n_2^((b)) = "const"' $
+
+Diferenciando la expresión del potencial de Gibbs:
+$ dif G &= dif G^((a)) + dif G ^((b)) \ &= dvp(G^((a)),n_1^((a)), eval:(T,p,n_2^((a))), evalsym:")") dif n_1^((a)) + dvp(G^((a)),n_2^((a)), eval:(T,p,n_1^((a))), evalsym:")") dif n_2^((a)) + dvp(G^((b)),n_1^((b)), eval:(T,p,n_2^((b))), evalsym:")") dif n_1^((b)) + dvp(G^((b)),n_2^((b)), eval:(T,p,n_1^((b))), evalsym:")") dif n_2^((b)) = 0 $
+$ => mu_1^((a)) dif n_1 ^((a)) + mu_2^((a)) dif n_2^((a)) + mu_1^((b)) dif n_1^((b)) + mu_2^((b)) dif n_2^((b)) = 0 $
+$ dif n_1^((a)) + dif n_1^((b)) = 0 $
+$ dif n_2^((a)) + dif n_2^((b)) = 0 $
+Por lo que se tiene
+$ [mu_1^((a)) - mu_1^((b))] dif n_1^((a)) + [mu_2^((a)) - mu_2^((b))] dif n_2^((a)) = 0 $
+Y como $dif n_1^((a))$ y $dif n_2^((a))$ son independientes
+$ mu_1^((a)) = mu_1^((b)) $
+$ mu_2^((a)) = mu_2^((b)) $
+Es decir el potencial químico de los dos componentes debe de ser igual en las dos fases
+
+En un caso más general de un sistema con $phi$ fases y $c$ componentes, con todos los componentes presentes en todas las fases de forma que cada fase está en contacto con todas las demás y la composición cambia por cambios de fase de los componentes
+De nuevo, la condición de equilibrio para este sistema es un mínimo del potencial de Gibbs:
+$ G = sum_(j=1)^(phi) G^j (T,p,n^j_1,...,n_c^j) $
+Sujeto a la condición de que el número total de moles de cada componente es constante
+$ n_i = sum_(j=1)^(phi)  n_i^j , quad i=1,...,c $
+Diferenciando la expresión
+$ dif G = sum_(j=1)^(phi) dif G^j = sum_(j=1)^(phi) sum_(i=1)^(c)  dvp(G^j,n_i^j, eval:(T,p,n^j_(k!=i)), evalsym:")") $
+$ dif n_i^j = 0 \ => sum_(j=1)^(phi) sum_(i=1)^(c)  mu_i^j dif n_i^j = 0 $
+$ sum_(j=1)^(phi) dif n_i^j = 0, quad i=1,...,c $
+El problema se resuelve introduciendo unos parámetros arbitrarios $lambda_i$ de forma que 
+$ lambda_i sum_(j=1)^(phi)  dif n_i^j = 0, i=1,...,c -> sum_(i=1)^(c) lambda_i sum_(j=1)^(phi)  dif n_i^j = 0 $
+Entonces
+$ sum_(j=1)^(phi) sum_(i=1)^(c) (mu_i^j + lambda_i) dif n_i^j = 0 $
+Tomemos como números de molse dependientes los de la fase 1, y hagamos:
+$ lambda_i = - mu_i^1 $
+Así
+$ sum_(j=2)^(phi) sum_(i=1)^(c)  (mu_i^j - mu_i^1) dif n_i^j = 0 $
+Como ahora todas las variables $n_i^j$ son independientes, se deberá cumplir $ mu_i^j = mu_i^1 quad ,quad j = 2,...,phi quad , quad i=1,...,c $
+Es decir la condición de equilibrio es que el potencial químico de cada componente sea igual en todas las fases
+
+== Regla de las fases
+El objetivo ahora es responder las siguientes preguntas:
+- Cuantas fases pueden coexistir en el equilibrio?
+- Cuantas variables pueden modificarse independientemente sin alterar el número de fases (grados de libertad)?
+
+Para ello hagamos balance de variables y ecuaciones 
+- Variables: presión, temperatura y fracciones molares de cada componente en cada fase: $ 2 + c phi $ 
+- Ecuaciones: $c(phi-1)$ condiciones de equilibrio y $phi$ ecuaciones adicionales por las condiciones $ sum_(i=1)^(c) x_i^j = 1 => c(phi-1) + phi $
+El número de grados de libertad $l$ es la diferencia entre el número de variables y el número de ecuaciones
+$ l = 2 + c phi - [c(phi-1) + phi] => l + phi = c+2 $
+Este resultado no depende de nuestra hipótesis de que todos los componentes están en todas las fases, a que cambia lo mismo el número de variables que el de ecuaciones
+
+Casos particulares:
+- Sustancia pura: $ c=1=> l=3-phi$ #[
+  - Sistema homogéneo: $phi=1=>l=2$
+  - Sistema bifásico: $phi=2=> l=1$
+  - Sistema trifásico: $phi=3=> l=0$ (punto triple)
+]
+- Sistema con dos componentes $c=2=> l = 4 - phi$ #[
+  - Sistema homogéneo: $phi=1=l=3 (T,p,x_1 ) $
+  - Sistema bifásico: $ phi = 2 => l=2 (T or p, x_1) $
+]
+
+== Ejemplo de mezclas de gases y vapores
+Consideremos un sistema con dos componentes tales que a la presión y temperatura de la mezcla: 
+- Una de las sustancias está muy por encima de su temperatura crítica
+- La otra sustancia está por debajo o cerca de su temperatura crítica, por lo que se puede condensar fácilmente
+
+En ambos casos, supondremos que su presión parcial en la fase gaseos es lo bastante baja como para considerar comportamiento ideal
+
+Llamando $p^*$ a la presión de saturación de la sustancia "vapor" a la temperatura de la mezcla, pueden distinguirse tres casos:
++ Mezcla no saturada (ambas en fase gaseosa): $p_v < p^* (T)$
++ Mezcla saturada (sustancia "vapor" en cualquier fase, dependiendo de $T$) $ p_v = p* (T) $
++ Mezcla sobresaturada: estado metaestable con $p_v>p^*(T) $ que colapsa a estado saturado bajo cualquier perturbación. Sobretodo se usa cuando la fase condensada queda en suspensión.
+
+=== Condición de equilibrio
+Supongamos que en la fase líquida solo hay sustancia "vapor" y que la fase gaseosa es una mezcla de gases ideales. Para la sustancia "vapor"
+$ mu_l = tilde(g) (T,p) quad ; quad mu_v = tilde(g) (T, p_v) $
+La condición de equilibrio es 
+$ mu_l = mu_v => tilde(h) (T,p) - T tilde(s) (T,p) = tilde(h) (T) - T tilde(s) (T,p_v) $
+Para la fase gaseosa podemos estimar que
+$ tilde(h) (T) approx tilde(h)_v^("sat") (T) $
+
+Y como suponemos una mezcla de gases ideales:
+$ tilde(s) (T, p_v) = tilde(s)^("sat")_v (T) - tilde(R) ln p_v/p^* $
+
+Para el líquido:
+
+Con buena aproximación se tiene 
+$ tilde(u) (T,p) approx tilde(u)_l^("sat") (T) quad ; quad tilde(v) (T,p) approx v_l^("sat") (T) $
+Entonces
+$ tilde(h) (T,p) = tilde(u) (T,p) + p tilde(v) (T,p) approx tilde(u)_l^("sat") (T) + p v_l^("sat") (T) $
+Pero
+$ tilde(u)_l^("sat") (T) = tilde(h)_l^("sat") (T) - p* v_l^("sat")(T) quad p^* = p^("sat") (T) $
+Sustituyendo
+$ tilde(h) (T,p) = tilde(h)_l^("sat") (T) + tilde(v)_l^("sat") (p-p*) $
+De la gráfica, también tenemos
+$ tilde(s) (T,p) = tilde(s)_l^("sat") (T) $
+
+Sustituyendo en la condición de equilibrio:
+$tilde(h)_v^("sat") (T) - T [tilde(s)_v^("sat") (T) - tilde(R) ln p_v/p^* ] = tilde(h)_l^("sat") (T) + tilde(v)_l^("sat") (p-p^*) - T tilde(s)_l^("sat") (T ) $
+$ => tilde(R) T ln p_v/p^* = tilde(v)_l^("sat") (p-p^*) - [(tilde(h)_v^("sat")-tilde(h)_l^("sat")) - T (tilde(s)_v^("sat") - tilde(s)_l^("sat")) ] $
+El término entre corchetes se anula
+$ ln p_v/p^* = (tilde(v)_i^("sat") (p-p^*))/(tilde(R) T) => p_v = p^* e^((tilde(v)_i^("sat")(p-p^*))/(tilde(R) T)) $
+Para agua a presiones menores de 140 MPa el argumento de la exponencial es pequeño, y la presión parcial del vapor se puede suponer la de saturación
+$ p_v approx p^* $
+
+== Aire húmedo
+Se define el aire húmedo como una mezcla de aire seco y vapor de agua
+
+De acuerdo con la clasificación anterior, se distingue el aire húmedo no saturado, es decir que el agua es vapor sobrecalentado, aire húmedo saturado, es decir que el agua es vapor saturado seco y el aire húmedo sobresaturado es decir saturado con condensado en suspensión que puede ser líquido (vapor saturado y niebla o precipitado) o sólido (vapor saturado y hielo)
+
+Consideraremos que la fase vapor es una mezcla de gases ideales
+Aplicamos el modelo de Dalton
+$ p= p_a + p_V $
+$ p_a = (m_a R_a T)/V quad ; quad = p_v = (m_v R_v T)/V $
+Se suele tomar
+$ M_a = 28.964 quad ; quad M_v = 18.015 $
+Se define la humedad del aire humedo como el cociente entre las masas del vapor de agua y aire seco
+$ omega = m_v / m_a $
+En ausencia de condensación
+$ omega = (V p_v)/(R_v T) (R_a T)/(V p_a ) = (R_a p_v)/(R_v p_a ) = cancel(tilde(R))/M_a M_v/cancel(tilde(R)) (M_v p_v)/(M_a p_a) $
+Como $M_v/M_a approx 0.622$ y $p=p_a+p_v$ podemos decir
+$ omega = 0.622 p_v/(p-p_v) $
+La humedad también puede definirse en base molar
+$ tilde(omega) = n_v/n_a = m_v/M_v M_a/m_a = M_a/M_v omega = omega/0.622 = p_v/(p-p_v) $
+
+== Humedad y humedad relativa
+Las fracciones molares de los dos componentes pueden expresarse en función de la humedad molar
+$ x_a = n_a/(n_a + n_V) = 1/(1+ tilde(omega)) $
+Y también
+$ x_v = tilde(omega)/(1+tilde(omega)) $
+
+La humedad relativa se define como la relación entre la presión parcial del vapor en la mezcla y la presión parcial que tendría en una mezcla saturada a la misma presión y temperatura
+$ phi = p_v/p^* |_(p,T) $
+Como $p_v = x_v p $ y $ p^* = x_v^("sat") p$ entonces $ phi = x_v/x^("sat")_v $
+
+== Temperatura de rocío
+Consideremos una mezcla no staurada que se enfría a presión parcial del vapor de agua constante. Cuando se alcance la temperatura de saturación para esa presión, condensara la primera gota de agua. A esa temperatura se la llama punto de rocío: 
+$ p_v = p^* (T_R) $
+Al final, debido a la condensación, la presión parcial disminuye porque la cantidad de vapor de agua presente en el estado final es menor que en el estado inicial
+
+Del estudio de las transiciones de fase sabemos que
+$ ln p^* = a - b/T $
+teniéndose para el agua $a = 13.765$ y $b=5.121$ ($p$ en bar)
+
+Adicionalmeintne
+$ p_v = phi p^* (T) -> p^* (T_R) = phi p^* (T) $
+$ => ln p^* (T_R) = ln phi + ln p^* (T) $
+Así, la temperatura de rocío queda como función de la temperatura y la humedad relativa
+$ cancel(a) - b/T_R = ln phi + cancel(a) - b/T $
+$ -> -b/T_R = ln phi - b/T -> p T/T_R = b- T ln phi -> T/T_R = 1-(T ln phi)/b $
+Finalmente
+$ T_R = T/(1- (T ln phi)/b ) $
+
+== Propiedades termodinámicas del aire húmedo
+La densidad de la mezcla viene dada por $ rho = (m_a + m_v)/V $
+Como
+$ p = ((m_a R_a + m_v R_v)T)/V -> 1/V = p/(m_a R_a + m_v R_v ) $
+Ahora dividiendo por $m_a$ e introduciendo la humedad $ omega = m_v / m_a $
+$ rho = (1+omega)/(R_a + omega R_v) p/T = (1+omega)/(1+ omega R_v / R_a ) p/(R_a T) => rho = (1+ omega)/(1+tilde(omega)) p/(R_a T) = (1+omega)/(1+tilde(omega)) rho_a $
+Como $tilde(omega)>omega$ al aumentar la humedad disminuye la densidad del aire húmedo
+
+Se ponderan las contribuciones de los componentes en la entalpía y energía interna:
+$ H  = H_a + H_v = n tilde(h)_a$
