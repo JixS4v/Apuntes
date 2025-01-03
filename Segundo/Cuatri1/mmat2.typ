@@ -343,4 +343,406 @@ $ y_2 (x) = x - ((n-1)(n+2))/3! x^3 + ((n-3)(n-1)(n+2)(n+4))/5! x^5 - + ... $
 Estas series tienen radio de convergencia 1. 
 
 === Polinomios de Legendre
-Cuando el parametro $n$ de la ecuación de Legendre es un entero no negativo, el segundo miembro de la relación de recurrencia es nulo cuando $s=n$ y por lo tanto $a_(n+2)=0, a_n+4=0,a_(n+6) = 0, ...$ Por consecuencia, si $n$ es par, $y_1(x)$ se reduce a un polinomio de grado $n$. Si $n$ es impar, se cumple lo mismo para $y_2(x)$. Estos polinomios, multiplicados por algunas constantes, se llaman polinomios de Legendre.
+Cuando el parametro $n$ de la ecuación de Legendre es un entero no negativo, el segundo miembro de la relación de recurrencia es nulo cuando $s=n$ y por lo tanto $a_(n+2)=0, a_n+4=0,a_(n+6) = 0, ...$ Por consecuencia, si $n$ es par, $y_1(x)$ se reduce a un polinomio de grado $n$. Si $n$ es impar, se cumple lo mismo para $y_2(x)$. Estos polinomios, multiplicados por algunas constantes, se llaman polinomios de Legendre y se denotan $P_n(x)$. La elección estandar  las constantes se hace eligiendo el coeficiente $a_n$ de mayor potencia $x^n$ como
+$ a_n = ((2n)!)/(2^n (n!)^2) = (1 dot 3 dot 5 dot ... dot (2 n -1 ))/(n!) quad n in NN^* $
+(con $a_n = 1$ si $n=0$). Luego calculamos los otros coeficientes a partir de la relación de recurrencia resuelta para $a_s$ en términos de $a_(s+2) $. Es decir
+$ a_s = - ((s+2)(s+1))/((n-2)(n+s+1)) a_(s+2) $
+La elección anterior del coeficiente hace que $p_n (1) = 1 $ para todo $n$ 
+#image("assets/figure_2025-01-02-14-25-07.png")
+
+Lo que explica la elección de $a_n$ para el $x^n$ mayor.
+De la relación general con $s=n-2$ y nuestra elección específica
+$ a_(n-2) = - (n(n-1))/(2(2n-1)) a_n = -(n(n-1))/(2(2n-1)) dot ((2 n)!)/(2^n (n!)^2 ) $
+Utilizando $ (2n)! = 2n(2n-1)(2n-2)!$ en el numerador y $n!=n(n-1)!$ y $n!=n(n-1)(n-2)!$ en el denominador obteniendo
+$ a_(n-2) = (cancel(n(n-1) 2 n (2n-1))(2n-2)!)/(cancel(2(2n-1))2^n cancel(n) (n-1)! cancel(n (n-1))(n-2)!) $
+Simplificando
+$ a_(n-2) = ((2n-2)!)/(2^n (n-1)!(n-2)) $
+Análogamente
+$ a_(n-4) &= ((n-2)(n-3))/(4(2n-3)) a_(n-2) \ &= ((2n-4)!)/(2^n 2! (n-2)! (n-4)!) $
+Y así recurrentemente. En general, cuando $n-2m >=0$
+$ a_(n-2m) = (-1)^m ((2n-2m)!)/(2^n m! (n-m)! (n-2m)! ) $
+La solución resultante de la ecuación diferencial de legendre se conoce como el polinomio de legendre de grado $n$ y se denota por $P_n (x) $.
+
+De la ecuación anterior, obtenemos
+$ P_n (x) &= sum_(m=1)^(M) (-1)^m ((2n - 2m)!)/(2^n m! (n-m)! (n-2m)!) x^(n-2m) \ &= ((2n)!)/(2^n (n!)^2) x^n - ((2n-2)!)/(2^n 1! (n-1)!(n-2)!) x^(n-2) + - ... $
+Donde $M=n/2$ o $(n-1)/2$, el que sea entero de los dos. Las las primeras de estas funciones son
+#align(center,grid(columns:2, column-gutter:50pt, $ P_0 (x) &= 1 \ P_2 (x) &= 1/2 (3x^2 -1) \ P_4 (x) &= 1/8 (35 x^4 - 30 x^2 + 3) $, $ P_1 (x) &= x \ P_3 (x) &= 1/2 (5x^3 - 3 x) \ P_5 (x) &= 1/8 (63x^5 - 70x^3 + 15x) $))
+
+== Método de Frobenius
+
+=== Aplicabilidad del método
+Se trata de un procedimiento para resolver ecuaciones diferenciales lineales con coeficientes variables, aplicable a ecuaciones más generales que el método de las series de potencias, algunas de ellas fundamentales, por lo que posee gran importancia práctica. 
+
+Primero veremos a que ecuaciones se aplica este método
+
+Un punto $x=x_0$ en el que los coeficientes $p$ y $q$ de una ecuación 
+$ y'' + p(x) y' + q(x) y = 0 $
+son analíticos se llama punto regular de esta. DE manera similar, un punto regular $x=x_0$ de 
+$ tilde(h)(x) y'' + tilde(p) (x) y' + tilde(q) (x) y = 0 $
+Es aquel en el que $tilde(h)$, $tilde(p)$ y $tilde(q)$ son analíticos y $tilde(h)(x_0)!=0$ (por lo que al dividir entre $tilde(h)$, puede obtenerse la forma estándar con $y''$ como primer término y coeficientes analíticos $p=tilde(p)/tilde(h)$ y $ q = tilde(q)/tilde(h)$). Un punto que no es regular se llama punto singular de la ecuación. Por ejemplo, la ecuación de Bessel
+$ x^2 y'' + x y' + (x^2 - v^2)y = 0 $
+(con v dado)
+como se ve tiene a $x=0$ como punto singular (para ver esto ayuda dividir por $x^2$).
+
+Si $x_0$ es punto regular de una ecuación, el método de series de potencias funciona, como ya hemos visto, y da soluciones en series de $x-x_0$. Sin embargo, si $x_0$ es singular, deja de ser el caso, simplemente porque la ecuación puede no tener una solución en potencias de $x-x_0$. Por suerte, el comportamiento de los coeficientes de una ecuación en un punto singular no suele ser malo.
+
+=== Método de Frobenius
+Toda ecuación diferencial de forma $ y'' + (b(x))/x y' + (c(x))/(x^2) y = 0 $
+donde las funciones $b(x)$ y $c(x)$ son analíticas en $x=0$ tiene al menos una solución que puede representarse de la forma
+$ y(x) = x^r sum_(m=0)^(oo) a_m x^m = x^r (a_0 + a_1 x + a_2 x^2 + ... ) quad (a_0!=0) $
+donde el exponente $r$ puede ser un número cualquiera (real o complejo y $r$ se elie tal que $a_0 != 0 $)
+
+La ecuación tambien tiene una segunda solución (tal que estas dos soluciones son linealmente independientes) que puede ser similar a esta (con $r$ diferente y coeficientes diferentes) o puede contener un término logarítmico
+
+Por ejemplo, la ecuación de Bessel
+$ y'' + 1/x y' + (x^2 - v^2)/x^2 y = 0 $
+Es de la forma vista anteriormente con $b(x) = 1$ y $c(x) = x^2 - v^2 $ analítica en $x=0$ por lo que el teorema es aplicable 
+
+El punto es que en la solución se tiene una serie de potencias multiplicando una sola potencia de $x$ cuyo exponente $r$ no está restringido a ser un entero no negativo (Esta última restricción haría la expresión completa de una serie de potencias). El método que vamos a ver a continuacion se basa en la solución vista anteriormente y se conoce como método de Frobenius o método extendido de las series de potencias.
+
+==== Ecuación indicial
+Para resolver la ecuación, esta se escribe de forma más conveniente
+$ x^2 y'' + x b(x) y' + c(x) y = 0 $
+Primero desarrollamos $b(x)$ y $c(x)$ en series de potencias
+$ b(x) = sum_(i=0)^(oo) b_i x^i $
+$ c(x) = sum_(i=0)^(oo) $
+Derivamos término a término la solución general
+$ y'(x) = sum_(m=0)^(oo)  (m+r) a_m x^(m+r-1) = x^(r-1) [r a_0 + (r+1) a_1 x + ... ] $
+$ y'' (x) = sum_(m=0)^(oo) (m+r)(m+r - 1) a_m x^(m+r-2) = x^(r-2) [r(r-1)a_0 + (r+1)r a_1 x + ... ] $
+Al insertar estas series en la ecuación, obtenemos
+$ x^r [r(r-1) a_0 + ...] + (b_0 + b_1 x + ...) x^r (r a_0 + ...) + (c_0 + c_1 x +...)x^r (a_0 + a_1 x + ...) = 0 $
+Ahora, igualamos a 0 la suma de los coeficientes de cada potencia de $x$, como anteriormente. Obtenemos así un sistema de ecuaciones que incluyen $a_m$. La menor potencia es $x^r$ y la ecuación correspondiente es
+$ [r(r-1) + b_0 r + c_0]a_0 = 0 $
+Puesto que por hipótesis $a_0 !=0$, la expresión dentro de los corchetes debe de anularse. Por lo que
+$ r(r-1) + b_0 r + c_0 = 0 $
+Esta ecuación se conoce como ecuación indicial de la ecuación diferencial. Su papel se explicará a continuación.
+
+==== Base de soluciones
+
+El método visto llevará a una base de soluciones. Una de las dos soluciones será siempre de la forma vista anteriormente, donde $r$ es una raíz de la ecuación indicial. La forma de la otra solución la indicará la ecuación indicial, dependienddo de las raíces, hay tres casos posibles, que veremos a continuación. 
+
+*Caso 1. Raíces distintas que no difieren por un entero*
+
+Una base es 
+$ y_1 (x) = x^(r_1) (a_0 + a_1 x + a_2 x^2 + ... ) $
+y
+$ y_2 (x) = x^(r_2) (A_0 + A_1 x + A_2 x^2 + ...) $
+con coeficientes obtenidos sucesivamente sustituyendo $r=r_1$ y $r=r_2$ en la expresión completa de la ecuación.
+
+*Caso 2. Raíz doble*
+
+Una base es
+$ y_1 (x) = x^2 (a_0 + a_1 x + a_2 x^2 + ... ) $
+$ y_2 (x) = y_1 (x) ln x + x^r (A_1 x + A_2 x^2 + ...) quad (x>0) $
+
+*Caso 3. Raíces que difieren por un entero*
+
+Una base es:
+$ y_1 (x) = x^(r_1) (a_0 + a_1 x + a_2 x^2 + ... ) $
+Y la otra 
+$ y_2 (x) = k y_1 ( x) ln x + r^(r_2) (A_0 + A_1 x + A_2 x^2 + ... ) $
+Donde las raíces se denotan tal que $r_1 - r_2 > 0 $ y $k$ puede ser cero
+
+== Ecuación de Bessel
+Vamos a usar el método de Frobenius para resolver una de las ecuaciones con mayor importancia en las matemáticas aplicadas, la ecuación de Bessel
+
+$ x^2 y'' + x y' + (x^2 - v^2)y = 0 $
+En forma estándar
+$ y'' + 1/x y' + (1-v^2/x^2) y = 0 $
+Aquí el parámetro $v$ es una constante real no negativa dada. 
+Vamos a utilizar el método de Frobenius.
+Sustituimos la serie de la forma
+$ y(x) = sum_(m=0)^(oo) a_m x^(m+r) $
+Con coeficientes indeterminados y sus derivadas en la ecuación de Bessel, obtenemos lo siguiente
+$ sum_(m=0)^(oo)  (m+r)(m+r-1)a_m x^(m+r) + sum_(m=0)^(oo) (m+r)a_m x^(m+r) + sum_(m=0)^(oo) a_m x^(m+r+2) - v^2 sum_(m=0)^(oo) a_m x^(m+r) = 0 $
+Igualamos a cero la suma de los coeficientes de $x^(s+r)$. Eta formula corresponde a $m=s$ en las series primera, segunda y cuarta y a $ m = s-2$ en la tercera serie. Por tanto, para $s=0$ y $ s=1$ la tercera serie no participa ya que $m >= 0$. Para $s=2,3,...$ las cuatro series intervienen, por lo que se obtiene una formula general para todas estas $s$. Se encuentra que
+$ r(r-1) a_0 + r a_0 - v^2 a_0 = 0 quad (s=0) $
+$ (r+1)r a_1 + (r+1) a_1 - v^2 a_1 = 0 quad (s=1) $
+$ (s+r)(s+r-1) a_s + (s+r) a_s + a_(s-2) - v^2 a_s = 0 quad (s = 2,3,...) $
+De esta primera obtenemos la ecuación indicial
+$ (r+v)(r-v) = 0 $
+Las raíces son $ r_1 = v (>=0) $ y $r_2 = -v $
+
+Para $r=r_1 = v$ de la ecuación segunda se obtiene $a_1 = 0$. La tercera ecuación se puede escribir
+$ (s+r+v)(s+r-v)a_s + a_(s-2) = 0 $
+Y para $r=v$ 
+$ (s+2v)s a_s + a_(s-2) = 0 $
+Puesto que $a_1 $ y $v>=0$ se sigue que $a_3=0$, $a_5 = 0$ sucesivamente
+Si se hace $ s=2m$ para los demás coeficientes se obtiene
+$ a_(2m ) = - 1/(2^2 m (v+m)) a_(2m -2) quad m = 1,2 , ... $
+Y es posible determinar sucesivamente estos coeficientes $ a_2$, $a_4$, $...$. Se obtiene así
+$ a_2 = - a_0/(2^2 (v+1)) $
+$ a_4 = - a_2 /(2^2 2 (v+2)) = a_0/(2^4 2! (v+1)(v+2)) $
+Y así sucesivamente.
+
+En general:
+$ a_(2 m) = (-1)^m a_0/(2^(2m) m! (v+1)(v+2)dot dot dot (v+m)), quad m = 1,2,... $
+
+=== Función de Bessel para v entero
+Los valores enteros de $v$ se denotan por $n$. Para $v=n$ la relción anterior queda como
+$ a_(2 m) = (-1)^m a_0/(2^(2m) m! (n+1)(n+2)dot dot dot (n+m)) , quad m = 1,2,... $
+$a_0$ sigue siendo arbitraria, por lo que la serie $y$ con estos coeficientes incluirá este factor arbitrario $a_0$, una situación desventajosa en la práctica para desarrollar fórmulas o calcular valores. En consecuencia, es necesario hacer una eleccíon: $a_0 =1$  es posible, pero es más práctico elegir
+$ a_0 = 1/(2^n n!) $
+porque entonces $n!(n+1) dot dot dot (n+m) = (n+m)!$ en el coeficiente $a_(2m)$.
+$ a_(2m) = (-1)^m/(2^(2m+n) m! (n+m)!), quad m = 1,2,... $
+Con estos coeficientes y $r_1 = v=n$ se obtiene una solución particular de la ecuación de Bessel, denotada por $J_n (x)$ 
+$ J_n(x) = x^n sum_(m=0)^(oo) (-1)^m x^(2m) / (2^(2m+n) m! (n+m)!) $
+llamada la función de bessel de primera clase de orden $n$. Esta serie converge para todo $x$ como lo indica la prueba de la razón y con mucha rapidez debido a los factoriales del denominador.
+
+=== Función de Bessel para v real positiva
+==== Función Gamma
+Necesitamos ampliar la definición de factorial a numeros reales positivos
+$ Gamma(v) = integral_0^oo e^(-t) t^(v-1) $
+Al integrar por partes obtenemos
+$ Gamma (v+1) = integral_0^oo e^(-t) t^v dif t = -e^(-t) t^v |_0^oo + v integral_0^oo e^(-t) t^(v-1) $
+La primera expresión es nula y la integral de la derecha es $Gamma(v)$ por lo que obtenemos la relación
+$ Gamma (v+1) = v Gamma(v) $
+Puesto que
+$ Gamma(1) = integral_0^oo e^(-t) dif t = 1 $
+Por lo que concluimos
+$ Gamma(2) = Gamma(1) = 1! , quad Gamma(3) = 2 Gamma(2) = 2! $
+En general
+$ Gamma(n+1) = n! quad n=0,1,... $
+Vemos que la función gamma generaliza la función factorial
+==== Solución de la ecuación de Bessel para v real positivo
+
+Ahora se tiene $a_0 = 1/(2^v Gamma(v+1)) $
+Entonces nuestro $a_(2m)$ queda como
+$ a_(2m) = (-1)^m / (2^(2m+v) m! (v+1)(v+2)dot dot dot (v+m) Gamma(v+1)) $
+Pero en el denominador
+$ (v+1)Gamma(v+1) = Gamma(v+2) quad (v+2)Gamma(v+2) = Gamma(v+3) $
+Y así sucesivamente, por lo que
+$ (v+1)(v+2) dot dot dot (v+m) Gamma(v+1) = Gamma(v+m+1) $
+Por lo tanto los coeficientes son
+$ a_(2m) = (-1)^m / (2^(2m+v) m! Gamma(v+m+1)) $
+Con estos coeficientes y $r=r_1=v$ obtenemos una solución particular de la ecuación
+$ J_v (x) = x^v sum_(m=0)^(oo) (-1)^m x^(2m)/(2^(2m + v) m! Gamma(v+m+1)) $
+Llamada la función de Bessel de primera clase de orden $v$. Esta serie converge para todo $x$.
+
+=== Solución $J_(-v)$ de la ecuación de bessel
+Tenemos la solución $J_v$, ahora vamos a obtener una solución general. Para ello debemos deducir una segunda solución independiente. Si $v$ resulta no ser entero, esto es sencillo. Si $v$ es un entero $n$ esto requiere un esfuerzo mayor. Los detalles son los siguientes
+
+Al sustituir $v$ por $-v$ en la expresión de $J_v (x)$ tenemos
+$ J_(-v) (x) = x^(-v) sum_(m=0)^(oo) (-1)^m x^(2m) / (2^(2m-v) m! Gamma(m-v+1)) $
+
+== Solución general de la ecuación de Bessel
+
+Puesto que la ecuación de bessel incluye $v^2$ las funciones $J_v$ y $J_(-v)$ son soluciones de la ecuación para el mismo $v$. Si $v$ no es entero, estas soluciones son linealmente independientes, ya que el primer término de sus expresiones son múltiplos finitos diferentes de cero de $x^v$ y $x^(-v)$.
+
+Por lo tanto, si $v$ no es un entero, una solución general de la ecuación de Bessel para toda $x!=0$ es 
+$ y(x) = c_1 J_v (x) + c_2 J_(-v) (x) $
+Pero si $v$ es entero, entonces esto no es una solución general. De hecho, en este caso las dos soluciones se vuelven linealmente dependientes:
+
+$ J_(-n) (x) = (-1)^n J_n (x) quad n in NN^* $
+
+Demostración:
+
+Partimos de la expresión de $J_(-v) (x)$ y hacemos que $ v$ tienda a un entero positivo $n$. Entonces, las funciones gamma en los coeficientes de los $n$ primeros términos se hacen infinitas, los coeficientes se hacen cero y la sumatoria empieza con $m=n$. Puesto que en este caso $Gamma(m-n+1) = (m-n)!$ se obtiene
+$ J_(-n) (x) = sum_(m=n)^(oo) ((-1)^m x^(2m-n))/(2^(2m -n) m! (m-n)!) = sum_(s=0)^(oo) ((-1)^(n+s) x^(2s + n))/(2^(2s +n) (n+s)! s! ) $
+Donde $m=n+s$ y $s=m-n$. Vemos que en realidad esta serie representa $(-1)^n J_n (x)$. 
+
+== Propiedades adicionales de $J_v (x)$
+Vamos a ver las 4 propiedades más elementales de la función de Bessel.
+
+Al multiplicar la expresión de $J_v (x)$ por $x^v$
+$ x^v J_v (x) = sum_(m=0)^(oo) ((-1)^m x^(2m + 2v))/(2^(2m +v) m! Gamma (v+m+1)) $
+Al derivar 
+$ (x^v J_v)' &= sum_(m=0)^(oo) ((-1)^m 2 (m+v) x^(2m + 2 v -1 ))/(2^(2m + v ) m! Gamma (v+m+1)) \ &= x^v x^(v-1) sum_(m=0 )^(oo)  ((-1)^m x^(2m))/(2^(2m+v-1) m! Gamma (v+m))  $
+Por identificación
+$ dif/(dif x) [x^v J_v (x)] = x^v J_(v-1) (x) $
+De manera similar, multiplicando por $x^(-v)$ obtenemos
+$ dif/(dif x) (x^(-v) J_v) &= sum_(m=1)^(oo)  ((-1)^m x^(2m-1))/(2^(2m +v -1) (m-1)! Gamma(v+m+1)) \ &= sum_(s=0)^(oo) ((-1)^(s+1) x^(2s +1))/(2^(2s+v+1) s! Gamma(v+s+2)) $
+Donde $m=s+1$. Por identificación otra vez
+$ dif/(dif x) [x^(-v) J_v (x) ] = -x^(-v) J_(v+1) (x) $
+
+Desarrollando estas dos formulas y multiplicando la segunda por $x^(2v) $ obtenemos
+$ v x^(v-1) J_v + v^v J'_v = x^(v) J_(v-1) $
+y 
+$ -v x^(v-1) J_v + x^v J'_v = - x^v J_(v+1) $
+Al restar estas entre sí y dividiendo por $x^v$ obtenemos una relación de recurrencia
+$ J_(v-1) (x) + J_(v+1 )(x) = (2 v)/x J_v (x) $
+Esta será la primera relación de recurrencia. Para obtener la segunda sumamos las dos expresiones anteriores y dividimos el resultado por $x^v$
+$ J_(v-1) (x) - J_(v+1) (x) = 2 J'_v (x) $
+Estas relaciones nos permiten obtener funciones de bessel de grado más alto a partir de tablas, por ejemplo.
+
+=== $J_v (x)$ con $v = plus.minus 1/2, plus.minus 3/2, plus.minus 5/2 , ...$ son elementales
+
+En casos especiales se puede reducir las funciones superiores a funciones conocidas. Vamos a estudiarlo para $J_v (x)$
+
+Cuando $v=1/2$ entonces la función de bessel es
+$ J_(1/2) (x) = sqrt(x) sum_(m=0)^(oo)  (-1)^m x^(2m)/(2^(2m+1/2) m! Gamma(m+3/2)) = sqrt(2/x) sum_(m=0)^(oo)  (-1)^m x^(2m +1)/(2^(2m+1) m! Gamma (m+3/2)) $
+Ahora se usa que
+$ Gamma (1/2) = sqrt(pi) $
+A partir de esta expresión y de las propiedades de la función Gamma
+$ Gamma(m+3/2) = (m+1/2)(m-1/2)dot dot dot 3/2 dot 1/2 Gamma (1/2) = 2^(-(m+1)) (2m+1)(2m-1) dot dot dot 3 dot sqrt(pi) $
+En el denominador, además
+$ 2^(2m+1) m! = 2^(2m +1 ) m(m-1) dot dot dot 2 dot 1 = 2^(m+) 2m (2m-2) dot dot dot 4 dot 2 $
+En conjunto, el denominador queda como $(2m+1)! sqrt(pi) $
+
+La expresión completa es entonces
+$ J_(1/2) (x) = sqrt(2/(pi x)) sum_(m=0)^(oo) ((-1)^m x^(2m+1))/((2m+1)! ) $
+Esta es la serie de Maclaurin de $sin x$ 
+$ J_(1/2) (x) = sqrt(2/(pi x)) sin x $
+
+A partir de este resultado y la relación de recurrencia podemos decir que las funciones de Bessel $J_v$ de ordenes $v= plus.minus 1/2 , plus.minus 3/2 , plus.minus 5/2  , ...$ son elementales; pueden expresarse por un número finito de cosenos, senos y potencias de $x$.
+
+== Funciones de Bessel de segunda clase
+Solo nos queda obtener una solución general de la ecuación de bessel para $v=n$ entero. Lo que buscamos es una segunda solución linealmente independiente para la ecuación de Bessel, que denotaremos $Y_0 (x)$
+=== $n=0$: Función de Bessel de segunda clase $Y_0 (x)$
+Consideramos primero el caso donde $n=0$:
+$ x y'' + y' + x y = 0 $
+La ecuación indicial tiene entonces la raíz doble $r=0$. Se trata del caso 2. La solución buscada (única) es de forma
+$ y_2 (x) = J_0 (x) ln x + sum_(m=1)^(oo) A_m x^m $
+Se sustituye $y_2$ y sus derivadas
+$ y'_2 = J'_0 ln x + J_0/x + sum_(m=1)^(oo)  m A_m x^(m-1) $
+$ y''_2 = J''_0 ln x + (2 J'_0)/x - J_0 / x^2 + sum_(m=1)^(oo)  m(m-1) A_m x^(m-2) $
+Entonces los términos logarítmicos se cancelan ya que $J_0$ es solución de la ecuación, al igual que los otros términos que contienen $J_0$ y queda
+$ 2 J'_0 + sum_(m=1)^(oo) m(m-1) A_m x^(m-1) + sum_(m=1)^(oo) m A_m x^(m-1) + sum_(m=1)^(oo) A_m x^(m+1) = 0 $
+Conocemos la serie de $J'_0$ 
+$ J'_0 (x) = sum_(m=1)^(oo) ((-1)^m x^(2m-1))/(2^(2m-1) m! (m-1)! ) $
+Al insertar la serie obtenemos
+$ sum_(m=1)^(oo) ((-1)^m x^(2m-1))/(2^(2m-2) m! (m-1)!) + sum_(m=1)^(oo) m^2 A_m x^(m-1) + sum_(m=1)^(oo) A_m x^(m+1) = 0 $
+Se demuestra primero que todas las $A_m$ con subíndices impares son cero. El coeficiente de la potencia $x^0$ es $A_1$ y en consecuencia $A_1=0$. AL igualar a cero la suma de los coeficientes de la potencia $x^(2 s)$ se tiene
+$ (2s+1)^2 A_(2s+1) + A_(2s-1) = 0 $
+Puesto que $A_1=0$ se obtiene que todos los coeficientes impares se anulan. Ahora igualamos a cero la suma de los coeficientes de $x^(2s +1)$. Obtenemos
+$ 4 A_2 - 1 = 0 quad "o" quad A_2 = 1/4 quad (s=0) $
+Para los demas valores $s=1,2,...$
+$ (-1)^(s+1)/(2^(2s) (s+1)! s!) + (2s + 2)^2 A_(2s+2) + A_(2s ) = 0 $
+Para $s=1$ se obtiene
+$ 1/8 + 16 A_4 + A_2 = 0 => A_4 = -3/(128) $
+En general
+$ A_(2m) = ((-1)^(m-1))/(2^(2m) (m!)^2) (1+ 1/2 +1/3 + dot dot dot + 1/m ) quad m= 1,2,... $
+Utilizando la notación abreviada
+$ h_m = 1 + 1/2 + ... + 1/m $
+insertando la expresión de $A_(2m) $ y sabiendo que los coeficientes de m impar se anulan
+$ y_2 (x) = J_0 (x) ln x + sum_(m=1)^(oo) ((-1)^(m-1) h_m)/(2^(2m) (m!)^2) x^(2m) $
+Puesto que $J_0$ y $y_2$ son linealmente independientes, forman una base de soluciones de la ecuación. Se obtiene otra base si se sustituye $y_2$ por una solución particular independiente de forma $a(y_2 + b J_0) $ donde $a!=0$ y $b$ son constantes. Se suele elegir $a=2/pi$ y $b = gamma - ln 2$ donde $gamma$ es la constante de Euler, que se define por el limite de 
+$ 1 + 1/2 + ... + 1/s - ln s $
+cuando $s$ tiende a infinito. La solución particular estándar se denomina la función de Bessel de segunda clase de orden cero o función de Neumann de orden cero y se denota por $Y_0 (x)$. Por tanto
+$ Y_0 (x) = 2/pi [J_0 (x) (ln x/2 + gamma) + sum_(m=1)^(oo) ((-1)^(m-1) h_m)/(2^(2m) (m!)^2) x^(2m) ] $
+Para $x>0$ pequeña la función $Y_0 (x)$ se comporta similarmente a $ln x$ y $Y_0 (x) -> oo$ cuando $x->0$.
+
+=== Funciones de bessel de segunda clase para todo $n in NN^(*)$
+
+Puede obtenerse una segunda solución mediante manipulaciones similares a las empleadas en el caso $n=0$. Resulta que en estos casos tambien tiene un término logarítmico.
+
+La situación no es del todo conveniente, ya que la segunda solución se define de manera diferente dependiendo del carácter de $v$. A fin de conseguir uniformidad en el formalismo, es conveniente adoptar una forma de la segunda solución que sea válida para todos los valores del orden. Esta es la razón para una segunda solución estándar $Y_v (x)$, definida para todo $v$ 
+$ Y_v (x) = 1/(sin v pi) [ J_v (x) cos v pi - J_(-v) (x)] $
+$ Y_n (x) = lim_(v-> n ) Y_v (x) $
+Esta función recibe el nombre de función de Bessel de segunda clase de orden v o funcion de Neumann de orden v. 
+
+Por lo que una solución general de la ecuación de Bessel para todos los valores de $v$ es
+$ y(x) = C_1 J_v (x) + C_2 Y_v (x) $
+A veces existe la necesidad de contar con soluciones que toman valores complejos para $x$ real, por lo que habitualmente se usa
+$ H^(1)_v (x) = J_v (x) + i Y_v (x) $
+$ H^2_v (x) = J_v (x) - i Y_v (x) $
+Estas funciones linealmente independientes se llaman funciones de Bessel de tercera clase de orden $v$ o primera y segunda funciones de Hankel de orden $v$.
+
+== Problemas de Sturm-Liouville. Ortogonalidad
+Sturm y Liouville demostraron que las ecuaciones de Bessel, Legendre, y otras importantes de la ingeniría se pueden considerar de un punto de vista común, con el resultado de que se obtienen familias de soluciones que resultan útiles para la representacion en series de funciones dadas que se presentan en mecánica, conducción de calor, electricidad y otras aplicaciones físicas. 
+
+Vamos a empezar motivando la utilizdad a través de las ecuaciones de Bessel y Legendre
+
+La ecuación de Bessel es
+$ tilde(x)^2 dot.double(y) + tilde(x) dot(y) + (tilde(x)^2 - n^2) y = 0 $
+Siendo la variable independiente $tilde(x)$ y $ dot(y) = dv(y, tilde(x))$, $dot.double(y)=dv(y, tilde(x), deg:2) $
+
+Puede transformarse haciendo $tilde(x) = k x $ y entonces $ dot(y) =(y')/k$, $dot.double(y) = (y'')/k^2$ 
+y se obtiene
+$ x^2 k^2 (y'')/k^2 + x k (y')/k + (k^2 x^2 - n^2) y = 0 $
+Al cancelarse los k en los primeros términos
+$ x^2 y'' + x y' + (k^2 x^2 - n^2) y = 0 $
+Al dividir entre $x$
+$ x y'' + y' + (k^2 x - n^2/x) $
+Que podemos reescribir como
+$ x dif/(dif x) y' + y' dif/(dif x) x + (k^2 x - n^2/x) $
+Por identificación
+$ dif/(dif x) [x y'] + (-n^2/x + lambda x) = 0 $
+siendo $lambda = k^2$
+
+De manera similar, la ecuación de Legendre
+$ (1-x^2) y'' - 2 x y' + n(n+1)y = 0 $
+Puede reescribirse como
+$ dif/(dif x) [(1-x^2)y'] + lambda y $
+Con $lambda = n(n+1) $
+
+Ambas ecuaciones son de forma
+$ dif/(dif x) [r(x) y'] + [q(x) + lambda p(x) ] y = 0 $
+Que se conoce como ecuación de Sturm-Liouville. Hay otras ecuaciones que se pueden escribir de esta forma. La mas simple es
+$ y'' + lambda y = 0 $
+La ecuación de Sturm-Liouville se considera en un intervalo dado $a<=x<=b$ y se supone la continuidad de $p,q,r,r'$ y también que $p(x) >0 $ en este intervalo. En los puntos frontera se imponen unas condiciones de frontera
+$ k_1 y(a) + k_2 y' (a) &= 0 \ l_1 y(b) + l_2 y'(b) = 0 $
+
+Con las constantes $k_1$ y $k_2$ dadas sin ser ambas cero, y $l_1$, $l_2$ dadas, sin ser ambas cero. El problema con estas condiciones de frontera para la ecuación de Sturm-Liouville se conoce como problema de Sturm-Liouville. Es evidente que $y approx 0$ siempre es solución pero tiene poco interés. Lo que queremos encontrar son soluciones no triviales. A tales soluciones sel les conoce como eigenfunciones y el número $lambda$ para tal eigenfunción se conoce como eigenvalor del problema.
+
+=== Existencia de eigenvalores
+Los eigenvalores en un problema de Sturm-Liouville incluso en número indefinido existen bajo condiciones bastante generales sobre $p,q,r$. Además, si $p,q,r,r'$ son funciones con valores reales y continuas en el intervalo $a<=x<=b$ y $p$ es positiva o negativa en ese intervalo entonces todos los eigenvalores del problema serán reales. 
+
+=== Ortogonalidad
+Las eigenfunciones de los problemas de Sturm-Liouville poseen propiedades importantes generales, sobretodo la ortogonalidad. 
+
+Las funciones $y_1, y_2, ...$ definidas en un intervalo $a<=x<=b$ se llaman ortogonales en este intervalo con respecto a una función peso $p(x)>0$ si
+$ integral_a^b p(x) y_m (x) y_n (x) dif x = 0 $
+La norma $||y_m||$ de $y_m$ se define por 
+$ ||y_m|| = sqrt(integral_a^b p(x) y^2_m (x) dif x) $
+Las funciones se llaman ortonormales en un intervalo si son ortogonales en este y su norma es 1.
+
+En lugar de ortogonal con respecto a $p(x)=1$ se ddice ortogonal.
+
+==== Ortogonalidad de eigenfunciones
+Suponiendo que las funciones $p,q,r,r'$ tienen valores reales y son continuas y que $p(x)>0$ en $a<=x<=b$, entonces las eigenfunciones $y_m (x), y_n (x)$ correspondientes a dos eigenvalores diferentes $lambda_m, lambda_n$ son ortogonales en ese intervalo. 
+
+Si $r(a)=0$ entonces la primera condición de contorno puede eliminarse mientras que si $r(b)=0$ entonces la segunda puede eliminarse. Se requerirá entonces que $y$ e $y'$ permanezcan acotadas en tal punto y el problema se llamará singular en oposición a un problema regular donde si se requieren las condiciones de contorno. También, si $r(a)=r(b)$, entonces las condiciones de frontera se pueden sustituir por unas condiciones periódicas de la frontera 
+$ y(a) = y(b) quad y'(a)=y'(b) $
+Esta clase de problema se conoce como problema periódico de Sturm-Liouville.
+
+==== Ortogonalidad de las funciones de Bessel
+Para cada entero no negativo fijo $n$ las funciones de Bessel $J_n(k_(1n) x), J_n(k_(2n) x), J_n (k_(3n) x) ,... $ (con $k_(m n)= a_(m n)/R$ siendo $R$ el límite superior del intervalo donde se estudian las soluciones), forman un conjunto ortogonal en el intervalo $0<=x<=R$ con respecto al peso $p(x)=x$
+$ integral_0^R x J_n (k_(m n)x) J_n(k_(j n) x) dif x = 0 $
+Por consiguiente se ha obtenido una infinidad de conjuntos ortogonales cada uno de los cuales corresponde a un $n$ fijo.
+
+== Desarrollo de Eigenfunciones
+Por qué son importantes los conjuntos ortogonales de eigenfunciones? La respuesta es que producen desarrollos en series de funciones dadas en una forma simple, como las series de Fourier.
+
+Primero vamos a introducir notación
+$ (y_m , y_n) = integral_a^b p(x) y_m (x) y_n (x) dif x $
+donde $m=0,1,2,...$ y $n=0,1,2,...$
+
+En forma aún más abreviada
+$ (y_m, y_n) = delta_(m n) quad "(cuando la norma de y_m es 1)"$
+La norma de $y_m$ se puede entonces escribir
+$ ||y_m|| = sqrt((y_m,y_m)) $
+
+=== Series ortogonales
+Sean $y_0, y_1, ...$ un conjunto ortogonal con respecto al peso $p(x)$ en un intervalo $a<=x<=b$. Sea $f(x)$ una función dada que puede representarse en términos de $y_m$ por una serie convergente
+$ f(x) = sum_(m=0)^(oo) a_m y_m (x) = a_0 y_0 (x) + a_1 y_1 (x) + ... $
+Esta expresión se llama desarrollo ortogonal o serie de Fourier generalizada, y si $y_m$ son eigenfunciones de un problema de Sturm-Liouville se llama un desarrollo de eigenfunciones. El punto es que debido a la ortogonalidad se obtienen los coeficientes desconocidos $a_0 , a_1, ...$ en una manera simple; estods se llaman constantes de Fourier de $f(x)$ con respecto a $y_0, y_1 ,...$. De hecho, si ambos miembros de la serie se multiplican por $p(x)y_n (x)$ con $n$ fijo, y después de integra en el intervalo $[a,b]$, se obtiene (suponiendo que es posible integrar término a término)
+$ (f,y_n) = integral_a^b p f y_n dif x = integral_a^b p(sum_(m=0)^(oo) a_m y_m ) y_n dif x = sum_(m=0)^(oo)  a_m (y_m, y_n) $
+Ahora resulta crucial el hecho de que debido a la ortogonalidad, todas las intgrales $(y_m, y_n)$ del segundo miembro son cero, excepto cuando $m=n$, entonces $(y_n, y_n) = ||y_n||^2$ por lo que la formula completa se reduce a 
+$ (f, y_n) = a_n ||y_n||^2 $
+Llegamos entonces a la formula deseada para las constantes de fourier
+$ a_m = ((f,y_m))/(||y_m||^2) = 1/(||y_m||^2) integral_a^b p(x) f(x) y_m (x) dif x quad m in NN $
+
+=== Completitud de los conjuntos ortonormales
+En la práctica solo se usan los conjuntos ortonormales que cuentan con un número suficiente de funciones, para que sea posible representar grandes clases de funciones. Estos conjuntos ortonormales se llaman completos. Por ejemplo, los polinomios de legendre o las funciones de bessel son completos en sus intervalos.
+
+En este contexto, la convergencia es convergencia el na norma, esto es, se dice que una sucesion de funciones $f_n$ es convergente con el limite $f$ si 
+$ lim_(k->oo) ||f_k - f|| = 0 $
+es decir
+$ lim_(k->oo) integral_a^b p(x) [f_k (x) - f(x)]^2 dif x = 0 $
+(omitiendo la raíz cuadrada)
+Entonces, la serie converge y representa a $f$ si
+$ lim_(k->oo) integral_a^b p(x) [s_k (x) - f(x)]^2 dif x = 0 $
+Donde $s_k$ es la $k$-ésima suma parcial de la serie
+$ s_k (x) = sum_(m=0)^(k) a_m y_m (x) $
+Por definición, un conjunto ortonorma $y_0,y_1,...$ en un intervalo $[a,b]$ es completo en un conjunto de funciones $S$ definidas en $[a,b]$ si esposible aproximar lo suficientemente cerca toda $f$ en $S$ por medio de una combinación lineal $a_0 y_0 + a_1 y_1 + ... + a_k y_k $ es decir, en términos técnicos, si para todo $epsilon >0 $ pueden encontrarse las constantes $a_n$ tales que $||f-(a_0 y_0 + ...+ a_k y_k) || < epsilon $
+Una interesante consecuencia básica de la integral de convergencia se obtiene de la siguiente manera. Elevando al cuadrado y desarrollando el término $s_k$
+$ integral_a^b p(x) [s_k (x) - f(x)]^2 dif x &= integral_a^b p s_k^2 dif x - 2 integral_a^b p f s_k dif x + integral_a^b p f^2 dif x \ &= integral_a^b p[sum_(m=0)^(k) a_m y_m]^2 dif x - 2 sum_(m=0)^(k)  a_m integral_a^b p f y_m dif x + integral_a^b p f^2 dif x $
+la primera integral del segundo miembro es igual a $a_m^2$ porque $integral p y_m y_1 dif x = 0 $ para $m!=1$ e $integral p y_m^2 dif x = 1 $ (al ser $y_m$ ortonormal). En la segunda sumatoria de la derecha, la integral es igual a $a_m$ por definición con $||y_m||^2 = 1$. Por lo tanto el segundo miembro se reduce a 
+$ - sum_(m=0)^(k) a_m^2 + integral_a^b p f^2 dif x $
+Esta expresión es no negativa debido a que en la formula anterior el integrando del primer miembro y en consecuencia la integral no son negativos. Con esto se demuestra la importante desigualdad de Bessel
+$ sum_(m=0)^(k)  a_m^2 <= ||f||^2 $
+Aquí puede hacerse $k->oo$ ya que los primeros miembros forman una sucesion monótona creciente que está acotada por la derecha, por lo que se tiene la convergencia. En consecuencia:
+$ sum_(m=0)^(a_m^2) <= ||f||^2 $
+Además, si $y_0, y_1, ...$ es completo en un conjunto de funciones $S$, entonces la integral de convergencia es válida para toda $f$ que pertenezca a $S$. Entonces, esto implica la igualdad en la desigualdad de Bessel con $k->oo$, por tanto, en el caso de completitud tenemos la igualdad de Parseval
+$ sum_(m=0)^(oo) a_m^2 = ||f||^2 $
