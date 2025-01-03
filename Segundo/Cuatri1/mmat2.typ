@@ -746,3 +746,129 @@ Aquí puede hacerse $k->oo$ ya que los primeros miembros forman una sucesion mon
 $ sum_(m=0)^(a_m^2) <= ||f||^2 $
 Además, si $y_0, y_1, ...$ es completo en un conjunto de funciones $S$, entonces la integral de convergencia es válida para toda $f$ que pertenezca a $S$. Entonces, esto implica la igualdad en la desigualdad de Bessel con $k->oo$, por tanto, en el caso de completitud tenemos la igualdad de Parseval
 $ sum_(m=0)^(oo) a_m^2 = ||f||^2 $
+
+= Ecuaciones en derivadas parciales
+
+== Conceptos básicos
+Las ecuaciones en derivadas parciales (EDP) son ecauciones que continenen una o más derivadas parciales de una función desconocida que depende de al menos dos variables. Llamaremos $u$ a esta función. El orden de la derivada parcial más alta se llama el orden de la ecuación. Una EDP es lineal si es de primer grado en la función desconocida $u$ y sus derivadas. Si no, se llama no lineal. Llamamos homogénea a una EDP si cada uno de sus términos contiene $u$ o una de sus derivadas parciales. Si no, la llamaremos no homogénea. 
+
+Una solución de una EDP en una region $R$ del espacio de variables independientes es una función que tiene todas las derivadas parciales de la EDP en un dominio $D$ conteniendo $R$, y satisface la EDP en todo $R$. 
+
+A menudo uno solo necesita que la función sea continua en el contorno de $R$. Haciendo que $R$ esté en $D$ simplifica la situación de las derivadas en el contorno de $R$, que es la misma en el contorno y en el interior de $R$. En general, la totalidad de soluciones de una EDP es muy grande. Veremos luego que la solución única de una EDP correspondiendo a un problema físico se obtiene imponiendo condiciones adicionales relacionadas por el problema.
+
+Sabemos que si una EDO es linear y homogenea, entonces de soluciones conocidas podemos obtener más soluciones por superposición. La situación es parecida en las EDP.
+
+Si $u_1$ y $u_2$ son soluciones de una EDP linear homogénea en una región $R$:
+$ u = c_1 u_1 + c_2 u_2 $
+con constantes $c_1$ y $c_2$ arbitrarias también es solución de la EDP en la región $R$
+
+== Solución por separación de variables. Series de Fourier
+El modelo de una cuerda elástica que vibra es una ecuación de onda unidimensional:
+$ dvp(u,t, deg: 2) = c^2 dvp(u,x, deg:2) quad c^2 = T/rho $
+Para la elongación desconocida $u(x,t)$ de la cuerda.
+Como la cuerda está sujeta a los extremos $x=0$ y $x=L$, tenemos las dos condiciones de contorno:
+$ cases(u(0,t) = 0, u(L,t)=0) forall t>=0 $
+Adicionalmente, la forma del movimiento de la cuerda dependerá de su elongación inicial $f(x)$ y su velocidad inicial $g(x)$. Por lo que tenemos dos condiciones iniciales
+$ cases(u(x,0)=f(x), u_t (x,0) = g(x)) forall x in [0,L] $
+Donde $u_t = dvp(u,t) $. Ahora tenemos que encontrar una solución de la EDP satisfaciendo las condiciones. Esto será nuestra solución. Haremos esto en tres pasos:
+
++ Separación de variables, diciendo $u(x,t) = F(x) G(t)$ obtendremos dos EDOs, una para $F(x)$ y otra para $G(t)$
++ Determinaremos soluciones de estas EDOs que satisfacen las condiciones de contorno
++ Utilizando las series de fourier, compondremos estas funciones para encontrar una solución de la EDP que satisface las condiciones de contorno
+
+=== Separación de la ecuacion en dos EDO
+Vamos a fijar $ u(x,t) = F(x) G(t) $
+diferenciando, obtenemos
+$ dvp(u,t,t) = F dot.double(G) quad "y" quad dvp(u,x,deg:2) = F'' G $
+Donde los puntos son derivadas con respecto al tiempo y las primas con respecto a x.
+Insertando esto en la ecuación de onda obtenemos
+$ F dot.double(G) = c^2 F'' G $
+Dividiendo por $c^2 F G $ y simplificando
+$ dot.double(G)/(c^2 G) = (F'')/F $
+las variables están serparadas, el lado izquierdo solo depende de $t$ y el lado derecho de $x$. Por lo tanto ambos lados deben de ser constantes porque $x$ y $t$ son independientes. Entonces
+$ dot.double(G)/(c^2 G) = (F'')/F = k $
+Multiplicando por los denominadores nos da dos ecuaciones diferenciales ordinarias
+$ F'' - k F = 0 $
+y
+$ dot.double(G) - c^2 k G = 0 $
+La constante de separación $k$ sigue siendo arbitraria
+
+=== Resolviendo las EDO para las condiciones de contorno
+Ahora determinamos las soluciones $F$ y $G$ para que $u = F G $ satisfaga las condiciones de contorno. Es decir
+$ cases(u(0,t) = F(0) G(t) = 0, u(L,t)= F(L)G(0)= 0) forall t>=0 $
+Vamos a resolver la ecuación de F primero. Si $G(t)=0$, entonces $u=F G= 0$. Que no tiene interés. Por lo que $G!=0$ y entonces por las condiciones de contorno
+$ F(0)=0 quad F(L) = 0 $
+Ahora vamos a demostrar que $k$ debe de ser negativo. Para $k=0$ la solución general para $F$ es $F=a x + b$ y de las condiciones de contorno obtenemos $a=b=0=>F equiv 0 => u = F G equiv 0 $ que no tiene interés. Para $k=mu^2$ positivo la solución general es 
+$ F = A e^(mu x) + B e^(- mu x) $
+Y de las condiciones de contorno obtenemos $F equiv 0$ otra vez. Entonces solo nos queda $k$ negativo, por ejemplo $k = -p^2 $. Entonces, tenemos
+$ F'' + p^2 F = 0 $
+Que tiene como solución general
+$ F(x) = A cos p x + B sin p x $
+De esto y de las condiciones de contorno tenemos
+$ F(0) = A = 0 quad ; quad F(L) = B sin p L = 0 $
+Tenemos que tomar $B!=0$ o nuestra ecuación se anula entera. Por lo que $ sin p L = 0 => p L = n pi => p = (n pi)/ L $
+Tomando $B=1$ obtenemos infinitas soluciones $F(x)=F_n (x) $, donde
+$ F_n (x) = sin (n pi)/L x quad n in NN^* $
+Estas soluciones satisfacen las condiciones de contorno
+
+Ahora resolvemos la ecuación de $G$ con $k=-p^2 = -((n pi)/L)^2$ es decir
+$dot.double(G) + lambda_n^2 G = 0 $
+donde $lambda_n = c p = (c n pi)/L $
+Una solución general es
+$ G_n (t) = B_n cos lambda_n t + B_n^* sin lambda_n t $
+Por lo que las soluciones para $F$ y $G$ que satisfacen las condiciones de contorno son $u_n (x,t) = F_n (x) G_n (t) $
+Escrito
+$ u_n (x,t) = (B_n cos lambda _n t + B^* _n sin lambda_n t) sin (n pi)/L x quad n in NN^* $
+Estas funciones son las eigenfunciones, y los valores $lambda_n = (c n pi)/L $ son los eigenvalores de la cuerda vibrante.
+
+==== Discusión de eigenfunciones
+Vemos que cada $u_n$ representa un movimiento armónico con la frecuencia $lambda_n/(2 pi) = (c n)/(2 L )$ ciclos por unidad de tiempo. Este movimiento se llama el $n$-ésimo modo normal de la cuerda. El primer modo normal se llama el modo fundamental ($n=1$) y el resto se conoce como armónicos; músicamente dan la octava, octava más quinta, etc. Como tenemos
+$ sin (n pi)/L = 0 quad "para" quad x=L/n, (2L)/n , ..., (n-1)/n L $
+El $n$-ésimo modo normal tiene $n-1$ nodos, es decir puntos en la cuerda que se mantienen fijos.
+
+=== Solución del problema completo. Series de Fourier
+Las eigenfunciones satisfacen la ecuación de onda y las condiciones de contorno, pero un $u_n$ singular no va a satisfacer las condiciones iniciales, en general. Pero como la ecuación de onda es lineal y homogénea, la suma finita de soluciones $u_n$ es una solución del problema. Para obtener una solución que también satisface las condiciones iniciales, consideramos la serie infinita con $lambda_n = (c n pi)/L$. 
+$ u(x,t) = sum_(n=1)^(oo) u_n (x,t) = sum_(n=1)^(oo) (B_n cos lambda_n t + B^*_n sin lambda_n t) sin (n pi)/L x $
+
+==== Condiciones iniciales. Elongamiento inicial.
+Aplicando nuestra primera condicion inicial a la expresión de la solución:
+$ u(x,0) = sum_(n=1)^(oo) B_n sin (n pi)/L x = f(x) $
+Esto es la expresión de una serie de fourier de senos, por lo que sabemos la forma de $B_n$:
+$ B_n = 2/L integral_0^L f(x) sin (n pi x)/L dif x $
+
+==== Condiciones iniciales. Velocidad inicial.
+Similarmente, diferenciando la solución con respecto a $t$ y utilizando la segunda condición inicial:
+$ dvp(u,t, eval:t=0) &= [ sum_(n=1)^(oo) (-B_n lambda_n sin lambda_n t + B_n^* lambda_n cos lambda_n t) sin(n pi x)/L]_(t=0) \ &= sum_(n=1)^(oo) B_n^* lambda_n sin (n pi x)/L = g(x) $
+Por lo que otra vez $B^*_n$ resulta ser un coeficiente de la serie de fourier de senos de una función, en este caso $g(x)$. Entonces,
+$ B^*_n lambda_n = 2/L integral_0^L g(x) sin (n pi x)/L dif x $
+Sabemos que $lambda_n = (c n pi)/L$, por división
+$ B_n* = 2/(c n pi) integral_0^L g(x) sin (n pi x)/L dif x $
+
+Ya tenemos nuestra solución.
+
+== Modelación. Flujo de calor de un cuerpo. Ecuación de calor
+Después de la ecuación de onda vamos a derivar y comentar la otra EDP importante, la ecuación de calor, que describe la temperatura $u$ de un cuerpo en el espacio. Vamos a obtener este modelo asumiendo que
++ El calor especifico $sigma$ y la densidad $rho$ del material del cuerpo son constantes. No hay calor que se produzca o desaparezca en el cuerpo
++ Los experimentos muestran que en un cuerpo el calor fluye en la dirección de la temperatura decreciente, y que la tasa de flujo es proporcional al gradiente de la temperatura. Es decir, la velocidad $bold(v)$ del flujo de velocidad en el cuerpo es de forma $ bold(v) = - K gradient U $
++ La conductividad térmica $K$ es constante, como es en el caso de un material homogéneo en condiciones no extremas.
+
+Bajo estas asumciones vamos a modelar el flujo de calor.
+
+Sea $T$ una región en el cuerpo delimitado or una superficie $S$ con un vector normal unitario $bold(n)$ tal que el teorema de la divergencia sea aplicable. Entonces, $bold(v) dot bold(n)$ es el componente de $bold(v)$ en la dirección de $bold(n)$. Por lo tanto, $ | bold(v) dot bold(n) Delta a |$ es la cantidad de calor saliendo de $T$ (si $bold(v) dot bold(n) > 0$ en un punto $P$) o entrando a $T$ (si $bold(v) dot bold(n)<0$ en un punto $P$) por unidad de tiempo en un punto de $P$ en $S$ a través de una pequeña porción $Delta S$ de $S$ de area $Delta A$. Por lo tanto, la cantidad total de calor que fluye por $S$ en $T$ es dada por la integral de superficie
+$ integral.double_S bold(v) dot bold(n) dif A $
+Esto es en paralelo al flujo de un fluido. Utilizando el teorema de Gauss, ahora vamos a convertir nuestra integral de superficie en una integral de volumen sobre la región $T$. Por la definición de $bold(v)$, esto es
+$ integral.double_s bold(v) dot bold(n) dif A = - K integral.double gradient u dot bold(n) dif A = - K integral.triple_T gradient dot gradient u dif x dif y dif z = - K integral.triple gradient^2 u dif x dif y dif z $
+Donde $gradient^2$ es el operador laplaciano: $ gradient^2 u = dvp(u,x, deg:2) + dvp(u,y,y) + dvp(u,z,z) $
+Por otra parte, la cantidad total de calor en $T$ es
+$ H = integral.triple_T sigma rho u dif x dif y dif z $
+Con $sigma$ y $rho$ como anteriormente. Por lo tanto, el decrecimiento de $H$ es
+$ - dvp(H,t) = - integral.triple_T sigma rho dvp(u,t) dif x dif y dif z $
+Esto debe de ser igual a la cantidad de calor saliendo de $T$ porque no hay calor que se produzca o desaparezca en el cuerpo. Por lo tanto
+$ integral.triple_T sigma rho dvp(u,t) dif x dif y dif z = - K integral.triple_T gradient^2 u dif x dif y dif z $
+o 
+$ integral.triple_T (dvp(u,t) - K/(sigma rho) gradient^2 u ) dif x dif y dif z = 0 $
+Sustituyendo con $c^2 = K/(p sigma) $
+$ integral.triple_T (dvp(u,t) - c^2 nabla^2 u) dif x dif y dif z = 0 $
+Como esto es verdad para cualquier región del cuerpo $T$, el integrando (si es continuo) debe de anularse. Es decir
+$ dvp(u,t) = c^2 nabla^2 u $
+Esto es la ecuación del calor, la ecuación fundamental que modela el flujo de calor. 
