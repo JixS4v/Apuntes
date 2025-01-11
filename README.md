@@ -1,6 +1,3 @@
-# Apuntes
-Apuntes para Ingeniería Fisica
-
 ## Disponibles:
 <details>
 <summary> Segundo </summary>
