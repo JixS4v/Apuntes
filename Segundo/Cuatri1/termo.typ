@@ -1410,4 +1410,24 @@ $ rho = (1+omega)/(R_a + omega R_v) p/T = (1+omega)/(1+ omega R_v / R_a ) p/(R_a
 Como $tilde(omega)>omega$ al aumentar la humedad disminuye la densidad del aire húmedo
 
 Se ponderan las contribuciones de los componentes en la entalpía y energía interna:
-$ H  = H_a + H_v = n tilde(h)_a$
+$ H  = H_a + H_v = n tilde(h)_a + n tilde(h)_v => tilde(h) = tilde(h)_a + tilde(omega) tilde(h)_v $
+expresado en $J$ por mol de aire seco. Es más comun expresado en función de la masa
+$ h = h_a + omega h_v $
+Para $h_a$ podemos suponer comportamiento de gas ideal, mientras que sabemos que $h_v$ se puede aproximar:
+$ h_v approx h_v^("sat") (T) $
+
+Evaluamos la contribución de cada componente a la temperatura de la mezcla y a su presión parcial. En el caso del vapor, tenemos:
+$ s_v (T, p_v) = s_v^("sat") (T) - R_v ln p_v/p^* = s_v^("sat") (T) - R_v ln phi $
+
+== Temperatura de bulbo húmedo
+La temperatura de bulbo húmedo es la temperatura medida por un termómetro de bulbo húmedo, es decir, con el bulbo rodeado por una muselina humedecida con agua.
+
+Puede probarse que
+$ omega = (h_a (T_(b h)) - h_a (T) + omega' [h_v^("sat") (T_(b h)) - h_l^("sat") (T_(b h))])/(h_v^("sat") (T) - h_l^("sat") (T_(b h))) $
+con 
+$ omega' = 0.622 (p^* (T_(b h)))/(p-p^* (T_(b h))) $
+
+== Diagrama psicrométrico
+Proporciona una representación unificada y conveniente de todas las propiedades del aire húmedo
+
+#image("assets/figure_2025-01-11-17-52-12.png")

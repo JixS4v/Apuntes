@@ -405,7 +405,7 @@ Para resolver la ecuación, esta se escribe de forma más conveniente
 $ x^2 y'' + x b(x) y' + c(x) y = 0 $
 Primero desarrollamos $b(x)$ y $c(x)$ en series de potencias
 $ b(x) = sum_(i=0)^(oo) b_i x^i $
-$ c(x) = sum_(i=0)^(oo) $
+$ c(x) = sum_(i=0)^(oo) b_i x^i $
 Derivamos término a término la solución general
 $ y'(x) = sum_(m=0)^(oo)  (m+r) a_m x^(m+r-1) = x^(r-1) [r a_0 + (r+1) a_1 x + ... ] $
 $ y'' (x) = sum_(m=0)^(oo) (m+r)(m+r - 1) a_m x^(m+r-2) = x^(r-2) [r(r-1)a_0 + (r+1)r a_1 x + ... ] $
