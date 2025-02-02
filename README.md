@@ -8,6 +8,7 @@
 - [Métodos Matemáticos 2](https://github.com/JixS4v/Apuntes/releases/download/latest/mmat2.pdf)
 - [Mecánica Analítica](https://github.com/JixS4v/Apuntes/releases/download/latest/meca.pdf)
 </details>
+<details>
 <summary> Segundo Cuatrimestre </summary>
 
   - [Física Estadística](https://github.com/JixS4v/Apuntes/releases/download/latest/fest.pdf)
