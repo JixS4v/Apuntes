@@ -27,8 +27,7 @@ jobs:
             Segundo/Cuatri2/campos.typ
             Segundo/Cuatri2/fluidos.typ
           options: |
-            compile
-            --root
+             --root
             .
       - name: Release
         uses: softprops/action-gh-release@v2
