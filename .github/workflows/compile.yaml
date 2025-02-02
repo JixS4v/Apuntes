@@ -17,7 +17,7 @@ jobs:
           fetch-depth: 0
         
       - name: Typst
-        uses: lvignoli/typst-action@main
+        uses: jixs4v/typst-action@main
         with:
           source_file: |
             Segundo/Cuatri1/meca.typ
