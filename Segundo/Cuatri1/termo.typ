@@ -1,4 +1,4 @@
-#import "config.typ": *
+#import "../config.typ": *
 
 
 #show: doc => template(doc, "Termodinámica")

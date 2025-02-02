@@ -15,7 +15,9 @@ align(center, text(25pt)[#strong(title)])
 align(center+horizon, text(20pt)[Apuntes de Segundo de GIFIS])
 pagebreak()
 
-
+set text(
+  lang:"es"
+)
 
 show heading.where(level: 1, outlined: true): it => {
 	pagebreak(weak:true)
