@@ -23,6 +23,9 @@ jobs:
             Segundo/Cuatri1/meca.typ
             Segundo/Cuatri1/mmat2.typ
             Segundo/Cuatri1/termo.typ
+            Segundo/Cuatri2/fest.typ
+            Segundo/Cuatri2/campos.typ
+            Segundo/Cuatri2/fluidos.typ
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
@@ -31,3 +34,6 @@ jobs:
             Segundo/Cuatri1/meca.pdf
             Segundo/Cuatri1/mmat2.pdf
             Segundo/Cuatri1/termo.pdf
+            Segundo/Cuatri2/fest.pdf
+            Segundo/Cuatri2/campos.pdf
+            Segundo/Cuatri2/fluidos.pdf
