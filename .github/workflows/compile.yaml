@@ -26,6 +26,7 @@ jobs:
             Segundo/Cuatri2/fest.typ
             Segundo/Cuatri2/campos.typ
             Segundo/Cuatri2/fluidos.typ
+            Segundo/Cuatri2/ppct.typ
           options: |
             --root
             .
@@ -40,3 +41,4 @@ jobs:
             Segundo/Cuatri2/fest.pdf
             Segundo/Cuatri2/campos.pdf
             Segundo/Cuatri2/fluidos.pdf
+            Segundo/Cuatri2/ppct.pdf
