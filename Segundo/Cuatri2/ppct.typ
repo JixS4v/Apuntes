@@ -3,13 +3,13 @@
 
 #show: doc => template(doc, "Programación para Ciencia y Tecnología")
 
-== Introducción 
+= Introducción 
 
 La computación científica es la disciplina que combina la programación con las matemáticas, con el fin de obtener soluciones numéricas a problemas (físicos o no) que tienen difícil solución analítica. El objetivo es enlaborar (e implementar) métodos que hallan soluciones aproximadas de problemas matemáticos de una manera eficiente. Asimismo, queremos poder garantizar un nivel mínimo de precisión (dentro de la aproximacion). 
 
 En la práctica, esto nos permite realizar simulaciones que pueden sustituir experimentos costosos, complicados y a veces imposibles de realizar.
 
-=== Qué es un método numérico?
+== Qué es un método numérico?
 Los métodos numéricos son técnicas que nos permiten formular problemas matemáticos de forma que puedan resolverse utilizando únicamente operaciones aritméticas básicas. Su eficiencia dependerá de la precisión requerida y de la rapidez con la que queramos obtener los resultados.
 
 Entre ellos, existen 3 tipos principales:
@@ -42,6 +42,7 @@ Al tener que representar los números finitamente, al hacer operaciones con un o
 
 == Cuantificación del error
 Buscamos a cuantificar el error presente en nuestras aproximaciones, y hay dos formas obvias de hacer esto
+
 === Error absoluto
 Definimos el error absoluto como la diferencia entre el valor verdadero $x$ y el valor aproximado $x^*$:
 $ e_x = x-x^* " (solemos desconocer x)" \ | e_x | < c_x " (cota superior)" $
@@ -63,6 +64,7 @@ A la hora de trabajar con un ordenador, el número de digitos significativos de 
 Podemos utilizar la siguiente fórmula para redondear (aunque sea intuitiva):
 $ cases("Si " d_(n+1) >= 5 => d_1 "." d_2 ... (d_n+1) dot 10^e , "Si " d_(n+1)<= 5 => d_1"." d_2 ... d_n dot 10^e) $
 
+=== Relación con el error
 Definimos el número de dígitos significativos de una aproximación $x^*$ como el número de digitos que comparte con el valor exacto $x$. 
 
 Podemos entonces definir un criterio que los relaciona con el error: Si se cumple $|E_x|<10^(-k)$, entonces podemos garantizar que $x^*$ tiene al menos $k$ dígitos significativos con $x$
@@ -75,4 +77,16 @@ En el ordenador, los números se suelen almacenar con una representación en com
 
 Utilizamos una serie de reglas para representar los números reales en un computador, que se conoce como representación normalizada. Hablamos de normalizar cuando los pasamos a esta representación. Como norma general, situamos la primera cifra significativa de la mantisa como el dígito entero, y el resto se quedan relegados a la parte decimal:
 $ x = 0.0000375487 => x^* = 3.754 dot 10^(-6) quad (t=4) $
- 
+
+=== Conjunto de números representables
+Denominaremos $F$ al conjunto de todos los números representables mediante la notación normalizada. Se trata de un subconjunto de $RR$ definido mediante cuatro enteros (B,t,L,U) de la siguiente forma
+$ F= {f in RR : f = plus.minus d_1"."d_2 ... d_t * B^e quad 0 <= d_i < B, d_1 != 0, L<=e<=U} $
+Aquí, $B$ es la base de la exponenciación (conviene trabajar con $2$ en computadoras debido a su funcionamiento binario), $L$ es valor más pequeño que puede tomar el exponente $e$ y $U$ es el más grande 
+Es importante notar que el $0$ no pertenece a este conjunto.
+
+
+Podemos acotar todos los números representables entre dos otros $m$ y $M$ tal que $m<=|f| <= M$, donde:
+$ m&=B^L \ M &= (1-B^(-t)) * B^(U+1) $
+
+=== Epsilon: Redondeo unidad de precisión
+El número $epsilon$ se define como la distancia entre el $1$ y el siguiente número representable, es decir, lo podemos calcular como $epsilon = B^(1-t)$.
