@@ -89,4 +89,4 @@ Podemos acotar todos los números representables entre dos otros $m$ y $M$ tal q
 $ m&=B^L \ M &= (1-B^(-t)) * B^(U+1) $
 
 === Epsilon: Redondeo unidad de precisión
-El número $epsilon$ se define como la distancia entre el $1$ y el siguiente número representable, es decir, lo podemos calcular como $epsilon = B^(1-t)$. Es decir, el número más pequeño que podemos representar con un exponente 0.
+El número $epsilon$ se define como la distancia entre el $1$ y el siguiente número representable, es decir, lo podemos calcular como $epsilon = B^(1-t)$. Es decir, el número más pequeño que podemos representar en punto flotante con un exponente fijado a 0.
