@@ -255,6 +255,7 @@ Puede ser poco intuitivo pensar en como las operaciones son proporcionales a una
 
 Vamos a visualizar esto con un poco de pseudocódigo
 
+#rect(
 ```pseudo
 para i=1 hasta n
     x = x + 2*y
@@ -263,8 +264,62 @@ para i=1 hasta n
     fin_para
 fin_para
 ```
+)
+
 Vemos que el número de operacines dentro del bucle interior es constante y dependiente del número total de entradas, es decir que tendremos $n$ operaciones. Entonces, añadiendo el número de operaciones (a parte de este bucle) en el bucle exterior, que son 2, tenemos un total de $2+n$ operaciones por cada iteración. Sumando $n$ veces, vemos que al final el algoritmo realiza $2n+n^2$ flops, es decir que su complejidad es del orden $cal(o) (n^2)$
 
 = Sistemas de Ecuaciones Lineales
 Pretendemos resolver sistemas de $n$ ecuaciones lineales con $n$ incógnitas, es decir las condiciones bajo las que el sistema tiene solución única. 
 $ cases(a_(1 1) x_1 + a_(1 2) x_2 + ... + a_(1n) x_n = b_1, a_(2 1) x_1 + a_(2 2) x_2 + ... + a_(2 n) x_n = b_2, ...,...,..., a_(n 1) x_1 + a_(n 2) x_2 + ... + a_(n n) x_n = b_n ) $
+
+A la hora de seleccionar a uno de los diferentes métodos hay unos aspector que debemos considerar:
+- La rapidez: El número de operaciones.
+- El coste espacial: La memoria necesaria, conviene minimizarlo para poder utilizar conjuntos de datos máß grandes.
+- La facilidad de programación: es mejor si el método es más simple, pero siempre se perderá en las otras areas. Hay que encontrar un equilibrio.
+- La sensibilidad del algoritmo respecto a los errores de redondeo
+- La aplicabilidad: Los métodos generales suelen ser más lentos que los métodos donde podemos realizar restricciones a los tipos de sistemas.
+
+== Sistemas triangulares
+Las matrices triangulares son aquellas que solo tienen componentes no nulas en su diagonal y en una de las dos mitades. 
+
+Una matriz triangular superior $A$ se define como la matriz $A in RR^(n times n)$ tal que $a_(i j) = 0 forall i>j$. Es decir:
+$ A = mat(a_(1 1), a_(1 2), dots.h.c a_(1 n);0,a_(2 2), dots.h.c, a_(2 n); dots.v, dots.v, dots.down, dots.v; 0,0, dots.h.c, a_(n n)) $
+
+Una matriz triangular inferior se define entonces como la matriz $A in RR^(n times n)$ tal que $a_(i j) = 0 forall j>i$, es decir
+$ A = mat(a_(1 1), 0, dots.h.c, 0; a_(2 1), a_(2 2), dots.h.c, 0; dots.v, dots.v, dots.down, dots.v; a_(n 1), a_(n 2), dots.h.c, a_(n n)) $
+
+=== Sistemas triangulares superiores
+Para resolver sistemas triangulares superiores podemos emplear el método de sustitución inversa (o regresiva). Es decir, empezamos por la última ecuación, y vamos sustituyendo el valor de las variables a medida que las conocemos.
+
+Por ejemplo, con un sistema triangular superior de 3 ecuaciones con 3 incógnitas:
+$ cases(reverse:#true, a_(1 1) x_1 + a_(1 2) x_2 + a_(1 3) x_3 = b_1, a_(2 2) x_2 + a_(2 3) x_3 = b_2, a_(3 3) x_3 = b_3) $
+$ 
+&1. quad a_(3 3) x_3 = b_3 xarrow(a_(3 3)!=0) x_3 = b_3/a_(3 3) \
+&2. quad a_(2 2) x_2 + a_(2 3) x_3 = b_2 xarrow(a_(2 2) !=0) x_2 = (b_2 - a_23 x_3)/(a_2 2) \
+&3. quad a_(1 1) x_1 + a_(1 2) x_2 + a_(1 3) x_3 = b_1 xarrow(a_(1 1) !=0) x_1 = (b_1 - a_(1 2) x_2 - a_(1 3) x_3)
+$
+
+Más generalmente, en con un sistema triangular superior con $n$ ecuaciones y $n$ incógnitas en la ecuación $i$-ésima
+$ a_(i i) x_i + sum_(j=i+1)^(n) a_(i j) x_j = b_i $
+Despejando $x_i$
+$ a_(i i) x_i = b_i - sum_(j=i+1)^(n) a_(i j) x_j xarrow(a_(i i)!=0) x_i = (b_i - sum_(j=i+1)^(n)  a_(i j) x_j)/a_(i i) $
+
+#rect(```pseudo
+Algoritmo x = sustitucion_inversa(A,b)
+
+para i = n hasta 1 salto -1
+    suma = 0
+    para j=i+1 hasta n
+        suma = suma+a_ij * x_j
+    fin_para
+    si a_ii = 0 entonces
+        Error
+    fin_si
+    x_i = (b_i - suma)/a_ii
+fin_para
+
+```)
+
+=== Sistemas triangulares inferiores
+Podemos aplicar el método anterior para resolver estos, con una pequeña modificación, ya que empezamos por la primera ecuación y vamos sustituyendo las variables desde esta. Se conoce entonces como método de sustitución directa (o progresiva).
+
