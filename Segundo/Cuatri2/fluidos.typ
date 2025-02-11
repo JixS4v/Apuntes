@@ -2,3 +2,5 @@
 
 
 #show: doc => template(doc, "Física de Fluidos")
+
+= Introducción
