@@ -54,7 +54,7 @@ show outline.entry.where(
 }
 
 
-outline(title: [Índice], indent: auto, fill: none)
+outline(title: [Índice], indent: auto)
 
 
 set page(paper: "a4", margin: (y: 4em), numbering: "1", header: context {
