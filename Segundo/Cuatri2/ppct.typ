@@ -441,6 +441,9 @@ $ F(bold(x)) = F(x_1, x_2, ..., x_n) = mat(f_1 (x_1,x_2,..., x_n); f_2 (x_1, x_2
 
 Utilizaremos la notación siguiente:
 - $ x_n$ es la $n$-ésima componente del vector $bold(x)$
-- $ x^(k)$ es la $k$-ésima iteración de la sucesión de las aproximaciones al vector $bold(x)$
+- $ bold(x)^((k))$ es la $k$-ésima iteración de la sucesión de las aproximaciones al vector $bold(x)$
 
-El método de Newton-Raphson es una generalización del método de Newton para sistemas.
+El método de Newton-Raphson es una generalización del método de Newton para sistemas. En vez de utilizar únicamente la derivada de la función, utilizamos la matriz Jacobiana de esta a la hora de hacer la aproximación por polinomios de Taylor:
+$ bold(F)(x^((k-1))) + J(bold(x)^((k-1))) (bold(x)^((k)) - bold(x)^((k-1))) = 0 \ => J(bold(x)^((k-1))) (bold(x)^((k)) - bold(x)^((k-1))) = - bold(F)(bold(x)^((k-1))) $
+Donde $ J(bold(x)^((k-1))) = dvp(bold(F)(x^((k-1))),bold(x)) $
+es la matriz Jacobiana
