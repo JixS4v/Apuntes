@@ -434,6 +434,7 @@ $ => x_k = x_(k-1) - ((x_(k-1) - x_(k-2))f(x_(k-1)))/(f(x_(k-1)) - f(x_(k-2))) $
 Este método es conveniente porque es muy sencillo de implementar y no requiere de un cálculo de la derivada, aunque su convergencia no sea tan rápida como la del método de Newton (en un entorno de la raíz, la secante es casi tangente y la convergencia es superlineal $r approx 1.62$) pero al ser abierto no tiene la convergencia garantizada. 
 
 == Sistemas de ecuaciones no lineales: Método de Newton-Raphson
+
 Consideramos un sistema de ecuaciones no lineales escrito de la forma 
 $ cases(f_1 (x_1,x_2,...,x_n) = 0, f_2 (x_1, x_2, ..., x_n ), ..., f_n(x_1, x_2, ..., x_n) = 0) $
 O bien, en forma vectorial
@@ -447,3 +448,25 @@ El método de Newton-Raphson es una generalización del método de Newton para s
 $ bold(F)(x^((k-1))) + J(bold(x)^((k-1))) (bold(x)^((k)) - bold(x)^((k-1))) = 0 \ => J(bold(x)^((k-1))) (bold(x)^((k)) - bold(x)^((k-1))) = - bold(F)(bold(x)^((k-1))) $
 Donde $ J(bold(x)^((k-1))) = dvp(bold(F)(x^((k-1))),bold(x)) $
 es la matriz Jacobiana
+
+Con $Delta bold(x)^((k-1)) = bold(x)^((k)) - bold(x)^((k-1))$ tenemos
+$ J(bold(x)^((k-1))) Delta bold(x)^((k-1)) &= - bold(F) (bold(x)^((k-1))) \ bold(x)^((k)) = x^((k-1)) + Delta bold(x)^((k-1)) $
+
+Esta relación se conoce como recurrencia de Newton.
+
+También definimos nuestro criterio de convergencia
+$ || bold(F)(bold(x)^((k)))) || < "tol" $
+
+=== Aproximación de la matriz Jacobiana
+Si bien sabemos aproximar una derivada, no conocemos la aproximación de una derivada parcial. Definámosla por analogía. Por definición, la derivada de una función $f(x)$ con respecto de $x$ es
+$ dv(f(x),x) = lim_(h->0) (f(x+h)-f(x))/h $
+Podemos aproximar esta de una forma discreta utilizando un incremento $h$ no infinitesimal, tal que
+$ dv(f(x), x) approx (f(x+h) - f(x))/h $
+
+Por otra parte, la derivada parcial de $f_i (x_1, ..., x_j, ..., x_n)$ con respecto a $x_j$ se define como
+$ dvp(f_i (x_1,...,x_j,...,x_n),x_j) = lim_(h->0) (f_i (x_1, ..., x_j + h, ..., x_n) - f_i (x_1, ..., x_j, ..., x_n))/h $
+Por analogía a la derivada, tomemos un $h$ no infinitesimal, tal que
+$ dvp(f_i (x_1,...,x_j,...,x_n),x_j) approx (f_i (x_1, ..., x_j + h, ..., x_n) - f_i (x_1, ..., x_j, ..., x_n))/h $.   
+
+Esto nos permite generar una aproximación de la matriz Jacobiana con un incremento $h$ que será próximo a cero.
+
