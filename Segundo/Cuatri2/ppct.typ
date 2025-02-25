@@ -323,3 +323,124 @@ fin_para
 === Sistemas triangulares inferiores
 Podemos aplicar el método anterior para resolver estos, con una pequeña modificación, ya que empezamos por la primera ecuación y vamos sustituyendo las variables desde esta. Se conoce entonces como método de sustitución directa (o progresiva).
 
+
+#rect(```pseudo
+Algoritmo x = sustitucion_directa(A,b)
+
+para i = 1 hasta n salto 1
+    suma = 0
+    para j=i+1 hasta n
+        suma = suma+a_ij * x_j
+    fin_para
+    si a_ii = 0 entonces
+        Error
+    fin_si
+    x_i = (b_i - suma)/a_ii
+fin_para
+
+```)
+
+== Descomposición LU con pivotación parcial de filas
+
+[COMPLETAR]
+
+= Raíces de funciones y sistemas de ecuaciones no lineales
+
+== Introducción
+=== Insuficiencia de los métodos analíticos
+Dada una funcion $f(x)$ pretendemos encontrar $x$ tal que $f(x)=0$, es decir queremos hallar las raíces.
+
+Podemos resolver la ecuación de forma analítica, por ejemplo la solución de una ecuación de primer grado $a x + b = 0$ es 
+$ x = (-b)/a $
+Para un ecuación de segundo grado
+$ a x^2 + b x + c = 0 $
+La solución es
+$ x = (- b plus.minus sqrt(b^2 - 4 a c))/(2a ) $
+Pero no es posible resolver ecuaciones de mayor grado de esta forma. Por ejemplo
+$ a_5 x^5 + a_4 x^4 + a_3 x^3 + a_1 x + a_0 = 0 $
+No tiene una solución analítica (esto es demostrable)
+
+Para ecuaciones no algebráicas como
+$ cos(e^x + x) + x = 0 $
+tampoco existen métodos generales.
+
+Por lo tanto, vamos a recurrir a métodos iterativos para aproximar la solución. Aun así, es posible que no exista una solución (como es el caso de $ cos x - 3 = 0$).
+
+Es decir, partiendo de un valor inicial vamos a generar una sucesión $x_1 , x_2 , ... x_k $ que esperaremos que converja.
+
+=== Criterio de parada e iteraciones máximas
+
+Para obtener una aproximación precisa utilizaremos un criterio de parada que garantice que nuestra solución esté dentro de un rango dado (tolerancia). Por lo tanto, nuestro criterio se puede expresar como 
+$ | f(x_k) | < "tol" $
+
+A parte del criterio de parada, es necesario limitar el número de iteraciones por si se da que nuestro método no converge para el problema dado en un tiempo razonable.
+
+=== Razón de convergencia
+
+Podemos estimar como converge una sucesión ${x_k}$ a un número $alpha$ utilizando su *razón de convergencia*, decimos que esta es de orden $r$ si 
+$ lim_(k->oo) (|x_k - alpha|/(|x_(k-1) - alpha|)^r) $
+
+Es decir, medimos como decrece la distancia a alpha con cada iteración. A $r$ más grande, converge más rápido.
+
+Si $r=1$, decimos que la convergencia de la sucesión es lineal.
+Si $r in (1,2)$, la convergencia se dice superlineal.
+Si $r=2$, se dice cuadrática, y si $r=3$, cúbica.
+
+Con la razón de convergencia podemos comparar diferentes algoritmos que resuelven un determinado problema iterativo.
+
+=== Métodos cerrados
+Los métodos cerrados se basan en el teorema de Bolzano, que para una función $f(x)$ continua en $[a,b]$ tal que $f(a) dot f(b) < 0$, garantiza la existencia de un número $c in ]a,b[$ tal que $f(c) = 0$. Es decir, si tenemos dos números $f(a)$, $f(b)$ entre los que $f(x)$ cruza 0, existe un número entre $a$ y $b$ correspondiente a $f(x)=0$: este teorema garantiza la existencia de raíces.
+
+Por lo tanto, en los métodos cerrados la convergencia está asegurada. Partimos de dos valores iniciales $a$ y $b$ verificando que $f(a)$ y $f(b)$ tienen distinto signo, y vamos encajando intervalos conteniendo la solución. Entre estos métodos, destacan el método de la bisección y el de la regula falsi (que no veremos).
+
+=== Métodos abiertos
+Estos no se basan en el teorema de Bolzano, por lo que la convergencia no está asegurada. En vez de utilizar un intervalo, partimos de un valor inicial y generamos una sucesión que esperamos que converja hacia una de las soluciones de la ecuación. Debemos por lo tanto elegir un buen punto inicial para maximizar nuestra probabilidad de convergencia y definir un número máximo de iteraciones por si no converge. Entre estos métodos, veremos dos: el método de Newton y el método de la secante, que usan ambos el mismo principio. 
+
+== Método de bisección
+Al ser un método cerrado, partimos de $a,b$ tal que $f(a), f(b)$ tienen distinto signo. En cada iteración:
++ Calculamos el punto medio del intervalo: $c=(a+b)/2$
++ Elegimos uno de los subintervalos, el que verifique la condición de signo diferente, es decir, el intervalo cuyos extremos verifiquen $f(alpha)dot f(c)<0$ donde $alpha$ es $a$ o $b$. 
++ Repetimos los pasos 1 y 2 hasta que estemos dentro de la tolerancia esperada. 
+
+Este método tiene la convergencia garantizada, puesto que en cada iteración dividimos el intervalo por la mitad y tenemos que 
+$ |c_k-alpha| < (b-a)/2^k $
+Que corresponde a una convergencia lineal, considerada bastante lenta. 
+
+== Método de Newton
+El método de Newton es un método muy eficiente para calcular las raíces de una función. Al contrario del método de la bisección, este es abierto, por lo que no tiene porque converger. 
+
+Suponemos $f(x)$ continua y derivable en $[a,b]$, y que $x_(k-1)$ es una aproximación a la raíz de $f(x)$ en el intervalo. Buscamos una mejor aproximación $x_k$.
+
+Empleamos una aproximación polinómica de Taylor de grado 1 alrededor de $x_(k-1)$:
+$ f(x_k) approx f(x_(k-1)) + f'(x_(k-1))(x_k - x_(k-1)) $
+Planteando la ecuación
+$ f(x_(k-1)) + f'(x_(k-1))(x_k - x_(k-1)) = 0 $
+reordenando
+$ x_k = x_(k-1) - (f(x_(k-1)))/(f'(x_(k-1))) ; k>=1 $
+
+Geométricamente, podemos ver que $x_k$ coincide con la abscisa del punto de intersección con el eje X de la recta $t_(k-1)$ tangente a $f(x)$ en el punto $x_(k-1)$, por lo que cada vez se aproxima más a cero. 
+
+La ventaja de este método es que su convergencia es cuadrática, por lo que convergerá mucho más rápido que el método de la bisección, pero necesitaremos calcular la derivada (es decir necesitamos conocer la expresión de nuestra función), y no podremos coninuar si la derivada se anula en algún punto, que ocurre, por ejemplo cuando la función $f(x)$ tiene multiples raíces. Además, no tiene por qué converger.
+
+== Método de la secante
+Aproximando la derivada de la función en el método de Newton de forma discreta como
+$ f'(x_(k-1)) approx (f(x_(k-1)) - f(x_(k-2)))/(x_(k-1) - x_(k-2)) $
+Tendremos
+$ x_k = x_(k-1) - (f(x_(k-1)))/((f(x_(k-1))-f(x_(k-2)))/(x_(k-1) - x_(k-2))) $
+$ => x_k = x_(k-1) - ((x_(k-1) - x_(k-2))f(x_(k-1)))/(f(x_(k-1)) - f(x_(k-2))) $ 
+
+[COMPLETAR DEMO]
+
+Este método es conveniente porque es muy sencillo de implementar y no requiere de un cálculo de la derivada, aunque su convergencia no sea tan rápida como la del método de Newton (en un entorno de la raíz, la secante es casi tangente y la convergencia es superlineal $r approx 1.62$) pero al ser abierto no tiene la convergencia garantizada. 
+
+== Sistemas de ecuaciones no lineales: Método de Newton-Raphson
+Consideramos un sistema de ecuaciones no lineales escrito de la forma 
+$ cases(f_1 (x_1,x_2,...,x_n) = 0, f_2 (x_1, x_2, ..., x_n ), ..., f_n(x_1, x_2, ..., x_n) = 0) $
+O bien, en forma vectorial
+$ F(bold(x)) = F(x_1, x_2, ..., x_n) = mat(f_1 (x_1,x_2,..., x_n); f_2 (x_1, x_2, ..., x_n); dots.v ; f_n(x_1,x_2,...,x_n)) $
+
+Utilizaremos la notación siguiente:
+- $ x_n$ es la $n$-ésima componente del vector $bold(x)$
+- $ x^(k)$ es la $k$-ésima iteración de la sucesión de las aproximaciones al vector $bold(x)$
+
+El método de Newton-Raphson es una generalización del método de Newton para sistemas.
