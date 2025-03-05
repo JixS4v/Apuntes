@@ -31,7 +31,7 @@ Hablamos de $"dBm"$ cuando tenemos una señal de referencia de 1 mW, $"dBW"$ cua
 
 Al ser una escala logarítmica, sumar 10 dB corresponde a una señal 10 veces más potente mientras que sumar 3 dB corresponde a una señal 2 veces más potente. 
 
-== Ondas electromagnéticas en el vacío
+== Ecuación de onda en el vacío
 === Ecuaciones de Maxwell
 En el caso del campo electromagnético, buscamos obtener una ecuación de onda que debe satisfacer las ecuaciones de Maxwell. En su forma diferencial, las ecuaciones de Maxwell en el vacío son:
 $
@@ -51,7 +51,7 @@ Utilizando la ley de Gauss obtenemos
 $ nabla dot arrow(J) + dvp(rho,t) = 0 $
 Que se conoce como la ecuación de continuidad para el electromagnetismo, y nos dice como evoluciona la densidad de carga con las corrientes. 
 
-==== Potenciales electromagnéticos
+=== Potenciales electromagnéticos y ecuaciones de onda
 Sabiendo que $nabla dot arrow(B) = 0$, como la divergencia del rotacional es cero, podemos definir $arrow(B)$ en función del rotacional de un potencial vectorial tal que $ nabla times arrow(A) = arrow(B) $ Por lo tanto, eliminamos una de las ecuaciones.
 
 Sustituyendo en la expresión de la ley de Faraday:
@@ -116,6 +116,15 @@ $ nabla^2 arrow(A) - epsilon_0 mu_0 dvp(arrow(A),t, deg:2) = - mu_0 arrow(J) $
 Nos quedamos con dos ecuaciones desacopladas, que resultan ser ecuaciones de onda para los potenciales electromagnéticos
 $ nabla^2 phi - epsilon_0 mu_0 dvp(phi,t,deg:2) &= - rho/epsilon_0 \ nabla^2 arrow(A) - epsilon_0 mu_0 dvp(arrow(A),t, deg:2) &= - mu_0 arrow(J) $
 
+== Ecuación de onda en medios materiales 
+=== Ecuaciones de Maxwell en medios materiales
+En un medio material (relativamente simple), las esquaciones de Maxwell son:
+$
+nabla dot arrow(E) &= rho/epsilon quad "Ley de Gauss" \ 
+nabla dot arrow(H) &= 0 quad "Ley de Gauss (magnetismo)" \
+nabla times arrow(E) &= - mu dvp(arrow(H),t) quad "Ley de Faraday" \ 
+nabla times arrow(H) &= arrow(J) + epsilon dvp(arrow(E),t) quad "Ley de Ampere-Maxwell" 
+$
 ==== Forma fasorial de las ecuaciones de Maxwell
 Podemos pasar todas ecuaciones a fasores por conveniencia, lo que nos permitirá obtener soluciones ondulatorias monocromáticas. Por lo que las derivadas temporales se convierten en productos por $j omega$ (por las reglas de las transformadas de Fourier).
 
@@ -134,7 +143,7 @@ Podemos obtener una ecuación de onda para el campo elécrtico tomando el rotaci
 $ nabla times arrow(E) = -j omega mu arrow(H) \
 nabla times nabla times arrow(E) = -j omega mu nabla times arrow(H) 
 $
-Por identidades del cálculo vectorial y utilizando la ley de Ampere-Maxwell
+Por identidades del cálculo vect    orial y utilizando la ley de Ampere-Maxwell
 $
 nabla(nabla dot arrow(E)) - nabla^2 arrow(E) = - j omega mu (arrow(J) + j omega epsilon arrow(E))
 $
@@ -157,7 +166,7 @@ $ nabla ^2 arrow(H) + k^2 arrow(H) = - nabla times arrow(J) $
 Tenemos por lo tanto seis ecuaciones independientes que debemos de resolver para obtener la expresión de la onda. Al estar los dos campos conectados, es posible reducir el número de estas introduciendo unos potenciales útiles. 
 
 ==== Ecuación de onda para los potenciales
-Definimos los potenciales $arrow(A), phi$ vector y escalar en función de los vectores campo $arrow(H)$ y $arrow(E)$, tal que 
+Definimos los potenciales $arrow(A), phi$ vector y escalar en función de los vectores campo $arrow(H)$ y $arrow(E)$
 $ mu arrow(H) = nabla times arrow(A) $
 $ arrow(E) = - j omega nabla times arrow(A) $
 
@@ -172,9 +181,7 @@ $ nabla ( nabla dot arrow(A)) - nabla^2 arrow(A) = mu arrow(J) + j omega mu epsi
 Intercambiando términos y sustituyendo $k^2$ otra vez
 $ nabla^2 arrow(A) + k^2 arrow(A) = - mu arrow(J) + nabla(nabla dot arrow(A) + j omega mu epsilon phi) $
 
-Para simplificar aún más la expresión anterior, imponemos la condición de Lorentz, que asegura la invarianza de las ecuaciones bajo transformaciones de Lorentz. 
-$ nabla dot arrow(A) + mu epsilon dvp(phi,t) = 0 $
-O, en términos fasoriales
+Utilizando la condición de Lorentz
 $ nabla dot arrow(A) + j omega mu epsilon phi = 0 $
 
 Por lo tanto, la expresión de la ecuación de onda para el potencial vectorial es
@@ -191,7 +198,7 @@ $ nabla^2 phi = - rho/epsilon - j omega (- j omega mu epsilon phi) $
 Finalmente, reordenando y sustituyendo $k^2$ nuevamente
 $ nabla^2 phi + k^2 phi = - rho/epsilon $
 
-=== Soluciones de la ecuación de onda
+== Soluciones de la ecuación de onda
 ==== Soluciones en el espacio libre
 En el espacio libre y en ausencia de cargas y corrientes, las ecuaciones de onda en el dominio de frecuencias toman una forma similar para los potenciales y los campos, y son homogéneas:
 $ 
