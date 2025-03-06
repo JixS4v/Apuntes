@@ -166,7 +166,7 @@ $ nabla ^2 arrow(H) + k^2 arrow(H) = - nabla times arrow(J) $
 Tenemos por lo tanto seis ecuaciones independientes que debemos de resolver para obtener la expresión de la onda. Al estar los dos campos conectados, es posible reducir el número de estas introduciendo unos potenciales útiles. 
 
 ==== Ecuación de onda para los potenciales
-Definimos los potenciales $arrow(A), phi$ vector y escalar en función de los vectores campo $arrow(H)$ y $arrow(E)$
+Definimos los potenciales $arrow(A), phi$ en función de los vectores campo $arrow(H)$ y $arrow(E)$
 $ mu arrow(H) = nabla times arrow(A) $
 $ arrow(E) = - j omega nabla times arrow(A) $
 
@@ -199,7 +199,7 @@ Finalmente, reordenando y sustituyendo $k^2$ nuevamente
 $ nabla^2 phi + k^2 phi = - rho/epsilon $
 
 == Soluciones de la ecuación de onda
-==== Soluciones en el espacio libre
+=== Soluciones en el espacio libre
 En el espacio libre y en ausencia de cargas y corrientes, las ecuaciones de onda en el dominio de frecuencias toman una forma similar para los potenciales y los campos, y son homogéneas:
 $ 
 nabla^2 arrow(A) + k^2 arrow(A) = 0 \
@@ -229,19 +229,20 @@ Podemos también discutir el caso de la simetría esférica, donde la onda se pr
 $ nabla^2 phi = 1/r^2 diff/(diff r) (r^2 dvp(phi,r)) + 1/(r^2 sin theta) diff/(diff theta) (sin theta dvp(phi,theta)) + 1/(r^2 sin^2 theta) dvp(phi,phi.alt, deg:2) $
 Sin embargo, al tener simetría esférica:
 $ nabla^2 phi = 1/r^2 diff/(diff r) (r^2 dvp(phi,r)) $
+Podemos simplificar esta expresión introduciendo una función $f(r)$ tal que $phi = f(r)/r$
+$ nabla^2 phi &= 1/r^2 diff/(diff r) (r^2 dvps(f(r)/r,r)) \
+  &= 1/r^2 diff/(diff r) (r dvp(f(r),r) - f(r)) \
+  &= 1/r^2 (r dvp(f(r),r,deg:2) + dvp(f(r),r) - dvp(f(r),r)) \
+  &= 1/r dvp(f(r),r, deg:2) $
+Volviendo a sustituir
+$ nabla^2 phi = 1/r dvp((r phi),r, deg:2) $
 Obtenemos la ecuación 
-$ 1/r^2 diff/(diff r) (r^2 dvp(phi, r)) + k^2 phi = 0 $
-Que es una ecuación diferencial ordinaria de segundo orden.
-
-Vamos a asumir que tiene una solución de forma $phi = f(r)/r $
-Por lo que la ecuación se convierte en
-$ 1/r^2 diff/(diff r) (r^2 dvp(f(r)/r,r)) + k^2 f(r)/r = 0 $
-$ 1/r^2 diff/(diff r) (r dvp(f(r),r) - f(r)) + k^2 f(r)/r = 0 $
-$ 1/r^2 (r dvp(f(r),r, deg:2) + dvp(f(r),r) - dvp(f(r),r)) + k^2 f(r)/r = 0 $
-$ 1/r dvp(f(r),r, deg:2) + k^2 f(r)/r = 0 $
-Multiplicando por $r$ de los dos lados obtenemos la ecuación de antes, cuya solución ya conocemos
-$ dvp(f(r),r) + k^2 f(r) = 0 $
-$ f(r) = A e^(j k r) + B e^(-j k r) $
+$ 1/r dvp((r phi), r,deg:2) + k^2 phi = 0 $
+Que es una ecuación diferencial homogénea de segundo orden.
+Reescribimos la ecuación
+$ dvp((r phi),r, deg:2) + k^2 (r phi) = 0 $
+La base de soluciones es trivial para la función $r phi$ (igual que anteriormente)
+$ r phi = A e^(-j k r) + B e^(j k r) $
 Por lo tanto tenemos
 $ phi(r) = A e^(-j k r)/r + B e^( j k r)/r $
 Pasando al dominio temporal
@@ -249,3 +250,67 @@ $ phi (r, t) = frak(R)(A e^(-j k r)/r e^(j omega t) + B e^(j k r)/r e^(j omega t
 $ phi(r, t) = frak(R)(A e^(j (omega t - k r ))/r + B e^(j (omega t + k r))/r) $
 $ phi(r, t) = A (cos(omega t - k r))/r + B (cos(omega t + k r))/ r $
 
+=== Soluciones con cargas
+==== Soluciones para fuentes puntuales
+En presencia de cargas (y corrientes) la ecuación para el potencial escalar (en el dominio de frecuencia) es:
+$ nabla^2 phi + k^2 phi = - rho/epsilon $
+Podemos plantear esta misma ecuación para una carga puntual, que representamos con la función delta de Dirac:
+$ nabla^2 phi + k^2 phi = - delta (arrow(r)-arrow(r)') $
+
+Es decir, tiene una densidad infinita en el punto $arrow(r)'$ y cero en el resto del espacio.
+Esta ecuación es la misma que resolvemos para el potencial vectorial (en cada una de las coordenadas espaciales) por lo que podemos generalizar la solución a esta ecuación como una función de Green:
+$ nabla^2 G + k^2 G = - delta (arrow(r) - arrow(r)') $
+
+Definimos la Delta de Dirac para 3 dimensiones como una distribución de densidad que es cero en todos los puntos excepto en el origen. Por lo que satisface la siguiente relación:
+$ integral_V delta(arrow(x)) dif V = 1 $
+En coordenadas cartesianas, tendríamos 
+$ integral_(RR^3) delta(arrow(x)) dif x dif y dif z = 1 $
+Pasando a coordenadas esféricas, multiplicando por el jacobiano de la transformación y ajustando los límites
+$ integral_(-oo)^(+oo) integral_0^(2pi) integral_0^pi delta(arrow(x)) r^2 sin theta dif r dif theta dif phi $
+Si asumimos que $arrow(x)$ no depende de $theta$ o $phi$, y únicamente de $r=abs(arrow(x))$, tenemos
+$ integral_(RR) 4 pi r^2 delta(r) $
+Por lo que en el caso de la simetría esférica, comparando integrandos
+$ delta(|arrow(x)|) = delta(arrow(x))/(4 pi |arrow(x)|^2) $
+
+Sustituyendo en nuestra ecuación, que es simétrica:
+$ nabla^2 G + k^2 G = - delta(abs(arrow(r)-arrow(r)'))/(4 pi abs(arrow(r) - arrow(r)')^2) $
+asumiendo que no hay superficies delimitantes, la función de Green dependerá también únicamente de la distancia entre los puntos (que escribiremos como $R$):
+$ nabla^2 G(R) + k^2 G(R) = - delta(R)/(4 pi R^2) $
+Utilizando el mismo truco que anteriormente para el Laplaciano en coordenadas esféricas con simetría esférica
+$ 1/R dvp((R G),R, deg:2) + k^2 G(R) = - delta(R)/(4 pi R^2) $
+En todos los puntos excepto $R=0$, la ecuación se reduce a
+$ dvp((R G),R, deg:2) + k^2 (R G) = 0 $
+Con solución (igual que anteriormente)
+$ R G(R) = A e^(-j k R) + B e^( j k R) $
+Además, la función delta solo tiene efecto para $R->0$, donde desparece el término $k^2 R phi$, por lo que tenemos la ecuación
+$ dvp((R G),R, deg:2) = - delta(R)/(4 pi R) $
+Integrando en función de $R$, y utilizando las propiedades de la función delta:
+$ dvp((R G),R) = - 1/(4pi R) $
+Finalmente
+$ R G = 1/(4 pi R^2) $
+Por lo que en $R->0$, la condición de normalización es:
+$ G = 1/(4pi R) $
+Como tenemos
+$ G(R) = A e^(-j k R)/R + B e^(j k R)/R $
+Tomando el límite para $R->0$
+$ lim_(R->0) G(R) = lim_(R->0) [A e^(j k R)/R + B e^(- j k R)/R ] = lim_(R->0) [A/R + B/R] $
+Por lo que tenemos la condición $A+B = 1/(4 pi) $
+
+Además, debemos elegir el signo negativo de la exponencial para que la solución obedezca relaciones causales conocidas (véase: potencial retardado), por lo que $B=0$ y $A=1/(4 pi)$ y entonces 
+$ G(R) = e^(-j k R)/(4 pi R) equiv G(abs(arrow(r) - arrow(r)')) = e^(- j k abs(arrow(r)-arrow(r)'))/( 4 pi abs(arrow(r)-arrow(r'))) $
+
+==== Soluciones para fuentes distribuidas
+Ahora que conocemos la solución para una fuente puntual, podemos generar una onda para fuentes de cualquier forma sumando las contribuciones de todas las fuentes puntuales. Esto se hace por medio de una integral. Para el potencial escalar:
+$ phi = 1/epsilon integral.triple_(V') rho(arrow(r)') G(arrow(r), arrow(r)') dif V' $
+esto corresponde a la convolución de $rho$ por $mu G$
+$ phi = rho convolve G(abs(arrow(r)-arrow(r)')) $
+Para el potencial vectorial, la ecuación es:
+$ nabla^2 arrow(A) + k^2 arrow(A) = - mu arrow(J) $
+Podemos separar esto componente a componente:
+$ nabla^2 A_i + k^2 A_i = - mu J_i $
+Donde $i$ corresponde a cada coordenada espacial. Esta ecuación se resuelve por medio de la misma ecuación de Green:
+$ A_i = mu integral.triple_(V') J_i (arrow(r)) G(arrow(r), arrow(r)') dif V' $
+Esto corresponde a la convolución de $J_i$ por $mu G$
+$ A_i = J_i convolve mu G(abs(arrow(r)-arrow(r)')) $
+Lo podemos denotar en forma vectorial como
+$ arrow(A) = arrow(J) convolve mu G(abs(arrow(r)-arrow(r)')) $
