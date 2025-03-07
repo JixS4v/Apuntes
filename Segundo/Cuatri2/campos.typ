@@ -314,3 +314,65 @@ Esto corresponde a la convolución de $J_i$ por $mu G$
 $ A_i = J_i convolve mu G(abs(arrow(r)-arrow(r)')) $
 Lo podemos denotar en forma vectorial como
 $ arrow(A) = arrow(J) convolve mu G(abs(arrow(r)-arrow(r)')) $
+
+= Propagación de ondas en medios indefinidos
+== Introducción
+Sabemos (por los apartados anteriores) que para una fuente puntual la onda es esférica y decae con razón $1/r$. Lejos de la fuente, podemos realizar una simplificación aproximando esta a una onda esférica que se propaga en una única dirección, y no decae. Este modelo se utiliza para modelar la radiopropagación (ondas electromagnéticas en espacios abiertos).
+
+=== Medios LIH
+Para resolver (y plantear) las ecuaciones de onda en medios indefinidos, hemos realizado una serie de suposiciones sobre la naturaleza del medio. El medio al que nos hemos limitado se conoce como medio LIH. La L es de lineal, es decir que $arrow(D)$, $arrow(E)$ y $arrow(B)$, $arrow(H)$ están relacionados de forma lineal:
+$ arrow(D) &= epsilon arrow(E) \ arrow(B) = mu arrow(H) $
+Donde $epsilon$ es la permitividad eléctrica del medio (medido en $F/m$), que se puede descomponer en dos valores $epsilon = epsilon_0 epsilon_r$, donde $epsilon_0 = 1/(36 pi) 10^(-9) F/m$ es la permitivadad eléctrica del vacío y $epsilon_r$ es la permeabilidad eléctrica relativa del medio (adimensional), y $mu$ es la permeabilidad magnética del medio (medido en $H/m$), que a su vez se puede descomponer en dos valores $ mu = mu_0 mu_r$, donde $mu_0 = 4 pi 10^(-7) H/m$, la permeabilidad magnética del vacío y $mu_r$ es la permeabilidad magnética relativa del medio, un número adimensional.  
+
+La H es de homogéneo, es decir, la permitividad eléctrica y la permeabilidad magnética son constantes en el medio. 
+
+Finalmente, la I viene de isótropo, es decir que $epsilon$ y $mu$ son escalares y por lo tanto no dependen de la dirección del campo.
+
+== Solución de la ecuación de onda plana
+Esta vez trabajamos con las ecuaciones de onda en forma fasorial en coordenadas cartesianas, para medios LIH sin fuentes:
+$ nabla^2 arrow(E) + k^2 arrow(E) &= 0 \ nabla^2 arrow(H) + k^2 arrow(H) &= 0 $
+
+Ya sabemos resolver estas para simetrías, como para $x$ e $y$ constantes, vamos a emplear el método de separación de variables para resolverlas sin requerir simetrías.
+
+Primero de todo, podemos separarlas componente a componente, y en forma escalar (para cada componente) todas comparten una forma general:
+$ nabla^2 U + k^2 U = 0 $
+Para realizar la separación de variables, vamos a reescribir $U$ como el producto de funciones de cada coordenada espacial:
+$ U(x,y,z) = f(x)g(y)h(z) $ 
+Por lo que la ecuación es
+$ f''(x) g(y) h(z) + g''(y)f(x)h(z) + h''(z) f(x) g(y) + k^2 f(x)g(y)h(z) = 0 $
+Podemos dividir por $f(x)g(y)h(z)$ en los dos lados (asumiendo que no se anulan):
+$ (f''(x))/(f(x)) + (g''(x))/(g(y)) + (h''(z))/(h(z)) + k^2 = 0 $
+Podemos separar esto en tres ecuaciones (con $k^2 = k_x^2 + k_y^2 + k_z^2 $)
+$ (f''(x))/(f(x)) + k_x^2 &= 0 \
+(g''(y))/(g(y)) + k_y^2 &= 0 \
+(h''(z))/(h(z)) + k_z^2 &= 0 $
+Estas ecuaciones son iguales, así que solo es necesario resolver una de ellas:
+$ dv(f(x), x, deg:2))/(f(x)) + k_x^2 = 0 $
+$ <=> dv(f(x), x, deg:2) = - k_x^2 f(x) $
+$ <=> dv(f(x), x, deg:2) + k_x^2 f(x) = 0 $
+La solución de esta ecuación es trivial (y ya la conocemos):
+$ f(x) = A_x e^(- j x k_x ) + B_x e^(j x k_x ) $
+Elegimos el signo negativo (la solución causal)
+$ f(x) = A_x e^(-j x k_x) $
+Por analogía, todas las soluciones son
+$ f(x) &= A_x e^(- j x k_x) \ 
+g(y) &= A_y e^(- j y k_y) \ 
+h(z) &= A_z e^(- j k k_z) $
+Ya tenemos la solución
+$ U(x,y,z) = f(x)g(y)h(z) = A_x A_y A_z e^(-j (x k_x + y k_y + z k_z) ) equiv A e^(-j (x k_x + y k_y + z k_z )) $
+Fijando $U(0,0,0)=U_0$ la amplitud, se puede obtener de forma trivial $A=U_0$ 
+$ U(x,y,z) = U_0 e^(-j (x k_x + y k_y + z k_z )) $
+
+$k_i$ representa el número de onda para cada dirección del espacio (es aparente viendo las ecuaciones para cada variable), es decir, podemos definir un vector de onda tal que $ arrow(k) = k_x hat(x) + k_y hat(y) + k_z hat(z) $ 
+
+Por lo que podemos reescribir la solución como
+$ U(x,y,z) = U_0 e^(- j arrow(k) dot arrow(r) ) $
+
+Para el campo eléctrico, tenemos la misma onda que varía en amplitud según la componente del campo estudiada, por lo que la exponencial es la misma para todas las componentes y solo varía la amplitud:
+$ E_x &= E_(0 x) e^(-j arrow(k) dot arrow(r)) \ 
+E_y &= E_(0 y) e^(- j arrow(k) dot arrow(r)) \
+E_z &= E_(0 z) e^(- j arrow(k) dot arrow(r)) $
+Podemos definir un vector amplitud $arrow(E)_0$ tal que
+$ arrow(E)_0 = E_(0 x) hat(x) + E_(0 y) hat(y) + E_(0 z) hat(z) $
+por lo que la expresión vectorial del campo es:
+$ arrow(E)(arrow(r)) = arrow(E)_0 e^(- j arrow(k) dot arrow(r)) $
