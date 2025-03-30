@@ -342,7 +342,21 @@ fin_para
 
 == Descomposición LU con pivotación parcial de filas
 
-[COMPLETAR]
+La descomposición LU de una matriz nos permite obtener dos sistemas tales que $A = L U$ donde L es una matriz triangular inferior y U es una matriz triangular superior. Por lo tanto, nos permite resolver sistemas de ecuaciones linales no triangulares en dos pasos más sencillos. En este caso vamos a explorar un método ligeramente diferente, conocido como descomposición LU con pivotación parcial de filas.
+
+=== Matrices de permutación
+Decimos que una matriz cuadrada $P in RR^(n times n)$ es una matriz de permutación si los elementos de cualquier fila o columna son 0 salvo uno de ellos por cada fila y columna, que vale 1. Su determinante es siempre $+1$ o $-1$, el signo depende del número de intercambios (o pivotaciones) de filas necesarios para pasar de la matriz $P$ a la matriz identidad: si este es par, el determinante es positivo, mientras que si es impar es negativo. Otra propiedad importante es su ortogonalidad, es decir que su transpuesta coincide con su inversa:
+$ P^(T) = P^(-1) $
+
+=== Algoritmo
+Buscamos tres matrices $P, L, U$ tal que $P A = L U$. Para ello, realizaremos $n-1$ etapas, donde en cada etapa $k$ se obtienen ceros debajo del $k$-ésimo elemento de la diagonal principal (elemento pivote) por medio de transformaciones de Gauss
+
+En cada etapa $k$:
++ Fijaremos el elemento pivote $a_(k k)$ para que su valor absoluto sea el mayor de la columna. Para esto, podremos intercambiar filas en la matriz $A$, pero el cambio también se tendrá que reflejar en la matriz P (y la L). 
++ Luego, utilizando transformaciones de gauss, anularemos los elementos debajo del elemento pivote.     
+
+=== Por qué utilizar pivotación parcial?
+La diferencia entre la descomposición LU convencional y la que incluye pivotación parcial de filas 
 
 = Raíces de funciones y sistemas de ecuaciones no lineales
 
