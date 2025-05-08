@@ -50,13 +50,14 @@ $ dv(u_i (arrow(X) (arrow(X_0), t), t), t) $
 Ahora, vamos a aplicar la regla de la cadena, es decir
 $ dv(u_i (arrow(X),t),t),t) = dvp(u_i (arrow(X),t),t) cancel(dvp(t,t)) + dvp(u_i(arrow(X),t),X_k) dvp(X_k,t) $
 Aquí utilizamos $X_i$ para referirnos a las componentes del vector de posición de la partícula, y debemos de añadir estos terminos para tener en cuenta la dependencia temporal de la velocidad a través de la variable Lagrangiana también. Ahora, recordando la relación anterior de la velocidad:
-$ dv(u_i (arrow(X),t), t) = dvp(u_i(arrow(X), t),t) + dvp(u_i (arrow(X),t),X_k) u_k ((arrow(X), t)) $
+$ dv(u_i (arrow(X),t), t) = dvp(u_i(arrow(X), t),t) + dvp(u_i (arrow(X),t),X_k) u_k (arrow(X), t) $
 
 Podemos generalizar a esta nueva forma de obtener derivadas de cantidades para partículas individuales a desde la desripción Euleriana a cualquier cantidad dependiente de la posición y el tiempo $bold(lambda)$, tensorial de cualquier orden, aplicando la regla de la cadena:
 $ dv(bold(lambda) (arrow(X),t),t) = dvp(bold(lambda)  (arrow(X),t),t) + dvp(bold(lambda) (arrow(X),t),X_k) dvp(X_k,t) = dvp(bold(lambda) (arrow(X),t),t) + dvp(bold(lambda) (arrow(X),t),X_k) u_k (arrow(X),t) $
 
 Esta forma de tomar la derivada se conoce como derivada material, y la denotaremos $dvm("")$ para explicitar que se toma para una partícula de fluido y no para la cantidad en el punto únicamente.
 $ dvm(bold(lambda)) = dvp(bold(lambda),t) + dvp(bold(lambda),x_k) u_k $
-Aquí hemos intercambiado todas las variables Lagrangianas por sus cantidades usuales eulerianas. Hemos podido hacer esto porque no aparecen de forma explícita en la ecuación, solo como los argumentos de los que $arrow(u) $ es función.
+Aquí hemos intercambiado todas las variables Lagrangianas por las Eulerianas. Hemos podido hacer esto porque no aparecen de forma explícita en la expresión, solo como los argumentos de $arrow(u)$.
 
-
+= Fluidos ideales
+== Ecuaciones de movimiento del fluido ideal
