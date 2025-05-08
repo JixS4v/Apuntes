@@ -3,6 +3,8 @@
 
 #show: doc => template(doc, "Física de Fluidos")
 
+#let dvm(func) = $(upright(D)func)/(upright(D)t)$
+
 = Introducción
 == Qué es un fluido?
 En oposición a un sólido, un fluido no tiene fuerzas de restitución ante un esfuerzo tangencial. Es decir, si intentamos deformar un sólido (por ejemplo un edificio) en la dirección tangencial (por ejemplo de izquierda a derecha aplicando un esfuerzo desde arriba), este debería de recuperar su forma original después de que se acabe la aplicación de este esfuerzo (para esfuerzos grandes, muchos sólidos no se comportarán como un sólido perfecto).
@@ -36,17 +38,25 @@ Adicionalmente, vamos a definir el campo de velocidades $arrow(u) (x,y,z,t)$, un
 == Descripción del flujo
 Para determinar la naturaleza del flujo en un punto $(x,y,z,t)$, necesitaremos 5 variables. Se utilizan las tres componentes del campo de velocidades y dos variables termodinámicas, normalmente la presión $p$ y la densidad $rho$.
 
-O esto pensaríamos de forma natural, realmente hay dos formas equivalentes de describir el flujo, y se denominan Euleriana y Lagrangiana. La descripción Euleriana es la que hemos estado asumiendo hasta ahora, donde se considera un volumen de control (que es constante, pero no tiene por qué estar fijo en el espacio), donde las variables termodinámicas se pueden considerar razonablemente uniformes, y se estudia el flujo a través de este, utilizando un campo de velocidades general. La descripción Lagrangiana sigue a una masa de control constante (que no tiene por que mantener su forma) que se desplaza a lo largo del fluido. En vez de utilizar el campo de velocidades, se identifica cada masa de control por su posición inicial $arrow(x)_0$ en un tiempo arbitrario pero igual para todas las partículas $t_0$, y se describe su velocidad en un instante $t$: $ arrow(x) (arrow(x)_0, t) $
+O esto pensaríamos de forma natural, realmente hay dos formas equivalentes de describir el flujo, y se denominan Euleriana y Lagrangiana. La descripción Euleriana es la que hemos estado asumiendo hasta ahora, donde se considera un volumen de control (que es constante, pero no tiene por qué estar fijo en el espacio), donde las variables termodinámicas se pueden considerar razonablemente uniformes, y se estudia el flujo a través de este, utilizando un campo de velocidades general. La descripción Lagrangiana sigue a una masa de control constante (que no tiene por que mantener su forma) que se desplaza a lo largo del fluido. En vez de utilizar el campo de velocidades, se identifica cada masa de control por su posición inicial $arrow(X)_0$ en un tiempo arbitrario pero igual para todas las partículas $t_0$, y se describe su velocidad en un instante $t$: $ arrow(X) (arrow(X)_0, t) $
 
 Hemos dicho que estos formalismos son equivalentes, pero claramente la descripción Lagrangiana, que es más parecida a lo que se utilizaría para la descripción de la mecánica de un sólido, es más engorrosa a la hora de dar una descripción del flujo natural. Sin embargo, es necesaria porque nos permite obtener la mecánica del fluido por analogía a la de un sólido. Por eso necesitamos una forma de pasar de la descripción Lagrangiana al la Euleriana. 
 
 A primera vista, como tenemos el vector de posición de la partícula fluida en un instante $t$, podemos obtener el campo de velocidades en la posición de una partícula dada:
-$ arrow(u) (arrow(x) (arrow(x)_0, t), t) $ que resulta ser equivalente a $ dvp(arrow(x),t) (arrow(x)_0, t) $ ya que ambos describen la velocidad para un instante para una masa de control particular (en el lado derecho, la derivada es parcial porque $arrow(x)$ depende únicamente del tiempo para una partícula fluida en particular).
+$ arrow(u) (arrow(X) (arrow(X)_0, t), t) $ que resulta ser equivalente a $ dvp(arrow(X),t) (arrow(X)_0, t) $ ya que ambos describen la velocidad para un instante para una masa de control particular (en el lado derecho, la derivada es parcial porque $arrow(X)$ depende únicamente del tiempo para una partícula fluida en particular).
 
-Pero, y si queremos saber la aceleración de esta? Partiendo de la equivalencia que hemos considerado anteriormente
+Pero, y si queremos saber la aceleración de esta partícula? Partiendo de la equivalencia que hemos considerado anteriormente, podemos expresar la aceleración de una partícula como
+$ dv(u_i (arrow(X) (arrow(X_0), t), t), t) $
+Ahora, vamos a aplicar la regla de la cadena, es decir
+$ dv(u_i (arrow(X),t),t),t) = dvp(u_i (arrow(X),t),t) cancel(dvp(t,t)) + dvp(u_i(arrow(X),t),X_k) dvp(X_k,t) $
+Aquí utilizamos $X_i$ para referirnos a las componentes del vector de posición de la partícula, y debemos de añadir estos terminos para tener en cuenta la dependencia temporal de la velocidad a través de la variable Lagrangiana también. Ahora, recordando la relación anterior de la velocidad:
+$ dv(u_i (arrow(X),t), t) = dvp(u_i(arrow(X), t),t) + dvp(u_i (arrow(X),t),X_k) u_k ((arrow(X), t)) $
 
-$ dv(arrow(u) (arrow(x) (arrow(x)_0, t)), t) = dvp(arrow(x) (arrow(x)_0, t),t, deg:2) $
+Podemos generalizar a esta nueva forma de obtener derivadas de cantidades para partículas individuales a desde la desripción Euleriana a cualquier cantidad dependiente de la posición y el tiempo $bold(lambda)$, tensorial de cualquier orden, aplicando la regla de la cadena:
+$ dv(bold(lambda) (arrow(X),t),t) = dvp(bold(lambda)  (arrow(X),t),t) + dvp(bold(lambda) (arrow(X),t),X_k) dvp(X_k,t) = dvp(bold(lambda) (arrow(X),t),t) + dvp(bold(lambda) (arrow(X),t),X_k) u_k (arrow(X),t) $
 
-
+Esta forma de tomar la derivada se conoce como derivada material, y la denotaremos $dvm("")$ para explicitar que se toma para una partícula de fluido y no para la cantidad en el punto únicamente.
+$ dvm(bold(lambda)) = dvp(bold(lambda),t) + dvp(bold(lambda),x_k) u_k $
+Aquí hemos intercambiado todas las variables Lagrangianas por sus cantidades usuales eulerianas. Hemos podido hacer esto porque no aparecen de forma explícita en la ecuación, solo como los argumentos de los que $arrow(u) $ es función.
 
 
