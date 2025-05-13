@@ -79,5 +79,18 @@ $ integral_(V_c) [dvp(rho,t) + nabla dot (rho arrow(u))] = 0 $
 Como esta integral se debe anular para cualquier volumen de control fijo, el integrando es el que se debe de anular, por lo que obtenemos
 $ dvp(rho,t) + nabla dot (rho arrow(u)) = 0 $
 
+Esta ecuación se conoce como ecuación de continuidad.
+
+== La ecuación de Euler
+Estamos en posición de obtener nuestra primera ecuación de movimiento. Vamos a realizar unas suposiciones. Primero, vamos a asumir una ausencia de viscosidad (o viscosidad despreciable), es decir que la única fuerza intrínseca en juego será la presión, que corresponde a la intensidad de las fuerzas del fluido por unidad de área. 
+
+La fuerza neta actuando sobre un volumen de control es el dado por la integral
+$ - integral.cont_(S_c) p hat(n) dif S $
+Utilizando nuevamente el teorema de Gauss, sabiendo que el vector normal es constante
+$ integral.cont_(S_c) p hat(n) dif S equiv hat(n) integral.cont_(S_c) p hat(n) dot hat(n) dif S = hat(n) integral.cont_(S_c) nabla dot (p hat(n)) dif V = cancel(hat(n) dot hat(n)) integral_(V_c) nabla p dif V $
+Podemos escribir
+$ - integral.cont_(S_c) p hat(n) dif S = - integral_(V_c) nabla p dif V $
+Por lo que vemos que el fluido alrededor de un volumen unitario ejerce una fuerza $ - nabla p$.
+
 
 #bibliography("assets/ref_fluids.bib")
