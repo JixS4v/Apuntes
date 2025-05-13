@@ -90,7 +90,46 @@ Utilizando nuevamente el teorema de Gauss, sabiendo que el vector normal es cons
 $ integral.cont_(S_c) p hat(n) dif S equiv hat(n) integral.cont_(S_c) p hat(n) dot hat(n) dif S = hat(n) integral.cont_(S_c) nabla dot (p hat(n)) dif V = cancel(hat(n) dot hat(n)) integral_(V_c) nabla p dif V $
 Podemos escribir
 $ - integral.cont_(S_c) p hat(n) dif S = - integral_(V_c) nabla p dif V $
-Por lo que vemos que el fluido alrededor de un volumen unitario ejerce una fuerza $ - nabla p$.
+
+Por lo que vemos que el fluido alrededor de un volumen de control ejerce una fuerza $ - nabla p$ por unidad de volumen.
+
+La segunda Ley de Newton postula que:
+$ arrow(F) = m arrow(a) $
+Esta expresión se aplica a una masa de control, por lo que para obtener las cantidades que buscamos, considerémosla para un volumen de control. Lo primero es convertir la acelearción en la derivada material de $arrow(u)$, lo que resulta ser
+$ arrow(F) = m dvm(arrow(u)) $
+Ahora, si derivamos por el volumen, sabiendo que $arrow(u)$ no depende del volumen
+$ dv(arrow(F), V) = dv(m, V) dvm(arrow(u)) $
+Sabiendo que la fuerza por unidad de volumen es $- nabla p$ y que la masa por unidad de volumen es $rho$:
+$ - 1/rho nabla p = dvm(arrow(u)) $
+O, desarrollando la expresión
+$ dvp(arrow(u),t) + (arrow(u) dot nabla)arrow(u) = -1/rho nabla p $
+Esta es la conocida Ecuación de Euler, y es la utilizada para describir el flujo de un *Fluido Ideal*, es decir que no experimenta disipación de energía. Ya hemos comentado que la viscosidad es nula, pero esta condición también implica que no hay intercambio de calor entre partículas fluidas, es decir que el movimiento del fluido es adiabático. 
+
+Podemos escribir esta condición como $ dvm(s) = 0 $. Es decir, para cada partícula fluida la entropía es constante.
+
+Otra forma de escribir esto es 
+$ dvp(s,t) + arrow(u) dot nabla s = 0 $
+
+También, si multiplicamos esta ecuación por $rho$ y la ecuación de continuidad por $s$, y las sumamos, obtenemos
+$ rho dvp(s,t) + s dvp(rho,t) + rho arrow(u) dot nabla s + s nabla dot (rho arrow(u)) = 0 $
+Aplicando la regla del producto, tenemos una ecuación de continuidad del flujo de entropía
+$ dvp(rho s ,t) + nabla dot (s rho arrow(u)) = 0 $
+
+Esta ecuación se puede simplificar mucho con una sola suposición. Dado que la entropía se conserva, si en algún punto del tiempo esta es uniforme en el espacio, podemos considerar que será uniforme siempre, o en otras palabras $dif s = 0$. Esta condición isentrópica es mucho más permisible, y podemos reescribir la ecuación de movimiento gracias a ella. 
+
+Partiendo de la relación de la entalpía
+$ dif h = T dif s + v dif p $
+
+Simplificando para el flujo isentrópico, y sabiendo que $v = 1\/rho$
+$ dif h = (dif p)/rho $
+Dividiendo por $dif x_i$ arbitrario
+$ (dif h)/(dif x_i) = 1/rho (dif p)/(dif x_i) $
+Como esta expresión se verifica para cualquier $x_i$, funciona para el gradiente:
+$ nabla h = 1/rho nabla p $
+Sustituyendo en la ecuación de Euler:
+$ dvm(arrow(u)) = - nabla h $
+Por lo tanto, en un flujo ideal isentrópico una partícula fluida acelera en la dirección del mínimo de la entalpía. 
+
 
 
 #bibliography("assets/ref_fluids.bib")
