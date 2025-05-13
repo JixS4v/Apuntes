@@ -103,7 +103,7 @@ Sabiendo que la fuerza por unidad de volumen es $- nabla p$ y que la masa por un
 $ - 1/rho nabla p = dvm(arrow(u)) $
 O, desarrollando la expresión
 $ dvp(arrow(u),t) + (arrow(u) dot nabla)arrow(u) = -1/rho nabla p $
-Esta es la conocida Ecuación de Euler, y es la utilizada para describir el flujo de un *Fluido Ideal*, es decir que no experimenta disipación de energía. Ya hemos comentado que la viscosidad es nula, pero esta condición también implica que no hay intercambio de calor entre partículas fluidas, es decir que el movimiento del fluido es adiabático. 
+Esta es la conocida Ecuación de Euler #footnote([Cabe destacar que esta expresión de la ecuación de Euler no es completa, no incluye las fuerzas másicas externas por la gravedad. Dichas fuerzas se deberían de añadir al lado derecho de la ecuación. Durante los siguientes desarrollos, emplearemos la expresión reducida.]), y es la utilizada para describir el flujo de un *Fluido Ideal*, es decir que no experimenta disipación de energía. Ya hemos comentado que la viscosidad es nula, pero esta condición también implica que no hay intercambio de calor entre partículas fluidas, es decir que el movimiento del fluido es adiabático. 
 
 Podemos escribir esta condición como $ dvm(s) = 0 $. Es decir, para cada partícula fluida la entropía es constante.
 
@@ -130,6 +130,25 @@ Sustituyendo en la ecuación de Euler:
 $ dvm(arrow(u)) = - nabla h $
 Por lo tanto, en un flujo ideal isentrópico una partícula fluida acelera en la dirección del mínimo de la entalpía. 
 
+== Ecuación de Bernouilli
+Hasta ahora hemos considerado casos relativamente generales a todos los fluidos ideales. Ahora vamos a discutir una simplificación de la ecuación para el caso del flujo estacionario (y también isentrópico), es decir cuando $dvp(arrow(u),t)=0$.
+ 
+Para ello, vamos a introducir el concepto de línea de corriente, que son las líneas cuyas tangentes tienen la misma dirección que la velocidad. Es decir, a lo largo de una línea de corriente $ arrow(u) = u hat(e)_t $ Donde $hat(e)_t$ es el vector unitario tangente a la línea de corriente considerada. podemos reescribir esto como un sistema de ecuaciones que exige que $dif arrow(r)$ y $arrow(u)$ sean paralelas: 
+$ (dif x)/u_x = (dif y)/u_y = (dif z)/u_z $
 
+Ahora, partimos de la ecuación de Euler en un campo gravitatorio uniforme
+$ cancel(dvp(arrow(u),t)) + (arrow(u) dot nabla) arrow(u) = - nabla h + arrow(g) $
+A lo largo de una línea de corriente tendríamos
+$ (u hat(e)_t dot nabla) (hat(e)_t u) = - nabla h + arrow(g) $
 
-#bibliography("assets/ref_fluids.bib")
+Proyectando sobre la línea de corriente:
+$ (u hat(e)_t dot nabla) (hat(e)_t u) dot hat(e)_t = - (hat(e)_t dot nabla) h + hat(e)_t dot arrow(g) $
+
+recordando la condición anterior, tenemos $ dif arrow(r) = hat(e)_t abs(dif arrow(r)) equiv hat(e)_t dif l $
+Por lo que, reordenando
+$ hat(e)_t = dv(arrow(r),l) $
+Podemos calcular 
+$ hat(e)_t dot nabla = dv(arrow(r), l) dot nabla = dif/(dif l) $
+ 
+
+#bibliography("assets/ref_fluids.bib", title:"Referencias")
