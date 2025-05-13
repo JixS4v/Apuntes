@@ -52,12 +52,32 @@ $ dv(u_i (arrow(X),t),t),t) = dvp(u_i (arrow(X),t),t) cancel(dvp(t,t)) + dvp(u_i
 Aquí utilizamos $X_i$ para referirnos a las componentes del vector de posición de la partícula, y debemos de añadir estos terminos para tener en cuenta la dependencia temporal de la velocidad a través de la variable Lagrangiana también. Ahora, recordando la relación anterior de la velocidad:
 $ dv(u_i (arrow(X),t), t) = dvp(u_i(arrow(X), t),t) + dvp(u_i (arrow(X),t),X_k) u_k (arrow(X), t) $
 
-Podemos generalizar a esta nueva forma de obtener derivadas de cantidades para partículas individuales a desde la desripción Euleriana a cualquier cantidad dependiente de la posición y el tiempo $bold(lambda)$, tensorial de cualquier orden, aplicando la regla de la cadena:
+Podemos generalizar a esta nueva forma de obtener derivadas de cantidades para partículas individuales desde la desripción Euleriana a cualquier cantidad dependiente de la posición y el tiempo $bold(lambda)$, tensorial de cualquier orden, aplicando la regla de la cadena:
 $ dv(bold(lambda) (arrow(X),t),t) = dvp(bold(lambda)  (arrow(X),t),t) + dvp(bold(lambda) (arrow(X),t),X_k) dvp(X_k,t) = dvp(bold(lambda) (arrow(X),t),t) + dvp(bold(lambda) (arrow(X),t),X_k) u_k (arrow(X),t) $
 
 Esta forma de tomar la derivada se conoce como derivada material, y la denotaremos $dvm("")$ para explicitar que se toma para una partícula de fluido y no para la cantidad en el punto únicamente.
 $ dvm(bold(lambda)) = dvp(bold(lambda),t) + dvp(bold(lambda),x_k) u_k $
 Aquí hemos intercambiado todas las variables Lagrangianas por las Eulerianas. Hemos podido hacer esto porque no aparecen de forma explícita en la expresión, solo como los argumentos de $arrow(u)$.
 
-= Fluidos ideales
-== Ecuaciones de movimiento del fluido ideal
+= Un primer acercamiento
+== Conservación de la masa
+Vamos a comenzar obteniendo la ecuación de conservación de la masa para un fluido #footnote([Utilizaremos el argumento de Landau @landau1987fluid]). Podemos obtener la masa de un fluido de densidad $rho$ contenida dentro de un volumen de control fijo $V_c$ como
+$ integral_(V_c) rho dif V $
+Por lo tanto, el incremento temporal de la masa dentro del volumen se puede expresar como
+$ diff/(diff t) integral_(V_c) rho dif V $
+
+Por otra parte podemos expresar el flujo de masa hacia el exterior del volumen por su superficie como
+$ integral.cont_(S_c) rho arrow(u) dot hat(n) dif S $
+donde $hat(n)$ es el vector normal exterior de la superficie. Podemos constatar que esto es equivalente al decrecimiento temporal de la masa contenida en el volumen. Por lo tanto, podemos establecer la relación
+$ diff/(diff t) integral_(V_c) rho dif V = - integral.cont_(S_c) rho arrow(u) dot hat(n) dif S $
+Utilizando el teorema de Gauss, tenemos
+$ integral.cont_(S_c) rho arrow(u) dot hat(n) dif S = integral_(V_c) nabla dot (rho arrow(u)) dif V $
+Por lo tanto, la expresión anterior se transforma en
+$ diff/(diff t) integral_(V_c) rho dif V  = - integral_(V_c) nabla dot (rho arrow(u)) dif V $
+Reordenando e intercambiando la diferenciación y la integral (el volumen de control es fijo en el espacio y constante, por lo que esta manipulación está permitida), obtenemos
+$ integral_(V_c) [dvp(rho,t) + nabla dot (rho arrow(u))] = 0 $
+Como esta integral se debe anular para cualquier volumen de control fijo, el integrando es el que se debe de anular, por lo que obtenemos
+$ dvp(rho,t) + nabla dot (rho arrow(u)) = 0 $
+
+
+#bibliography("assets/ref_fluids.bib")
