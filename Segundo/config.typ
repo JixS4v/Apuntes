@@ -7,14 +7,23 @@
   box($cal(it)$),
 )
 
-#let template(doc, title)= {
+#let template(doc, title, preface:none, wip:false)= {
 
-set heading(numbering: "1.1.1.")
+set page(numbering:"(i)")
+
 
 align(center, text(25pt)[#strong(title)])
 align(center+horizon, text(20pt)[Apuntes de Segundo de GIFIS])
 pagebreak()
-
+if preface != none [
+  #heading(outlined:false)[Sobre los apuntes]
+  #preface
+]
+if wip == true [
+  #align(center, text(size:25pt, fill:red, stroke:black, font:"DejaVu Sans Mono")[#strong([ESTOS APUNTES NO ESTÁN ACABADOS AÚN Y LES FALTA CONTENIDO])])
+]
+pagebreak(weak:true)
+set heading(numbering: "1.1.1.")
 set text(
   lang:"es"
 )
@@ -61,7 +70,7 @@ set page(paper: "a4", margin: (y: 4em), numbering: "1", header: context {
     align(left, emph(hydra()))
   line(length: 100%)
 })
-
+counter(page).update(1)
 doc
 }
 

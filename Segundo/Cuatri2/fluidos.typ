@@ -1,24 +1,16 @@
 #import "../config.typ": *
 
+#let intro = [Estos apuntes están principablemente basados sobre el libro de Landau y Lifshitz@landau1987fluid pero contienen solo el contenido relevante a la clase, y la convención se ha intentado mantener similar. El enfoque principal, sobre todo, es justificar y elaborar sobre algunas de las explicaciones con el fin de ganar intuición sobre el funcionamiento de los fluidos de forma teórica. Por lo tanto, se ha elegido seguir la estructura del libro, que comienza con los resultados particularizados y busca generalizaciones más tarde, en oposición a construir un marco teórico desde el principio. Estos apuntes no son un resumen, pero buscan tener todo el contenido relevante a la asignatura en ellos. ]
 
-#show: doc => template(doc, "Física de Fluidos")
+#show: doc => template(doc, "Física de Fluidos", preface:intro, wip:true)
 
 #let dvm(func) = $(upright(D)func)/(upright(D)t)$
 
 = Introducción
 == Qué es un fluido?
 En oposición a un sólido, un fluido no tiene fuerzas de restitución ante un esfuerzo tangencial. Es decir, si intentamos deformar un sólido (por ejemplo un edificio) en la dirección tangencial (por ejemplo de izquierda a derecha aplicando un esfuerzo desde arriba), este debería de recuperar su forma original después de que se acabe la aplicación de este esfuerzo (para esfuerzos grandes, muchos sólidos no se comportarán como un sólido perfecto).
-== Esfuerzos en un fluido
-Dentro de un elemento de superficie $Delta S$ en un fluido vamos a considerar una fuerza $Delta arrow(F)$ correspondiente a la fuerza ejercida en ese elemento de superficie. Esta tendrá dos partes: la parte *normal* al fluido y la parte *tangencial* (o cortante) al fluido. Podemos definir su parte en la dirección normal $Delta F_n$ como $Delta F_n = Delta |Delta arrow(F) | cos phi$ y su parte en la dirección tangencial $F_t$ como $Delta F_t = |Delta arrow(F)| sin phi$, donde $phi$ es el ángulo entre el vector $Delta arrow(F)$ y el vector normal $arrow(n)$.
 
-Llamamos al esfuerzo la cantidad de fuerza por unidad de área en una dirección dada. El *esfuerzo normal* entonces se define como la fuerza normal dividido por la superficie en una superficie infinitesimal, o en otras palabras, la derivada de la fuerza normal con respecto a la superficie: 
-$ sigma = dv(F_n, S) $
-Análogamente, definimos el *esfuerzo tangencial* (o cortante) como la derivada de la fuerza tangencial con respecto a la superficie:\
-$ tau = dv(F_t, S) $
-
-En un fluido, obligatoriamente $sigma$ va a tener una naturaleza compresiva, y se define la presión $p$ como $p = -sigma$. 
-
-== Fluido. Criterio de medio continuo.
+== Criterio de medio continuo.
 
 Para poder estudiar los fluidos tenemos que definir el entorno en el que vamos a estar trabajando. Definimos un fluido como un medio continuo (vamos a estudiar sus criterios ahora), que tiene fuerzas de atracción intermolecular débiles, y que no tiene fuerzas restitutivas. Con eso, podemos decir que las ecuaciones más "generales" de la física de fluidos son aplicables. ¿Pero cuando podemos decir que un fluido es análogo a un medio continuo? Debemos primero elegir la escala en la que vamos a considerar que un "elemento de un fludo" es completamente uniforme. Es decir, que sus variables termodinámicas son uniformes en el elemento. Si el volumen de este elemento es demasiado pequeño (a partir del orden de $10^(-5) "mm"^3$) aparecen fluctuaciones en las magnitudes termodinámicas debido a fluctuaciones microscópicas. Tampoco podemos tener un volumen demasiado grande, porque entonces las variables termodinámicas no se pueden considerar uniformes en la totalidad del elemento. El tamaño adecuado de este elemento nos permite considerar variables termodinámicas locales (trabajaremos con densidades), donde cada elemento está en equilibrio local (podemos aplicar la termodinámica convencional).
 
@@ -36,11 +28,11 @@ Definimos también el volumen específico (el volumen por unidad de masa) como $
 Adicionalmente, vamos a definir el campo de velocidades $arrow(u) (x,y,z,t)$, una magnitud vectorial que cuantifica la velocidad de flujo en una posición $arrow(r)$
 
 == Descripción del flujo
-Para determinar la naturaleza del flujo en un punto $(x,y,z,t)$, necesitaremos 5 variables. Se utilizan las tres componentes del campo de velocidades y dos variables termodinámicas, normalmente la presión $p$ y la densidad $rho$.
+Hay dos formas equivalentes de describir el flujo, y se denominan Euleriana y Lagrangiana. La descripción Euleriana es la que hemos estado asumiendo hasta ahora, donde se considera un volumen de control (que es de magnitud constante, pero no tiene por qué estar fijo en el espacio, aunque a menudo se considerará así) donde las variables termodinámicas se pueden considerar razonablemente uniformes, y se estudia el flujo a través de este, utilizando un campo de velocidades general. La descripción Lagrangiana sigue a una masa de control o partícula fluida constante (que no tiene por que mantener su forma) que se desplaza a lo largo del fluido. En vez de utilizar el campo de velocidades, se identifica cada masa de control por su posición inicial $arrow(X)_0$ en un tiempo arbitrario pero igual para todas las partículas $t_0$, y se describe su velocidad en un instante $t$: $ arrow(X) (arrow(X)_0, t) $
 
-O esto pensaríamos de forma natural, realmente hay dos formas equivalentes de describir el flujo, y se denominan Euleriana y Lagrangiana. La descripción Euleriana es la que hemos estado asumiendo hasta ahora, donde se considera un volumen de control (que es constante, pero no tiene por qué estar fijo en el espacio), donde las variables termodinámicas se pueden considerar razonablemente uniformes, y se estudia el flujo a través de este, utilizando un campo de velocidades general. La descripción Lagrangiana sigue a una masa de control constante (que no tiene por que mantener su forma) que se desplaza a lo largo del fluido. En vez de utilizar el campo de velocidades, se identifica cada masa de control por su posición inicial $arrow(X)_0$ en un tiempo arbitrario pero igual para todas las partículas $t_0$, y se describe su velocidad en un instante $t$: $ arrow(X) (arrow(X)_0, t) $
+== Derivada material
 
-Hemos dicho que estos formalismos son equivalentes, pero claramente la descripción Lagrangiana, que es más parecida a lo que se utilizaría para la descripción de la mecánica de un sólido, es más engorrosa a la hora de dar una natural del flujo. Sin embargo, es necesaria porque nos permite obtener las ecuaciones del fluido por analogía a las de un sólido. Por eso necesitamos una forma de pasar de la descripción Lagrangiana al la Euleriana. 
+Hemos dicho que estos dos formalismos son equivalentes, pero claramente la descripción Lagrangiana, que es más parecida a lo que se utilizaría para la descripción de la mecánica de un sólido, es más engorrosa a la hora de dar una natural del flujo. Sin embargo, es necesaria porque nos permite obtener las ecuaciones del fluido por analogía a las de un sólido. Por eso necesitamos una forma de pasar de la descripción Lagrangiana al la Euleriana. 
 
 A primera vista, como tenemos el vector de posición de la partícula fluida en un instante $t$, podemos obtener el campo de velocidades en la posición de una partícula dada:
 $ arrow(u) (arrow(X) (arrow(X)_0, t), t) $ que resulta ser equivalente a $ dvp(arrow(X),t) (arrow(X)_0, t) $ ya que ambos describen la velocidad para un instante para una masa de control particular (en el lado derecho, la derivada es parcial porque $arrow(X)$ depende únicamente del tiempo para una partícula fluida en particular).
@@ -177,6 +169,10 @@ Es decir, en flujo estacionario isentrópico de un fluido ideal sometido a un ca
 
 Esto es la forma más común de la ecuación de Bernouilli, ya que en la mayoría de casos el fluido considerado está sometido a un campo gravitatorio. 
 
-
+== Más leyes de conservación
+Ahora que tenemos una imagen aproximada de las propiedades y ecuaciones en un fluido ideal, vamos a obtener otras leyes de conservación importantes.
+=== Ecuación de la energía
+Vamos a considerar, como anteriormente un volumen de control fijo. La energía contenida en un volumen unidad es entonces
+$ rho u^2 + rho e $
 
 #bibliography("assets/ref_fluids.bib", title:"Referencias")
