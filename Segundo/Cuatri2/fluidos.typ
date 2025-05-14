@@ -84,14 +84,17 @@ Esta ecuación se conoce como ecuación de continuidad.
 == La ecuación de Euler
 Estamos en posición de obtener nuestra primera ecuación de movimiento. Vamos a realizar unas suposiciones. Primero, vamos a asumir una ausencia de viscosidad (o viscosidad despreciable), es decir que la única fuerza intrínseca en juego será la presión, que corresponde a la intensidad de las fuerzas del fluido por unidad de área. 
 
-La fuerza neta actuando sobre un volumen de control es el dado por la integral
+
+La fuerza neta que ejerce un volumen de control sobre el resto del fluido es dada por la integral
+$ integral.cont_(S_c) p hat(n) dif S $
+Por lo tanto, la fuerza que ejerce el fluido sobre el volumen es 
 $ - integral.cont_(S_c) p hat(n) dif S $
 Utilizando nuevamente el teorema de Gauss, sabiendo que el vector normal es constante
 $ integral.cont_(S_c) p hat(n) dif S equiv hat(n) integral.cont_(S_c) p hat(n) dot hat(n) dif S = hat(n) integral.cont_(S_c) nabla dot (p hat(n)) dif V = cancel(hat(n) dot hat(n)) integral_(V_c) nabla p dif V $
 Podemos escribir
 $ - integral.cont_(S_c) p hat(n) dif S = - integral_(V_c) nabla p dif V $
 
-Por lo que vemos que el fluido alrededor de un volumen de control ejerce una fuerza $ - nabla p$ por unidad de volumen.
+Por lo que podemos deducir que el fluido alrededor de un volumen de control ejerce una fuerza $ - nabla p$ por unidad de volumen sobre este.
 
 La segunda Ley de Newton postula que:
 $ arrow(F) = m arrow(a) $
