@@ -106,7 +106,7 @@ Sabiendo que la fuerza por unidad de volumen es $- nabla p$ y que la masa por un
 $ - 1/rho nabla p = dvm(arrow(u)) $
 O, desarrollando la expresión
 $ dvp(arrow(u),t) + (arrow(u) dot nabla)arrow(u) = -1/rho nabla p $
-Esta es la conocida Ecuación de Euler #footnote([Cabe destacar que esta expresión de la ecuación de Euler no es completa, no incluye las fuerzas másicas externas por la gravedad. Dichas fuerzas se deberían de añadir al lado derecho de la ecuación. Durante los siguientes desarrollos, emplearemos la expresión reducida.]), y es la utilizada para describir el flujo de un *Fluido Ideal*, es decir que no experimenta disipación de energía. Ya hemos comentado que la viscosidad es nula, pero esta condición también implica que no hay intercambio de calor entre partículas fluidas, es decir que el movimiento del fluido es adiabático. 
+Esta es la conocida Ecuación de Euler #footnote([Cabe destacar que esta expresión de la ecuación de Euler no es completa, no incluye las fuerzas másicas externas por la gravedad. Dichas fuerzas se deberían de añadir al lado derecho de la ecuación. Durante los siguientes desarrollos, emplearemos la expresión reducida.]), y es la utilizada para describir el flujo de un *Fluido Ideal* (o perfecto), es decir que no experimenta disipación de energía. Ya hemos comentado que la viscosidad es nula, pero esta condición también implica que no hay intercambio de calor entre partículas fluidas, es decir que el movimiento del fluido es adiabático. 
 
 Podemos escribir esta condición como $ dvm(s) = 0 $. Es decir, para cada partícula fluida la entropía es constante.
 
