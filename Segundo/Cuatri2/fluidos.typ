@@ -102,7 +102,7 @@ Esta expresión se aplica a una masa de control, por lo que para obtener las can
 $ arrow(F) = m dvm(arrow(u)) $
 Ahora, si derivamos por el volumen, sabiendo que $arrow(u)$ no depende del volumen
 $ dv(arrow(F), V) = dv(m, V) dvm(arrow(u)) $
-Sabiendo que la fuerza por unidad de volumen es $- nabla p$ y que la masa por unidad de volumen es $rho$:
+Sabiendo que la fuerza por unidad de volumen es $- nabla p$ y que la masa por unidad de volumen es $rho$, identificando:
 $ - 1/rho nabla p = dvm(arrow(u)) $
 O, desarrollando la expresión
 $ dvp(arrow(u),t) + (arrow(u) dot nabla)arrow(u) = -1/rho nabla p $
