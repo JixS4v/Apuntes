@@ -134,7 +134,7 @@ $ dvm(arrow(u)) = - nabla h $
 Por lo tanto, en un flujo ideal isentrópico una partícula fluida acelera en la dirección del mínimo de la entalpía. 
 
 == Ecuación de Bernouilli
-Hasta ahora hemos considerado casos relativamente generales a todos los fluidos ideales. Ahora vamos a discutir una particularización de la ecuación para el caso del flujo estacionario isentrópico), es decir cuando $dvp(arrow(u),t)=0$ y $dif s = 0$.
+Hasta ahora hemos considerado casos relativamente generales a todos los fluidos ideales. Ahora vamos a discutir una particularización de la ecuación para el caso del flujo estacionario isentrópico es decir cuando $dvp(arrow(u),t)=0$ y $dif s = 0$.
  
 Para ello, vamos a introducir el concepto de línea de corriente, que son las líneas cuyas tangentes tienen la misma dirección que la velocidad. Es decir, a lo largo de una línea de corriente $ arrow(u) = u hat(e)_t $ Donde $hat(e)_t$ es el vector unitario tangente a la línea de corriente considerada. podemos reescribir esto como un sistema de ecuaciones que exige que $dif arrow(r)$ y $arrow(u)$ sean paralelas: 
 $ (dif x)/u_x = (dif y)/u_y = (dif z)/u_z $
