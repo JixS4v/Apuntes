@@ -173,6 +173,38 @@ Esto es la forma más común de la ecuación de Bernouilli, ya que en la mayorí
 Ahora que tenemos una imagen aproximada de las propiedades y ecuaciones en un fluido ideal, vamos a obtener otras leyes de conservación importantes.
 === Ecuación de la energía
 Vamos a considerar, como anteriormente un volumen de control fijo. La energía contenida en un volumen unidad es entonces
-$ rho u^2 + rho e $
+$ 1/2 rho u^2 + rho e $
+Donde el primer término corresponde a la energía cinética del fluido en el volumen y el segundo a la energía interna. 
+
+Podemos calcular su evolución temporal como
+$ 1/(diff t) (1/2 rho u^2 + rho e) $
+Para establecer una correspondencia para esta cantidad, consideremos primero el primer término
+$ 1/(diff t) (1/2 rho u^2) = 1/2 u^2 dvp(rho,t) + 1/2 rho dvp(u^2,t) $
+Utilizando que $u^2 equiv arrow(u) dot arrow(u)$ y la regla del producto otra vez:
+$ 1/(diff t) (1/2 rho u^2) = 1/2 u^2 dvp(rho,t) + rho arrow(u) dot dvp(arrow(u),t) $
+Empleando la ecuación de continuidad y la de Euler, tenemos
+$ 1/(diff t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot [(arrow(u) dot nabla)arrow(u) + 1/rho nabla p] = - 1/2 u^2 nabla dot (rho arrow(u)) - arrow(u) dot [rho (arrow(u) dot nabla) arrow(u) + nabla p] $
+Utilizando la forma diferencial de la entalpía
+$ dif h = T dif s + 1/rho dif p => nabla p = rho nabla h - rho T nabla s $
+Por lo que tenemos
+$ 1/(diff t) (1/2 rho u^2) = -1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot [(arrow(u) dot nabla) arrow(u) + nabla h - T nabla s ] $
+Ahora, sabiendo que
+$ arrow(u) dot (arrow(u) dot nabla) arrow(u) equiv u_i u_j dvp(u_i,x_j) = 1/2 u_j dvp(u_i u_i,x_j) = 1/2 u_j dvp(u^2,x_j) equiv 1/2 arrow(u) dot nabla u^2 $
+Podemos escribir
+$ 1/(diff t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot (1/2 nabla u^2 + nabla h - T nabla s) $
+Finalmente, reorganizando obtenemos
+$ 1/(diff t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot nabla(1/2 u^2 + h) + rho T arrow(u) dot nabla s $
+Ahora, para calcular $dvp((rho e),t)$, comenzamos con
+$ dif (rho e) = e dif rho + rho dif e $
+Y por lo tanto, utilizando la expresión más común de la energía interna
+$ dif (rho e) = e dif rho + rho T dif s - rho p dif (1/rho) $
+Utilizando la regla de la cadena, $ dif(1/rho) = -(dif rho)/rho^2 $
+Sustituyendo
+$ dif (rho e) = e dif rho + rho T dif s + p (dif rho)/rho $
+Agrupando
+$ dif (rho e) = rho T dif s + (e + p/rho) dif rho $
+Identificando que $e + p/rho = e + p v$ es la expresión de la entalpía
+$ dif (rho e) = rho T dif s + h dif rho $
+
 
 #bibliography("assets/ref_fluids.bib", title:"Referencias")
