@@ -131,24 +131,49 @@ $ dvm(arrow(u)) = - nabla h $
 Por lo tanto, en un flujo ideal isentrópico una partícula fluida acelera en la dirección del mínimo de la entalpía. 
 
 == Ecuación de Bernouilli
-Hasta ahora hemos considerado casos relativamente generales a todos los fluidos ideales. Ahora vamos a discutir una simplificación de la ecuación para el caso del flujo estacionario (y también isentrópico), es decir cuando $dvp(arrow(u),t)=0$.
+Hasta ahora hemos considerado casos relativamente generales a todos los fluidos ideales. Ahora vamos a discutir una particularización de la ecuación para el caso del flujo estacionario isentrópico), es decir cuando $dvp(arrow(u),t)=0$ y $dif s = 0$.
  
 Para ello, vamos a introducir el concepto de línea de corriente, que son las líneas cuyas tangentes tienen la misma dirección que la velocidad. Es decir, a lo largo de una línea de corriente $ arrow(u) = u hat(e)_t $ Donde $hat(e)_t$ es el vector unitario tangente a la línea de corriente considerada. podemos reescribir esto como un sistema de ecuaciones que exige que $dif arrow(r)$ y $arrow(u)$ sean paralelas: 
 $ (dif x)/u_x = (dif y)/u_y = (dif z)/u_z $
 
-Ahora, partimos de la ecuación de Euler en un campo gravitatorio uniforme
-$ cancel(dvp(arrow(u),t)) + (arrow(u) dot nabla) arrow(u) = - nabla h + arrow(g) $
+Ahora, partiendo de la ecuación de Euler isentrópica
+$ cancel(dvp(arrow(u),t)) + (arrow(u) dot nabla) arrow(u) = - nabla h $
 A lo largo de una línea de corriente tendríamos
-$ (u hat(e)_t dot nabla) (hat(e)_t u) = - nabla h + arrow(g) $
+$ (u hat(e)_t dot nabla) (hat(e)_t u) = - nabla h $
 
 Proyectando sobre la línea de corriente:
-$ (u hat(e)_t dot nabla) (hat(e)_t u) dot hat(e)_t = - (hat(e)_t dot nabla) h + hat(e)_t dot arrow(g) $
+$ (u hat(e)_t dot nabla) (hat(e)_t u) dot hat(e)_t = - (hat(e)_t dot nabla) h $
 
 recordando la condición anterior, tenemos $ dif arrow(r) = hat(e)_t abs(dif arrow(r)) equiv hat(e)_t dif l $
 Por lo que, reordenando
 $ hat(e)_t = dv(arrow(r),l) $
 Podemos calcular 
-$ hat(e)_t dot nabla = dv(arrow(r), l) dot nabla = dif/(dif l) $
- 
+$ hat(e)_t dot nabla = dv(arrow(r), l) dot nabla equiv dv(x_i, l) dot diff/(diff x_i) = 1/(dif l) dif x_i partial/(partial x_i) $
+Podemos indentificar la suma $ dif x_i diff/(diff x_i)$ como un operador correspondiente a la diferencial exacta de una función dependiente de la posición, por ejemplo $dif lambda = dif x_i dvp(lambda,x_i ) $. Por lo tanto, podemos escribir 
+$ hat(e)_t dot nabla equiv dif/(dif l) $
+
+Sustituyendo este resultado:
+$ u dif/(dif l ) (u hat(e)_t) dot hat(e)_t = - dv(h,l) $
+Sabiendo que
+$ dif/(dif l) (u^2 hat(e)_t^2) equiv dif/(dif l) (u^2 hat(e)_t dot hat(e)_t) $
+Aplicando la regla del producto, vemos que:
+$ dif/(dif l) (u^2 hat(e)_t dot hat(e)_t) =  u hat(e)_t dot dif/(dif l) (u hat(e)_t) + u hat(e)_t dot dif/(dif l)(u hat(e)_t) = 2u hat(e) dot dif/(dif l) (u hat(e)_t) $
+Por lo que
+$ dif/(dif l) (u^2 hat(e)_t^2) =  2 u hat(e)_t dif/(dif l) (u hat(e)_t) $
+Y entonces
+$ u hat(e)_t dif/(dif l) (u hat(e)_t) = dif/(dif l) (1/2 u^2 hat(e)_t^2) $
+Como $hat(e)_t$ es unitario, $hat(e)_t^2 = 1$. Podemos sustituir en la ecuación para obtener
+$ dif/(dif l) (1/2 u^2) = - dv(h,l) $
+Finalmente, reordenando
+$ dif/(dif l) (h + u^2/2) = 0 $
+De esto es immediato que a lo largo de una línea de corriente del flujo estacionario isentrópico de un fluido perfecto $u^2/2 + h$ es constante. Si queremos añadir un campo gravitatorio uniforme basta con añadir $arrow(g)$ al lado derecho de la ecuación de Euler, que corresponde a añadir $-hat(e)_t dot arrow(g)$ al lado izquierdo de la ecuación, que corresponde a $-g cos alpha $ donde $alpha$ es el ángulo entre la dirección de $arrow(g)$ y la línea de corriente. Suponiendo un sistema de referencia donde $arrow(g)$ va en la dirección $-z$, podemos inventar un ángulo $beta = alpha-pi/2$  que corresponde al ángulo entre $hat(e)_t$ y el eje $x$. Sustituyendo en la ecuación, tenemos que $ -hat(e)_t dot arrow(g) = g sin beta $. Finalmente, este seno se puede calcular como $sin beta = dv(z,l)$ obteniendo finalmente la ecuación
+$ dif/(dif l) (u^2/2 + h) + g dv(z,l) = 0 $
+O, sabiendo que $g$ es una constante
+$ dif/(dif l) (u^2/2 + h + g z) = 0 $
+Es decir, en flujo estacionario isentrópico de un fluido ideal sometido a un campo gravitatorio uniforme y constante, $ u^2 +h + g z$ es constante a lo largo de una línea de corriente. 
+
+Esto es la forma más común de la ecuación de Bernouilli, ya que en la mayoría de casos el fluido considerado está sometido a un campo gravitatorio. 
+
+
 
 #bibliography("assets/ref_fluids.bib", title:"Referencias")
