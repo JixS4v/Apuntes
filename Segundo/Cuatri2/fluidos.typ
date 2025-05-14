@@ -125,7 +125,7 @@ Sustituyendo en la ecuación de Euler:
 $ dvm(arrow(u)) = - nabla h $
 Por lo tanto, en un flujo ideal isentrópico una partícula fluida acelera en la dirección del mínimo de la entalpía. 
 
-== Ecuación de Bernouilli
+== Ecuación de Bernoulli
 Hasta ahora hemos considerado casos relativamente generales a todos los fluidos ideales. Ahora vamos a discutir una particularización de la ecuación para el caso del flujo estacionario isentrópico es decir cuando $dvp(arrow(u),t)=0$ y $dif s = 0$.
  
 Para ello, vamos a introducir el concepto de línea de corriente, que son las líneas cuyas tangentes tienen la misma dirección que la velocidad. Es decir, a lo largo de una línea de corriente $ arrow(u) = u hat(e)_t $ Donde $hat(e)_t$ es el vector unitario tangente a la línea de corriente considerada. podemos reescribir esto como un sistema de ecuaciones que exige que $dif arrow(r)$ y $arrow(u)$ sean paralelas: 
@@ -167,7 +167,7 @@ O, sabiendo que $g$ es una constante
 $ dif/(dif l) (u^2/2 + h + g z) = 0 $
 Es decir, en flujo estacionario isentrópico de un fluido ideal sometido a un campo gravitatorio uniforme y constante, $ u^2 +h + g z$ es constante a lo largo de una línea de corriente. 
 
-Esto es la forma más común de la ecuación de Bernouilli, ya que en la mayoría de casos el fluido considerado está sometido a un campo gravitatorio. 
+Esto es la forma más común de la ecuación de Bernoulli, ya que en la mayoría de casos el fluido considerado está sometido a un campo gravitatorio. 
 
 == Más leyes de conservación
 Ahora que tenemos una imagen aproximada de las propiedades y ecuaciones en un fluido ideal, vamos a obtener otras leyes de conservación importantes.
@@ -205,6 +205,8 @@ Agrupando
 $ dif (rho e) = rho T dif s + (e + p/rho) dif rho $
 Identificando que $e + p/rho = e + p v$ es la expresión de la entalpía
 $ dif (rho e) = rho T dif s + h dif rho $
+De aquí, deducimos que
+$ dvp(rho e,t) = rho T dvp(s,t) + h dvp(rho,t) $
 
 
 #bibliography("assets/ref_fluids.bib", title:"Referencias")
