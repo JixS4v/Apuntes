@@ -208,5 +208,10 @@ $ dif (rho e) = rho T dif s + h dif rho $
 De aquí, deducimos que
 $ dvp(rho e,t) = rho T dvp(s,t) + h dvp(rho,t) $
 
+= Ecuaciones del flujo viscoso<todo>
+== Obtención del tensor de esfuerzos viscosos<todo>
+= Teoría RANS<todo>
+= Leyes de conservación generales<todo>
+= Aplicaciones<todo>
 
 #bibliography("assets/ref_fluids.bib", title:"Referencias")

@@ -68,3 +68,4 @@ Por lo que podemos escribir que
 $ dvp(S,ln omega, eval:(N,V,E^*), evalsym:")") = 1/(beta T) = "const."$
 
 Llamando a esta constante 
+
