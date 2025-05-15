@@ -177,23 +177,23 @@ $ 1/2 rho u^2 + rho e $
 Donde el primer término corresponde a la energía cinética del fluido en el volumen y el segundo a la energía interna. 
 
 Podemos calcular su evolución temporal como
-$ 1/(diff t) (1/2 rho u^2 + rho e) $
+$ diff/(diff t) (1/2 rho u^2 + rho e) $
 Para establecer una correspondencia para esta cantidad, consideremos primero el primer término
-$ 1/(diff t) (1/2 rho u^2) = 1/2 u^2 dvp(rho,t) + 1/2 rho dvp(u^2,t) $
+$ diff/(diff t) (1/2 rho u^2) = 1/2 u^2 dvp(rho,t) + 1/2 rho dvp(u^2,t) $
 Utilizando que $u^2 equiv arrow(u) dot arrow(u)$ y la regla del producto otra vez:
-$ 1/(diff t) (1/2 rho u^2) = 1/2 u^2 dvp(rho,t) + rho arrow(u) dot dvp(arrow(u),t) $
+$ diff/(diff t) (1/2 rho u^2) = 1/2 u^2 dvp(rho,t) + rho arrow(u) dot dvp(arrow(u),t) $
 Empleando la ecuación de continuidad y la de Euler, tenemos
-$ 1/(diff t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot [(arrow(u) dot nabla)arrow(u) + 1/rho nabla p] = - 1/2 u^2 nabla dot (rho arrow(u)) - arrow(u) dot [rho (arrow(u) dot nabla) arrow(u) + nabla p] $
+$ diff/(diff t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot [(arrow(u) dot nabla)arrow(u) + 1/rho nabla p] = - 1/2 u^2 nabla dot (rho arrow(u)) - arrow(u) dot [rho (arrow(u) dot nabla) arrow(u) + nabla p] $
 Utilizando la forma diferencial de la entalpía
 $ dif h = T dif s + 1/rho dif p => nabla p = rho nabla h - rho T nabla s $
 Por lo que tenemos
-$ 1/(diff t) (1/2 rho u^2) = -1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot [(arrow(u) dot nabla) arrow(u) + nabla h - T nabla s ] $
+$ diff/(diff t) (1/2 rho u^2) = -1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot [(arrow(u) dot nabla) arrow(u) + nabla h - T nabla s ] $
 Ahora, sabiendo que
 $ arrow(u) dot (arrow(u) dot nabla) arrow(u) equiv u_i u_j dvp(u_i,x_j) = 1/2 u_j dvp(u_i u_i,x_j) = 1/2 u_j dvp(u^2,x_j) equiv 1/2 arrow(u) dot nabla u^2 $
 Podemos escribir
-$ 1/(diff t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot (1/2 nabla u^2 + nabla h - T nabla s) $
+$ diff/(diff t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot (1/2 nabla u^2 + nabla h - T nabla s) $
 Finalmente, reorganizando obtenemos
-$ 1/(diff t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot nabla(1/2 u^2 + h) + rho T arrow(u) dot nabla s $
+$ diff/(diff t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot nabla(1/2 u^2 + h) + rho T arrow(u) dot nabla s $
 Ahora, para calcular $dvp((rho e),t)$, comenzamos con
 $ dif (rho e) = e dif rho + rho dif e $
 Y por lo tanto, utilizando la expresión más común de la energía interna
@@ -207,6 +207,31 @@ Identificando que $e + p/rho = e + p v$ es la expresión de la entalpía
 $ dif (rho e) = rho T dif s + h dif rho $
 De aquí, deducimos que
 $ dvp(rho e,t) = rho T dvp(s,t) + h dvp(rho,t) $
+Utilizando la ecuación adiabática y la de continuidad
+$ dvp(rho e,t) = - rho T arrow(u) dot nabla s - h nabla dot (rho arrow(u)) $
+
+Ahora ya podemos combinar nuestros resultados
+$ diff/(diff t) (1/2 rho u^2 + rho e) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot nabla(1/2 u^2 + h) + cancel(rho T arrow(u) dot nabla s) - cancel(rho T arrow(u) dot nabla s) - h nabla dot (rho arrow(u)) $
+Agrupando
+$ diff/(diff t) (1/2 rho u^2 + rho e) = - (1/2 u^2 + h) nabla dot (rho arrow(u)) - rho arrow(u) dot nabla(1/2 u^2 + h) $
+Utilizando la regla del producto
+$ diff/(diff t) (1/2 rho u^2 + rho e) = - nabla dot [rho arrow(u) (1/2 u^2 + h)] $
+
+El sentido de esta expresión es claro una vez la integramos en un volumen
+
+$ diff/(diff t) integral_V (1/2 rho u^2 + rho e) = - integral_V nabla dot (rho arrow(u) (1/2 u^2 + h)) $
+
+La integral de derecha se transforma en una de superficie con el teorema de la divergencia
+
+$ diff/(diff t) integral_V (1/2 rho u^2 + rho e) = - integral.cont_S rho (1/2 u^2 + h) arrow(u) dot hat(n) dif S $
+
+Podemos indentificar el lado izquierdo de la integral como el incremento temporal de la energía en el volumen, por lo que el lado derecho corresponde entonces a el flujo de energía hacia el interior del volumen. Podemos entonces identificar el vector $ rho arrow(u) (1/2 u^2 + h) $ como el vector de densidad de flujo energético.
+
+Parece extraño que aparezca la entalpía en esta expresión en vez de la energía interna, pero podemos ver el significado físico fácilmente. Sabiendo que por definición, $ h = e + p/rho$, podemos escribir el flujo de energía a través de una superficie cerrada como
+$ -integral.cont_S rho arrow(u) (1/2 u^2 + e + p/rho) dot hat(n) dif S  = - integral.cont_S rho arrow(u) (1/2 u^2 + e) dot hat(n) dif S - integral.cont_S p arrow(u) dot hat(n) dif S $
+El primer término corresponde a la entrada de energía cinética y interna transportada por la masa del fluido a través de la superficie, mientras que el otro es el trabajo realizado por la presión en la superficie.
+
+
 
 = Ecuaciones del flujo viscoso<todo>
 == Obtención del tensor de esfuerzos viscosos<todo>
