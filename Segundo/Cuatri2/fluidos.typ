@@ -110,16 +110,16 @@ $ rho dvp(s,t) + s dvp(rho,t) + rho arrow(u) dot nabla s + s nabla dot (rho arro
 Aplicando la regla del producto, tenemos una ecuación de continuidad del flujo de entropía
 $ dvp(rho s ,t) + nabla dot (s rho arrow(u)) = 0 $
 
-Esta ecuación se puede simplificar mucho con una sola suposición. Dado que la entropía se conserva, si en algún punto del tiempo esta es uniforme en el espacio, podemos considerar que será uniforme siempre, o en otras palabras $dif s = 0$. Esta condición isentrópica es mucho más permisible, y podemos reescribir la ecuación de movimiento gracias a ella. 
+Esta condición adiabática se puede simplificar mucho con una sola suposición. Dado que la entropía se conserva para una partícula, si en algún punto del tiempo esta es uniforme en el espacio, podemos considerar que será uniforme siempre, o en otras palabras $dif s = 0$. Esta condición isentrópica es mucho más permisible, y podemos reescribir la ecuación de movimiento gracias a ella. 
 
 Partiendo de la relación de la entalpía
 $ dif h = T dif s + v dif p $
 
 Simplificando para el flujo isentrópico, y sabiendo que $v = 1\/rho$
 $ dif h = (dif p)/rho $
-Dividiendo por $dif x_i$ arbitrario
-$ (dif h)/(dif x_i) = 1/rho (dif p)/(dif x_i) $
-Como esta expresión se verifica para cualquier $x_i$, funciona para el gradiente:
+Podemos pasar estos a un gradiente si desarrollamos ambos diferenciales en el punto e identificamos los terminos relevantes:
+$ dvp(h,x_i)dif x_i + dvp(h,t) dif t &= 1/rho (dvp(p,x_i) dif x_i + dvp(p,t) dif t) \ => dvp(h,x_i) &= 1/rho dvp(p,x_i) $
+Que es equivalente a escribir:
 $ nabla h = 1/rho nabla p $
 Sustituyendo en la ecuación de Euler:
 $ dvm(arrow(u)) = - nabla h $
