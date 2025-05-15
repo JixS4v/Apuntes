@@ -21,7 +21,7 @@ align(center+horizon, text(20pt)[Apuntes de Segundo de GIFIS])
 
 context{
 if query(label("todo")).len() > 0 {
-  align(center+bottom, text(15pt, fill:gray)[Copia provisional, indices en gris son contenido que falta])
+  align(center+bottom, text(15pt, fill:gray)[Copia provisional, indices en gris son contenido que falta.])
 }
 }
 pagebreak()
@@ -51,13 +51,20 @@ show heading.where(label:<todo>):{
   none
 }
 
+show heading.where(label:<wip>):it=>{
+  set text(navy)
+  it + text(10pt)[(en proceso)]
+}
+
 show outline.entry: it =>{
   if it.level > 5 {return}
   // Gray fill if todo
   let todo = it.element in query(label("todo"))
+  let wip = it.element in query(label("wip"))
   set text(fill:gray) if todo
+  set text(fill:navy) if wip
   let style = h(3pt) + box(width:1fr, it.fill)+h(3pt)+it.page
-  // We don't want any page number for wip
+  // We don't want any page number for todo
   if todo{
     style=none
   }

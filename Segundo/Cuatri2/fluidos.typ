@@ -231,7 +231,9 @@ Parece extraño que aparezca la entalpía en esta expresión en vez de la energ�
 $ -integral.cont_S rho arrow(u) (1/2 u^2 + e + p/rho) dot hat(n) dif S  = - integral.cont_S rho arrow(u) (1/2 u^2 + e) dot hat(n) dif S - integral.cont_S p arrow(u) dot hat(n) dif S $
 El primer término corresponde a la entrada de energía cinética y interna transportada por la masa del fluido a través de la superficie, mientras que el otro es el trabajo realizado por la presión en la superficie.
 
+Cabe insistir que este resultado solo es válido cuando se considera un fluido ideal. Más tarde obtendremos una expresión más general. 
 
+== Ecuación del momento <wip> 
 
 = Ecuaciones del flujo viscoso<todo>
 == Obtención del tensor de esfuerzos viscosos<todo>
