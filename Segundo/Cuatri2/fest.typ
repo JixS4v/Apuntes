@@ -1,7 +1,7 @@
 #import "../config.typ": *
 
 
-#show: doc => template(doc, "Física Estadística", wip:true)
+#show: doc => template(doc, "Física Estadística")
 
 = Utilidad de la mecánica estadística
 

@@ -2,7 +2,7 @@
 
 #let intro = [Estos apuntes están principablemente basados sobre el libro de Landau y Lifshitz@landau1987fluid pero contienen solo el contenido relevante a la clase, y la convención se ha intentado mantener similar. El enfoque principal, sobre todo, es justificar y elaborar sobre algunas de las explicaciones con el fin de ganar intuición sobre el funcionamiento de los fluidos de forma teórica. Por lo tanto, se ha elegido seguir la estructura del libro, que comienza con los resultados particularizados y busca generalizaciones más tarde, en oposición a construir un marco teórico desde el principio. Estos apuntes no son un resumen, pero buscan tener todo el contenido relevante a la asignatura en ellos. ]
 
-#show: doc => template(doc, "Física de Fluidos", preface:intro, wip:true)
+#show: doc => template(doc, "Física de Fluidos", preface:intro)
 
 #let dvm(func) = $(upright(D)func)/(upright(D)t)$
 

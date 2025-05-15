@@ -1,7 +1,7 @@
 #import "../config.typ": *
 
 
-#show: doc => template(doc, "Programación para Ciencia y Tecnología", wip:true)
+#show: doc => template(doc, "Programación para Ciencia y Tecnología")
 
 #let fl = "fl"
 
