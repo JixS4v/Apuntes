@@ -18,6 +18,12 @@ set page(numbering:"(i)")
 // Title
 align(center, text(25pt)[#strong(title)])
 align(center+horizon, text(20pt)[Apuntes de Segundo de GIFIS])
+
+context{
+if query(label("todo")).len() > 0 {
+  align(center+bottom, text(15pt, fill:gray)[Copia provisional, indices en gris son contenido que falta])
+}
+}
 pagebreak()
 
 // Fill in preface if set
