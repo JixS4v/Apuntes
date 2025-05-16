@@ -4,8 +4,11 @@
 
 #show: doc => template(doc, "Física de Fluidos", preface:intro)
 
-#let dvm(func) = $(upright(D)func)/(upright(D)t)$
+#let dvm(..funcs) = {
 
+  let func = funcs.pos().intersperse(",").sum(default:[])
+  $(upright(D)func)/(upright(D)t) $
+}
 = Introducción
 == Qué es un fluido?
 En oposición a un sólido, un fluido no tiene fuerzas de restitución ante un esfuerzo tangencial. Es decir, si intentamos deformar un sólido (por ejemplo un edificio) en la dirección tangencial (por ejemplo de izquierda a derecha aplicando un esfuerzo desde arriba), este debería de recuperar su forma original después de que se acabe la aplicación de este esfuerzo (para esfuerzos grandes, muchos sólidos no se comportarán como un sólido perfecto).
@@ -47,7 +50,7 @@ $ dv(u_i (arrow(X),t), t) = dvp(u_i (arrow(X), t),t) + dvp(u_i (arrow(X),t),X_k)
 Podemos generalizar a esta nueva forma de obtener derivadas de cantidades para partículas individuales desde la desripción Euleriana a cualquier cantidad dependiente de la posición y el tiempo $bold(lambda)$, tensorial de cualquier orden, aplicando la regla de la cadena:
 $ dv(bold(lambda) (arrow(X),t),t) = dvp(bold(lambda)  (arrow(X),t),t) + dvp(bold(lambda) (arrow(X),t),X_k) dvp(X_k,t) = dvp(bold(lambda) (arrow(X),t),t) + dvp(bold(lambda) (arrow(X),t),X_k) u_k (arrow(X),t) $
 
-Esta forma de tomar la derivada se conoce como derivada material, y la denotaremos $dvm("")$ para explicitar que se toma para una partícula de fluido y no para la cantidad en el punto únicamente.
+Esta forma de tomar la derivada se conoce como derivada material, y la denotaremos $dvm()$ para explicitar que se toma para una partícula de fluido y no para la cantidad en el punto únicamente.
 $ dvm(bold(lambda)) = dvp(bold(lambda),t) + dvp(bold(lambda),x_k) u_k $
 Aquí hemos intercambiado todas las variables Lagrangianas por las Eulerianas. Hemos podido hacer esto porque no aparecen de forma explícita en la expresión, solo como los argumentos de $arrow(u)$.
 
@@ -253,7 +256,15 @@ Su significado físico se aclara si integramos la ecuación en un volumen
 $ diff/(diff t) integral_V rho u_i dif V = - integral_V dvp(Pi_(i j),x_j) dif V $
 aplicando el teorema de Gauss
 $ diff/(diff t) integral_v rho u_i dif V = - integral.cont_S Pi_(i j) n_j dif S $
-Claramente, el lado izquierdo de la ecuación es el incremento temporal de la componente $i$-ésima de la cantidad de movimiento en el volumen, por lo tanto, el lado derecho al ser una integral de superficie debe corresponder a un flujo, en este caso al flujo de la $i$-ésima componente de la cantidad de movimiento hacia el interior del volumen por su superficie delimitante. Vemos entonces que el tensor $Pi_(i j)$ corresponde al flujo de la componente i-ésima a través de una superficie unitaria normal a $x_j$. Podemos nombrarlo tensor de densidad de flujo de momento, por su naturaleza.
+Claramente, el lado izquierdo de la ecuación es el incremento temporal de la componente $i$-ésima de la cantidad de movimiento en el volumen, por lo tanto, el lado derecho al ser una integral de superficie debe corresponder a un flujo, en este caso al flujo de la $i$-ésima componente de la cantidad de movimiento hacia el interior del volumen por su superficie delimitante. Vemos entonces que el tensor $Pi_(i j)$ corresponde al flujo de la componente i-ésima del momento a través de una superficie unitaria normal a $x_j$. Por esta razón, se llama tensor de densidad de flujo de momento.
+
+=== Conservación de la circulación
+Se define la circulación como $ Gamma = integral.cont_C arrow(u) dot dif arrow(l) $
+Vamos a considerar la circulación en un contorno cerrado formado por partículas fluidas. Este estará en movimiento, por lo que para ver como varía la circulación tomamos la derivada material.
+
+$ dvm(Gamma) = dvm() integral.cont_C arrow(u) dot dif arrow(l) $
+Identificamos $dif arrow(l)$ con la diferencia de vectores posición entre dos partículas fluidas adyacentes en el contorno, por lo que $ dif arrow(l) = dif arrow(r)$
+$ dvm(Gamma) = dvm() $
 
 
 
