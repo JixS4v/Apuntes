@@ -236,7 +236,7 @@ El primer término corresponde a la entrada de energía cinética y interna tran
 
 Cabe insistir que este resultado solo es válido cuando se considera un fluido ideal. Más tarde obtendremos una expresión más general. 
 
-== Ecuación de la cantidad de movimiento <wip> 
+== Ecuación de la cantidad de movimiento 
 Vamos a darle un tratamiento similar a la cantidad de movimiento. La cantidad de movimiento o momento lineal de un volumen unidad es $ rho arrow(u) equiv rho u_i $
 Por lo tanto, su variación temporal es
 $ dvp(rho u_i,t) = rho dvp(u_i,t) + u_i dvp(rho,t) $
@@ -258,7 +258,7 @@ aplicando el teorema de Gauss
 $ diff/(diff t) integral_v rho u_i dif V = - integral.cont_S Pi_(i j) n_j dif S $
 Claramente, el lado izquierdo de la ecuación es el incremento temporal de la componente $i$-ésima de la cantidad de movimiento en el volumen, por lo tanto, el lado derecho al ser una integral de superficie debe corresponder a un flujo, en este caso al flujo de la $i$-ésima componente de la cantidad de movimiento hacia el interior del volumen por su superficie delimitante. Vemos entonces que el tensor $Pi_(i j)$ corresponde al flujo de la componente i-ésima del momento a través de una superficie unitaria normal a $x_j$. Por esta razón, se llama tensor de densidad de flujo de momento.
 
-=== Conservación de la circulación
+=== Conservación de la circulación <wip>
 Se define la circulación como $ Gamma = integral.cont_C arrow(u) dot dif arrow(l) $
 Vamos a considerar la circulación en un contorno cerrado formado por partículas fluidas. Este estará en movimiento, por lo que para ver como varía la circulación tomamos la derivada material.
 
