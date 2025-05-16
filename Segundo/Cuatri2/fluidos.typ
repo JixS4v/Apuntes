@@ -236,7 +236,7 @@ El primer término corresponde a la entrada de energía cinética y interna tran
 
 Cabe insistir que este resultado solo es válido cuando se considera un fluido ideal. Más tarde obtendremos una expresión más general. 
 
-== Ecuación de la cantidad de movimiento 
+=== Ecuación de la cantidad de movimiento 
 Vamos a darle un tratamiento similar a la cantidad de movimiento. La cantidad de movimiento o momento lineal de un volumen unidad es $ rho arrow(u) equiv rho u_i $
 Por lo tanto, su variación temporal es
 $ dvp(rho u_i,t) = rho dvp(u_i,t) + u_i dvp(rho,t) $
