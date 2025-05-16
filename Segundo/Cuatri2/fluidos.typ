@@ -103,7 +103,7 @@ O, desarrollando la expresión
 $ dvp(arrow(u),t) + (arrow(u) dot nabla)arrow(u) = -1/rho nabla p $
 Esta es la conocida Ecuación de Euler #footnote([Cabe destacar que esta expresión de la ecuación de Euler no es completa, no incluye las fuerzas másicas externas por la gravedad. Dichas fuerzas se deberían de añadir al lado derecho de la ecuación. Durante los siguientes desarrollos, emplearemos la expresión reducida.]), y es la utilizada para describir el flujo de un *Fluido Ideal* (o perfecto), es decir que no experimenta disipación de energía. Ya hemos comentado que la viscosidad es nula, pero esta condición también implica que no hay intercambio de calor entre partículas fluidas, es decir que el movimiento del fluido es adiabático. 
 
-Podemos escribir esta condición como $ dvm(s) = 0 $. Es decir, para cada partícula fluida la entropía es constante.
+Podemos escribir esta condición como $ dvm(s) = 0 $ Es decir, para cada partícula fluida la entropía es constante.
 
 Otra forma de escribir esto es 
 $ dvp(s,t) + arrow(u) dot nabla s = 0 $
@@ -129,7 +129,7 @@ $ dvm(arrow(u)) = - nabla h $
 Por lo tanto, en un flujo ideal isentrópico una partícula fluida acelera en la dirección del mínimo de la entalpía. 
 
 == Ecuación de Bernoulli
-Hasta ahora hemos considerado casos relativamente generales a todos los fluidos ideales. Ahora vamos a discutir una particularización de la ecuación para el caso del flujo estacionario isentrópico es decir cuando $dvp(arrow(u),t)=0$ y $dif s = 0$.
+Hasta ahora hemos considerado casos relativamente generales a todos los fluidos ideales. Ahora vamos a discutir una particularización de la ecuación para el caso del flujo estacionario isentrópico, es decir cuando $dvp(arrow(u),t)=0$ y $dif s = 0$.
  
 Para ello, vamos a introducir el concepto de línea de corriente, que son las líneas cuyas tangentes tienen la misma dirección que la velocidad. Es decir, a lo largo de una línea de corriente $ arrow(u) = u hat(e)_t $ Donde $hat(e)_t$ es el vector unitario tangente a la línea de corriente considerada. podemos reescribir esto como un sistema de ecuaciones que exige que $dif arrow(r)$ y $arrow(u)$ sean paralelas: 
 $ (dif x)/u_x = (dif y)/u_y = (dif z)/u_z $
@@ -351,6 +351,7 @@ $ nabla phi' = nabla phi = arrow(u) $
 De todas formas, en el flujo estacionario que es el caso donde el flujo potencial es más útil, $dvp(phi,t)=0$ y $f(t) = "const."$ y no podemos igualar la constante a cero porque tenemos una restricción de los grados de libertad de base. La ecuación de Bernouilli reaparece #footnote[En el caso donde hay un campo gravitacional uniforme también se obtiene la ecuación de Euler, pero no lo hemos incluido por simplicidad], pero en un caso más libre porque la constante es igual para todo el flujo potencial:
 $ 1/2 u^2 + h = "cte." $
 
+Hemos visto que el flujo potencial nos permite simplificar mucho las ecuaciones de movimiento (con un caso de la ecuación de Bernouilli más permisivo). Pero realmente se puede considerar esta aproximación válida? Tratemos el caso del flujo alrededor de un obstáculo. Hemos dicho que para cualquier línea de corriente (en el caso estacionario), si en un contorno cerrado infinitesimal alrededor de un punto la vorticidad es cero esta se anulará para cualquier punto en esta línea. Aquí hemos realizado una suposición errónea: no es posible formar un contorno cerrado para los puntos adyacentes al obstáculo, por lo que nuestra demostración anterior no es válida para las trayectorias que pasan por estos puntos. 
 
 
 = Ecuaciones del flujo viscoso<todo>

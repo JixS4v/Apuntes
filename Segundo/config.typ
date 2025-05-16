@@ -15,6 +15,9 @@
 // Numbering format for pre pages
 set page(numbering:"(i)")
 
+// Justify
+set par(justify:true)
+
 // Title
 align(center, text(25pt)[#strong(title)])
 align(center+horizon, text(20pt)[Apuntes de Segundo de GIFIS])
@@ -55,6 +58,8 @@ show heading.where(label:<wip>):it=>{
   set text(navy)
   it + text(10pt)[(en proceso)] + linebreak()
 }
+
+
 
 show outline.entry: it =>{
   if it.level > 5 {return}
