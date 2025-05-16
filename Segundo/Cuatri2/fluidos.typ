@@ -258,13 +258,98 @@ aplicando el teorema de Gauss
 $ diff/(diff t) integral_v rho u_i dif V = - integral.cont_S Pi_(i j) n_j dif S $
 Claramente, el lado izquierdo de la ecuación es el incremento temporal de la componente $i$-ésima de la cantidad de movimiento en el volumen, por lo tanto, el lado derecho al ser una integral de superficie debe corresponder a un flujo, en este caso al flujo de la $i$-ésima componente de la cantidad de movimiento hacia el interior del volumen por su superficie delimitante. Vemos entonces que el tensor $Pi_(i j)$ corresponde al flujo de la componente i-ésima del momento a través de una superficie unitaria normal a $x_j$. Por esta razón, se llama tensor de densidad de flujo de momento.
 
-=== Conservación de la circulación <wip>
+=== Conservación de la circulación 
 Se define la circulación como $ Gamma = integral.cont_C arrow(u) dot dif arrow(l) $
 Vamos a considerar la circulación en un contorno cerrado formado por partículas fluidas. Este estará en movimiento, por lo que para ver como varía la circulación tomamos la derivada material.
 
 $ dvm(Gamma) = dvm() integral.cont_C arrow(u) dot dif arrow(l) $
 Identificamos $dif arrow(l)$ con la diferencia de vectores posición entre dos partículas fluidas adyacentes en el contorno, por lo que $ dif arrow(l) = dif arrow(r)$
-$ dvm(Gamma) = dvm() $
+$ dvm(Gamma) = dvm() integral.cont_C arrow(u) dot dif arrow(r) $
+Ahora, intercambiamos la integración y la diferenciación. Esta operación está permitida porque $arrow(u)$ y $ dif arrow(r)$ suelen comportarse bien bajo diferenciación. 
+$ dvm(Gamma) = integral.cont_C dvm((arrow(u) dot dif arrow(r))) $
+Aquí tenemos que tener en cuenta que la diferencial de $arrow(r)$ cambia con el tiempo, por lo que no se puede sacar de la derivada. Utilizando la regla del producto:
+$ dvm(Gamma) = integral.cont_C dvm(arrow(u)) dot dif arrow(r) + integral.cont_C arrow(u) dot dvm(dif arrow(r)) $
+Suponiendo buen comportamiento intercambiamos la derivada y la diferencial de $arrow(r)$
+$ dvm(Gamma) = integral.cont_C dvm(arrow(u)) dot dif arrow(r) + integral.cont_C arrow(u) dot dif dvm(arrow(r)) $
+Sabiendo que $dvm(arrow(r)) equiv arrow(u)$, tenemos
+$ dvm(Gamma) = integral.cont_C dvm(arrow(u)) dot dif arrow(r) + integral.cont_C arrow(u) dot dif arrow(u) $
+Por la regla del producto: $ dif (1/2 u^2) equiv dif (1/2 arrow(u) dot arrow(u)) = 1/2 arrow(u) dot dif arrow(u) + 1/2 arrow(u) dot dif arrow(u) = arrow(u) dot dif arrow(u)$, por lo que
+$ dvm(Gamma) = integral.cont_C dvm(arrow(u)) dot dif arrow(r) + integral.cont_C dif (1/2 u^2) $
+Un resultado del calculo vectorial conocido #footnote[yo no lo conocía, pero tiene sentido y nos lo creemos porque las matemáticas son el engendro del diablo mismo], es que la integral de una diferencial exacta en un contorno cerrado siempre es cero. Por lo que resulta que
+$ dvm(Gamma) = integral.cont_C dvm(arrow(u)) dot dif arrow(r) $
+Que es lo que hubiesemos obtenido si considerasemos que $dif arrow(r)$ no depende del tiempo, pero esto solo es verdad en este caso particular de contorno cerrado.
+
+Ahora, de la ecuación de Euler isentrópica:
+$ dvm(arrow(u)) = - nabla h $
+Por lo que, sustituyendo
+$ dvm(Gamma) = - integral.cont_C nabla h dot dif arrow(r) $
+
+Ahora, aplicando el teorema de Stokes, que dice
+$ integral_S (nabla times arrow(V)) dot hat(n) dif S = integral.cont_C arrow(V) dot dif arrow(l) $
+
+Tenemos
+$ dvm(Gamma) = - integral_S nabla times nabla h dot dif arrow(r) $
+Pero sabemos que el rotacional de un gradiente es nulo, por lo que concluimos
+$ dvm(Gamma) = 0 $
+Es decir, para un fluido ideal en flujo isentrópico, la circulacion de velocidades alrededor de un contorno de partículas fluidas es constante. Esta demostración también funciona para un fluido bajo la influencia de un campo gravitatorio uniforme porque $nabla times arrow(g)=0$, por lo que se anularía.
+
+== Flujo potencial <wip>
+Acabamos de demostrar que la circulación se conserva en el caso del flujo isentrópico. Ahora vamos a ver una consecuencia muy importante de este resultado.
+
+Como con la conservación de la entropía, si en un punto de la trayectoria de una partícula fluida se anulase la circulación, tendría que ser nula en cualquier punto a lo largo de esta. No podemos definir la circulación en un punto, pero si podemos formar un contorno infinitesimalmente pequeño que rodee la trayectorial alrededor de este, tal que si ahí se anula, tendrá que anularse alrededor de cualquier punto de la trayectoria de la partícula. 
+
+Reescribiendo la integral de circulación en función de la superficie formada por ese contorno:
+$ Gamma = integral_s nabla times arrow(u) dot hat(n) dif S = 0 $
+Como la integral se tiene que anular para la superficie de cualquier contorno infinitesimal alrededor de los puntos de la trayectoria de la partícula, el integrando debe de ser cero, por lo que
+$ nabla times arrow(u) = 0 $
+A lo largo de la trayectoria.
+
+Por lo tanto, si $nabla times arrow(u)=0$ en un punto de la trayectoria de una partícula fluida, será nulo en cualquier punto de esta. 
+
+En el caso de flujo estacionario este resultado es más permisivo porque las líneas de corriente son equivalentes a las trayectorias de las partículas fluidas.
+
+Esto tiene un significado físico particular, $nabla times arrow(u) = arrow(omega)$ (la vorticidad) representa el movimiento en rotación del fluido, por lo que un flujo unidireccional tendrá como propiedad $omega=0$. 
+
+Sería lógico concluir entonces que si consideramos un flujo estacionario uniforme (tal que $arrow(u)$ es constante) al infinito, sería irrotacional en cualquier línea de corriente y por lo tanto en todo el espacio. 
+
+Esta propiedad es clave, pues nos permite escribir $arrow(u)$ en como el gradiente de un potencial, ya que al ser nulo el rotacional de este nos simplificaría las ecuaciones. Por esta razón, el flujo irrotacional se conoce como flujo potencial, y se define el potencial de velocidad $phi$ tal que
+$ arrow(u) = nabla phi $
+
+Para integrarlo en la ecuación de Euler, primero tenemos que obtener una identidad vectorial importante. Utilizaremos la notación de Levi-Civita#footnote[Esta notación es invento del demonio, pero es muy conveniente para las identidades del rotacional] para el producto vectorial:
+$ arrow(u) times arrow(v) equiv epsilon_(i j k) u_j v_k $
+
+Aplicandolo a $arrow(u) times (nabla times arrow(u))$:
+$ arrow(u) times (nabla times arrow(u)) equiv epsilon_(i j k) u_j epsilon_(k l m) dvp(u_m,x_l) equiv epsilon_(i j k) epsilon_(k l m) u_j dvp(u_m,x_l) $
+
+Un intercambio de índices en el símbolo de Levi-Civita corresponde a la incorporación de un signo menos, por lo que $ epsilon_(k l m) = - epsilon_(l k m) = epsilon_(l m k) $
+
+Utilizando una de las identidades del símbolo de Levi-Civita:
+$ epsilon_(i j k) epsilon_(k l m) = epsilon_(i j k) epsilon_(l m k) = delta_(i l) delta_(j m) - delta_(i m) delta_(j l) $
+
+Por lo que
+$ epsilon_(i j k) epsilon_( k l m) u_j dvp(u_m,x_l) &= (delta_(i l) delta_(j m) - delta_(i m) delta_(j l)) u_j dvp(u_m,x_l) \ &= u_j dvp(u_j,x_i) - u_j dvp(u_i,x_j) \ &= 1/2 dvp(u_j u_j,x_i) - u_j dvp(u_i,x_j) \ &= 1/2 dvp(u^2,x_i)- u_j dvp(u_i,x_j) $
+
+Que es equivalente a escribir
+$ arrow(u) times (nabla times arrow(u)) = 1/2 nabla u^2 - (arrow(u) dot nabla) arrow(u) $
+
+La sustitución dentro de la ecuación de Euler #footnote[El resultado siguiente es análogo con la adición un campo gravitatorio uniforme, pero lo vamos a omitir por brevedad] (isentrópica, ya que estamos en el flujo potencial y es necesario) es aparente:
+$ dvp(arrow(u),t) + 1/2 nabla u^2 - arrow(u) times (nabla times arrow(u)) = - nabla h $
+Como $arrow(omega) = 0$, obtenemos
+$ dvp(arrow(u),t) + 1/2 nabla u^2 = - nabla h $
+Introduciendo el potencial de velocidades $nabla phi = arrow(u)$:
+$ nabla dvp(phi,t) + 1/2 nabla u^2 = - nabla h $
+Podemos agrupar bajo el gradiente
+$ nabla ( dvp(phi,t) + 1/2 u^2 + h) = 0 $
+Por lo tanto
+$ dvp(phi,t) + 1/2 u^2 + h = f(t) $
+Podemos incluso igualar $f(t)$ a cero porque como $arrow(u)$ solo depende de las derivadas posicionales de $phi$, podemos definir 
+$ phi' = phi + F(t) \ dv(F(t),t) = f(t) $
+tal que
+$ dvp(phi',t) + 1/2  u^2 + h = dvp(phi,t) + f(t) + 1/2  u^2 + h = f(t) => dvp(phi,t) + 1/2  u^2 + h = 0 $
+Y tendríamos aún
+$ nabla phi' = nabla phi = arrow(u) $
+De todas formas, en el flujo estacionario que es el caso donde el flujo potencial es más útil, $dvp(phi,t)=0$ y $f(t) = "const."$ y no podemos igualar la constante a cero porque tenemos una restricción de los grados de libertad de base. La ecuación de Bernouilli reaparece #footnote[En el caso donde hay un campo gravitacional uniforme también se obtiene la ecuación de Euler, pero no lo hemos incluido por simplicidad], pero en un caso más libre porque la constante es igual para todo el flujo potencial:
+$ 1/2 u^2 + h = "cte." $
 
 
 
