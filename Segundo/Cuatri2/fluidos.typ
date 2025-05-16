@@ -21,7 +21,7 @@ Por lo tanto nuestro modelo no funciona en todas partes, incluso en la tierra. P
 
 == Magnitudes estudiadas
 Como hemos dicho antes, vamos a estudiar las densidades de las magnitudes que estudiemos. Conviene entonces primero definir la densidad $rho$, que corresponde a la masa por unidad de volumen:
-$ rho = dv(m,v) $
+$ rho = dv(m,V) $
 
 Definimos también el volumen específico (el volumen por unidad de masa) como $ v = 1/rho $
 
@@ -40,9 +40,9 @@ $ arrow(u) (arrow(X) (arrow(X)_0, t), t) $ que resulta ser equivalente a $ dvp(a
 Pero, y si queremos saber la aceleración de esta partícula? Partiendo de la equivalencia que hemos considerado anteriormente, podemos expresar la aceleración de una partícula como
 $ dv(u_i (arrow(X) (arrow(X_0), t), t), t) $
 Ahora, vamos a aplicar la regla de la cadena, es decir
-$ dv(u_i (arrow(X),t),t),t) = dvp(u_i (arrow(X),t),t) cancel(dvp(t,t)) + dvp(u_i(arrow(X),t),X_k) dvp(X_k,t) $
+$ dv(u_i (arrow(X),t),t),t) = dvp(u_i (arrow(X),t),t) cancel(dvp(t,t)) + dvp(u_i (arrow(X),t),X_k) dvp(X_k,t) $
 Aquí utilizamos $X_i$ para referirnos a las componentes del vector de posición de la partícula, y debemos de añadir estos terminos para tener en cuenta la dependencia temporal de la velocidad a través de la variable Lagrangiana también. Ahora, recordando la relación anterior de la velocidad:
-$ dv(u_i (arrow(X),t), t) = dvp(u_i(arrow(X), t),t) + dvp(u_i (arrow(X),t),X_k) u_k (arrow(X), t) $
+$ dv(u_i (arrow(X),t), t) = dvp(u_i (arrow(X), t),t) + dvp(u_i (arrow(X),t),X_k) u_k (arrow(X), t) $
 
 Podemos generalizar a esta nueva forma de obtener derivadas de cantidades para partículas individuales desde la desripción Euleriana a cualquier cantidad dependiente de la posición y el tiempo $bold(lambda)$, tensorial de cualquier orden, aplicando la regla de la cadena:
 $ dv(bold(lambda) (arrow(X),t),t) = dvp(bold(lambda)  (arrow(X),t),t) + dvp(bold(lambda) (arrow(X),t),X_k) dvp(X_k,t) = dvp(bold(lambda) (arrow(X),t),t) + dvp(bold(lambda) (arrow(X),t),X_k) u_k (arrow(X),t) $
@@ -233,7 +233,29 @@ El primer término corresponde a la entrada de energía cinética y interna tran
 
 Cabe insistir que este resultado solo es válido cuando se considera un fluido ideal. Más tarde obtendremos una expresión más general. 
 
-== Ecuación del momento <wip> 
+== Ecuación de la cantidad de movimiento <wip> 
+Vamos a darle un tratamiento similar a la cantidad de movimiento. La cantidad de movimiento o momento lineal de un volumen unidad es $ rho arrow(u) equiv rho u_i $
+Por lo tanto, su variación temporal es
+$ dvp(rho u_i,t) = rho dvp(u_i,t) + u_i dvp(rho,t) $
+Utilizando la ecuación de continuidad
+$ dvp(rho u_i,t) = rho dvp(u_i,t) - u_i dvp(rho u_j,x_j) $
+Recordando la ecuación de Euler
+$ rho dvp(u_i,t) + rho u_j dvp(u_i,x_j) = - 1/rho dvp(p,x_i) $
+Tenemos, sustituyendo
+$ dvp(rho u_i,t) = - rho u_j dvp(u_i,x_j) - dvp(p,x_i) - u_i dvp(rho u_j,x_j) $
+Ahora, utilizando la regla del producto: 
+$ dvp(rho u_i,t) = - dvp(p,x_i) - dvp(rho u_i u_j,x_j) $
+Ahora, escribimos $ dvp(p,x_i)$ como $delta_(i j) dvp(p,x_j)$, por lo que podemos meterlo dentro de la divergencia
+$ dvp(rho u_i,t) = - dvp((p delta_(i j) + rho u_i u_j),x_j) $
+Podemos definir un tensor #footnote[Este tensor no corresponde al tensor de esfuerzos general, sino que lo contiene. En este caso, como se considera un fluido ideal la parte correspondiente al tensor de esfuerzos es $p delta_(i j)$] $ Pi_(i j) = p delta_(i j) + rho u_i u_j$ tal que 
+$ dvp(rho u_i, t) = - dvp(Pi_(i j),x_j) $
+Su significado físico se aclara si integramos la ecuación en un volumen
+$ diff/(diff t) integral_V rho u_i dif V = - integral_V dvp(Pi_(i j),x_j) dif V $
+aplicando el teorema de Gauss
+$ diff/(diff t) integral_v rho u_i dif V = - integral.cont_S Pi_(i j) n_j dif S $
+Claramente, el lado izquierdo de la ecuación es el incremento temporal de la componente $i$-ésima de la cantidad de movimiento en el volumen, por lo tanto, el lado derecho al ser una integral de superficie debe corresponder a un flujo, en este caso al flujo de la $i$-ésima componente de la cantidad de movimiento hacia el interior del volumen por su superficie delimitante. Vemos entonces que el tensor $Pi_(i j)$ corresponde al flujo de la componente i-ésima a través de una superficie unitaria normal a $x_j$. Podemos nombrarlo tensor de densidad de flujo de momento, por su naturaleza.
+
+
 
 = Ecuaciones del flujo viscoso<todo>
 == Obtención del tensor de esfuerzos viscosos<todo>

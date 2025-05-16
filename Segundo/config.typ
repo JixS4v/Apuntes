@@ -53,7 +53,7 @@ show heading.where(label:<todo>):{
 
 show heading.where(label:<wip>):it=>{
   set text(navy)
-  it + text(10pt)[(en proceso)]
+  it + text(10pt)[(en proceso)] + linebreak()
 }
 
 show outline.entry: it =>{
