@@ -428,7 +428,7 @@ Identificando esta derivada con el cuadrado de la velocidad del sonido $a^2$ #fo
 
 Por lo tanto $ Delta rho = (Delta p)/a^2 $
 
-Vamos a intentar representar la compresión de un fluido incompresible #footnote[He pasado demasiado tiempo intentando entender por que coño $Delta p tilde rho u^2$ y esta es la mejor explicación que se me ha ocurrido, usaré esta antes de perder la cordura]. Asumiendo que la compresión es debido a una diferencia de velocidad, y tenemos que un fluido a una velocidad $u$ se topa con una pared fija (es decir, que decelera por completo), por la ecuación de Bernouilli, tendríamos
+Vamos a intentar representar la compresión de un fluido incompresible #footnote[He pasado demasiado tiempo intentando entender por que coño en las diapositivas pone $Delta p tilde rho u^2$ y esta es la mejor explicación que se me ha ocurrido, usaré esta antes de perder la cordura]. Asumiendo que la compresión es debido a una diferencia de velocidad, y tenemos que un fluido a una velocidad $u$ se topa con una pared fija (es decir, que decelera por completo), por la ecuación de Bernouilli, tendríamos
 $ p_1 + 1/2 rho u^2 + cancel(rho g z) = p_2 + cancel(rho g z) $
 Por lo tanto
 $ 1/2 rho u^2 = p_2 - p_1 = Delta p $
@@ -442,7 +442,7 @@ Hemos dicho que, para un fluido incompresible (y encima, para que la barbaridad 
 $ Delta rho << rho equiv (Delta rho)/rho << 1 $
 Por lo que podemos establecer que para que el flujo sea incompresible
 $ mach^2 << 1 $
-Normalmente, a $mach<0.3$ se suele ver flujo incompresible #footnote[Fuente: está en los apuntes del profe].
+Normalmente, a $mach<0.3$ se suele ver flujo incompresible #footnote[Fuente: está en los apuntes del profe]
 
 
 
