@@ -449,7 +449,9 @@ Por lo que podemos establecer que para que el flujo sea incompresible
 $ mach^2 << 1 $
 Normalmente, a $mach<0.3$ se suele ver flujo incompresible #footnote[Fuente: está en los apuntes del profe]
 
-== Fluidos compresibles, casos importantes teóricos
+=== Los fluidos le odian! Representa el campo de velocidades con esta extraña función. <wip>
+
+== Fluidos compresibles, casos importantes teóricos <wip>
 (Nota: Landau@landau1987fluid trata la acústica un poco más tarde en el libro, pero lo pongo antes porque es importante para los fluidos ideales y en la materia)
 
 
