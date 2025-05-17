@@ -363,7 +363,8 @@ Esta limitación hace que las soluciones para el flujo ideal admitan separación
 
 Obviamente, la solución física debe de ser única, pero existe esta anomalía porque no existe ningún fluido verdaderamente ideal, siempre va a haber una viscosidad, aunque sea minúscula, que determinará el comportamiento del flujo en la superficie del cuerpo. Esta se conoce como *capa límite*, y en muchos casos de flujo a bajas viscosidades, se puede describir el flujo alrededor de un obstáculo como una combinación de flujo viscoso en la capa límite y en una estela cercana (donde la viscosidad, aunque sea pequeña si que afecta de forma importante), y flujo potencial en el resto de sitios (trataremos este formalismo después de ver el flujo viscoso). 
 
-== Fluidos incompresibles <wip>
+== Fluidos incompresibles
+=== Flujo incompresible general
 En muchos casos de flujo, la densidad se puede suponer constante, y hablamos de flujo incompresible. Irónicamente, el caso de flujo incompresible es el más comprensible, ya que las ecuaciones de movimiento se simplifican mucho. La ecuación de continuidad se convierte en
 $ cancel(dvp(rho,t)) nabla dot (rho arrow(u)) = 0 $
 $ rho nabla dot arrow(u) + arrow(u) dot cancel(nabla rho) = 0 $
@@ -390,6 +391,7 @@ Si consideramos dos puntos en una misma línea de corriente, tenemos
 $ 1/2 u_1^2 + p_1/rho + g z_1 &= 1/2 u_2^2 + p_2/rho + g z_2 \ <=> 1/2 rho u_1^2 + rho g z_1 + p_1 &= 1/2 rho u_2^2 + rho g z_2 + p_2 $
 Que es la expresión más habitual de la ecuación de Bernoulli, aplicable a las línea de corriente en fluidos ideales incompresibles.
 
+=== Flujo potencial de un fluido incompresible
 Si ahora consideramos el flujo potencial, sustituyendo la ecuación de Euler con $arrow(u) = nabla phi $:
 $ dvps(cancel(nabla times (nabla phi)),t, space:t) = nabla times (nabla phi times (cancel(nabla times nabla phi))) $
 Vemos que se cumple idénticamente
@@ -416,7 +418,10 @@ $ dvp(phi,t) + 1/2 u^2 + p/rho = f(t) $
 
 De aquí podemos identificar una propiedad bastante importante del flujo potencial de un fluido incompresible. Supongamos que un obstáculo se desplaza a través del fluido. Si el resultado es flujo potencial, dicho flujo depende en cualquier instante únicamente de la velocidad del cuerpo en ese instante, y no de la aceleración. Esto se debe a que la ecuación de Laplace no contiene explícitamente el tiempo, sino que aparece en las condiciones de contorno suplementadas que dependen de la velocidad del obstáculo únicamente. 
 
-Estos resultados son muy útiles para los fluidos incompresibles, pero de verdad existen? Pues resulta que no, no hay fluidos totalmente incompresibles, pero podemos hablar de fluidos prácticamente incompresibles en ciertas condiciones de flujo. Si la variación de la densidad es despreciable frente a esta se puede considerar incompresible. Desarrollando el diferencial de la densidad:
+=== Criterio de incompresibilidad, o por qué descifrar jeroglíficos nunca es buena idea
+Estos resultados son muy útiles para los fluidos incompresibles, pero de verdad existen? Pues resulta que no, no hay fluidos totalmente incompresibles, pero podemos hablar de fluidos prácticamente incompresibles en ciertas condiciones de flujo. 
+
+Si la variación de la densidad es despreciable frente a esta se puede considerar incompresible. Esta condición nos permite ver el límite de la aproximación. Desarrollando el diferencial de la densidad:
 $ dif rho = dvp(rho,p, eval:s, evalsym:")") dif p + dvp(rho,s, eval:p, evalsym:")") dif s $
 En el caso isentrópico, $dif s = 0 $
 $ dif rho = dvp(rho,p, eval:s, evalsym:")") dif p $
@@ -424,7 +429,7 @@ En aproximación de primer orden para pequeñas variaciones
 $ Delta rho = dvp(rho,p, eval:s, evalsym:")") Delta p $
 es decir
 $ Delta rho = 1/dvpc(p,rho, eval:s, evalsym:")") Delta p $
-Identificando esta derivada con el cuadrado de la velocidad del sonido $a^2$ #footnote[Por ahora la tomamos como definición, más adelante justificaremos la fórmula cuando tratemos el flujo compresible y el sonido]
+Identificamos esta derivada con el cuadrado de la velocidad del sonido $a^2$ #footnote[Por ahora la tomamos como definición, más adelante justificaremos la fórmula cuando tratemos el flujo compresible y el sonido]
 
 Por lo tanto $ Delta rho = (Delta p)/a^2 $
 
@@ -444,9 +449,8 @@ Por lo que podemos establecer que para que el flujo sea incompresible
 $ mach^2 << 1 $
 Normalmente, a $mach<0.3$ se suele ver flujo incompresible #footnote[Fuente: está en los apuntes del profe]
 
-
-
-
+== Fluidos compresibles, casos importantes teóricos
+(Nota: Landau@landau1987fluid trata la acústica un poco más tarde en el libro, pero lo pongo antes porque es importante para los fluidos ideales)
 
 = Ecuaciones del flujo viscoso<todo>
 == Obtención del tensor de esfuerzos viscosos<todo>
