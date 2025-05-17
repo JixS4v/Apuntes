@@ -54,7 +54,7 @@ Esta forma de tomar la derivada se conoce como derivada material, y la denotarem
 $ dvm(bold(lambda)) = dvp(bold(lambda),t) + dvp(bold(lambda),x_k) u_k $
 Aquí hemos intercambiado todas las variables Lagrangianas por las Eulerianas. Hemos podido hacer esto porque no aparecen de forma explícita en la expresión, solo como los argumentos de $arrow(u)$.
 
-= Un primer acercamiento
+= Fluidos ideales: un primer acercamiento
 == Conservación de la masa
 Vamos a comenzar obteniendo la ecuación de conservación de la masa para un fluido #footnote([Utilizaremos el argumento de Landau @landau1987fluid]). Podemos obtener la masa de un fluido de densidad $rho$ contenida dentro de un volumen de control fijo $V_c$ como
 $ integral_(V_c) rho dif V $
@@ -170,7 +170,7 @@ O, sabiendo que $g$ es una constante
 $ dif/(dif l) (u^2/2 + h + g z) = 0 $
 Es decir, en flujo estacionario isentrópico de un fluido ideal sometido a un campo gravitatorio uniforme y constante, $ u^2 +h + g z$ es constante a lo largo de una línea de corriente. 
 
-Esto es la forma más común de la ecuación de Bernoulli, ya que en la mayoría de casos el fluido considerado está sometido a un campo gravitatorio. 
+Esto es una forma más común de la ecuación de Bernoulli, ya que en la mayoría de casos el fluido considerado está sometido a un campo gravitatorio. 
 
 == Más leyes de conservación
 Ahora que tenemos una imagen aproximada de las propiedades y ecuaciones en un fluido ideal, vamos a obtener otras leyes de conservación importantes.
@@ -293,7 +293,7 @@ Pero sabemos que el rotacional de un gradiente es nulo, por lo que concluimos
 $ dvm(Gamma) = 0 $
 Es decir, para un fluido ideal en flujo isentrópico, la circulacion de velocidades alrededor de un contorno de partículas fluidas es constante. Esta demostración también funciona para un fluido bajo la influencia de un campo gravitatorio uniforme porque $nabla times arrow(g)=0$, por lo que se anularía.
 
-== Flujo potencial <wip>
+== Flujo potencial
 Acabamos de demostrar que la circulación se conserva en el caso del flujo isentrópico. Ahora vamos a ver una consecuencia muy importante de este resultado.
 
 Como con la conservación de la entropía, si en un punto de la trayectoria de una partícula fluida se anulase la circulación, tendría que ser nula en cualquier punto a lo largo de esta. No podemos definir la circulación en un punto, pero si podemos formar un contorno infinitesimalmente pequeño que rodee la trayectorial alrededor de este, tal que si ahí se anula, tendrá que anularse alrededor de cualquier punto de la trayectoria de la partícula. 
@@ -348,7 +348,7 @@ tal que
 $ dvp(phi',t) + 1/2  u^2 + h = dvp(phi,t) + f(t) + 1/2  u^2 + h = f(t) => dvp(phi,t) + 1/2  u^2 + h = 0 $
 Y tendríamos aún
 $ nabla phi' = nabla phi = arrow(u) $
-De todas formas, en el flujo estacionario que es el caso donde el flujo potencial es más útil, $dvp(phi,t)=0$ y $f(t) = "const."$ y no podemos igualar la constante a cero porque tenemos una restricción de los grados de libertad de base. La ecuación de Bernouilli reaparece #footnote[En el caso donde hay un campo gravitacional uniforme también se obtiene la ecuación de Euler, pero no lo hemos incluido por simplicidad], pero en un caso más libre porque la constante es igual para todo el flujo potencial:
+De todas formas, en el flujo estacionario que es el caso donde el flujo potencial es más útil, $dvp(phi,t)=0$ y $f(t) = "const."$ y no podemos igualar la constante a cero porque tenemos una restricción de los grados de libertad de base. La ecuación de Bernouilli reaparece #footnote[En el caso donde hay un campo gravitacional uniforme también se obtiene la ecuación de Euler, ya que es irrotacional, pero no lo hemos incluido por simplicidad], pero en un caso más libre porque la constante es igual para todo el flujo potencial:
 $ 1/2 u^2 + h = "cte." $
 
 Hemos visto que el flujo potencial nos permite simplificar mucho las ecuaciones de movimiento (con un caso de la ecuación de Bernouilli más permisivo). Pero realmente se puede considerar esta aproximación válida? Tratemos el caso del flujo alrededor de un obstáculo. Hemos dicho que para cualquier línea de corriente (en el caso estacionario), si en un contorno cerrado infinitesimal alrededor de un punto la vorticidad es cero esta se anulará para cualquier punto en esta línea. Aquí hemos realizado una suposición errónea: no es posible formar un contorno cerrado para los puntos adyacentes al obstáculo, por lo que nuestra demostración anterior no es válida para las trayectorias que pasan por estos puntos.
@@ -359,6 +359,43 @@ Esta limitación hace que las soluciones para el flujo ideal admitan separación
 
 Obviamente, la solución física debe de ser única, pero existe esta anomalía porque no existe ningún fluido verdaderamente ideal, siempre va a haber una viscosidad, aunque sea minúscula, que determinará el comportamiento del flujo en la superficie del cuerpo. Esta se conoce como *capa límite*, y en muchos casos de flujo a bajas viscosidades, se puede describir el flujo alrededor de un obstáculo como una combinación de flujo viscoso en la capa límite y en una estela cercana (donde la viscosidad, aunque sea pequeña si que afecta de forma importante), y flujo potencial en el resto de sitios (trataremos este formalismo después de ver el flujo viscoso). 
 
+== Fluidos incompresibles
+En muchos casos de flujo, la densidad se puede suponer constante, y hablamos de flujo incompresible. Irónicamente, el caso de flujo incompresible es el más comprensible, ya que las ecuaciones de movimiento se simplifican mucho. La ecuación de continuidad se convierte en
+$ cancel(dvp(rho,t)) nabla dot (rho arrow(u)) = 0 $
+$ rho nabla dot arrow(u) + arrow(u) dot cancel(nabla rho) = 0 $
+$ nabla dot arrow(u) = 0 $
+
+En la ecuación de Euler no se pueden realizar muchas simplificaciones, excepto meter la densidad dentro del gradiente de presión
+$ dvm(arrow(u)) = - nabla(p/rho) + arrow(g) $
+
+Ahora que la densidad no es incógnita, podemos reescribir las ecuaciones de movimiento únicamente en función de la velocidad. Partiendo de la ecuación de Euler:
+$ dvp(arrow(u),t) + (arrow(u) dot nabla) arrow(u) = - nabla(p/rho) + arrow(g) $
+Utilizando la identidad que hemos demostrado anteriormente:
+$ (arrow(u) dot nabla) arrow(u) = 1/2 nabla u^2 - arrow(u) times (nabla times arrow(u)) $
+Entonces
+$ dvp(arrow(u),t) + 1/2 nabla u^2 - arrow(u) times (nabla times arrow(u)) = - nabla (p/ rho) + arrow(g) $
+Tomando el rotacional, sabiendo que el rotacional del gradiente es nulo:
+$ diff/(diff t)( nabla times arrow(u) ) = nabla times [arrow(u) times (nabla times arrow(u))] $
+En términos de la vorticidad
+$ dvp(arrow(omega),t) = nabla times (arrow(u) times arrow(omega)) $
+
+Podemos incluso reescribir la ecuación de Bernouilli de una forma más conveniente. Podemos identificar que la única diferencia entre la ecuación de Euler isentrópica y la del flujo incompresible genral es que en vez de $nabla h$ tenemos $nabla (p\/rho)$, por lo que podemos sustituir en la ecuación de Bernouilli:
+$ 1/2 u^2 + p/rho + g z = "constante" $
+
+Si consideramos dos puntos en una misma línea de corriente, tenemos
+$ 1/2 u_1^2 + p_1/rho + g z_1 &= 1/2 u_2^2 + p_2/rho + g z_2 \ <=> 1/2 rho u_1^2 + rho g z_1 + p_1 &= 1/2 rho u_2^2 + rho g z_2 + p_2 $
+Que es la expresión más habitual de la ecuación de Bernouilli, aplicable a las línea de corriente en fluidos ideales incompresibles.
+
+Si ahora consideramos el flujo potencial, sustituyendo la ecuación de Euler con $arrow(u) = nabla phi $:
+$ dvps(cancel(nabla times (nabla phi)),t, space:t) = nabla times (nabla phi times (cancel(nabla times nabla phi))) $
+Vemos que se cumple idénticamente
+
+Por que tenemos $ nabla phi &= arrow(u) \ nabla^2 phi &= nabla dot arrow(u) $
+Y por lo tanto, por la ecuación de continuidad ($nabla dot arrow(u) = 0 $)
+$ nabla^2 phi = 0 $
+Por lo que el potencial de velocidad satisface la ecuación de Laplace.
+
+Para resolverla habría que suplementarla con condiciones de contorno en las superficies donde el fluido se encuentra con un sólido. Obviamente, no puede penetrar la superficie, por lo que obligatoriamente su velocidad normal relativa a la superficie debe de anularse.
 
 
 = Ecuaciones del flujo viscoso<todo>
