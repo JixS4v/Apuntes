@@ -67,14 +67,14 @@ show outline.entry: it =>{
   let todo = it.element in query(label("todo"))
   let wip = it.element in query(label("wip"))
   set text(fill:gray) if todo
-  set text(fill:navy) if wip
+  set text(fill:navy, style:"italic") if wip
   let style = h(3pt) + box(width:1fr, it.fill)+h(3pt)+it.page
   // We don't want any page number for todo
   if todo{
     style=none
   }
 
-  let output = text(14pt, fill:black, weight:"regular")[#style]
+  let output = text(14pt, fill:black, weight:"regular", style:"normal")[#style]
 
   // Add the bold level 1 non todo
   set text(15pt, weight:"bold") if it.level == 1

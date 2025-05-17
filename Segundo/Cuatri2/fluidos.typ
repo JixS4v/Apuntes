@@ -9,6 +9,10 @@
   let func = funcs.pos().intersperse(",").sum(default:[])
   $(upright(D)func)/(upright(D)t) $
 }
+
+#let mach = "Ma"
+#let reynolds = "Re"
+
 = Introducción
 == Qué es un fluido?
 En oposición a un sólido, un fluido no tiene fuerzas de restitución ante un esfuerzo tangencial. Es decir, si intentamos deformar un sólido (por ejemplo un edificio) en la dirección tangencial (por ejemplo de izquierda a derecha aplicando un esfuerzo desde arriba), este debería de recuperar su forma original después de que se acabe la aplicación de este esfuerzo (para esfuerzos grandes, muchos sólidos no se comportarán como un sólido perfecto).
@@ -348,10 +352,10 @@ tal que
 $ dvp(phi',t) + 1/2  u^2 + h = dvp(phi,t) + f(t) + 1/2  u^2 + h = f(t) => dvp(phi,t) + 1/2  u^2 + h = 0 $
 Y tendríamos aún
 $ nabla phi' = nabla phi = arrow(u) $
-De todas formas, en el flujo estacionario que es el caso donde el flujo potencial es más útil, $dvp(phi,t)=0$ y $f(t) = "const."$ y no podemos igualar la constante a cero porque tenemos una restricción de los grados de libertad de base. La ecuación de Bernouilli reaparece #footnote[En el caso donde hay un campo gravitacional uniforme también se obtiene la ecuación de Euler, ya que es irrotacional, pero no lo hemos incluido por simplicidad], pero en un caso más libre porque la constante es igual para todo el flujo potencial:
+De todas formas, en el flujo estacionario que es el caso donde el flujo potencial es más útil, $dvp(phi,t)=0$ y $f(t) = "const."$ y no podemos igualar la constante a cero porque tenemos una restricción de los grados de libertad de base. La ecuación de Bernoulli reaparece #footnote[En el caso donde hay un campo gravitacional uniforme también se obtiene la ecuación de Euler, ya que es irrotacional, pero no lo hemos incluido por simplicidad], pero en un caso más libre porque la constante es igual para todo el flujo potencial:
 $ 1/2 u^2 + h = "cte." $
 
-Hemos visto que el flujo potencial nos permite simplificar mucho las ecuaciones de movimiento (con un caso de la ecuación de Bernouilli más permisivo). Pero realmente se puede considerar esta aproximación válida? Tratemos el caso del flujo alrededor de un obstáculo. Hemos dicho que para cualquier línea de corriente (en el caso estacionario), si en un contorno cerrado infinitesimal alrededor de un punto la vorticidad es cero esta se anulará para cualquier punto en esta línea. Aquí hemos realizado una suposición errónea: no es posible formar un contorno cerrado para los puntos adyacentes al obstáculo, por lo que nuestra demostración anterior no es válida para las trayectorias que pasan por estos puntos.
+Hemos visto que el flujo potencial nos permite simplificar mucho las ecuaciones de movimiento (con un caso de la ecuación de Bernoulli más permisivo). Pero realmente se puede considerar esta aproximación válida? Tratemos el caso del flujo alrededor de un obstáculo. Hemos dicho que para cualquier línea de corriente (en el caso estacionario), si en un contorno cerrado infinitesimal alrededor de un punto la vorticidad es cero esta se anulará para cualquier punto en esta línea. Aquí hemos realizado una suposición errónea: no es posible formar un contorno cerrado para los puntos adyacentes al obstáculo, por lo que nuestra demostración anterior no es válida para las trayectorias que pasan por estos puntos.
 
 Esta limitación hace que las soluciones para el flujo ideal admitan separación del fluido adherido al cuerpo, es decir que después de pasar un tiempo fluyendo adyacente, se desprendan. Estas soluciones poseen una discontinuidad en el patrón de flujo, ya que hay una superficie que separa la región de fluido quieto detrás del objeto de el flujo que pasa por el lado, deslizándose @discont_diag. En esta superficie la vorticidad sería no nula, y si incluímos soluciones con discontinuidad, no existe solución única a las ecuaciones para el fluido ideal, a parte del flujo continuo admiten una infinidad de soluciones con discontinuidades en diferentes puntos. Sin embargo, ninguna de estas soluciones son físicamente importantes, ya que las discontinuidades tangenciales llevarían a turbulencia, y eso no se contempla en el flujo potencial. 
 
@@ -359,7 +363,7 @@ Esta limitación hace que las soluciones para el flujo ideal admitan separación
 
 Obviamente, la solución física debe de ser única, pero existe esta anomalía porque no existe ningún fluido verdaderamente ideal, siempre va a haber una viscosidad, aunque sea minúscula, que determinará el comportamiento del flujo en la superficie del cuerpo. Esta se conoce como *capa límite*, y en muchos casos de flujo a bajas viscosidades, se puede describir el flujo alrededor de un obstáculo como una combinación de flujo viscoso en la capa límite y en una estela cercana (donde la viscosidad, aunque sea pequeña si que afecta de forma importante), y flujo potencial en el resto de sitios (trataremos este formalismo después de ver el flujo viscoso). 
 
-== Fluidos incompresibles
+== Fluidos incompresibles <wip>
 En muchos casos de flujo, la densidad se puede suponer constante, y hablamos de flujo incompresible. Irónicamente, el caso de flujo incompresible es el más comprensible, ya que las ecuaciones de movimiento se simplifican mucho. La ecuación de continuidad se convierte en
 $ cancel(dvp(rho,t)) nabla dot (rho arrow(u)) = 0 $
 $ rho nabla dot arrow(u) + arrow(u) dot cancel(nabla rho) = 0 $
@@ -370,7 +374,7 @@ $ dvm(arrow(u)) = - nabla(p/rho) + arrow(g) $
 
 Ahora que la densidad no es incógnita, podemos reescribir las ecuaciones de movimiento únicamente en función de la velocidad. Partiendo de la ecuación de Euler:
 $ dvp(arrow(u),t) + (arrow(u) dot nabla) arrow(u) = - nabla(p/rho) + arrow(g) $
-Utilizando la identidad que hemos demostrado anteriormente:
+Utilizando la identidad que hemos demostrado anteriormente:Tendríamos
 $ (arrow(u) dot nabla) arrow(u) = 1/2 nabla u^2 - arrow(u) times (nabla times arrow(u)) $
 Entonces
 $ dvp(arrow(u),t) + 1/2 nabla u^2 - arrow(u) times (nabla times arrow(u)) = - nabla (p/ rho) + arrow(g) $
@@ -379,12 +383,12 @@ $ diff/(diff t)( nabla times arrow(u) ) = nabla times [arrow(u) times (nabla tim
 En términos de la vorticidad
 $ dvp(arrow(omega),t) = nabla times (arrow(u) times arrow(omega)) $
 
-Podemos incluso reescribir la ecuación de Bernouilli de una forma más conveniente. Podemos identificar que la única diferencia entre la ecuación de Euler isentrópica y la del flujo incompresible genral es que en vez de $nabla h$ tenemos $nabla (p\/rho)$, por lo que podemos sustituir en la ecuación de Bernouilli:
+Podemos incluso reescribir la ecuación de Bernoulli de una forma más conveniente. Podemos identificar que la única diferencia entre la ecuación de Euler isentrópica y la del flujo incompresible genral es que en vez de $nabla h$ tenemos $nabla (p\/rho)$, por lo que podemos sustituir en la ecuación de Bernoulli:
 $ 1/2 u^2 + p/rho + g z = "constante" $
 
 Si consideramos dos puntos en una misma línea de corriente, tenemos
 $ 1/2 u_1^2 + p_1/rho + g z_1 &= 1/2 u_2^2 + p_2/rho + g z_2 \ <=> 1/2 rho u_1^2 + rho g z_1 + p_1 &= 1/2 rho u_2^2 + rho g z_2 + p_2 $
-Que es la expresión más habitual de la ecuación de Bernouilli, aplicable a las línea de corriente en fluidos ideales incompresibles.
+Que es la expresión más habitual de la ecuación de Bernoulli, aplicable a las línea de corriente en fluidos ideales incompresibles.
 
 Si ahora consideramos el flujo potencial, sustituyendo la ecuación de Euler con $arrow(u) = nabla phi $:
 $ dvps(cancel(nabla times (nabla phi)),t, space:t) = nabla times (nabla phi times (cancel(nabla times nabla phi))) $
@@ -395,12 +399,58 @@ Y por lo tanto, por la ecuación de continuidad ($nabla dot arrow(u) = 0 $)
 $ nabla^2 phi = 0 $
 Por lo que el potencial de velocidad satisface la ecuación de Laplace.
 
-Para resolverla habría que suplementarla con condiciones de contorno en las superficies donde el fluido se encuentra con un sólido. Obviamente, no puede penetrar la superficie, por lo que obligatoriamente su velocidad normal relativa a la superficie debe de anularse.
+Para resolverla habría que suplementarla con condiciones de contorno en las superficies donde el fluido se encuentra con un sólido. Obviamente, no puede penetrar la superficie, por lo que obligatoriamente su velocidad normal relativa a la superficie debe de anularse. Es decir, si consideramos un vector $hat(n)$ normal a la superficie y que la superficie tiene una velocidad arbitraria $arrow(u)_s$, tendríamos
+$ (arrow(u)-arrow(u)_s)dot hat(n) = 0 $
+es decir
+$ hat(n) dot nabla phi = arrow(u)_s dot hat(n) $
+Llamando $u_n$ a la velocidad de la superficie normal a $hat(n)$:
+$ hat(n) dot nabla phi = u_n $
+El producto escalar del gradiente de una función por un vector unitario corresponde a la derivada direccional en la dirección del vector:
+$ dvp(phi,n) = u_n $
+Por lo tanto las condiciones generales son que $dvpc(phi,n)$ es una función dada de las coordenadas y el tiempo en el contorno. 
+
+Para el flujo potencial general, la ecuación de Euler relacionaba la entalpía y la velocidad tal que
+$ dvp(phi,t) + 1/2 u^2 + h = f(t) $
+Como estamos en un fluido incompresible podemos intercambiar $h$ y $p\/rho$ #footnote[Hacemos el cambio bastante a la ligera porque son equivalentes ya que en un fluido incompresible el gradiente de $p\/rho$ está en el mismo lugar que estaría el gradiente de la entalpía en el flujo isentrópico y alcanzar esta ecuación solo necesita que las funciones tratadas sean gradientes]
+$ dvp(phi,t) + 1/2 u^2 + p/rho = f(t) $
+
+De aquí podemos identificar una propiedad bastante importante del flujo potencial de un fluido incompresible. Supongamos que un obstáculo se desplaza a través del fluido. Si el resultado es flujo potencial, dicho flujo depende en cualquier instante únicamente de la velocidad del cuerpo en ese instante, y no de la aceleración. Esto se debe a que la ecuación de Laplace no contiene explícitamente el tiempo, sino que aparece en las condiciones de contorno suplementadas que dependen de la velocidad del obstáculo únicamente. 
+
+Estos resultados son muy útiles para los fluidos incompresibles, pero de verdad existen? Pues resulta que no, no hay fluidos totalmente incompresibles, pero podemos hablar de fluidos prácticamente incompresibles en ciertas condiciones de flujo. Si la variación de la densidad es despreciable frente a esta se puede considerar incompresible. Desarrollando el diferencial de la densidad:
+$ dif rho = dvp(rho,p, eval:s, evalsym:")") dif p + dvp(rho,s, eval:p, evalsym:")") dif s $
+En el caso isentrópico, $dif s = 0 $
+$ dif rho = dvp(rho,p, eval:s, evalsym:")") dif p $
+En aproximación de primer orden para pequeñas variaciones
+$ Delta rho = dvp(rho,p, eval:s, evalsym:")") Delta p $
+es decir
+$ Delta rho = 1/dvpc(p,rho, eval:s, evalsym:")") Delta p $
+Identificando esta derivada con el cuadrado de la velocidad del sonido $a^2$ #footnote[Por ahora la tomamos como definición, más adelante justificaremos la fórmula cuando tratemos el flujo compresible y el sonido]
+
+Por lo tanto $ Delta rho = (Delta p)/a^2 $
+
+Vamos a intentar representar la compresión de un fluido incompresible #footnote[He pasado demasiado tiempo intentando entender por que coño $Delta p tilde rho u^2$ y esta es la mejor explicación que se me ha ocurrido, usaré esta antes de perder la cordura]. Asumiendo que la compresión es debido a una diferencia de velocidad, y tenemos que un fluido a una velocidad $u$ se topa con una pared fija (es decir, que decelera por completo), por la ecuación de Bernouilli, tendríamos
+$ p_1 + 1/2 rho u^2 + cancel(rho g z) = p_2 + cancel(rho g z) $
+Por lo tanto
+$ 1/2 rho u^2 = p_2 - p_1 = Delta p $
+Vemos que $Delta p$ es del orden $rho u^2$ durante una compresión de densidad $rho$ a velocidad $u^2$ (haciendo una aproximación muy cruda porque sí, ya no importa nada)
+$ Delta p tilde rho u^2 => a^2 Delta rho tilde rho u^2 $
+Concluyendo
+$ (Delta rho)/rho tilde u^2/a^2 $
+$u\/a$ es un número adimensional conocido como el número de Mach ($mach$). Expresándolo en función de este
+$ (Delta rho)/rho tilde mach^2 $
+Hemos dicho que, para un fluido incompresible (y encima, para que la barbaridad que hemos hecho antes con Bernouilli tenga algún sentido):
+$ Delta rho << rho equiv (Delta rho)/rho << 1 $
+Por lo que podemos establecer que para que el flujo sea incompresible
+$ mach^2 << 1 $
+Normalmente, a $mach<0.3$ se suele ver flujo incompresible #footnote[Fuente: está en los apuntes del profe].
+
+
+
 
 
 = Ecuaciones del flujo viscoso<todo>
 == Obtención del tensor de esfuerzos viscosos<todo>
-= Teoría RANS<todo>
+= Turbulencia, o como aprendí a dejar de preocuparme y amar las aproximaciones <todo>
 = Leyes de conservación generales<todo>
 = Aplicaciones<todo>
 
