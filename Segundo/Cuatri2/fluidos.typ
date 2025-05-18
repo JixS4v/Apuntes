@@ -437,7 +437,7 @@ Vamos a intentar representar la compresión de un fluido incompresible #footnote
 $ p_1 + 1/2 rho u^2 + cancel(rho g z) = p_2 + cancel(rho g z) $
 Por lo tanto
 $ 1/2 rho u^2 = p_2 - p_1 = Delta p $
-Vemos que $Delta p$ es del orden $rho u^2$ durante una compresión de densidad $rho$ a velocidad $u^2$ (haciendo una aproximación muy cruda porque sí, ya no importa nada)
+Podemos entonces estimar que $Delta p$ es del orden $rho u^2$ durante una compresión 
 $ Delta p tilde rho u^2 => a^2 Delta rho tilde rho u^2 $
 Concluyendo
 $ (Delta rho)/rho tilde u^2/a^2 $
@@ -449,7 +449,31 @@ Por lo que podemos establecer que para que el flujo sea incompresible
 $ mach^2 << 1 $
 Normalmente, a $mach<0.3$ se suele ver flujo incompresible #footnote[Fuente: está en los apuntes del profe]
 
-=== Los fluidos le odian! Representa el campo de velocidades con esta extraña función. <wip>
+=== Los matemáticos le odian! Facilita la resolución de problemas con este extraño truco. <wip>
+Hay unos trucos que se pueden usar cuando se considera el flujo bidimensional, es decir que el campo de velocidades depende únicamente de dos coordenadas y su velocidad es paralela al plano que se considera (en este caso consideramos el plano $x y$, es decir $u_z = 0$ y $dvp(u_x,z)=dvp(u_y,z)=0$). En el caso del flujo incompresible, podemos resolver problemas de flujo dimensional más facilmente expresando la velocidad en términos de una función de corriente. Como $nabla dot arrow(u)= 0$, tenemos $dvp(u_x,x) + dvp(u_y,y) = 0 $. Podemos escribir esto de forma implícita definiento una función $psi$ tal que
+$ u_x = dvp(psi,y) quad u_y = -dvp(psi,x) $
+Ya que, asumiendo que $psi$ es una función bien comportada
+$ dvp(psi,x,y) = psi(psi,y,x) => dvp(u_x,x) = - dvp(u_y,y) $
+Por lo que implícitamente $nabla dot arrow(u)= 0 $
+
+Se puede escribir entonces 
+$ arrow(u) = - hat(z) times nabla psi $
+
+Ahora, sustituiremos $arrow(u)$ por las derivadas de la función de corriente en la ecuación de Euler incompresible, que es de forma
+$ dvp(arrow(omega),t) = nabla times (arrow(u) times arrow(omega) ) $
+
+Primero, obtengamos $arrow(omega) = nabla times arrow(u)= nabla times (- hat(z) times nabla psi)$
+En notación de Levi-Civita (ver capítulo 2.5):
+$ omega_i &= - epsilon_(i j k) dvp(,x_j) epsilon_(k l m) delta_(l 3) dvp(psi,x_m) \ &= - epsilon_(i j k) epsilon_(l m k) delta_(l 3) dvp(psi,x_m, x_j)  \ &= -(delta_(i l) delta_(j m) - delta_(i m ) delta_(j l)) delta_(l 3) dvp(psi,x_m, x_j) \ &=  delta_(j 3) dvp(psi,x_i, x_j) - delta_(i 3) dvp(psi,x_j, x_j) \ &= cancel(dvp(psi,x_i, z)) - delta_(i 3) dvp(psi,x_j, x_j) = - delta_(i 3) dvp(psi,x_j, x_j) equiv - hat(z) nabla^2 psi $
+
+Ahora, obtendremos $nabla times (arrow(u) times arrow(omega))$:
+Otra vez empleando notación de Levi-Civita
+$ nabla times (arrow(u) times omega) &= epsilon_(i j k) dvp(,x_j) epsilon_(k l m) epsilon_(l n o) delta_(n 3) dvp(psi,x_o) delta_(m 3) dvp(psi,x_r,x_r) \ &= epsilon_(i j k) epsilon_(l m k) epsilon_(l n o) dvp(,x_j) [ delta_(n 3) delta_(m 3) dvp(psi,x_o) dvp(psi,x_r, x_r) ] \ &= (delta_(i l) delta_(j m) - delta_(i m) delta_(j l)) epsilon_(l n o) dvp(,x_j) [delta_(n 3) delta_(m 3) dvp(psi,x_n) dvp(psi,x_r, x_r) ] \ &= epsilon_(i n o) dvp(,x_j) [delta_(n 3) delta_(j 3) dvp(psi,x_o) dvp(psi,x_r,x_r)] - epsilon_(j n o) dvp(,x_j) [delta_( n 3) delta_(i 3) dvp(psi,x_o) dvp(psi,x_r,x_r)] \ &= epsilon_(i n o) cancel(dvp(,z)) [delta_(n 3) dvp(psi,x_o) dvp(psi,x_r, x_r)] - epsilon_(j n o) dvp(,x_j) [delta_(n 3) delta_(i 3) dvp(psi,x_o) dvp(psi,x_r, x_r)] \ &= delta_(i 3) dvp(,x_j) [- epsilon_(j n o) delta_(n 3) dvp(psi,x_o) dvp(psi,x_r,x_r)] \ &equiv hat(z) nabla dot [- hat(z) times nabla(psi) nabla^2 psi] \ &= hat(z) nabla dot [nabla^2 psi arrow(u)] \ &= hat(z)( nabla^2 psi cancel(nabla dot) arrow(u) +  arrow(u) dot nabla nabla^2 psi ) \ &= hat(z) [dvp(psi,y)dvp(,x)nabla^2 psi - dvp(psi,x)dvp(,y)nabla^2 psi] $ 
+
+Sustituyendo en la ecuación
+$ -hat(z) dvp(,t) nabla^2 psi = hat(z)[dvp(psi,y) dvp(,x) nabla^2 psi - dvp(psi,x) dvp(,y) nabla^2 psi] \ => dvp(,t) nabla^2 psi + dvp(psi,y) dvp(,x) nabla^2 psi - dvp(psi,x) dvp(,y) nabla^2 psi = 0 $
+Esta es la ecuación de movimiento para la función de corriente.
+
 
 == Fluidos compresibles, casos importantes teóricos <wip>
 (Nota: Landau@landau1987fluid trata la acústica un poco más tarde en el libro, pero lo pongo antes porque es importante para los fluidos ideales y en la materia)
