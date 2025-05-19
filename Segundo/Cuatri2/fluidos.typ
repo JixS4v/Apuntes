@@ -486,4 +486,37 @@ Esta es la ecuación de movimiento para la función de corriente.
 = Leyes de conservación generales<todo>
 = Aplicaciones<todo>
 
+#heading(numbering:none)[Apéndice A: Notación de Levi-Civita]<levi_civita>
+Para tratar el producto vectorial en notación tensorial, se define el símbolo de Levi-Civita $epsilon_(i j k)$ como totalmente antisimétrico, es decir que si se intercambian dos índices, el signo de su componente tiene que cambiar. Adicionalemente, se define $epsilon_(1 2 3) = 1$. De aquí podemos obtener los valores para todos las componentes:
+- Como al intercambiar índices debe de haber un cambio de signo, las componentes en las diagonales deben de anularse, es decir que si hay dos índices iguales $epsilon_(i j k) = 0$
+- Como al intercambiar índices tiene que cambiar el signo, cualquier intercambio de índices de $epsilon_(1 2 3)$ es -1. 
+- Si se realizan dos intercambios de índices de $epsilon_(1 2 3)$, entonces tiene que ser +1. 
+
+Vamos a ver como este símbolo se corresponde con el producto vectorial:
+Queremos computar $arrow(u) times arrow(v)$, que equivale a calcular el determinante
+$ mat(delim:"|", hat(x), hat(y), hat(z);u_1,u_2,u_3;v_1,v_2,v_3) $
+Las componentes son
+$ [arrow(u) times arrow(v)]_1 &= u_2 v_3 - u_3 v_2 \ [arrow(u) times arrow(v)]_2 &= u_3 v_1 - u_1 v_3 \ [arrow(u) times arrow(v)]_3 &= u_1 v_2 - u_2 v_1 $
+Vemos que hay un patrón antisimétrico. Las propiedades del símbolo de Levi-Civita llevan a este producto directamente, ya que sabemos que para cada indice $i$ determinado de $epsilon_(i j k)$ hay solo dos componentes no nulas, las correspondientes a $epsilon_(i j k) = - epsilon_(i k j)$ para $i != j != k$. Podemos escribir el producto vectorial como una suma sobre los índices, obteniiendo:
+$ [arrow(u) times arrow(v)]_i = epsilon_(i j k) u_j v_k $
+Veamos si las componentes del producto se corresponden (escribiendo solo las partes de la suma no nulas por brevedad)
+$ epsilon_(1 j k) u_j v_k &= epsilon_(1 2 3) u_2 v_3 + epsilon_(1 3 2) u_3 v_2 = u_2 v_3 - u_3 v_2 \ epsilon_(2 j k) u_j v_k &= epsilon_(2 3 1) u_3 v_1 + epsilon_(2 1 3) u_1 v_3 = u_3 v_1 - u_1 v_3  \ epsilon_(3 j k) u_j v_k &= epsilon_(3 2 1) u_2 v_1 + epsilon_(3 1 2) u_1 v_2 = u_1 v_2 - u_2 v_1 $
+
+Ahora, veamos unas propiedades muy útiles para simplificar el cálculo de productos vectoriales reiterados. 
+
+Vamos a empezar con la identidad más general: el producto de dos símbolos de Levi-Civita sin índices en común
+$ epsilon_(i j k) epsilon_(l m n) = delta_(i l) delta_(j m) delta_(k n) + delta_(i m) delta_(j n) delta_(k l) + delta_(i n) delta_(j l) delta_(k m) - delta_(i l) delta_(j n) delta_(k m) - delta_(i n) delta_(j m) delta_(k l) - delta_(i m) delta_(j l) delta_(k n) $
+Donde $delta_(i j)$ es la delta de Kronecker, que es igual a 1 si $i = j$ y a 0 si $i!=j$. Es la matriz identidad en notación de componentes. 
+
+Esta expresión es excesivamente complicada, pero no es de mucha utilidad por si misma, la usaremos para obtener otras propiedades. Si quieres pasarte una tarde movienddo simbolitos puedes comprobar que se cumplen las propiedades de antisimetría. 
+
+Veamos el caso cuando hay dos índices iguales y se suma sobre estos, por ejemplo si $ k = n $:
+$  epsilon_(i j k) epsilon_(l m k) &= delta_(i l) delta_(j m) delta_(k k) + delta_(i m) delta_(j k) delta_(k l) + delta_(i k) delta_(j l) delta_(k m) - delta_(i l) delta_(j k) delta_(k m) - delta_(i k) delta_(j m) delta_(k l) - delta_(i m) delta_(j l) delta_(k k) \ &= 3 delta_(i l) delta_(j_m) + delta_(i m) delta_(j l) + delta_(i m) delta_(j l) - delta_(i l) delta_(j m) - delta_(i l) delta_(j m) - 3 delta_(i m) delta_(j l) \ &= delta_(i l) delta_(j m) - delta_(i m) delta_(j l ) $
+
+Esta identidad es super útil, porque nos permite operar productos reiterados como
+$ arrow(u) times (arrow(v) times arrow(w)) $
+Simplemente utilizando esta identidad
+$ epsilon_(i j k) epsilon_(k l m) u_j v_l w_m equiv epsilon_(i j k) epsilon_(l m k) u_j v_l w_m = (delta_(i l) delta_(j m) - delta_(i m) delta_(j l) ) u_j v_l w_m $
+
+
 #bibliography("assets/ref_fluids.bib", title:"Referencias")
