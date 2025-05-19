@@ -319,17 +319,13 @@ Sería lógico concluir entonces que si consideramos un flujo estacionario unifo
 Esta propiedad es clave, pues nos permite escribir $arrow(u)$ en como el gradiente de un potencial, ya que al ser nulo el rotacional de este nos simplificaría las ecuaciones. Por esta razón, el flujo irrotacional se conoce como flujo potencial, y se define el potencial de velocidad $phi$ tal que
 $ arrow(u) = nabla phi $
 
-Para integrarlo en la ecuación de Euler, primero tenemos que obtener una identidad vectorial importante. Utilizaremos la notación de Levi-Civita#footnote[Esta notación es invento del demonio, pero es muy conveniente para las identidades del rotacional] para el producto vectorial:
+Para integrarlo en la ecuación de Euler, primero tenemos que obtener una identidad vectorial importante. Utilizaremos la notación de Levi-Civita (véase #link(<levi_civita>)[Apéndice A]) para el producto vectorial:
 $ arrow(u) times arrow(v) equiv epsilon_(i j k) u_j v_k $
 
 Aplicandolo a $arrow(u) times (nabla times arrow(u))$:
 $ arrow(u) times (nabla times arrow(u)) equiv epsilon_(i j k) u_j epsilon_(k l m) dvp(u_m,x_l) equiv epsilon_(i j k) epsilon_(k l m) u_j dvp(u_m,x_l) $
-
-Un intercambio de índices en el símbolo de Levi-Civita corresponde a la incorporación de un signo menos, por lo que $ epsilon_(k l m) = - epsilon_(l k m) = epsilon_(l m k) $
-
 Utilizando una de las identidades del símbolo de Levi-Civita:
-$ epsilon_(i j k) epsilon_(k l m) = epsilon_(i j k) epsilon_(l m k) = delta_(i l) delta_(j m) - delta_(i m) delta_(j l) $
-
+$ epsilon_(i j k) epsilon_(k l m) = delta_(i l) delta_(j m) - delta_(i m) delta_(j l) $
 Por lo que
 $ epsilon_(i j k) epsilon_( k l m) u_j dvp(u_m,x_l) &= (delta_(i l) delta_(j m) - delta_(i m) delta_(j l)) u_j dvp(u_m,x_l) \ &= u_j dvp(u_j,x_i) - u_j dvp(u_i,x_j) \ &= 1/2 dvp(u_j u_j,x_i) - u_j dvp(u_i,x_j) \ &= 1/2 dvp(u^2,x_i)- u_j dvp(u_i,x_j) $
 
@@ -463,11 +459,11 @@ Ahora, sustituiremos $arrow(u)$ por las derivadas de la función de corriente en
 $ dvp(arrow(omega),t) = nabla times (arrow(u) times arrow(omega) ) $
 
 Primero, obtengamos $arrow(omega) = nabla times arrow(u)= nabla times (- hat(z) times nabla psi)$
-En notación de Levi-Civita (ver capítulo 2.5):
+En notación de Levi-Civita:
 $ omega_i &= - epsilon_(i j k) dvp(,x_j) epsilon_(k l m) delta_(l 3) dvp(psi,x_m) \ &= - epsilon_(i j k) epsilon_(l m k) delta_(l 3) dvp(psi,x_m, x_j)  \ &= -(delta_(i l) delta_(j m) - delta_(i m ) delta_(j l)) delta_(l 3) dvp(psi,x_m, x_j) \ &=  delta_(j 3) dvp(psi,x_i, x_j) - delta_(i 3) dvp(psi,x_j, x_j) \ &= cancel(dvp(psi,x_i, z)) - delta_(i 3) dvp(psi,x_j, x_j) = - delta_(i 3) dvp(psi,x_j, x_j) equiv - hat(z) nabla^2 psi $
 
 Ahora, obtendremos $nabla times (arrow(u) times arrow(omega))$:
-Otra vez empleando notación de Levi-Civita
+Otra vez empleando notación de Levi-Civita 
 $ nabla times (arrow(u) times omega) &= epsilon_(i j k) dvp(,x_j) epsilon_(k l m) epsilon_(l n o) delta_(n 3) dvp(psi,x_o) delta_(m 3) dvp(psi,x_r,x_r) \ &= epsilon_(i j k) epsilon_(l m k) epsilon_(l n o) dvp(,x_j) [ delta_(n 3) delta_(m 3) dvp(psi,x_o) dvp(psi,x_r, x_r) ] \ &= (delta_(i l) delta_(j m) - delta_(i m) delta_(j l)) epsilon_(l n o) dvp(,x_j) [delta_(n 3) delta_(m 3) dvp(psi,x_n) dvp(psi,x_r, x_r) ] \ &= epsilon_(i n o) dvp(,x_j) [delta_(n 3) delta_(j 3) dvp(psi,x_o) dvp(psi,x_r,x_r)] - epsilon_(j n o) dvp(,x_j) [delta_( n 3) delta_(i 3) dvp(psi,x_o) dvp(psi,x_r,x_r)] \ &= epsilon_(i n o) cancel(dvp(,z)) [delta_(n 3) dvp(psi,x_o) dvp(psi,x_r, x_r)] - epsilon_(j n o) dvp(,x_j) [delta_(n 3) delta_(i 3) dvp(psi,x_o) dvp(psi,x_r, x_r)] \ &= delta_(i 3) dvp(,x_j) [- epsilon_(j n o) delta_(n 3) dvp(psi,x_o) dvp(psi,x_r,x_r)] \ &equiv hat(z) nabla dot [- hat(z) times nabla(psi) nabla^2 psi] \ &= hat(z) nabla dot [nabla^2 psi arrow(u)] \ &= hat(z)( nabla^2 psi cancel(nabla dot) arrow(u) +  arrow(u) dot nabla nabla^2 psi ) \ &= hat(z) [dvp(psi,y)dvp(,x)nabla^2 psi - dvp(psi,x)dvp(,y)nabla^2 psi] $ 
 
 Sustituyendo en la ecuación
@@ -486,7 +482,17 @@ Esta es la ecuación de movimiento para la función de corriente.
 = Leyes de conservación generales<todo>
 = Aplicaciones<todo>
 
-#heading(numbering:none)[Apéndice A: Notación de Levi-Civita]<levi_civita>
+#heading(numbering:none)[Apéndice A: Convenio de suma de Einstein]<einstein_notation>
+A la hora de usar notación de índices para representar vectores, es común que aparezcan sumatorios, como a la hora de utilizar el producto escalar. Para aligerar la notación, Albert Einstein estableció un convenio: cuando existe un producto de cantidades donde un índice aparece dos veces y este no se define de otra forma, el producto corresponde a una suma sobre ese índice de ese producto en las variables espaciales. Es decir, si uno escribe $u_i v_i$, esto es equivalente a $ sum_(i=1)^(3) u_i v_i = arrow(u) dot arrow(v) $
+
+Esto significa que, por ejemplo, podemos escribir operadores como el gradiente de una cantidad $nabla lambda$ como $ dvp(lambda,x_i) $ y si queremos tomar la divergencia de un vector, podríamos escribir simplemente
+$ nabla dot arrow(v) equiv dvp(v_i,x_i) $
+Cuando se acumulan muchos operadores diferenciales esto puede faclitar mucho los cálculos porque el orden de operaciones es claro. 
+
+
+
+
+#heading(numbering:none)[Apéndice B: Notación de Levi-Civita para el producto vectorial]<levi_civita>
 Para tratar el producto vectorial en notación tensorial, se define el símbolo de Levi-Civita $epsilon_(i j k)$ como totalmente antisimétrico, es decir que si se intercambian dos índices, el signo de su componente tiene que cambiar. Adicionalemente, se define $epsilon_(1 2 3) = 1$. De aquí podemos obtener los valores para todos las componentes:
 - Como al intercambiar índices debe de haber un cambio de signo, las componentes en las diagonales deben de anularse, es decir que si hay dos índices iguales $epsilon_(i j k) = 0$
 - Como al intercambiar índices tiene que cambiar el signo, cualquier intercambio de índices de $epsilon_(1 2 3)$ es -1. 
