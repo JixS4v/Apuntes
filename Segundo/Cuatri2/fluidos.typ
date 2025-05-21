@@ -414,7 +414,8 @@ $ dvp(phi,t) + 1/2 u^2 + p/rho = f(t) $
 
 De aquí podemos identificar una propiedad bastante importante del flujo potencial de un fluido incompresible. Supongamos que un obstáculo se desplaza a través del fluido. Si el resultado es flujo potencial, dicho flujo depende en cualquier instante únicamente de la velocidad del cuerpo en ese instante, y no de la aceleración. Esto se debe a que la ecuación de Laplace no contiene explícitamente el tiempo, sino que aparece en las condiciones de contorno suplementadas que dependen de la velocidad del obstáculo únicamente. 
 
-=== Criterio de incompresibilidad, o por qué descifrar jeroglíficos nunca es buena idea
+=== Criterio de incompresibilidad
+
 Estos resultados son muy útiles para los fluidos incompresibles, pero de verdad existen? Pues resulta que no, no hay fluidos totalmente incompresibles, pero podemos hablar de fluidos prácticamente incompresibles en ciertas condiciones de flujo. 
 
 Si la variación de la densidad es despreciable frente a esta se puede considerar incompresible. Esta condición nos permite ver el límite de la aproximación. Desarrollando el diferencial de la densidad:
@@ -445,7 +446,7 @@ Por lo que podemos establecer que para que el flujo sea incompresible
 $ mach^2 << 1 $
 Normalmente, a $mach<0.3$ se suele ver flujo incompresible #footnote[Fuente: está en los apuntes del profe]
 
-=== Los matemáticos le odian! Facilita la resolución de problemas con este extraño truco. <wip>
+=== Los matemáticos le odian! Facilita la resolución de problemas con este extraño truco. 
 Hay unos trucos que se pueden usar cuando se considera el flujo bidimensional, es decir que el campo de velocidades depende únicamente de dos coordenadas y su velocidad es paralela al plano que se considera (en este caso consideramos el plano $x y$, es decir $u_z = 0$ y $dvp(u_x,z)=dvp(u_y,z)=0$). En el caso del flujo incompresible, podemos resolver problemas de flujo dimensional más facilmente expresando la velocidad en términos de una función de corriente. Como $nabla dot arrow(u)= 0$, tenemos $dvp(u_x,x) + dvp(u_y,y) = 0 $. Podemos escribir esto de forma implícita definiento una función $psi$ tal que
 $ u_x = dvp(psi,y) quad u_y = -dvp(psi,x) $
 Ya que, asumiendo que $psi$ es una función bien comportada
@@ -468,16 +469,46 @@ $ nabla times (arrow(u) times omega) &= epsilon_(i j k) dvp(,x_j) epsilon_(k l m
 
 Sustituyendo en la ecuación
 $ -hat(z) dvp(,t) nabla^2 psi = hat(z)[dvp(psi,y) dvp(,x) nabla^2 psi - dvp(psi,x) dvp(,y) nabla^2 psi] \ => dvp(,t) nabla^2 psi + dvp(psi,y) dvp(,x) nabla^2 psi - dvp(psi,x) dvp(,y) nabla^2 psi = 0 $
-Esta es la ecuación de movimiento para la función de corriente.
+Esta es la ecuación para la función de corriente.
 
+Hay una propiedad adicional de esta función que se puede constatar. En flujo bidimensional, las líneas de corriente tienen como ecuación
+$ (dif x)/u_x = (dif y)/u_y $
+O también
+$ u_y dif x - u_x dif y = 0 $
+Sustituyendo la función de corriente
+$ dvp(psi,x) dif x + dvp(psi,y) dif y = 0 $
+Es decir
+$ dif psi = 0 $
+La función de corriente es constante a lo largo de una línea de corriente. Esto significa que se pueden obtener las todas las líneas de corriente como una clase de curvas donde $psi="cte"$.
 
 == Fluidos compresibles, casos importantes teóricos <wip>
 (Nota: Landau@landau1987fluid trata la acústica un poco más tarde en el libro, pero lo pongo antes porque es importante para los fluidos ideales y en la materia)
 
 
 
-= Ecuaciones del flujo viscoso<todo>
-== Obtención del tensor de esfuerzos viscosos<todo>
+= Ecuaciones del flujo viscoso
+Hemos visto que la ecuación de Euler se podía reescribir como
+$ dvp(,t) (rho v_i) = - dvp(Pi_(i j),x_j) $
+Donde $Pi_(i j)$ es el tensor de densidad de flujo de cantidad de movimiento. Obtuvimos su forma para transferencia de momento totalmente reversiblee, por el transporte mecánico de las partículas fluidas de un lado al otro y las fuerzas de presión que actuan sobre el fluido. La viscosidad realmente se debe a que existen fuerzas irreversibles que transportan el momento de las partes donde la velocidad es grande a las partes donde es menor. Podemos generalizar el tensor de densidad de flujo de cantidad de movimiento al flujo viscoso descomponiendo a este en las dos partes que lo componen, ya que $ Pi_(i j) = rho u_i u_j - tau_(i j) $
+Donde $tau_(i j)$ es nuestro tensor de esfuerzos, que en un fluido ideal era $ tau_(i j) = - p delta_(i j) $
+== Obtención del tensor de esfuerzos viscosos<wip>
+En el caso de un fluido más general, podemos añadir un término adicional a la expresión del tensor de esfuerzos, por lo que $ tau_(i j) = - p delta_(i j) + tau'_(i j) $
+Donde $tau'_(i j)$ se conoce como el tensor de esfuerzos viscosos, y es el que vamos a obtener ahora. 
+
+Primero, sabemos que la fricción interna solo ocurre cuando hay una diferencia de velocidades en regiones diferentes del fluido, para que haya movimiento en relación a la otra región. Por lo tanto, $tau'_(i j)$ solo puede depender de las derivadas espaciales de la velocidad del fluido. Además, si consideramos que estas diferencias son locales, es decir muy pequeñas, podemos exigir una dependencia lineal y de las primeras derivadas únicamente. Esta dependencia debe de ser tal que $tau'_(i j)$ se anule cuando la velocidad es uniforme en el espacio, por lo que solo puede depender de las derivadas espaciales. También constatamos que cuando hay un fluido en rotación uniforme, es decir que el fluido rota alrededor de un punto con una velocidad angular $arrow(Omega)$, $tau'_(i j)$ debe también anularse porque no hay fuerzas de fricción en el fluido. Esto significa que cuando $arrow(u) = arrow(Omega) times arrow(r)$ con $arrow(Omega)$ constante, $tau'_(i j)$ tiene que anularse. Vemos que si este es el caso, $nabla dot arrow(u) = 0$ (ya que ), por lo que podemos usar $dvp(u_k, x_k) $, pero también se anulan las combinaciones de derivadas $ dvp(u_i,x_j) + dvp(u_k,x_i) $
+Ya que también se anulan para flujo en rotación constante:
+$ dvp([arrow(Omega)times arrow(r)]_i,x_j) + dvp([arrow(Omega) times arrow(r)]_j,x_i) &equiv dvp(epsilon_(i k l) Omega_k x_l,x_j) + dvp(epsilon_(j k l) Omega_k x_l,x_i) \ &= epsilon_(i k l) Omega_k dvp(x_l,x_j) + epsilon_(j k l) Omega_k dvp(x_l,x_i) \ &= epsilon_(i k l) Omega_k delta_(l j) + epsilon_(j k l) omega_k delta_(l i ) \ &= epsilon_(i k j) Omega_k + epsilon_(j k i) Omega_k \ &equiv Omega_k (epsilon_(i k j) - epsilon_(i k j) ) = 0  $
+
+Además, para que no aparezcan fuerzas de torsión espontáneamente, el tensor debe de ser simétrico.
+
+Con estos requisitos, podemos construir el tensor que tiene más sentido físicamente, donde los términos de divergencia están en la diagonal y las sumas simétricas en los elementos laterales. El tensor de rango 2 más general de este tipo es
+$ tau'_( i j ) = a (dvp(u_i,x_j) + dvp(u_j,x_i)) + b dvp(u_k,x_k) delta_(i j) $
+Si el fluido es isotrópico, $a$ y $b$ no dependerán de la dirección, y podemos asumir que son constantes. 
+
+Conviene descomponer el tensor en dos partes, una sin traza y una diagonal correspondiente a la traza del tensor, cambiando las constantes
+$ tau'_(i j) = mu (dvp(u_i,x_j) + dvp(u_j,x_i) - 2/3 delta_(i j) dvp(u_l,x_l)) + b dvp(u_l,x_l) delta_(i j) $
+ 
+
 = Turbulencia, o como aprendí a dejar de preocuparme y amar las aproximaciones <todo>
 = Leyes de conservación generales<todo>
 = Aplicaciones<todo>
