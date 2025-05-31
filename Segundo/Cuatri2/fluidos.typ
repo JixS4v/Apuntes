@@ -250,7 +250,7 @@ Recordando la ecuación de Euler
 $ rho dvp(u_i,t) + rho u_j dvp(u_i,x_j) = - 1/rho dvp(p,x_i) $
 Tenemos, sustituyendo
 $ dvp(rho u_i,t) = - rho u_j dvp(u_i,x_j) - dvp(p,x_i) - u_i dvp(rho u_j,x_j) $
-Ahora, utilizando la regla del producto: 
+Ahora, utilizando l  a regla del producto: 
 $ dvp(rho u_i,t) = - dvp(p,x_i) - dvp(rho u_i u_j,x_j) $
 Ahora, escribimos $ dvp(p,x_i)$ como $delta_(i j) dvp(p,x_j)$, por lo que podemos meterlo dentro de la divergencia
 $ dvp(rho u_i,t) = - dvp((p delta_(i j) + rho u_i u_j),x_j) $
@@ -488,15 +488,20 @@ La función de corriente es constante a lo largo de una línea de corriente. Est
 
 = Ecuaciones del flujo viscoso
 Hemos visto que la ecuación de Euler se podía reescribir como
-$ dvp(,t) (rho v_i) = - dvp(Pi_(i j),x_j) $
+$ dvp(,t) (rho u_i) = - dvp(Pi_(i j),x_j) $
 Donde $Pi_(i j)$ es el tensor de densidad de flujo de cantidad de movimiento. Obtuvimos su forma para transferencia de momento totalmente reversiblee, por el transporte mecánico de las partículas fluidas de un lado al otro y las fuerzas de presión que actuan sobre el fluido. La viscosidad realmente se debe a que existen fuerzas irreversibles que transportan el momento de las partes donde la velocidad es grande a las partes donde es menor. Podemos generalizar el tensor de densidad de flujo de cantidad de movimiento al flujo viscoso descomponiendo a este en las dos partes que lo componen, ya que $ Pi_(i j) = rho u_i u_j - tau_(i j) $
+
 Donde $tau_(i j)$ es nuestro tensor de esfuerzos, que en un fluido ideal era $ tau_(i j) = - p delta_(i j) $
+
+Si sustituimos el tensor de esfuerzos en la ecuación anterior y operamos, podemos volver a la expresión tradicional de la ecuación de Euler en función del tensor de esfuerzos:
+$ dvm(u_i) = 1/rho  dvp(tau_(i j),x_j) $
+
 == Obtención del tensor de esfuerzos viscosos<wip>
 En el caso de un fluido más general, podemos añadir un término adicional a la expresión del tensor de esfuerzos, por lo que $ tau_(i j) = - p delta_(i j) + tau'_(i j) $
 Donde $tau'_(i j)$ se conoce como el tensor de esfuerzos viscosos, y es el que vamos a obtener ahora. 
 
-Primero, sabemos que la fricción interna solo ocurre cuando hay una diferencia de velocidades en regiones diferentes del fluido, para que haya movimiento en relación a la otra región. Por lo tanto, $tau'_(i j)$ solo puede depender de las derivadas espaciales de la velocidad del fluido. Además, si consideramos que estas diferencias son locales, es decir muy pequeñas, podemos exigir una dependencia lineal y de las primeras derivadas únicamente. Esta dependencia debe de ser tal que $tau'_(i j)$ se anule cuando la velocidad es uniforme en el espacio, por lo que solo puede depender de las derivadas espaciales. También constatamos que cuando hay un fluido en rotación uniforme, es decir que el fluido rota alrededor de un punto con una velocidad angular $arrow(Omega)$, $tau'_(i j)$ debe también anularse porque no hay fuerzas de fricción en el fluido. Esto significa que cuando $arrow(u) = arrow(Omega) times arrow(r)$ con $arrow(Omega)$ constante, $tau'_(i j)$ tiene que anularse. Vemos que si este es el caso, $nabla dot arrow(u) = 0$ (ya que ), por lo que podemos usar $dvp(u_k, x_k) $, pero también se anulan las combinaciones de derivadas $ dvp(u_i,x_j) + dvp(u_k,x_i) $
-Ya que también se anulan para flujo en rotación constante:
+Primero, sabemos que la fricción interna solo ocurre cuando hay una diferencia de velocidades en regiones diferentes del fluido, para que haya movimiento en relación a la otra región. Por lo tanto, $tau'_(i j)$ solo puede depender de las derivadas espaciales de la velocidad del fluido. Además, si consideramos que estas diferencias son locales, es decir muy pequeñas, podemos exigir una dependencia lineal y de las primeras derivadas únicamente. Esta dependencia debe de ser tal que $tau'_(i j)$ se anule cuando la velocidad es uniforme en el espacio, por lo que solo puede depender de las derivadas espaciales. También constatamos que cuando hay un fluido en rotación uniforme, es decir que el fluido rota alrededor de un punto con una velocidad angular $arrow(Omega)$, $tau'_(i j)$ debe también anularse porque no hay fuerzas de fricción en el fluido. Esto significa que cuando $arrow(u) = arrow(Omega) times arrow(r)$ con $arrow(Omega)$ constante, $tau'_(i j)$ tiene que anularse. Vemos que si este es el caso, $nabla dot arrow(u) = 0$ (ya que tenemos $ dvp(u_i,x_i) = dvp(,x_i)epsilon_(i j k) Omega_j x_k = epsilon_(i j k) Omega_j dvp(x_k,x_i) = epsilon_(i j k) Omega_j delta_(i k) = epsilon_(i j i) Omega_j = 0$), por lo que podemos usar $dvp(u_k, x_k) $, pero también podemos usar las combinaciones de derivadas $ dvp(u_i,x_j) + dvp(u_k,x_i) $
+ya que también se anulan para flujo en rotación constante:
 $ dvp([arrow(Omega)times arrow(r)]_i,x_j) + dvp([arrow(Omega) times arrow(r)]_j,x_i) &equiv dvp(epsilon_(i k l) Omega_k x_l,x_j) + dvp(epsilon_(j k l) Omega_k x_l,x_i) \ &= epsilon_(i k l) Omega_k dvp(x_l,x_j) + epsilon_(j k l) Omega_k dvp(x_l,x_i) \ &= epsilon_(i k l) Omega_k delta_(l j) + epsilon_(j k l) omega_k delta_(l i ) \ &= epsilon_(i k j) Omega_k + epsilon_(j k i) Omega_k \ &equiv Omega_k (epsilon_(i k j) - epsilon_(i k j) ) = 0  $
 
 Además, para que no aparezcan fuerzas de torsión espontáneamente, el tensor debe de ser simétrico.
@@ -506,8 +511,36 @@ $ tau'_( i j ) = a (dvp(u_i,x_j) + dvp(u_j,x_i)) + b dvp(u_k,x_k) delta_(i j) $
 Si el fluido es isotrópico, $a$ y $b$ no dependerán de la dirección, y podemos asumir que son constantes. 
 
 Conviene descomponer el tensor en dos partes, una sin traza y una diagonal correspondiente a la traza del tensor, cambiando las constantes
-$ tau'_(i j) = mu (dvp(u_i,x_j) + dvp(u_j,x_i) - 2/3 delta_(i j) dvp(u_l,x_l)) + b dvp(u_l,x_l) delta_(i j) $
- 
+$ tau'_(i j) = mu (dvp(u_i,x_j) + dvp(u_j,x_i) - 2/3 delta_(i j) dvp(u_l,x_l)) + mu_v dvp(u_l,x_l) delta_(i j) $
+Aquí hemos introducido dos constantes nuevas $mu$ y $mu_v$ que se conocen como el coeficiente de viscosidad dinámica y el coeficiente de viscosidad volumétrica respectivamente.
+
+
+== Ecuaciones de Navier-Stokes
+Tenemos entonces que el tensor de esfuerzos total es:
+$ tau_(i j) = mu (dvp(u_i,x_j) + dvp(u_j,x_i) - 2/3 delta_(i j) dvp(u_l,x_l)) + (mu_v dvp(u_l,x_l) - p) delta_(i j) $
+
+La ecuación de Euler se convierte entonces en
+$ rho dvm(u_i) &= dvp(,x_j) [ mu (dvp(u_i,x_j) + dvp(u_j,x_i) - 2/3 delta_(i j) dvp(u_l,x_l)) + (mu_v dvp(u_l,x_l) - p) delta_(i j) ] \ &equiv dvp(,x_j) [ mu (dvp(u_i,x_j) + dvp(u_j,x_i) - 2/3 delta_(i j) dvp(u_l,x_l))]  + dvp(,x_i)(mu_v dvp(u_l,x_l) - p) $
+Esta es la ecuación más general (excluyendo fuerzas másicas, que son triviales de añadir) de movimiento de un fluido viscoso. Si ahora suponemos que $ mu_v dvp(u_l,x_l) << p $, es decir que la viscosidad volumétrica es despreciable frente a la presión (esto es cierto en los flujos incompresibles ya que no tienen divergencia, pero suele ser verdad excepto en ciertos flujos compresibles como en las ondas de choque), tenemos las ecuaciones de Navier-Stokes:
+$ rho dvm(u_i) =  dvp(,x_j) [mu(dvp(u_i,x_j) + dvp(u_j,x_i) - 2/3 delta_(i j) dvp(u_l,x_l))]  - dvp(p ,x_i) $ 
+
+Si además consideramos incompresibilidad, es decir que $dvp(u_l,x_l) = 0$, podemos simplificar aún más la ecuación (ya que entonces la ecuación de continuidad es $nabla dot arrow(u) = 0$):
+$ rho dvm(u_i) = dvp(,x_j) [mu(dvp(u_i,x_j) + dvp(u_j,x_i))] - dvp(p,x_i) $
+Si suponemos viscosidad constante, que es razonable cuando el fluido es incompresible, obtenemos
+$ rho dvm(u_i) = mu ( dvp(u_i,x_j,x_j) + dvp(u_j,x_i, x_j)) - dvp(p,x_i) $
+Como no hay divergencia, el seegundo término se anula, obteniendo finalmente
+$ rho dvm(u_i) = mu dvp(u_i,x_j,x_j) - dvp(p,x_i) $
+Si utilizamos la viscosidad dinámica $nu = mu/rho $
+$ dvm(u_i) = nu dvp(u_i,x_j, x_j) - 1/rho dvp(p,x_i) $
+Esta es la ecuación de Navier-Stokes para un fluido incompresible.
+
+En notación vectorial, tendríamos
+$ dvm(arrow(u)) = nu nabla^2 arrow(u) - 1/rho nabla p $
+
+El tensor de esfuerzos viscosos en un flujo compresible es
+$ tau'_(i j) = mu (dvp(u_i,x_j) + dvp(u_j,x_i )) $
+
+
 
 = Turbulencia, o como aprendí a dejar de preocuparme y amar las aproximaciones <todo>
 = Leyes de conservación generales<todo>
