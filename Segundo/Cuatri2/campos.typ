@@ -1,7 +1,7 @@
 #import "../config.typ": *
 
-
-#show: doc => template(doc, "Campos y Ondas")
+#let intro = "Apuntes incompletos de un estudiante que perdió el interés. Utilízalos si te interesa entender el por qué de algunas formulas del principio."
+#show: doc => template(doc, "Campos y Ondas", preface:intro)
 
 = La ecuación de onda
 == Introducción

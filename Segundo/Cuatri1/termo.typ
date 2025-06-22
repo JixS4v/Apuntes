@@ -1,7 +1,9 @@
 #import "../config.typ": *
 
 
-#show: doc => template(doc, "Termodinámica")
+#let intro = "Estos apuntes son una transcripción de las diapositivas con comentarios adicionales. Pueden contener erratas, no tomar a ciegas."
+#show: doc => template(doc, "Termodinámica", preface:intro)
+
 
 = Conceptos básicos
 == Naturaleza de la Termodinámica

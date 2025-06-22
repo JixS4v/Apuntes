@@ -23,11 +23,8 @@ jobs:
             Segundo/Cuatri1/meca.typ
             Segundo/Cuatri1/mmat2.typ
             Segundo/Cuatri1/termo.typ
-            Segundo/Cuatri2/fest.typ
             Segundo/Cuatri2/campos.typ
             Segundo/Cuatri2/fluidos.typ
-            Segundo/Cuatri2/ppct.typ
-            Segundo/Cuatri2/electr.typ
           options: |
             --root
             .
@@ -39,8 +36,5 @@ jobs:
             Segundo/Cuatri1/meca.pdf
             Segundo/Cuatri1/mmat2.pdf
             Segundo/Cuatri1/termo.pdf
-            Segundo/Cuatri2/fest.pdf
             Segundo/Cuatri2/campos.pdf
             Segundo/Cuatri2/fluidos.pdf
-            Segundo/Cuatri2/ppct.pdf
-            Segundo/Cuatri2/electr.pdf

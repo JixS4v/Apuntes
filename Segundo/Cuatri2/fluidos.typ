@@ -1,6 +1,6 @@
 #import "../config.typ": *
 
-#let intro = [Estos apuntes están principablemente basados sobre el libro de Landau y Lifshitz@landau1987fluid pero contienen solo el contenido relevante a la clase, y la convención se ha intentado mantener similar. El enfoque principal, sobre todo, es justificar y elaborar sobre algunas de las explicaciones con el fin de ganar intuición sobre el funcionamiento de los fluidos de forma teórica. Por lo tanto, se ha elegido seguir la estructura del libro, que comienza con los resultados particularizados y busca generalizaciones más tarde, en oposición a construir un marco teórico desde el principio. Estos apuntes no son un resumen, pero buscan tener todo el contenido relevante a la asignatura en ellos. ]
+#let intro = [Estos apuntes están principablemente basados sobre el libro de Landau y Lifshitz@landau1987fluid pero contienen solo el contenido relevante a la clase (y no todo el contenido, en su condición actual, por falta de tiempo quedarán incompletos), y la convención se ha intentado mantener similar. El enfoque principal, sobre todo, es justificar y elaborar sobre algunas de las explicaciones con el fin de ganar intuición sobre el funcionamiento de los fluidos de forma teórica. Por lo tanto, se ha elegido seguir la estructura del libro, que comienza con los resultados particularizados y busca generalizaciones más tarde, en oposición a construir un marco teórico desde el principio. Estos apuntes no son un resumen, pero buscan tener todo el contenido relevante a la asignatura en ellos. ]
 
 #show: doc => template(doc, "Física de Fluidos", preface:intro)
 
@@ -426,7 +426,7 @@ En aproximación de primer orden para pequeñas variaciones
 $ Delta rho = dvp(rho,p, eval:s, evalsym:")") Delta p $
 es decir
 $ Delta rho = 1/dvpc(p,rho, eval:s, evalsym:")") Delta p $
-Identificamos esta derivada con el cuadrado de la velocidad del sonido $a^2$ #footnote[Por ahora la tomamos como definición, más adelante justificaremos la fórmula cuando tratemos el flujo compresible y el sonido]
+Identificamos esta derivada con el cuadrado de la velocidad del sonido $a^2$ 
 
 Por lo tanto $ Delta rho = (Delta p)/a^2 $
 
@@ -446,7 +446,7 @@ Por lo que podemos establecer que para que el flujo sea incompresible
 $ mach^2 << 1 $
 Normalmente, a $mach<0.3$ se suele ver flujo incompresible #footnote[Fuente: está en los apuntes del profe]
 
-=== Los matemáticos le odian! Facilita la resolución de problemas con este extraño truco. 
+=== Función de corriente: almendruco incommpresible
 Hay unos trucos que se pueden usar cuando se considera el flujo bidimensional, es decir que el campo de velocidades depende únicamente de dos coordenadas y su velocidad es paralela al plano que se considera (en este caso consideramos el plano $x y$, es decir $u_z = 0$ y $dvp(u_x,z)=dvp(u_y,z)=0$). En el caso del flujo incompresible, podemos resolver problemas de flujo dimensional más facilmente expresando la velocidad en términos de una función de corriente. Como $nabla dot arrow(u)= 0$, tenemos $dvp(u_x,x) + dvp(u_y,y) = 0 $. Podemos escribir esto de forma implícita definiento una función $psi$ tal que
 $ u_x = dvp(psi,y) quad u_y = -dvp(psi,x) $
 Ya que, asumiendo que $psi$ es una función bien comportada
@@ -480,10 +480,6 @@ $ dvp(psi,x) dif x + dvp(psi,y) dif y = 0 $
 Es decir
 $ dif psi = 0 $
 La función de corriente es constante a lo largo de una línea de corriente. Esto significa que se pueden obtener las todas las líneas de corriente como una clase de curvas donde $psi="cte"$.
-
-== Fluidos compresibles, casos importantes teóricos <wip>
-(Nota: Landau@landau1987fluid trata la acústica un poco más tarde en el libro, pero lo pongo antes porque es importante para los fluidos ideales y en la materia)
-
 
 
 = Ecuaciones del flujo viscoso
@@ -540,11 +536,6 @@ $ dvm(arrow(u)) = nu nabla^2 arrow(u) - 1/rho nabla p $
 El tensor de esfuerzos viscosos en un flujo compresible es
 $ tau'_(i j) = mu (dvp(u_i,x_j) + dvp(u_j,x_i )) $
 
-
-
-= Turbulencia, o como aprendí a dejar de preocuparme y amar las aproximaciones <todo>
-= Leyes de conservación generales<todo>
-= Aplicaciones<todo>
 
 #heading(numbering:none)[Apéndice A: Convenio de suma de Einstein]<einstein_notation>
 A la hora de usar notación de índices para representar vectores, es común que aparezcan sumatorios, como a la hora de utilizar el producto escalar. Para aligerar la notación, Albert Einstein estableció un convenio: cuando existe un producto de cantidades donde un índice aparece dos veces y este no se define de otra forma, el producto corresponde a una suma sobre ese índice de ese producto en las variables espaciales. Es decir, si uno escribe $u_i v_i$, esto es equivalente a $ sum_(i=1)^(3) u_i v_i = arrow(u) dot arrow(v) $
