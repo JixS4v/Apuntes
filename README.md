@@ -11,9 +11,8 @@
 <details>
 <summary> Segundo Cuatrimestre </summary>
 
-  - [Física Estadística](https://github.com/JixS4v/Apuntes/releases/download/latest/fest.pdf)
-  - [Física de Fluidos](https://github.com/JixS4v/Apuntes/releases/download/latest/fluidos.pdf)
-  - [Campos y Ondas](https://github.com/JixS4v/Apuntes/releases/download/latest/campos.pdf)
+  - [Física de Fluidos](https://github.com/JixS4v/Apuntes/releases/download/latest/fluidos.pdf) (parcialmente incompleto pero útil)
+  - [Campos y Ondas](https://github.com/JixS4v/Apuntes/releases/download/latest/campos.pdf) (muy incompleto)
 </details>
 </details>
 
