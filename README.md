@@ -1,7 +1,4 @@
-## Disponibles:
-<details>
-<summary> Segundo </summary>
-<details>
+
 <summary> Primer Cuatrimestre </summary>
   
 - [Termodinámica](https://github.com/JixS4v/Apuntes/releases/download/latest/termo.pdf)
@@ -14,6 +11,4 @@
   - [Física de Fluidos](https://github.com/JixS4v/Apuntes/releases/download/latest/fluidos.pdf) (parcialmente incompleto pero útil)
   - [Campos y Ondas](https://github.com/JixS4v/Apuntes/releases/download/latest/campos.pdf) (muy incompleto)
 </details>
-</details>
 
-### Se aceptan contribuciones siguiendo el formato apropiado.
