@@ -543,9 +543,9 @@ $ dif S = 1/T dvp(U, T, eval: V, evalsym:"(") dif T + 1/T [dvp(U, V, eval: T, ev
 Identificando derivadas parciales: 
 $ dvp(S, T, eval: V, evalsym:"(") = 1/T dvp(U, T, eval: V, evalsym:"(") ; dvp(S, V, eval: T, evalsym:"(") = 1/T [dvp(U, V, eval: T, evalsym:"(") + p ] $
 Como la entropía es función de estado, es una diferencial exacta, y cumple la condición de Schwartz:
-$ diff/(diff T)[dvp(S, V, eval: T, evalsym:"(")]_V = diff/(diff V)[dvp(S, T, eval: V, evalsym:"(")]_T $
-$ diff/(diff T)[dvp(S, V, eval: T, evalsym:"(")]_V = diff/(diff T) [1/T [dvp(U, V, eval: T, evalsym:"(") + p ]]_T = 1/T dvp(U,T,V, evalsym:"(") -1/T^2 dvp(U, V, eval: T, evalsym:"(")+1/T dvp(p, T, eval: V, evalsym:"(") - p/(T^2) $
-$ diff/(diff V) [dvp(S, T, eval: V, evalsym:"(")]_T = diff/(diff V)[1/T dvp(U, T, eval: V, evalsym:"(")]_T = 1/T ((diff^2 U)/(diff V diff T)) $
+$ partial/(partial T)[dvp(S, V, eval: T, evalsym:"(")]_V = partial/(partial V)[dvp(S, T, eval: V, evalsym:"(")]_T $
+$ partial/(partial T)[dvp(S, V, eval: T, evalsym:"(")]_V = partial/(partial T) [1/T [dvp(U, V, eval: T, evalsym:"(") + p ]]_T = 1/T dvp(U,T,V, evalsym:"(") -1/T^2 dvp(U, V, eval: T, evalsym:"(")+1/T dvp(p, T, eval: V, evalsym:"(") - p/(T^2) $
+$ partial/(partial V) [dvp(S, T, eval: V, evalsym:"(")]_T = partial/(partial V)[1/T dvp(U, T, eval: V, evalsym:"(")]_T = 1/T ((partial^2 U)/(partial V partial T)) $
 Reordenando y simplificando:
 #stack(spacing: .5cm, dir:ltr,$ -1/T^2 dvp(U, V, eval: T, evalsym:"(") + 1/T dvp(p, T, eval: V, evalsym:"(") - p/T^2 = 0 -> $, [#rect($ T dvp(p, T, eval: V, evalsym:"(") = dvp(U, V, eval: T, evalsym:"(") + p $)])
 Consecuencias: #[

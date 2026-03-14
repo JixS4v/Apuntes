@@ -63,16 +63,16 @@ Aquí hemos intercambiado todas las variables Lagrangianas por las Eulerianas. H
 Vamos a comenzar obteniendo la ecuación de conservación de la masa para un fluido #footnote([Utilizaremos el argumento de Landau @landau1987fluid]). Podemos obtener la masa de un fluido de densidad $rho$ contenida dentro de un volumen de control fijo $V_c$ como
 $ integral_(V_c) rho dif V $
 Por lo tanto, el incremento temporal de la masa dentro del volumen se puede expresar como
-$ diff/(diff t) integral_(V_c) rho dif V $
+$ partial/(partial t) integral_(V_c) rho dif V $
 
 Por otra parte podemos expresar el flujo de masa hacia el exterior del volumen por su superficie como
 $ integral.cont_(S_c) rho arrow(u) dot hat(n) dif S $
 donde $hat(n)$ es el vector normal exterior de la superficie. Podemos constatar que esto es equivalente al decrecimiento temporal de la masa contenida en el volumen. Por lo tanto, podemos establecer la relación
-$ diff/(diff t) integral_(V_c) rho dif V = - integral.cont_(S_c) rho arrow(u) dot hat(n) dif S $
+$ partial/(partial t) integral_(V_c) rho dif V = - integral.cont_(S_c) rho arrow(u) dot hat(n) dif S $
 Utilizando el teorema de Gauss, tenemos
 $ integral.cont_(S_c) rho arrow(u) dot hat(n) dif S = integral_(V_c) nabla dot (rho arrow(u)) dif V $
 Por lo tanto, la expresión anterior se transforma en
-$ diff/(diff t) integral_(V_c) rho dif V  = - integral_(V_c) nabla dot (rho arrow(u)) dif V $
+$ partial/(partial t) integral_(V_c) rho dif V  = - integral_(V_c) nabla dot (rho arrow(u)) dif V $
 Reordenando e intercambiando la diferenciación y la integral (el volumen de control es fijo en el espacio y constante, por lo que esta manipulación está permitida), obtenemos
 $ integral_(V_c) [dvp(rho,t) + nabla dot (rho arrow(u))] = 0 $
 Como esta integral se debe anular para cualquier volumen de control fijo, el integrando es el que se debe de anular, por lo que obtenemos
@@ -150,8 +150,8 @@ recordando la condición anterior, tenemos $ dif arrow(r) = hat(e)_t abs(dif arr
 Por lo que, reordenando
 $ hat(e)_t = dv(arrow(r),l) $
 Podemos calcular 
-$ hat(e)_t dot nabla = dv(arrow(r), l) dot nabla equiv dv(x_i, l) dot diff/(diff x_i) = 1/(dif l) dif x_i partial/(partial x_i) $
-Podemos indentificar la suma $ dif x_i diff/(diff x_i)$ como un operador correspondiente a la diferencial exacta de una función dependiente de la posición, por ejemplo $dif lambda = dif x_i dvp(lambda,x_i ) $. Por lo tanto, podemos escribir 
+$ hat(e)_t dot nabla = dv(arrow(r), l) dot nabla equiv dv(x_i, l) dot partial/(partial x_i) = 1/(dif l) dif x_i partial/(partial x_i) $
+Podemos indentificar la suma $ dif x_i partial/(partial x_i)$ como un operador correspondiente a la diferencial exacta de una función dependiente de la posición, por ejemplo $dif lambda = dif x_i dvp(lambda,x_i ) $. Por lo tanto, podemos escribir 
 $ hat(e)_t dot nabla equiv dif/(dif l) $
 
 Sustituyendo este resultado:
@@ -184,23 +184,23 @@ $ 1/2 rho u^2 + rho e $
 Donde el primer término corresponde a la energía cinética del fluido en el volumen y el segundo a la energía interna. 
 
 Podemos calcular su evolución temporal como
-$ diff/(diff t) (1/2 rho u^2 + rho e) $
+$ partial/(partial t) (1/2 rho u^2 + rho e) $
 Para establecer una correspondencia para esta cantidad, consideremos primero el primer término
-$ diff/(diff t) (1/2 rho u^2) = 1/2 u^2 dvp(rho,t) + 1/2 rho dvp(u^2,t) $
+$ partial/(partial t) (1/2 rho u^2) = 1/2 u^2 dvp(rho,t) + 1/2 rho dvp(u^2,t) $
 Utilizando que $u^2 equiv arrow(u) dot arrow(u)$ y la regla del producto otra vez:
-$ diff/(diff t) (1/2 rho u^2) = 1/2 u^2 dvp(rho,t) + rho arrow(u) dot dvp(arrow(u),t) $
+$ partial/(partial t) (1/2 rho u^2) = 1/2 u^2 dvp(rho,t) + rho arrow(u) dot dvp(arrow(u),t) $
 Empleando la ecuación de continuidad y la de Euler, tenemos
-$ diff/(diff t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot [(arrow(u) dot nabla)arrow(u) + 1/rho nabla p] = - 1/2 u^2 nabla dot (rho arrow(u)) - arrow(u) dot [rho (arrow(u) dot nabla) arrow(u) + nabla p] $
+$ partial/(partial t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot [(arrow(u) dot nabla)arrow(u) + 1/rho nabla p] = - 1/2 u^2 nabla dot (rho arrow(u)) - arrow(u) dot [rho (arrow(u) dot nabla) arrow(u) + nabla p] $
 Utilizando la forma diferencial de la entalpía
 $ dif h = T dif s + 1/rho dif p => nabla p = rho nabla h - rho T nabla s $
 Por lo que tenemos
-$ diff/(diff t) (1/2 rho u^2) = -1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot [(arrow(u) dot nabla) arrow(u) + nabla h - T nabla s ] $
+$ partial/(partial t) (1/2 rho u^2) = -1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot [(arrow(u) dot nabla) arrow(u) + nabla h - T nabla s ] $
 Ahora, sabiendo que
 $ arrow(u) dot (arrow(u) dot nabla) arrow(u) equiv u_i u_j dvp(u_i,x_j) = 1/2 u_j dvp(u_i u_i,x_j) = 1/2 u_j dvp(u^2,x_j) equiv 1/2 arrow(u) dot nabla u^2 $
 Podemos escribir
-$ diff/(diff t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot (1/2 nabla u^2 + nabla h - T nabla s) $
+$ partial/(partial t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot (1/2 nabla u^2 + nabla h - T nabla s) $
 Finalmente, reorganizando obtenemos
-$ diff/(diff t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot nabla(1/2 u^2 + h) + rho T arrow(u) dot nabla s $
+$ partial/(partial t) (1/2 rho u^2) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot nabla(1/2 u^2 + h) + rho T arrow(u) dot nabla s $
 Ahora, para calcular $dvp((rho e),t)$, comenzamos con
 $ dif (rho e) = e dif rho + rho dif e $
 Y por lo tanto, utilizando la expresión más común de la energía interna
@@ -218,19 +218,19 @@ Utilizando la ecuación adiabática y la de continuidad
 $ dvp(rho e,t) = - rho T arrow(u) dot nabla s - h nabla dot (rho arrow(u)) $
 
 Ahora ya podemos combinar nuestros resultados
-$ diff/(diff t) (1/2 rho u^2 + rho e) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot nabla(1/2 u^2 + h) + cancel(rho T arrow(u) dot nabla s) - cancel(rho T arrow(u) dot nabla s) - h nabla dot (rho arrow(u)) $
+$ partial/(partial t) (1/2 rho u^2 + rho e) = - 1/2 u^2 nabla dot (rho arrow(u)) - rho arrow(u) dot nabla(1/2 u^2 + h) + cancel(rho T arrow(u) dot nabla s) - cancel(rho T arrow(u) dot nabla s) - h nabla dot (rho arrow(u)) $
 Agrupando
-$ diff/(diff t) (1/2 rho u^2 + rho e) = - (1/2 u^2 + h) nabla dot (rho arrow(u)) - rho arrow(u) dot nabla(1/2 u^2 + h) $
+$ partial/(partial t) (1/2 rho u^2 + rho e) = - (1/2 u^2 + h) nabla dot (rho arrow(u)) - rho arrow(u) dot nabla(1/2 u^2 + h) $
 Utilizando la regla del producto
-$ diff/(diff t) (1/2 rho u^2 + rho e) = - nabla dot [rho arrow(u) (1/2 u^2 + h)] $
+$ partial/(partial t) (1/2 rho u^2 + rho e) = - nabla dot [rho arrow(u) (1/2 u^2 + h)] $
 
 El sentido de esta expresión es claro una vez la integramos en un volumen
 
-$ diff/(diff t) integral_V (1/2 rho u^2 + rho e) = - integral_V nabla dot (rho arrow(u) (1/2 u^2 + h)) $
+$ partial/(partial t) integral_V (1/2 rho u^2 + rho e) = - integral_V nabla dot (rho arrow(u) (1/2 u^2 + h)) $
 
 La integral de derecha se transforma en una de superficie con el teorema de la divergencia
 
-$ diff/(diff t) integral_V (1/2 rho u^2 + rho e) = - integral.cont_S rho (1/2 u^2 + h) arrow(u) dot hat(n) dif S $
+$ partial/(partial t) integral_V (1/2 rho u^2 + rho e) = - integral.cont_S rho (1/2 u^2 + h) arrow(u) dot hat(n) dif S $
 
 Podemos indentificar el lado izquierdo de la integral como el incremento temporal de la energía en el volumen, por lo que el lado derecho corresponde entonces a el flujo de energía hacia el interior del volumen. Podemos entonces identificar el vector $ rho arrow(u) (1/2 u^2 + h) $ como el vector de densidad de flujo energético.
 
@@ -257,9 +257,9 @@ $ dvp(rho u_i,t) = - dvp((p delta_(i j) + rho u_i u_j),x_j) $
 Podemos definir un tensor #footnote[Este tensor no corresponde al tensor de esfuerzos general, sino que lo contiene. En este caso, como se considera un fluido ideal la parte correspondiente al tensor de esfuerzos es $p delta_(i j)$] $ Pi_(i j) = p delta_(i j) + rho u_i u_j$ tal que 
 $ dvp(rho u_i, t) = - dvp(Pi_(i j),x_j) $
 Su significado físico se aclara si integramos la ecuación en un volumen
-$ diff/(diff t) integral_V rho u_i dif V = - integral_V dvp(Pi_(i j),x_j) dif V $
+$ partial/(partial t) integral_V rho u_i dif V = - integral_V dvp(Pi_(i j),x_j) dif V $
 aplicando el teorema de Gauss
-$ diff/(diff t) integral_v rho u_i dif V = - integral.cont_S Pi_(i j) n_j dif S $
+$ partial/(partial t) integral_v rho u_i dif V = - integral.cont_S Pi_(i j) n_j dif S $
 Claramente, el lado izquierdo de la ecuación es el incremento temporal de la componente $i$-ésima de la cantidad de movimiento en el volumen, por lo tanto, el lado derecho al ser una integral de superficie debe corresponder a un flujo, en este caso al flujo de la $i$-ésima componente de la cantidad de movimiento hacia el interior del volumen por su superficie delimitante. Vemos entonces que el tensor $Pi_(i j)$ corresponde al flujo de la componente i-ésima del momento a través de una superficie unitaria normal a $x_j$. Por esta razón, se llama tensor de densidad de flujo de momento.
 
 === Conservación de la circulación 
@@ -376,7 +376,7 @@ $ (arrow(u) dot nabla) arrow(u) = 1/2 nabla u^2 - arrow(u) times (nabla times ar
 Entonces
 $ dvp(arrow(u),t) + 1/2 nabla u^2 - arrow(u) times (nabla times arrow(u)) = - nabla (p/ rho) + arrow(g) $
 Tomando el rotacional, sabiendo que el rotacional del gradiente es nulo:
-$ diff/(diff t)( nabla times arrow(u) ) = nabla times [arrow(u) times (nabla times arrow(u))] $
+$ partial/(partial t)( nabla times arrow(u) ) = nabla times [arrow(u) times (nabla times arrow(u))] $
 En términos de la vorticidad
 $ dvp(arrow(omega),t) = nabla times (arrow(u) times arrow(omega)) $
 

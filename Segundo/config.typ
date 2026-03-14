@@ -1,7 +1,7 @@
 
-#import "@preview/diverential:0.2.0": *
+#import "@preview/diverential:0.3.0": *
 #import "@preview/xarrow:0.3.1": *
-#import "@preview/hydra:0.5.1": hydra
+#import "@preview/hydra:0.6.2": hydra
 
 
 // Styling helper
@@ -60,15 +60,14 @@ show heading.where(label:<wip>):it=>{
 }
 
 
-
-show outline.entry: it =>{
+show outline.entry: it => {
   if it.level > 5 {return}
   // Gray fill if todo
   let todo = it.element in query(label("todo"))
   let wip = it.element in query(label("wip"))
   set text(fill:gray) if todo
   set text(fill:navy, style:"italic") if wip
-  let style = h(3pt) + box(width:1fr, it.fill)+h(3pt)+it.page
+  let style = h(3pt) + box(width:1fr, it.fill)+h(3pt)+it.page()
   // We don't want any page number for todo
   if todo{
     style=none
@@ -79,17 +78,18 @@ show outline.entry: it =>{
   // Add the bold level 1 non todo
   set text(15pt, weight:"bold") if it.level == 1
 
-  let output = text[#it.body] + output
+  let output = text[#it.body()] + output
 
   // V spacing for bigger ones
   if it.level == 1 {v(15pt, weak:true)}
 
-  if not todo {
-    link(it.element.location(), output)
-  }
-  else{output}
-}
 
+  let final = it.indented(it.prefix(), output)
+  link(
+    it.element.location(),
+    final,
+  )
+}
 outline(title: [Índice], indent: auto)
 
 // Margin titles
