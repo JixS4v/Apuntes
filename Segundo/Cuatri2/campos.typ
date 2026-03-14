@@ -71,7 +71,7 @@ $ nabla dot (- nabla phi - dvp(arrow(A),t)) = rho/epsilon_0 $
 $ nabla^2 phi + nabla dot dvp(arrow(A),t) = - rho/epsilon_0 $
 
 La ley de Ampere-Maxwell es:
-$ nabla times (nabla times arrow(A)) = mu_0 [arrow(J) + epsilon_0 diff/(diff t)(- nabla phi - dvp(arrow(A),t))] $
+$ nabla times (nabla times arrow(A)) = mu_0 [arrow(J) + epsilon_0 partial/(partial t)(- nabla phi - dvp(arrow(A),t))] $
 Por identidades vectoriales conocidas, $nabla times (nabla times arrow(A)) = nabla(nabla dot arrow(A)) - nabla^2 arrow(A)$, y haciendo las mismas suposiciones sobre la condición de Schwarz para $phi$:
 $ nabla (nabla dot arrow(A)) - nabla^2 arrow(A) = mu_0 [arrow(J) - epsilon_0 nabla dvp(phi,t)  - epsilon_0 dvp(arrow(A),t,deg:2) ] $
 Reordenando
@@ -226,12 +226,12 @@ Es permisible en este paso añadir fases iniciales a las ondas.
 Hemos visto que en una sola dirección la onda electromagnética en ausencia de cargas y corrientes (o a gran distancia de estas) se comporta como una onda plana.
 
 Podemos también discutir el caso de la simetría esférica, donde la onda se propaga en todas las direcciones por igual. Recordemos que el laplaciano en coordenadas esféricas es
-$ nabla^2 phi = 1/r^2 diff/(diff r) (r^2 dvp(phi,r)) + 1/(r^2 sin theta) diff/(diff theta) (sin theta dvp(phi,theta)) + 1/(r^2 sin^2 theta) dvp(phi,phi.alt, deg:2) $
+$ nabla^2 phi = 1/r^2 partial/(partial r) (r^2 dvp(phi,r)) + 1/(r^2 sin theta) partial/(partial theta) (sin theta dvp(phi,theta)) + 1/(r^2 sin^2 theta) dvp(phi,phi.alt, deg:2) $
 Sin embargo, al tener simetría esférica:
-$ nabla^2 phi = 1/r^2 diff/(diff r) (r^2 dvp(phi,r)) $
+$ nabla^2 phi = 1/r^2 partial/(partial r) (r^2 dvp(phi,r)) $
 Podemos simplificar esta expresión introduciendo una función $f(r)$ tal que $phi = f(r)/r$
-$ nabla^2 phi &= 1/r^2 diff/(diff r) (r^2 dvps(f(r)/r,r)) \
-  &= 1/r^2 diff/(diff r) (r dvp(f(r),r) - f(r)) \
+$ nabla^2 phi &= 1/r^2 partial/(partial r) (r^2 dvps(f(r)/r,r)) \
+  &= 1/r^2 partial/(partial r) (r dvp(f(r),r) - f(r)) \
   &= 1/r^2 (r dvp(f(r),r,deg:2) + dvp(f(r),r) - dvp(f(r),r)) \
   &= 1/r dvp(f(r),r, deg:2) $
 Volviendo a sustituir

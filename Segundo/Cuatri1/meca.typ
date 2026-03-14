@@ -113,44 +113,44 @@ Esto es el Principio de D'Alembert.
 Hemos conseguido nuestro objetivo en que las fuerzas de ligadura ya no aparecen, y se puede omitir el superíndice $(a)$. Aún no está en una forma que nos permita desarollar ecuaciones de movimiento para el sistema. Debemos transfomar el principio en una expresión de desplazamientos virtuales de las coordenadas generalizadas, que son independientes entre sí (para ligaduras holónomas), para que los coeficientes de las $delta q_i$ puedan ser nulos.
 Empezamos por las ecuaciones de transformación: 
 $ r_i = r_i (q_1, q_2, ..., q_n, t) $ (asumiendo $n$ coordenadas independientes). 
-Ahora utilizaremos la regla de la cadena para derivar con respecto al tiempo, con lo que $ v_i = (dif r_i)/(dif t) = sum_k (diff r_i)/(diff q_k)dot(q)_k + (diff r_i)/(diff t) $
+Ahora utilizaremos la regla de la cadena para derivar con respecto al tiempo, con lo que $ v_i = (dif r_i)/(dif t) = sum_k (partial r_i)/(partial q_k)dot(q)_k + (partial r_i)/(partial t) $
 Similarmente, el desplazamiento irtual $delta r_i$ puede conectarse con los desplazamientos virtuales $delta q_i$ por 
-$ delta r_i = sum_j (diff r_i)/(diff q_j) delta q_j $
+$ delta r_i = sum_j (partial r_i)/(partial q_j) delta q_j $
 
-En terminos de coordenadas generalizadas, el trabajo virtual de la $F_i$ se convierte en $ sum_i F_i dot delta r_i = sum_(i,j) F_i (diff r_i)/(diff q_j) delta q_j = sum_j Q_j delta q_j $
-Donde $Q_j$ son los componentes de la fuerza generalizada, definida como $ Q_j = sum_i F_i dot (diff r_i)/(diff q_j) $
+En terminos de coordenadas generalizadas, el trabajo virtual de la $F_i$ se convierte en $ sum_i F_i dot delta r_i = sum_(i,j) F_i (partial r_i)/(partial q_j) delta q_j = sum_j Q_j delta q_j $
+Donde $Q_j$ son los componentes de la fuerza generalizada, definida como $ Q_j = sum_i F_i dot (partial r_i)/(partial q_j) $
 Es importante notar que como las coordenadas generalizadas no tienen que tener necesariamente las dimensiones de longitud, las fuerzas generalizadas no tendrán necesariamente las dimensiones de fuerza, pero $Q_j delta q_j$ sí tendrá las dimensiones de trabajo. Por ejemplo, $Q_j$ será un torque $N_j$ y $dif q_j$ un ángulo diferencial $dif theta_j$, que hace a $N_J dif theta_j$ un diferencial de trabajo.
 
 Ahora vamos al otro término del principio de D'Alembert, que se puede escribir como $ sum_i dot(p)_i delta r_i = sum_i m_i dot.double(r)_i dot delta r_i $
-Expresando $delta r_i$ en terminos de coordenadas generalizadas, esto se convierte en $ sum_(i,j) m_i dot.double(r)_i dot (diff r_i)/(diff q_j) delta q_j $
+Expresando $delta r_i$ en terminos de coordenadas generalizadas, esto se convierte en $ sum_(i,j) m_i dot.double(r)_i dot (partial r_i)/(partial q_j) delta q_j $
 Partiendo de esta relación (regla del producto):
-$ sum_(i,j) dif/(dif t) (m_i dot(r)_i dot (diff r_i)/(diff q_j))  = sum_(i,j) [m_i dot.double(r)_i (diff r_i)/(diff q_j)+m_i dot(r_i)dot dif/(dif t) (diff r_i)/(diff q_j)] $
+$ sum_(i,j) dif/(dif t) (m_i dot(r)_i dot (partial r_i)/(partial q_j))  = sum_(i,j) [m_i dot.double(r)_i (partial r_i)/(partial q_j)+m_i dot(r_i)dot dif/(dif t) (partial r_i)/(partial q_j)] $
 Podemos escribir que:
-$ sum_(i,j) m_i dot.double(r)_i (diff r_i)/(diff q_j) = sum_(i,j) [dif/(dif t) (m_i dot(r)_i dot (diff r_i)/(diff q_j))  -m_i dot(r_i)dot dif/(dif t) (diff r_i)/(diff q_j)] $
+$ sum_(i,j) m_i dot.double(r)_i (partial r_i)/(partial q_j) = sum_(i,j) [dif/(dif t) (m_i dot(r)_i dot (partial r_i)/(partial q_j))  -m_i dot(r_i)dot dif/(dif t) (partial r_i)/(partial q_j)] $
 Desarrollando partes de la ecuación anterior:
-$ dif/(dif t) ((diff r_i)/(diff q_j)) = (diff dot(r)_i)/(diff q_j) = sum_k (diff^2 r_i)/(diff q_j diff q_k) dot(q)_k + (diff^2 r_i)/(diff q_j diff t) = (diff v_i)/(diff q_j) $
+$ dif/(dif t) ((partial r_i)/(partial q_j)) = (partial dot(r)_i)/(partial q_j) = sum_k (partial^2 r_i)/(partial q_j partial q_k) dot(q)_k + (partial^2 r_i)/(partial q_j partial t) = (partial v_i)/(partial q_j) $
 
-También sabemos que $ (diff v_i)/(diff dot(q)_j) = (diff r_i)/(diff q_j) $
+También sabemos que $ (partial v_i)/(partial dot(q)_j) = (partial r_i)/(partial q_j) $
 
 Sustituyendo estos cambios: 
-$ sum_i m_i dot.double(r)_i dot (diff r_i)/(diff q_j) = sum_i [ dif/(dif t) (m_i v_i dot (dif v_i)/(diff dot(q)_j)-m_i v_i dot (diff v_i)/(diff q_j)] $
+$ sum_i m_i dot.double(r)_i dot (partial r_i)/(partial q_j) = sum_i [ dif/(dif t) (m_i v_i dot (dif v_i)/(partial dot(q)_j)-m_i v_i dot (partial v_i)/(partial q_j)] $
 El segundo término de la izquierda de la ecuación puede ser expandido 
-$ sum_j {dif/(dif t) [diff/(diff dot(q)_j)(sum_i 1/2 m_i v_i^2)]-diff/(diff q_j)(sum_i 1/2 m_i v_i^2)- Q_j}delta q_j $
+$ sum_j {dif/(dif t) [partial/(partial dot(q)_j)(sum_i 1/2 m_i v_i^2)]-partial/(partial q_j)(sum_i 1/2 m_i v_i^2)- Q_j}delta q_j $
 Vemos que aparece la energía cinética del sistema $T$. El principio de D'Alembert se convierte en
-$ sum_j {[dif/(diff t) ((diff T)/(diff dot(q)_j)-(diff t)/(diff q_j))]-Q_j}delta q_j = 0 $
+$ sum_j {[dif/(partial t) ((partial T)/(partial dot(q)_j)-(partial t)/(partial q_j))]-Q_j}delta q_j = 0 $
 
-Por ahora, no hemos realizado ninguna restricción sobre la naturaleza de las ligaduras excepto que deben no realizar trabajo en un desplazamiento virtual. Las variables $q_j$ pueden ser cualquier conjunto de coordenadas utilizadas para describir el movimiento del sistema. Si, además, las ligaduras son holónomas, podemos encontrar conjuntos de coordenadas independientes $q_j$ que contienen las condiciones de ligadura implicitamente en las ecuaciones de transformación. Cualquier desplazamiento virtual $delta q_j$ es independiente de $delta q_k$, ppor lo que la única forma para que la ecuación sea válida es que los coeficientes de $delta q_j$ desapaarezcan: $ dif/(dif t) ((diff T)/(diff dot(q)_j))-(diff T)/(diff q_j) = Q_j$. Hay $n$ ecuaciones. 
+Por ahora, no hemos realizado ninguna restricción sobre la naturaleza de las ligaduras excepto que deben no realizar trabajo en un desplazamiento virtual. Las variables $q_j$ pueden ser cualquier conjunto de coordenadas utilizadas para describir el movimiento del sistema. Si, además, las ligaduras son holónomas, podemos encontrar conjuntos de coordenadas independientes $q_j$ que contienen las condiciones de ligadura implicitamente en las ecuaciones de transformación. Cualquier desplazamiento virtual $delta q_j$ es independiente de $delta q_k$, ppor lo que la única forma para que la ecuación sea válida es que los coeficientes de $delta q_j$ desapaarezcan: $ dif/(dif t) ((partial T)/(partial dot(q)_j))-(partial T)/(partial q_j) = Q_j$. Hay $n$ ecuaciones. 
 
 Cuando las fuerzas deriven de un potencial escalar $V$: $ F_i = -nabla_i V $
-Entonces, las fuerzas generalizadas se pueden escribir como $ Q_j = sum_i F_i dot (diff r_i)/(diff q_j) = - sum_i nabla_i V dot (diff r_i)/(diff q_j) $
+Entonces, las fuerzas generalizadas se pueden escribir como $ Q_j = sum_i F_i dot (partial r_i)/(partial q_j) = - sum_i nabla_i V dot (partial r_i)/(partial q_j) $
 Esto es realmente la expresión de la derivada parcial de una función escalar $-V(r_1,r_2,...,r_N, t)$ con respecto a $q_j$:
-$ Q_j = - (diff V)/(diff q_j) $
+$ Q_j = - (partial V)/(partial q_j) $
 Por lo que las ecuaciones anteriores se pueden escribir como: 
-$dif/(dif t)((diff T)/(diff dot(q)_j)) - (diff(T-V))/(diff q_j)=0$
-Estas ecuaciones de movimiento no están necesariamente restringidas a sistemas conservativos, el sistema es conservativo solo si $V$ no es una función explicita del tiempo. Como definido anteriormente, el potencial $V$ no depende de las velocidades generalizadas, por lo que podemos añadir V a la derivada parcial con respecto $dot(q)_j$: $ dif/(dif t) ((diff(T-V))/(diff dot(q)_j))-(diff(T-V))/(diff q_j) = 0 $
+$dif/(dif t)((partial T)/(partial dot(q)_j)) - (partial(T-V))/(partial q_j)=0$
+Estas ecuaciones de movimiento no están necesariamente restringidas a sistemas conservativos, el sistema es conservativo solo si $V$ no es una función explicita del tiempo. Como definido anteriormente, el potencial $V$ no depende de las velocidades generalizadas, por lo que podemos añadir V a la derivada parcial con respecto $dot(q)_j$: $ dif/(dif t) ((partial(T-V))/(partial dot(q)_j))-(partial(T-V))/(partial q_j) = 0 $
 Definimos el *Lagrangiano* $L$ como
 $ L=T-V $
-Las ecuaciones de movimiento entonces se transforman en $ dif/(dif t) ((diff L)/(diff dot(q)_j))-(diff L)/(diff q_j) = 0$
+Las ecuaciones de movimiento entonces se transforman en $ dif/(dif t) ((partial L)/(partial dot(q)_j))-(partial L)/(partial q_j) = 0$
 Estas ecuaciones son las ecuaciones de Lagrange.
 
 Es importante notar que para un conjunto particular de ecuaciones de movimiento no hay una elección única de Lagrangiano para el que las ecuaciones de Lagrange lleven a las ecuaciones de movimiento en las coordenadas generalizadas dadas. Es por esto que si $L(q, dot(q), t)$ es un lagrangiano aproximado y $F(q,t)$ es cualquier función diferenciable de las coordenadas generalizadas y el tiempo, entonces
@@ -159,45 +159,45 @@ es un Lagrangiano resultando en las mismas ecuaciones de movimiento. Aunque el L
 
 == Potencial generalizado
 Las ecuaciones de Lagrange se pueden escribir en función del Lagrangiano aunque no haya una función potencial $V$ mientras que las fuerzas generalizadas sean obtenidas por una función $U(q_j, dot(q)_j)$ por la fórmula
-$ Q_j = - (diff U)/(diff q_j) + dif/(diff t)((diff U)/(diff dot(q)_j)) $
+$ Q_j = - (partial U)/(partial q_j) + dif/(partial t)((partial U)/(partial dot(q)_j)) $
 En tal caso, las ecuaciones de Lagrange siguen siendo válidas con el Lagrangiano dado por
 $ L = T-U $
 Aquí podemos decir que $U$ es un "potencial generalizado".
 
 Este potencial nos permite trabajar con fuerzas disipativas.
 
-Consideremos el ejemplo de una carga eléctrica $q$ de masa $m$ moviéndose a una velocidad $arrow(v)$, en una región libre de carga conteniendo un campo eléctrico $arrow(E)$ y un campo magnético $arrow(B)$, que dependen del tiempo y la posición. La carga experimenta una fuerza, llamada fuerza de Lorentz, dada por $arrow(F) = q [ arrow(E) + (arrow(V) times arrow(B))] $. Ambos $arrow(E)(x, y, z, t)$ y $ arrow(B)(x,y,z,t)$ son funciones continuas del tiempo y la posición derivables de un potencial escalar $phi(x,y,z,t)$ y un potencial vectorial $arrow(A)(x,y,z,t)$. De forma que $ E = -nabla phi - (diff A)/(diff t) $ y $ B = nabla times A $
+Consideremos el ejemplo de una carga eléctrica $q$ de masa $m$ moviéndose a una velocidad $arrow(v)$, en una región libre de carga conteniendo un campo eléctrico $arrow(E)$ y un campo magnético $arrow(B)$, que dependen del tiempo y la posición. La carga experimenta una fuerza, llamada fuerza de Lorentz, dada por $arrow(F) = q [ arrow(E) + (arrow(V) times arrow(B))] $. Ambos $arrow(E)(x, y, z, t)$ y $ arrow(B)(x,y,z,t)$ son funciones continuas del tiempo y la posición derivables de un potencial escalar $phi(x,y,z,t)$ y un potencial vectorial $arrow(A)(x,y,z,t)$. De forma que $ E = -nabla phi - (partial A)/(partial t) $ y $ B = nabla times A $
 La fuerza sobre la carga se puede derivar del potencial generalizado $ U = q phi - q arrow(A) dot arrow(V) $
 por lo que el Lagrangiano, $L = T-U$, es 
 $ L = 1/2 m v^2 - q phi + q vec(A) dot vec(v) $
 Considerando únicamente la componente $x$ de las euaciones de Lagrange, obtenemos 
 $
-m dot.double(x) = q (v_x (diff A_x)/(diff x) + v_y (diff A_y)/(diff x) + v_z (diff A_z)/(diff x))-q((diff phi)/(diff x) + (dif A_x)/(dif t)))
+m dot.double(x) = q (v_x (partial A_x)/(partial x) + v_y (partial A_y)/(partial x) + v_z (partial A_z)/(partial x))-q((partial phi)/(partial x) + (dif A_x)/(dif t)))
 $
 
-La derivada total en función del tiempo de $A_x$ se relaciona a su derivada parcial en función del tiempo por $ (dif A_x)/(dif t) = (diff A_x)/(diff t) + arrow(v) dot nabla A_x = (diff A_x)/(diff t) + v_x (diff A_x)/(diff x) + v_y (diff A_x)/(diff y) + v_z (diff A-x)/(diff z) $
+La derivada total en función del tiempo de $A_x$ se relaciona a su derivada parcial en función del tiempo por $ (dif A_x)/(dif t) = (partial A_x)/(partial t) + arrow(v) dot nabla A_x = (partial A_x)/(partial t) + v_x (partial A_x)/(partial x) + v_y (partial A_x)/(partial y) + v_z (partial A-x)/(partial z) $
 Por lo que 
 $
-m dot.double(x) &= q (v_x (diff A_x)/(diff x) + v_y (diff A_y)/(diff x) + v_z (diff A_z)/(diff x) - (diff phi)/(diff x) - (diff A_x)/(diff t) - v_x (diff A_x)/(diff x) - v_y (diff A_x)/(diff y) - v_z (diff A_x)/(diff z)) \
-&= q (v_y (diff A_y)/(diff x) - (diff A_x)/(diff y) + v_z (diff A_z)/(diff x) - (diff A_x)/(diff z))
+m dot.double(x) &= q (v_x (partial A_x)/(partial x) + v_y (partial A_y)/(partial x) + v_z (partial A_z)/(partial x) - (partial phi)/(partial x) - (partial A_x)/(partial t) - v_x (partial A_x)/(partial x) - v_y (partial A_x)/(partial y) - v_z (partial A_x)/(partial z)) \
+&= q (v_y (partial A_y)/(partial x) - (partial A_x)/(partial y) + v_z (partial A_z)/(partial x) - (partial A_x)/(partial z))
 $
-Sabemos que $ arrow(E) = -nabla phi - (diff arrow(A))/(diff t) $
-Por lo que $ E_x = -(diff phi)/(diff x) - (diff A_x)/(diff t) $
-Calculamos $ (arrow(v) times arrow(B))_x = v_y((diff A_y)/(diff x) - (diff A_x)/(diff y)) + v_z((diff A_z)/(diff x) - (diff A_x)/(diff z)) $
+Sabemos que $ arrow(E) = -nabla phi - (partial arrow(A))/(partial t) $
+Por lo que $ E_x = -(partial phi)/(partial x) - (partial A_x)/(partial t) $
+Calculamos $ (arrow(v) times arrow(B))_x = v_y((partial A_y)/(partial x) - (partial A_x)/(partial y)) + v_z((partial A_z)/(partial x) - (partial A_x)/(partial z)) $
 Sustituyendo $E_x$ y $(arrow(V) times arrow(B))_x$ estas expresiones, obtenemos la ecuación de movimiento en la dirección $x$:
 $ m dot.double(x)=q[E_x+(arrow(v)times arrow(B))_x] $
 Vemos que esta es idéntica a la expresión de la fuerza de Lorentz, mostrando que podemos obtenerla a través de las ecuaciones de Lagrange.
 
 == Función de disipación
-Si hay fuerzas no conservativas que actuan sobre el sistema, las ecuaciones de Lagrange se pueden escribir de forma $ dif/(dif t) ((diff L)/(diff dot(q)_j)) - (diff L)/(diff q_j))= Q_j $
+Si hay fuerzas no conservativas que actuan sobre el sistema, las ecuaciones de Lagrange se pueden escribir de forma $ dif/(dif t) ((partial L)/(partial dot(q)_j)) - (partial L)/(partial q_j))= Q_j $
 Donde $L$ contiene el potencial de las fuerzas conservadoras como anteriormente, y $Q_j$ representa las fuerzas que no derivan de un potencial. Esta situación ocurre cuando hay fuerzas friccionales presentes. Ocurre frecuentemente cuando la fuerza de fricción es proporcional a la velocidad de la partícula, tal que su componente $x$ tiene como forma $ F_(f x) = - k_x v_x $ 
 Fuerzas de fricción de este tipo se pueden derivar en terminos de la función $ cal(F)=1/2 sum_i (k_x v_(i x)^2 + k_y v_(i y)^2 + k_z v_(i z)^2) $
-Donde la suma es sobre las partículas del sistema. De esta definición queda claro que $ F_(f_x_i)=-(diff F)/(diff v_x_i) $
+Donde la suma es sobre las partículas del sistema. De esta definición queda claro que $ F_(f_x_i)=-(partial F)/(partial v_x_i) $
 O, simbolicamente
 $ F_f = - nabla_v cal(F) $
 Le podemos dar también una interpretación física. El trabajo realizado por el sistema contra la fricción es $dif W_f = -arrow(F)_f dot dif arrow(r) = - arrow(F)_f dot arrow(v) dif t = (k_x v_x^2 + k_y v_y^2 + k_z v_z^2)dif t $
-Por lo tanto, $2 cal(F)$ es la tasa de disipación de energía por la fricción. La componente de la fuerza generalizada resultando de la fricción es $ Q_j = sum_i arrow(F)_f_i dot (diff arrow(r)_i)/(diff q_j) &= - sum_i nabla_v cal(F) dot (diff arrow(r)_i)/(diff q_j) \ &= - sum nabla_v cal(F) dot (diff dot(arrow(r))_i)/(diff dot(q)_j) \ &=-(diff cal(F))/(diff dot(q)_j) $
-Por lo que las ecuaciones de Lagrange se escriben como $ dif/(dif t) ((diff L)/(diff dot(q)_j))- (diff L)/(diff q_j) + (diff cal(F))/(diff dot(q)_j) = 0$
+Por lo tanto, $2 cal(F)$ es la tasa de disipación de energía por la fricción. La componente de la fuerza generalizada resultando de la fricción es $ Q_j = sum_i arrow(F)_f_i dot (partial arrow(r)_i)/(partial q_j) &= - sum_i nabla_v cal(F) dot (partial arrow(r)_i)/(partial q_j) \ &= - sum nabla_v cal(F) dot (partial dot(arrow(r))_i)/(partial dot(q)_j) \ &=-(partial cal(F))/(partial dot(q)_j) $
+Por lo que las ecuaciones de Lagrange se escriben como $ dif/(dif t) ((partial L)/(partial dot(q)_j))- (partial L)/(partial q_j) + (partial cal(F))/(partial dot(q)_j) = 0$
 
 == Principio de Hamilton
 Hemos conseguido obtener las ecuaciones de Lagrange a partir de un estado instantaneo del sistema y desplazamientos virtuales pequeños sobre este estado. Es decir, a partir de un principio diferencial, como el de D'Alembert. Ahora vamos a obtener las ecuaciones de Lagrange a partir de un principio que considera el movimiento completo del sistema entre dos tiempos $t_1$ y $t_2$. Un principio de esta clase se conoce como un principio integral.
@@ -216,17 +216,17 @@ $
 q_n(t,alpha) = q_n(t, 0) + alpha eta_n(t) 
 $
 Donde $q_n(t,0)$ son las soluciones del problema de los extremos que estamos intentando resolver, y $eta_n$ funciones independientes cualquiera de $t$ que se anulan en $t_1, t_2$ y son continuas hasta su segunda derivada. Entonces, la variación de $S$ puede ser expresada como
-$ (dif S)/(dif alpha) = integral_(t_1)^(t_2) sum_i (diff L)/(diff q_i) (diff q_i)/(diff alpha) + (diff L)/(diff dot(q)_i) (diff dot(q)_i)/(diff alpha) dif t $
+$ (dif S)/(dif alpha) = integral_(t_1)^(t_2) sum_i (partial L)/(partial q_i) (partial q_i)/(partial alpha) + (partial L)/(partial dot(q)_i) (partial dot(q)_i)/(partial alpha) dif t $
 Consideramos la segunda parte de la suma en la integral:
-$ integral_(t_1)^(t_2) (diff L)/(diff dot(q)_i) (diff dot(q_i))/(diff alpha) dif t $
+$ integral_(t_1)^(t_2) (partial L)/(partial dot(q)_i) (partial dot(q_i))/(partial alpha) dif t $
 Integrando por partes:
-$  integral_(t_1)^(t_2) (diff L)/(diff dot(q)_i) (diff^2 q_i)/(diff alpha diff t) dif t = (diff L)/(diff dot(q)_i) (diff q_i)/(diff alpha) |_(t_1)^(t_2) - integral_(t_1)^(t_2) (diff q_i)/(diff alpha) dif/(dif x) ((diff L)/(diff dot(q)_i)) dif t $
+$  integral_(t_1)^(t_2) (partial L)/(partial dot(q)_i) (partial^2 q_i)/(partial alpha partial t) dif t = (partial L)/(partial dot(q)_i) (partial q_i)/(partial alpha) |_(t_1)^(t_2) - integral_(t_1)^(t_2) (partial q_i)/(partial alpha) dif/(dif x) ((partial L)/(partial dot(q)_i)) dif t $
 Vemos que el primer término desaparece porque la función $eta_n$ se anula en $t_1$ y $t_2$. Entonces, la variación de la acción se puede escribir como
-$ delta S = integral_(t_1)^(t_2) sum_i ((diff L)/(diff q_i) - dif/dif(t) ((diff L)/(diff dot(q)_i))) (diff q_i)/(diff alpha) dif t $
-Sustituyendo la variación de $q_i$ $delta q_i = (diff q_i)/(diff alpha) |_(alpha = 0)$
-$ delta S = integral_(t_1)^(t_2) sum_i ((diff L)/(diff q_i) - dif/dif(t) ((diff L)/(diff dot(q)_i))) delta q_i dif t $
+$ delta S = integral_(t_1)^(t_2) sum_i ((partial L)/(partial q_i) - dif/dif(t) ((partial L)/(partial dot(q)_i))) (partial q_i)/(partial alpha) dif t $
+Sustituyendo la variación de $q_i$ $delta q_i = (partial q_i)/(partial alpha) |_(alpha = 0)$
+$ delta S = integral_(t_1)^(t_2) sum_i ((partial L)/(partial q_i) - dif/dif(t) ((partial L)/(partial dot(q)_i))) delta q_i dif t $
 Sabiendo que según el principio de Hamilton, $delta S$ es nulo, y que la variación de $q_i$ es arbitraria, nos queda que la primera porción de la integral anterior debe ser nulo. Por lo que obtenemos las ecuaciones de Lagrange:
-$ (diff L)/(diff q_i) - dif/dif(t) ((diff L)/(diff dot(q)_i)) = 0  "para " i "coordenadas generalizadas" $
+$ (partial L)/(partial q_i) - dif/dif(t) ((partial L)/(partial dot(q)_i)) = 0  "para " i "coordenadas generalizadas" $
 
 === Sistemas con ligaduras holónomas
 Hemos aprendido a resolver problemas con ligaduras holónomas eligiendo coordenadas para que las ecuaciones de ligadura se conviertan en ecuaciones triviales $0=0$. Vamos a extender el Principio de Hamilton para poder resolver problemas que involucran ligaduras utilizando los multiplicadores de Lagrange.
@@ -254,7 +254,7 @@ La ecuación integral y la ecuación de Lagrange nos permiten conseguir $n+m$ ec
 == Teoremas de conservación y simetrías
 Resolver las ecuaciones de movimiento no es siempre posible, sin embargo, podemos extraer mucha información sobre la naturaleza física del movimiento del sistema. En muchos problemas, un gran número de primeras integrales de las ecuaciones de movimiento es imediatamente obtenible, y estas toman la forma $ f(q_1, ..., q_n, dot(q)_1, ..., q_n, t) = "constante" $ siendo ecuaciones diferenciales de orden 1. Estas primeras integrales son de interés porque nos dicen cosas sobre el sistema físico. Inccluyen, por ejemplo, las leyes de conservación. 
 
-Consideremos por ejemplo un sistema de puntos de masa bajo la influencia de fuerzas que derivan de potenciales dependientes solo de la posición: $ dvp(L,dot(x)_i) equiv dvp(T,dot(x)_i) - dvp(V,dot(x)_i) = dvp(T,dot(x)_i) = diff/(diff dot(x_i)) sum 1/2 m_i (dot(x)^2_i + dot(y)^2_i + dot(z)^2_i ) = m_i dot(x)_i = p_(i x) $ 
+Consideremos por ejemplo un sistema de puntos de masa bajo la influencia de fuerzas que derivan de potenciales dependientes solo de la posición: $ dvp(L,dot(x)_i) equiv dvp(T,dot(x)_i) - dvp(V,dot(x)_i) = dvp(T,dot(x)_i) = partial/(partial dot(x_i)) sum 1/2 m_i (dot(x)^2_i + dot(y)^2_i + dot(z)^2_i ) = m_i dot(x)_i = p_(i x) $ 
 Que es la componente $x$ del momento linea asociado con la $i$esima particula. Este resultado sugiere una extensión obvia del concepto de momento. El momento generalizado asociado con la coordenada $q_j$ se defini como $ p_j = dvp(L,dot(q)_j) $
 Los términos "momento canónico" y "momento conjugado" también se usan a menudo para $p_j$. Es importante notar que si $q_j$ no es una coordenada Cartesiana, $p_j$ no tiene necesariamente las dimensiones de un momento lineal. Además, si hay un potencial dependiende de la velocidad, entonces incluso con una coordenada Cartesiana $q_j$ el momento generalizado asociado no será identico al momento mecánico convencional. Por lo tanto, en el caso de un grupo de partículas en un campo electromagnético, el Lagrangiano es $ L = sum_i 1/2 m_i dot(r)_i^2 - sum_i q_i phi(x_i) + sum_i q_i bold(A)(x_i) dot dot(bold(r))_i $ ($q_i$ denota aquí la carga) y entonces el momento generalizado conjugado asociado a $x_i$ es $ p_(i x ) = dvp(L,dot(x)_i) = m_i dot(x)_i + q_i A_x $ 
 Es decir, el momento mecánico mas un término adicional. 
