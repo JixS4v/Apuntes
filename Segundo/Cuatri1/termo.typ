@@ -708,7 +708,7 @@ $ n dif mu = - S dif T + V dif p $
 
 - Parciales primeras: $ dvp(H,S, eval:p, evalsym:")") = T space ; space dvp(H,p, eval:S, evalsym:")") = V => p =  p(T,V) $
 - Parciales segundas 
-$ dvp(H,S, eval:p, evalsym:")", deg:2) = T/T dvp(T,S, eval:, evalsym:")") = T/C_p => C_p = T dvp(H,S, eval:p, evalsym:")", deg: 2)^(-1)$
+$ dvp(H,S, eval:p, evalsym:")", deg:2) = T/T dvp(T,S, eval:space, evalsym:")") = T/C_p => C_p = T dvp(H,S, eval:p, evalsym:")", deg: 2)^(-1)$
 $ dvp(H,p, eval:S, evalsym:")", deg:2 ) = dvp(V,p, eval:S, evalsym:")") = -V chi_S => chi_S = -1/V dvp(H,p, eval:S, evalsym:")" , deg:2) $
 
 === Criterio de evolución en procesos no estáticos
